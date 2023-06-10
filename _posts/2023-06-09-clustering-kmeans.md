@@ -21,18 +21,18 @@ $$
 \}
 $$
 
-En este dataset tenemos las input features $x$ y las true labels $y$.
+En este dataset tenemos las input features $$x$$ y las true labels $$y$$.
 
-Pero en unsupervised learning nuestro dataset no tiene estas respuestas correctas o true labels $y$, sino que sólo está compuesto por las input features $x$.
+Pero en unsupervised learning nuestro dataset no tiene estas respuestas correctas o true labels $$y$$, sino que sólo está compuesto por las input features $$x$$.
 $$
 \{x^{(1)}, x^{(2)}, x^{(3)}, ..., x^{(m)}
 \}
 $$
 
-Como no tenemos las output targets $y$, no somos capaces de decirle al algoritmo cuál es la respuesta correcta $y$ que queremos predecir. En vez de eso, vamos a preguntarle al algoritmo que encuentre alguna estructura interesante sobre esta data, por ejemplo, que la agrupe en clusters, así quizas podemos obtener conocimiento que a simple vista sea difícil de adquirir.
+Como no tenemos las output targets $$y$$, no somos capaces de decirle al algoritmo cuál es la respuesta correcta $$y$$ que queremos predecir. En vez de eso, vamos a preguntarle al algoritmo que encuentre alguna estructura interesante sobre esta data, por ejemplo, que la agrupe en clusters, así quizas podemos obtener conocimiento que a simple vista sea difícil de adquirir.
 
 # K-means: el algoritmo de clustering más utilizado
-Para ejecutar K-means necesitamos un dataset sin labels $y$.
+Para ejecutar K-means necesitamos un dataset sin labels $$y$$.
 
 ## I. Procedimiento
 El algoritmo consta de 3 pasos. El primero se realiza una sola vez, mientras que los 2 siguientes se ejecutan varias veces. K-means es un algoritmo iterativo, por lo que dependiendo de la cantidad de iteraciones que le demos podremos obtener mejores resultados.
@@ -48,31 +48,31 @@ El algoritmo consta de 3 pasos. El primero se realiza una sola vez, mientras que
 
     2.2 **Mover los centroids:** K-means mirará todos los puntos de datos asignados al **centroid1** y tomará un promedio de ellos. Luego, moverá el **centroid1** a la ubicación del promedio de estos puntos de datos.Para el **centroid2** se hace exactamente lo mismo: se toman todos los puntos de datos asignados a este centroid y se calcula el promedio, para luego mover el **centroid2** a esa ubicación.
 
-3. K-means recorrerá todos los datos de nuestro dataset de nuevo y repetirá el **paso 2** completo. En otras palabras, asociaremos cada punto de dato al centroid más cercano (**paso 2.1**). Algunos datos puede que sean asignados a diferentes centroids con el pasar de las iteraciones, esto es normal, ya que queremos determinar correctamente cuáles son sus centroids más cercanos. Después de esto, recalcularemos los centroids (o los moveremos que es lo mismo) (**paso 2.2**). Hacemos esto hasta que no hayan más cambios en la asignación de los datos a centroids o que no haya cambio al mover los centroids. En ese momento, K-means habrá **convergido**. Así, se habrán formado 2 clusters conteniendo cada uno data points similares.
+3. K-means recorrerá todos los datos de nuestro dataset de nuevo y repetirá el **paso 2** completo. En otras palabras, asociaremos cada punto de dato al centroid más cercano (**paso 2.1**). Algunos datos puede que sean asignados a diferentes centroids con el pasar de las iteraciones, esto es normal, ya que queremos determinar correctamente cuáles son sus centroids más cercanos. Después de esto, recalcularemos los centroids (o los moveremos, que es lo mismo) (**paso 2.2**). Hacemos esto hasta que no hayan más cambios en la asignación de los datos a centroids o que no hayan cambios al mover los centroids. En ese momento, K-means habrá **convergido**. Así, se habrán formado 2 clusters conteniendo cada uno data points similares.
 
 
 ## II. Definición formal de K-means
 
-1. Aleatoriamente inicializar $$K$$ centroids $$\mu_1$$,
+1. Aleatoriamente inicializar $$K$$ centroids $$\mu_1, \mu_2, ..., \mu_k$$:
+    - Elegir aleatoriamente una ubicación para los centroids
+    - $$\mu_1, \mu_2, ..., \mu_k$$ son vectores que tienen la misma dimensión que el dataset de ejemplos de entrenamiento $$x^{(1)}, x^{(2)}, ..., x^{(m)}$$. Todos los centroids son listas de $$n$$ números o vectores de $$n$$-dimensiones, donde $$n$$ es el número de features por cada uno de los ejemplos de entrenamiento. Por ejemplo, si $$n=2$$, tenemos 2 features $$x_1$$ y $$x_2$$, entonces $$\mu_1$$ y $$\mu_2$$ serán vectores con 2 números en ellos.
 
-Randomly initialize $K$ cluster centroids $\mu_1, \mu_2, ..., \mu_k$.
-  - randomly choose a location for the centroids
-  - $\mu_1, \mu_2, ..., \mu_k$ are vectors which have the same dimension as your training examples $x^{(1)}, x^{(2)}, ..., x^{(m)}$. All of the centroids are lists of $n$ numbers or $n$-dimension vectors, where $n$ is the number of features for each of the training examples. For example, if $n=2$, we have 2 features $x_1$ and $x_2$, then $\mu_1$ and $\mu_2$ will be vectors with 2 numbers in them.
+2. K-means repetidamente llevará a cabo los dos pasos descritos en la sección **I.**:
 
-2. K-means will repeatedly carry out the two steps that we saw previously:
+    2.1 Asignar cada uno de los puntos de datos $$x^{(i)}$$ al centroid $$\mu$$ más cercano.
 
-	2.1. assign data points to clusters centroids, meaning color each of the points according the color of the centroid. 
+    2.2 Mover los centroids de los clusters. Vamos a actualizar la ubicación de los centroids para ser el promedio o media de los datos asignados a cada cluster. Concretamente, veremos todos los puntos de datos asignados al centroid $$\mu$$ y calcularemos el promedio. El promedio se calcula para cada dimensión o feature, entonces: veremos el valor de cada punto en el eje x (feature $$x_1$$) y lo promediamos; luego, veremos el valor de cada punto en el eje y (feature $$x_2$$) y lo promediamos. Con esto, tenemos la media de los puntos que pertenecen al cluster $$\mu$$ y que será la nueva ubicación de este último. En python esto sería:
+    ```
+		a = np.array([x^(1), x^(5), x^(6), x^(10)])
+		mu_1 = np.sum(a) / 4
+		# x^(m) es un vector de tam n, con n=num. features
+		# mu_1 es un vector de tam n, con n=num. features
+        # numpy utiliza vectorización, por lo que las operaciones se aplican al vector completo
+    ```
 
-  2.2. Move the cluster centroids. We are going to update the location of the cluster centroids to be the average or the mean of the points assigned to that cluster. Concretely, we'll look at all data points assigned to the cluster centroid and look at their position on the horizontal axis (look at the value of the first feature $x_1$) and average that out, and compute the average value on the vertical axis as well. After computing those two averages, we find the mean and move the corresponding cluster centroid.
-  - en python esto sería:
-        ```
-		    a = np.array([x^(1), x^(5), x^(6), x^(10)])
-		    mu_1 = np.sum(a) / 4
-		    # x^(m) es un vector de tam n, con n=num. features
-		    # mu_1 es un vector de tam n, con n=num. features
-        ```
+## III. Pseudocódigo
 
-En código el algoritmo es:
+En pseudocódigo el algoritmo es:
 
 ```
 Randomly initialize K cluster centroids mu_1, mu_2, ..., mu_k
