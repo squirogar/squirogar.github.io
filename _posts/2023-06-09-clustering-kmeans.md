@@ -96,7 +96,7 @@ c^(i) := índice (de 1 a K) del centroids más cercano a x^(i).
 ```
 Esto es lo mismo que: 
 $$
-min_k ||x^{(i)}-\mu_k||^2_2
+min_k ||x^{(i)}-\mu_k||^2
 $$
 
 Explicación:
@@ -104,7 +104,7 @@ Explicación:
 - matemáticamente esto es calcular la distancia entre $$x^{(i)}$$ y $$\mu_k$$. 
 - El cálculo de la distancia entre 2 puntos es:
 $$
-		||x^{(i)} - \mu_k||_2
+		||x^{(i)} - \mu_k||
 $$
 A esto se le llama norma $$L2$$.
 - Queremos encontrar el centroid $$k$$ que minimiza esta distancia al cuadrado.
@@ -124,7 +124,7 @@ $$
 
 La $$L2$$ norm está dada por:
 
-$$ ||x||_2=(\sum_{i=1}^{n} {x}_i^2)^{1/2}=\sqrt{\sum_{i=1}^{n} {x}_i^2} $$
+$$ ||x||=(\sum_{i=1}^{n} {x}_i^2)^{1/2}=\sqrt{\sum_{i=1}^{n} {x}_i^2} $$
 
 Esta es la norma euclidiana que se utiliza para calcular la distancia entre 2 puntos.
 
@@ -133,13 +133,13 @@ En python podemos calcular la norma $$L2$$ así:
 numpy.linalg.norm(x)
 ```
 
-Sin embargo, en machine learning se utiliza la norma $$L2$$ al cuadrado: $$||x||^2_2$$, ¿por qué?:
+Sin embargo, en machine learning se utiliza la norma $$L2$$ al cuadrado: $$||x||^2$$, ¿por qué?:
 - Porque se deshace de la raíz cuadrada haciéndola más fácil para operar.
 - y terminamos con una simple suma de cada elemento del vector al cuadrado. 
 - Es ampliamente usada en machine learning porque puede ser calculada con la operación de vector $$x^\text{T}x$$, operación que se puede hacer muy rápidamente mediante la vectorización. Así, tenemos mejor rendimiento debido a la optimización (*).
 - El centroid con la distancia al cuadrado más pequeña es el mismo que el centroid con la distancia más pequeña sin elevar al cuadrado.
 
-$$ ||x||^2_2=\sum_{i=1}^{n} {x}_i^2= (x_1)^2+(x_2)^2+...+(x_n)^2$$
+$$ ||x||^2=\sum_{i=1}^{n} {x}_i^2= (x_1)^2+(x_2)^2+...+(x_n)^2$$
 
 ```
 # l2-norm squared
@@ -170,7 +170,7 @@ K-means intenta minimizar la siguiente cost function:
 $$J(c^{(1)}, ..., c^{(m)}, \mu_1, ..., \mu_K) = \frac{1}{m} \cdot \sum_{i=1}^{m}(||x^{(i)} - \mu_{c^{(i)}}||^2)$$
 
 - El nombre de esta cost function es: **Distortion function**.
-- $$J$$ es función de $$c^{(1)},...,c^{(m)}$$ y $$\mu_1,...,\mu_k$$.
+- $$J$$ es función de $$c^{(1)},...,c^{(m)}$$ y $$\mu_1,...,\mu_K$$.
 - $$J$$ es el promedio de la distancia al cuadrado entre cada training example $$x^{(i)}$$ y la ubicación del centroid $$\mu_{c^{(i)}}$$ al que se le asignó el training example $$x^{(i)}$$. Por ejemplo, para el décimo ejemplo la distancia al cuadrado sería: $$(x^{(10)} - \mu_{c^{(10)}})^2$$. 
 - K-means con esto intenta encontrar asignaciones de puntos a centroids y ubicaciones de centroids que minimizan la distancia al cuadrado.
 
@@ -212,13 +212,13 @@ K-means intenta minimizar la cost function $$J$$ de la siguiente forma:
 ## V. Convergencia de K-means
 El hecho de que K-means optimice una cost function $$J$$ significa que la convergencia está garantizada, es decir, en cada iteracion la distortion cost function debería bajar o mantenerse igual, pero **NUNCA SUBIR!**, si ese es el caso, hay un bug en el código, ya que en cada paso de K-means se está estableciendo el valor $$c^{(i)}$$ y $$\mu_k$$ para intentar reducir la cost function.
 
-También, si la cost function para de bajar, esto nos da una forma para probar si K-means ha convergido. Una vez que haya una sola iteración que se mantiene igual, eso usualmente significa que K-means ha convergido y deberíamos parar el algoritmo. O en algunos casos, ejecutaremos K-means por un largo tiempo, y la cost function va bajando muy, muy lentamente, esto es pareciddo al gradient descent, donde quizás ejecutarlo por más tiempo puede mejorar, pero si la tasa a la que la cost function está bajando es muy, muy lenta, también podemos decir que es suficiente y está muy cerca de la convergencia.
+También, si la cost function para de bajar, esto nos da una forma para probar si K-means ha convergido. Una vez que haya una sola iteración que se mantiene igual, eso usualmente significa que K-means ha convergido y deberíamos parar el algoritmo. O en algunos casos, ejecutaremos K-means por un largo tiempo, y la cost function va bajando muy, muy lentamente, esto es parecido al gradient descent, donde quizás ejecutarlo por más tiempo puede mejorar, pero si la tasa a la que la cost function está bajando es muy, muy lenta, también podemos decir que es suficiente y está muy cerca de la convergencia.
 
 
 ## VI. Inicializando clusters de K-means
 El uso de múltiples inicializaciones aleatorias diferentes de los centroids dará como resultado la búsqueda de un mejor conjunto de clusters.
 
-El primer paso es elegir ubicaciones aleatorias como suposiciones iniciales para los centroids $#\mu_1,...,\mu_K$$.
+El primer paso es elegir ubicaciones aleatorias como suposiciones iniciales para los centroids $$\mu_1,...,\mu_K$$.
 
 ```
 #paso 0: aleatoriamente inicializar K centroids mu_1, mu_2, ..., mu_K
@@ -230,19 +230,21 @@ repeat {
 ```
 ¿Cómo implementamos el **paso 0**?
 
-### 1. Punto a tener en cuenta
+### 1. A tener en cuenta
 Siempre elegir un valor de $$K$$ menor a $$m$$:
+
 $$
 K < m
 $$
-$$k$$ es el número de clusters y $$m$$ es el número de training examples.
+
+$$K$$ es el número de clusters y $$m$$ es el número de training examples.
 
 No tiene sentido tener más centroids que ejemplos $$m$$ porque no habrán suficientes training examples para que cada cluster tenga al menos un ejemplo dentro.
 
 ### 2. Inicialización de clusters
 La forma de inicializarlos más común es aleatoriamente escoger $$K$$ datos de nuestro dataset de entrenamiento y establecer $$\mu_1, ..., \mu_K$$ con un valor igual a estos $$K$$ datos. Por ejemplo, si $$K=2$$, entonces elegimos 2 training examples y ubicamos los 2 centroids, $$\mu_1$$ y $$\mu_2$$ en el mismo lugar que éstos.
 
-### 3. Puntos a considerar en la inicialización de clusters
+### 3. A considerar en la inicialización de clusters
 La forma anterior de inicializar los cluster centroids tiene algunos puntos a considerar:
 - Con este método hay una posibilidad de terminar con 2 (o más) clusters inicializados muy cerca. Y dependiendo de cómo elijamos las posiciones iniciales aleatorias de los centroids, K-means terminará escogiendo diferentes set de clusters para el dataset que tenemos. 
 
@@ -255,6 +257,7 @@ Si le damos muchas oportunidades o ejecuciones al algoritmo K-means para encontr
 En el **paso 2**, $$\mu_k$$ intentaría calcular el promedio de $$0$$ training examples, lo cual no está definido.
 
 Hay 2 soluciones:
+    
     a. La más común: eliminar ese cluster, por lo que terminaremos con $$K-1$$ clusters
 
     b. Si realmente necesitamos los $$K$$ clusters, entonces aleatoriamente reinicializar ese cluster y esperar a que se le asignen data points la próxima vez.
@@ -271,21 +274,22 @@ for i = 1 to 100 { #100 inicializaciones aleatorias, o sea, ejecutamos 100 veces
 		# Elegir K ejemplos de entrenamiento aleatorios e inicializar los K centroids en esas ubicaciones.
 
 	Ejecutar K-means hasta la convergencia:
-    Obtener c^(1), ..., c^(m), mu_1, mu_2, ..., mu_K
-	Calcular cost function (distortion) J(c^(1), ..., c^(m), mu_1, mu_2, ..., mu_K)
+        Obtener c^(1), ..., c^(m), mu_1, mu_2, ..., mu_K
+
+	    Calcular cost function (distortion) J(c^(1), ..., c^(m), mu_1, mu_2, ..., mu_K)
 }
 ```
 
->Elegir el set de clusters que dan la cost function $J$ más baja.
+>Elegir el set de clusters que dan la cost function $$J$$ más baja.
 
-Después de ejecutar este bucle 100 veces (el número es arbitrario), escogeremos el set de clusters que nos dan el costo $J$ más bajo. Si hacemos esto, a menudo obtendremos un mejor set de clusters que si ejecutaramos K-means una sola vez.
+Después de ejecutar este bucle 100 veces (el número es arbitrario), escogeremos el set de clusters que nos dan el costo $$J$$ más bajo. Si hacemos esto, a menudo obtendremos un mejor set de clusters que si ejecutaramos K-means una sola vez.
 
 #### Sobre el número de veces que tenemos que ejecutar K-means
 Se recomienda un número entre 50 a 1000 (en el ejemplo pusimos 100). Si ejecutamos K-means más de 1000 veces tiende a ser computacionalmente caro y obtendremos muy pocas mejoras si lo ejecutamos más de esas veces.
 
 
 ## VIII. Cómo elegir el número de clusters K
-Para muchos problemas de clustering, el valor correcto de $$K$$ es ambigüo. Hay muchas aplicaciones donde los datos no da un indicador claro de cuántos clusters hay en ellos.
+Para muchos problemas de clustering, el valor correcto de $$K$$ es ambigüo. Hay muchas aplicaciones donde los datos no dan un indicador claro de cuántos clusters hay en ellos.
 
 ### 1. Método 1: Elbow method
 Técnica para encontrar automáticamente el número de clusters para usar en una aplicación.
@@ -303,7 +307,7 @@ Elegir $$K$$ que minimiza la función de costo $$J$$ no sirve porque implicaría
 ### 3. Método 3 (recomendado): decidir qué tiene sentido para la aplicación
 A menudo, ejecutamos K-means para obtener clusters y usarlos para algún propósito posterior. Lo que es recomendable, es evaluar K-means en función de qué tan bien se desempeñe para ese propósito posterior. Por ejemplo, tenemos una nube de puntos dispersos y los ejes son: *altura* y *peso*. Dado estas medidas de personas, queremos agruparlas en clusters para determinar cómo medir las poleras *S (small)*, *M (medium)* y *L (large)*. Elegimos $$K=3$$. Sin embargo, podemos ejecutar K-means con 5 clusters $$(K=5)$$ y así podemos medir las poleras de acuerdo a *XS (extra small), S, M, L y XL (extra large)*. Entonces, Ambas opciones son completamente válidas, por lo que la elección dependerá de lo que tenga sentido para el negocio de las poleras.
 
-Hay un trade-off entre qué tan bien las poleras entran o se ajustan a las personas, dependiendo si tenemos 3 tallas o 5 tallas, pero habrá un costo extra asociado a la manufactura y al envío de las poleras. ¿Qué hacemos? Ejecutar K-means con $$K=3$$ y $$K=5$$ y con estas 2 soluciones elegir, basandonos en el trade-off entre el ajuste de las poleras con más tamaños implicando un mejor ajuste, versus el costo extra de hacer más poleras. 
+Hay un trade-off entre qué tan bien las poleras entran o se ajustan a las personas, dependiendo si tenemos 3 tallas o 5 tallas, pero habrá un costo extra asociado a la manufactura y al envío de las poleras. ¿Qué hacemos? Ejecutar K-means con $$K=3$$ y $$K=5$$ y con estas 2 soluciones elegir, basandonos en el trade-off entre fabricar las poleras con más tamaños implicando un mejor ajuste, y el costo extra de hacer más poleras. 
 
 
 ## IX. ¿Por qué normalizar las features en K-means?
@@ -337,7 +341,7 @@ El problema está en que en K-means, si las features están a escalas muy difere
 1. ¿Por qué con K-means resultan clusters tan diferentes?
 - Tiene que ver con la data. Si nuestros clusters tienen un límite bien definido entre ellos siempre encontraremos los mismos centroids y solo dependerá del parámetro $$K$$. Si nuestra data no tiene un límite claro entre cada cluster (datos más dispersos) entonces inicializar los centroids aleatoriamente darán diferentes resultados dependiendo de la inicialización.
 
-Una sugerencia es usar el parámetro `random_state` cuando usemos la implementación de K-means de la librería `scikit-learn`, ya que si lo establecemos con un valor podemos garantizar que tendremos los mismos centroids cada vez que usemos el modelo (que lo entrenemos).
+- Una sugerencia es usar el parámetro `random_state` cuando usemos la implementación de K-means de la librería `scikit-learn`, ya que si lo establecemos con un valor podemos garantizar que tendremos los mismos centroids cada vez que usemos el modelo (que lo entrenemos).
 ```
 from sklearn.cluster import KMeans
 kmeans = KMeans(n_clusters=3, random_state=42)
