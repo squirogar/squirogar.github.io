@@ -257,10 +257,8 @@ Si le damos muchas oportunidades o ejecuciones al algoritmo K-means para encontr
 En el **paso 2**, $$\mu_k$$ intentaría calcular el promedio de $$0$$ training examples, lo cual no está definido.
 
 Hay 2 soluciones:
-    
-    a. La más común: eliminar ese cluster, por lo que terminaremos con $$K-1$$ clusters
-
-    b. Si realmente necesitamos los $$K$$ clusters, entonces aleatoriamente reinicializar ese cluster y esperar a que se le asignen data points la próxima vez.
+* a. La más común: eliminar ese cluster, por lo que terminaremos con $$K-1$$ clusters
+* b. Si realmente necesitamos los $$K$$ clusters, entonces aleatoriamente reinicializar ese cluster y esperar a que se le asignen data points la próxima vez.
 
 ## VII. Ejecución de K-means múltiples veces
 Si ejecutamos varias veces a K-means, debemos elegir uno de entre varios clustering. Una forma de elegir cuál clustering es el mejor, o sea, qué tirada nos dió mejores resultados, es calcular la cost function $$J$$ para **todas** las soluciones, para todas las alternativas de clustering encontradas en las ejecuciones de K-means, y elegir una de éstas de acuerdo a cuál da el menor valor para la cost function $$J$$.
@@ -274,9 +272,9 @@ for i = 1 to 100 { #100 inicializaciones aleatorias, o sea, ejecutamos 100 veces
 		# Elegir K ejemplos de entrenamiento aleatorios e inicializar los K centroids en esas ubicaciones.
 
 	Ejecutar K-means hasta la convergencia:
-        Obtener c^(1), ..., c^(m), mu_1, mu_2, ..., mu_K
+        1. Obtener c^(1), ..., c^(m), mu_1, mu_2, ..., mu_K
 
-	    Calcular cost function (distortion) J(c^(1), ..., c^(m), mu_1, mu_2, ..., mu_K)
+	    2. Calcular cost function (distortion) J(c^(1), ..., c^(m), mu_1, mu_2, ..., mu_K)
 }
 ```
 
@@ -320,8 +318,8 @@ Por ejemplo, tenemos 2 features:
 Utilizamos éstas para predecir si una persona necesita una polera *S* o una *L*.
 
 En nuestro training set tenemos 2 personas ya en los clusters:
-1. Adam (175 lbs, 5.9 ft) en "L".
-2. Lucy (115 lbs, 5.2 ft) en "S".
+1. Adam (175 lbs, 5.9 ft) en *L*.
+2. Lucy (115 lbs, 5.2 ft) en *S*.
 
 Tenemos una nueva persona: Alan (140 lbs, 6.1 ft).
 
@@ -332,7 +330,7 @@ Nuestro algoritmo de clustering lo pondrá en el cluster más cercano.
 
 Notar el gran impacto de la feature 1 (*Peso*) en el cálculo de la distancia. Además, notar el pequeñísimo impacto de la feature 2 (*altura*) en el cálculo de la distancia.
 
-Esto impactará el rendimiento de todos los modelos basados en distancia, ya que otorgará mayor peso a las variables que tienen una mayor magnitud (*Peso* en este caso). Entonces, el algoritmo está sesgado hacia una variable con mayor magnitud. Para superar este problema, podemos reducir todas las variables a la misma escala. Si no escalamos las features, la variable *altura* no tiene mucho efecto y a Alan se le asignará en el grupo "S", lo que no tiene sentido, ya que es muy alto.
+Esto impactará el rendimiento de todos los modelos basados en distancia, ya que otorgará mayor peso a las variables que tienen una mayor magnitud (*Peso* en este caso). Entonces, el algoritmo está sesgado hacia una variable con mayor magnitud. Para superar este problema, podemos reducir todas las variables a la misma escala. Si no escalamos las features, la variable *altura* no tiene mucho efecto y a Alan se le asignará en el grupo *S*, lo que no tiene sentido, ya que es muy alto.
 
 ### En resumen
 El problema está en que en K-means, si las features están a escalas muy diferentes, por ejemplo, edad vs sueldo, entonces va a haber una feature que va a tener demasiado impacto sobre el cálculo de la distancia, mientras que la otra va a tener poco o casi nulo.
@@ -340,7 +338,6 @@ El problema está en que en K-means, si las features están a escalas muy difere
 ## X. Algunas Q&A
 1. ¿Por qué con K-means resultan clusters tan diferentes?
 - Tiene que ver con la data. Si nuestros clusters tienen un límite bien definido entre ellos siempre encontraremos los mismos centroids y solo dependerá del parámetro $$K$$. Si nuestra data no tiene un límite claro entre cada cluster (datos más dispersos) entonces inicializar los centroids aleatoriamente darán diferentes resultados dependiendo de la inicialización.
-
 - Una sugerencia es usar el parámetro `random_state` cuando usemos la implementación de K-means de la librería `scikit-learn`, ya que si lo establecemos con un valor podemos garantizar que tendremos los mismos centroids cada vez que usemos el modelo (que lo entrenemos).
 ```
 from sklearn.cluster import KMeans
