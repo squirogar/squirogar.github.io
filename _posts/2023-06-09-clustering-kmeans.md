@@ -53,9 +53,9 @@ El algoritmo consta de 3 pasos. El primero se realiza una sola vez, mientras que
 
 ## II. Definición formal de K-means
 
-1. Aleatoriamente inicializar $$K$$ centroids $$\mu_1, \mu_2, ..., \mu_k$$:
+1. Aleatoriamente inicializar $$K$$ centroids $$\mu_1, \mu_2, ..., \mu_K$$:
     - Elegir aleatoriamente una ubicación para los centroids
-    - $$\mu_1, \mu_2, ..., \mu_k$$ son vectores que tienen la misma dimensión que el dataset de ejemplos de entrenamiento $$x^{(1)}, x^{(2)}, ..., x^{(m)}$$. Todos los centroids son listas de $$n$$ números o vectores de $$n$$-dimensiones, donde $$n$$ es el número de features por cada uno de los ejemplos de entrenamiento. Por ejemplo, si $$n=2$$, tenemos 2 features $$x_1$$ y $$x_2$$, entonces $$\mu_1$$ y $$\mu_2$$ serán vectores con 2 números en ellos.
+    - $$\mu_1, \mu_2, ..., \mu_K$$ son vectores que tienen la misma dimensión que el dataset de ejemplos de entrenamiento $$x^{(1)}, x^{(2)}, ..., x^{(m)}$$. Todos los centroids son listas de $$n$$ números o vectores de $$n$$-dimensiones, donde $$n$$ es el número de features por cada uno de los ejemplos de entrenamiento. Por ejemplo, si $$n=2$$, tenemos 2 features $$x_1$$ y $$x_2$$, entonces $$\mu_1$$ y $$\mu_2$$ serán vectores con 2 números en ellos.
 
 2. K-means repetidamente llevará a cabo los dos pasos descritos en la sección **I.**:
 
@@ -75,24 +75,24 @@ El algoritmo consta de 3 pasos. El primero se realiza una sola vez, mientras que
 En pseudocódigo el algoritmo es:
 
 ```
-Randomly initialize K cluster centroids mu_1, mu_2, ..., mu_k
+Aleatoriamente inicializar K clusters mu_1, mu_2, ..., mu_K
 
 repeat {
-	# assign points to cluster centorids
+	# asignar cada data point al centroid más cercano
 	for i = 1 to m:
-		c^(i) := index (from 1 to K) of cluster centroid closest to x^(i).
-			# this is equal to: min_k ||x^(i) - mu_k||^2
-			# ver nota1, nota2 y nota3
+		c^(i) := índice (de 1 a K) del centroids más cercano a x^(i).
+		# esto es igual a: min_k ||x^(i) - mu_k||^2
+		# ver nota
 
-	# move cluster centroids
+	# mver los centroids
 	for k = 1 to K:
-		mu_k := average (mean) of points assigned to cluster k
+		mu_k := media de los data points asignados al cluster k
 }
 ```
 
-* Nota 1:
+Nota:
 ```
-c^(i) := index (from 1 to K) of cluster centroid closest to x^(i)
+c^(i) := índice (de 1 a K) del centroids más cercano a x^(i).
 ```
 Esto es lo mismo que: 
 $$
@@ -100,16 +100,16 @@ min_k ||x^{(i)}-\mu_k||^2_2
 $$
 
 Explicación:
-- $x^{(i)}$ es el i-ésimo training example
-- matemáticamente esto es calcular la distancia entre $x^{(i)}$ y $\mu_k$. 
+- $$x^{(i)}$$ es el i-ésimo ejemplo de entrenamiento en el dataset
+- matemáticamente esto es calcular la distancia entre $$x^{(i)}$$ y $$\mu_k$$. 
 - El cálculo de la distancia entre 2 puntos es:
 $$
 		||x^{(i)} - \mu_k||_2
 $$
-A esto se le llama $L2$-norm.
-- Queremos encontrar el centroid $k$ que minimiza esta distancia al cuadrado.
+A esto se le llama norma $$L2$$.
+- Queremos encontrar el centroid $$k$$ que minimiza esta distancia al cuadrado.
 
-## 1. $L2$ norm
+### 1. Norma $$L2$$
 Dado el vector 
 $$
 \begin{align}
@@ -122,22 +122,22 @@ $$
 \end{align}
 $$
 
-La $L2$ norm está dada por:
+La $$L2$$ norm está dada por:
 
 $$ ||x||_2=(\sum_{i=1}^{n} {x}_i^2)^{1/2}=\sqrt{\sum_{i=1}^{n} {x}_i^2} $$
 
 Esta es la norma euclidiana que se utiliza para calcular la distancia entre 2 puntos.
 
-En python podemos calcular la norma $L2$ así:
+En python podemos calcular la norma $$L2$$ así:
 ```
 numpy.linalg.norm(x)
 ```
 
-Sin embargo, en machine learning se utiliza la norma $L2$ al cuadrado: $||x||^2_2$, ¿por qué?:
-- porque se deshace de la raíz cuadrada haciéndola más fácil para operar.
+Sin embargo, en machine learning se utiliza la norma $$L2$$ al cuadrado: $$||x||^2_2$$, ¿por qué?:
+- Porque se deshace de la raíz cuadrada haciéndola más fácil para operar.
 - y terminamos con una simple suma de cada elemento del vector al cuadrado. 
-- Es ampliamente usada en machine learning porque puede ser calculada con la operación de vector $x^\text{T}x$ (recordar las operaciones mediante vectorización). Así, tenemos mejor rendimiento debido a la optimización (*).
-- El cluster centroid con la distancia al cuadrado más pequeña es el mismo que el cluster centroid con la distancia más pequeña (sin elevar al cuadrado).
+- Es ampliamente usada en machine learning porque puede ser calculada con la operación de vector $$x^\text{T}x$$, operación que se puede hacer muy rápidamente mediante la vectorización. Así, tenemos mejor rendimiento debido a la optimización (*).
+- El centroid con la distancia al cuadrado más pequeña es el mismo que el centroid con la distancia más pequeña sin elevar al cuadrado.
 
 $$ ||x||^2_2=\sum_{i=1}^{n} {x}_i^2= (x_1)^2+(x_2)^2+...+(x_n)^2$$
 
