@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://squirogar.github.io/sitemap.xml
+Sitemap: squirogar.github.io/sitemap.xml
