@@ -144,10 +144,9 @@ $$ ||x||^2_2=\sum_{i=1}^{n} {x}_i^2= (x_1)^2+(x_2)^2+...+(x_n)^2$$
 ```
 # l2-norm squared
 np.linalg.norm(x)**2
-
 ```
 
-* (*): 
+(*): 
 ```
 # x^Tx es lo mismo que la l2-norm
 x^T = [1,
@@ -157,5 +156,58 @@ x = [1, 2, 3]
 x^T dot product x = (1*1 + 2*2 + 3*3) = 14
 ```
 
+## III. Función de costo para K-means
+
+K-means también optimiza una cost function específica, aunque el algoritmo de optimización que utiliza para optimizar esa función no es gradient descent, en realidad, es el algoritmo que ya vimos anteriormente: el mismo K-means.
+
+### 1. Notación
+- $$c^{(i)}$$= índice del cluster $$1, 2, ..., k$$ al que se asigna actualmente el ejemplo $$x^{(i)}$$
+- $$\mu_k$$ = centroid del cluster $$k$$
+- $$\mu_{c^{(i)}}$$= centroid del cluster al que se ha asignado el ejemplo $x^{(i)}$. 
+    - Por ejemplo: training example 10: $$x^{(10)}$$. Cuál es la ubicación del centroid al que el décimo training example ha sido asignado? Buscaremos $$c^{(10)}$$, entonces $$\mu_c^{(10)}$$ es la ubicación del centroid del cluster al que se ha asignado $$x^{(10)}$$.
+
+### 2. Cost function
+K-means intenta minimizar la siguiente cost function:
+$$J(c^{(1)}, ..., c^{(m)}, \mu_1, ..., \mu_k) = \frac{1}{m} \cdot \sum_{i=1}^{m}(||x^{(i)} - \mu_{c^{(i)}}||^2)$$
+
+- El nombre de esta cost function es: **Distortion function**.
+- $$J$$ es función de $$c^{(1)},...,c^{(m)}$$ y $$\mu_1,...,\mu_k$$.
+- $$\frac{1}{m} \cdot \sum^{m}_{i=1}(||x^{(i)} - \mu_{c^{(i)}}||^2)$$ es el promedio de la distancia al cuadrado entre cada training example $$x^{(i)}$$ y la ubicación del centroid $$\mu_{c^{(i)}}$$ al que se le asignó el training example $$x^{(i)}$$. Por ejemplo, para el 10mo ejemplo la distancia (al cuadrado) sería: $$(x^{(10)} - \mu_{c^{(10)}})^2$$. 
+- K-means con esto intenta encontrar asignaciones de puntos a centroids y ubicaciones de centroids que minimizan la distancia al cuadrado.
+
+### 3. Explicación de la cost function
+Una vez asignados los puntos a los centroids, medimos las distancias entre dichos puntos y su repectivo centroid, para después calcular el cuadrado de todas esas distancias y obtener el promedio que finalmente será la cost function $$J$$.
+
+En cada iteración, actualizaremos las asignaciones a clusters $$c^{(1)},...,c^{(m)}$$; o actualizaremos las posiciones de los centroids $$\mu_1,...,\mu_k$$ para seguir reduciendo la función de costo $$J$$.
+
+### 4. ¿Por qué K-means intenta minimizar la función de costo $$J$$?
+
+Veamos el algoritmo K-means:
+```
+#step 0: Randomly initialize K cluster centroids mu_1, mu_2, ..., mu_K
+
+repeat {
+	# step 1: assign points to cluster centroids
+	for i = 1 to m
+		c^(i) := index of cluster centroid closest to x^(i)
+
+	# step 2: move cluster centroids
+	for k = 1 to K
+		mu_k := average of points in cluster k
+}
+```
+K-means intenta minimizar la cost function $$J$$ de la siguiente forma:
+
+* El **paso 1** busca actualizar $$c^{(1)},...,c^{(m)}$$ para minimizar la función de costo $$J$$ tanto como sea posible mientras mantiene $$\mu_1,...,\mu_k$$ fijos.
+	- Esto es porque $$c^{(i)}$$ es el centroid más cercano a $$x^{(i)}$$, lo que hace que la distancia sea lo más pequeña posible.
+* El **paso 2** busca actualizar $$\mu_1,...,\mu_k$$ y dejar $$c^{(1)},...,c^{(m)}$$ fijos para minimizar la cost function $$J$$ tanto como sea posible.
+    - Hacer que $$\mu_k$$ sea la media de los puntos asignados minimiza la función de costo, ya que minimiza la distancia al cuadrado entre los puntos y el centroid. Por ejemplo: 
+        - distancia *punto1* a *centroid1* es $$1$$
+        - distancia *punto2* a *centroid1* es $$9$$
+        - average: $$J = (1^2 + 9^2) / 2 = 41$$
+        - Pero, si movemos el centroid donde es el promedio de los puntos: $$(1+11) / 2 = 6$$, entonces si calculamos $$J$$:
+        - distancia *punto1* a *centroid1* es $$5$$
+        - distancia *punto2* a *centroid1* es $$5$$
+        - average: $$J = (5^2 + 5^2) / 2 = 25$$ <- es más pequeña $$J$$!
 
 
