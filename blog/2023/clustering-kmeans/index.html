@@ -414,11 +414,10 @@ repeat {
 <p>En el <strong>paso 2</strong>, \(\mu_k\) intentaría calcular el promedio de \(0\) training examples, lo cual no está definido.</p>
 
 <p>Hay 2 soluciones:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a. La más común: eliminar ese cluster, por lo que terminaremos con $$K-1$$ clusters
-
-b. Si realmente necesitamos los $$K$$ clusters, entonces aleatoriamente reinicializar ese cluster y esperar a que se le asignen data points la próxima vez.
-</code></pre></div></div>
+<ul>
+  <li>a. La más común: eliminar ese cluster, por lo que terminaremos con \(K-1\) clusters</li>
+  <li>b. Si realmente necesitamos los \(K\) clusters, entonces aleatoriamente reinicializar ese cluster y esperar a que se le asignen data points la próxima vez.</li>
+</ul>
 
 <h2 id="vii-ejecución-de-k-means-múltiples-veces">VII. Ejecución de K-means múltiples veces</h2>
 <p>Si ejecutamos varias veces a K-means, debemos elegir uno de entre varios clustering. Una forma de elegir cuál clustering es el mejor, o sea, qué tirada nos dió mejores resultados, es calcular la cost function \(J\) para <strong>todas</strong> las soluciones, para todas las alternativas de clustering encontradas en las ejecuciones de K-means, y elegir una de éstas de acuerdo a cuál da el menor valor para la cost function \(J\).</p>
@@ -431,9 +430,9 @@ b. Si realmente necesitamos los $$K$$ clusters, entonces aleatoriamente reinicia
 		# Elegir K ejemplos de entrenamiento aleatorios e inicializar los K centroids en esas ubicaciones.
 
 	Ejecutar K-means hasta la convergencia:
-        Obtener c^(1), ..., c^(m), mu_1, mu_2, ..., mu_K
+        1. Obtener c^(1), ..., c^(m), mu_1, mu_2, ..., mu_K
 
-	    Calcular cost function (distortion) J(c^(1), ..., c^(m), mu_1, mu_2, ..., mu_K)
+	    2. Calcular cost function (distortion) J(c^(1), ..., c^(m), mu_1, mu_2, ..., mu_K)
 }
 </code></pre></div></div>
 
@@ -480,8 +479,8 @@ b. Si realmente necesitamos los $$K$$ clusters, entonces aleatoriamente reinicia
 
 <p>En nuestro training set tenemos 2 personas ya en los clusters:</p>
 <ol>
-  <li>Adam (175 lbs, 5.9 ft) en “L”.</li>
-  <li>Lucy (115 lbs, 5.2 ft) en “S”.</li>
+  <li>Adam (175 lbs, 5.9 ft) en <em>L</em>.</li>
+  <li>Lucy (115 lbs, 5.2 ft) en <em>S</em>.</li>
 </ol>
 
 <p>Tenemos una nueva persona: Alan (140 lbs, 6.1 ft).</p>
@@ -498,7 +497,7 @@ b. Si realmente necesitamos los $$K$$ clusters, entonces aleatoriamente reinicia
 
 <p>Notar el gran impacto de la feature 1 (<em>Peso</em>) en el cálculo de la distancia. Además, notar el pequeñísimo impacto de la feature 2 (<em>altura</em>) en el cálculo de la distancia.</p>
 
-<p>Esto impactará el rendimiento de todos los modelos basados en distancia, ya que otorgará mayor peso a las variables que tienen una mayor magnitud (<em>Peso</em> en este caso). Entonces, el algoritmo está sesgado hacia una variable con mayor magnitud. Para superar este problema, podemos reducir todas las variables a la misma escala. Si no escalamos las features, la variable <em>altura</em> no tiene mucho efecto y a Alan se le asignará en el grupo “S”, lo que no tiene sentido, ya que es muy alto.</p>
+<p>Esto impactará el rendimiento de todos los modelos basados en distancia, ya que otorgará mayor peso a las variables que tienen una mayor magnitud (<em>Peso</em> en este caso). Entonces, el algoritmo está sesgado hacia una variable con mayor magnitud. Para superar este problema, podemos reducir todas las variables a la misma escala. Si no escalamos las features, la variable <em>altura</em> no tiene mucho efecto y a Alan se le asignará en el grupo <em>S</em>, lo que no tiene sentido, ya que es muy alto.</p>
 
 <h3 id="en-resumen">En resumen</h3>
 <p>El problema está en que en K-means, si las features están a escalas muy diferentes, por ejemplo, edad vs sueldo, entonces va a haber una feature que va a tener demasiado impacto sobre el cálculo de la distancia, mientras que la otra va a tener poco o casi nulo.</p>
@@ -508,20 +507,14 @@ b. Si realmente necesitamos los $$K$$ clusters, entonces aleatoriamente reinicia
   <li>¿Por qué con K-means resultan clusters tan diferentes?
     <ul>
       <li>Tiene que ver con la data. Si nuestros clusters tienen un límite bien definido entre ellos siempre encontraremos los mismos centroids y solo dependerá del parámetro \(K\). Si nuestra data no tiene un límite claro entre cada cluster (datos más dispersos) entonces inicializar los centroids aleatoriamente darán diferentes resultados dependiendo de la inicialización.</li>
-    </ul>
-  </li>
-</ol>
-
-<ul>
-  <li>Una sugerencia es usar el parámetro <code class="language-plaintext highlighter-rouge">random_state</code> cuando usemos la implementación de K-means de la librería <code class="language-plaintext highlighter-rouge">scikit-learn</code>, ya que si lo establecemos con un valor podemos garantizar que tendremos los mismos centroids cada vez que usemos el modelo (que lo entrenemos).
-    <div class="language-plaintext highlighter-rouge">
+      <li>Una sugerencia es usar el parámetro <code class="language-plaintext highlighter-rouge">random_state</code> cuando usemos la implementación de K-means de la librería <code class="language-plaintext highlighter-rouge">scikit-learn</code>, ya que si lo establecemos con un valor podemos garantizar que tendremos los mismos centroids cada vez que usemos el modelo (que lo entrenemos).
+        <div class="language-plaintext highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>from sklearn.cluster import KMeans
 kmeans = KMeans(n_clusters=3, random_state=42)
-</code></pre></div>    </div>
+</code></pre></div>        </div>
+      </li>
+    </ul>
   </li>
-</ul>
-
-<ol>
   <li>¿Por qué hay clusters sin puntos asignados?
     <ul>
       <li>A medida que aumenta \(K\) (más centroids) existe más probabilidad de que un centroid no sea el más cercano de ningún punto, o sea, no se le asigne ningún data point. También existe el caso que si hay 2 centroids muy cerca y le asignamos correctamente de forma aleatoria sus ubicaciones, pero tenemos datos con ejemplos repetidos; al momento de asignar los centroids más cercanos a cada uno de los puntos, puede pasar que uno le “robe” el dato a otro, quedandose con dos datos asignados y el otro sin nada, esto pasa en el caso de aplicar K-means para comprimir imágenes, en donde dos pixeles pueden tener exactamente el mismo valor.</li>
