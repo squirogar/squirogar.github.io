@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-06-10T17:30:29+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-06-10T17:35:53+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 </subtitle><entry><title type="html">K-means clustering algorithm</title><link href="https://squirogar.github.io/blog/2023/clustering-kmeans/" rel="alternate" type="text/html" title="K-means clustering algorithm" /><published>2023-06-09T21:41:00+00:00</published><updated>2023-06-09T21:41:00+00:00</updated><id>https://squirogar.github.io/blog/2023/clustering-kmeans</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/clustering-kmeans/"><![CDATA[<p>K-means es un algoritmo de clustering. Antes de ver en qué consiste K-means, es bueno saber qué es un algoritmo de clustering.</p>
 
 <h1 id="clustering">Clustering</h1>
@@ -34,14 +34,127 @@
   <li>
     <p>K-means repetidamente hará estos dos pasos:</p>
 
-    <p>2.1 Asignar puntos de datos a los centroids
-     - K-means recorrerá cada dato en nuestro dataset y le asignará el centroid más cercano, ya sea el <strong>centroid1</strong> o al <strong>centroid2</strong> (recordar que para este ejemplo elegimos 2 clusters).
- 2.2 Mover los centroids
-     - K-means mirará todos los puntos de datos asignados al <strong>centroid1</strong> y tomará un promedio de ellos. Luego, moverá el <strong>centroid1</strong> a la ubicación del promedio de estos puntos de datos.
-     - Para el <strong>centroid2</strong> se hace exactamente lo mismo: se toman todos los puntos de datos asignados a este centroid y se calcula el promedio, para luego mover el <em>centroid2</em> a esa ubicación.</p>
+    <p>2.1 <strong>Asignar puntos de datos a los centroids:</strong> K-means recorrerá cada dato en nuestro dataset y le asignará el centroid más cercano, ya sea el <strong>centroid1</strong> o al <strong>centroid2</strong> (recordar que para este ejemplo elegimos 2 clusters).</p>
+
+    <p>2.2 <strong>Mover los centroids:</strong> K-means mirará todos los puntos de datos asignados al <strong>centroid1</strong> y tomará un promedio de ellos. Luego, moverá el <strong>centroid1</strong> a la ubicación del promedio de estos puntos de datos.Para el <strong>centroid2</strong> se hace exactamente lo mismo: se toman todos los puntos de datos asignados a este centroid y se calcula el promedio, para luego mover el <strong>centroid2</strong> a esa ubicación.</p>
   </li>
   <li>K-means recorrerá todos los datos de nuestro dataset de nuevo y repetirá el <strong>paso 2</strong> completo. En otras palabras, asociaremos cada punto de dato al centroid más cercano (<strong>paso 2.1</strong>). Algunos datos puede que sean asignados a diferentes centroids con el pasar de las iteraciones, esto es normal, ya que queremos determinar correctamente cuáles son sus centroids más cercanos. Después de esto, recalcularemos los centroids (o los moveremos que es lo mismo) (<strong>paso 2.2</strong>). Hacemos esto hasta que no hayan más cambios en la asignación de los datos a centroids o que no haya cambio al mover los centroids. En ese momento, K-means habrá <strong>convergido</strong>. Así, se habrán formado 2 clusters conteniendo cada uno data points similares.</li>
-</ol>]]></content><author><name></name></author><category term="algoritmos" /><summary type="html"><![CDATA[Definición, análisis, implementación y consejos del algoritmo K-means]]></summary></entry><entry><title type="html">Esta es una prueba</title><link href="https://squirogar.github.io/blog/2023/test/" rel="alternate" type="text/html" title="Esta es una prueba" /><published>2023-06-09T21:35:00+00:00</published><updated>2023-06-09T21:35:00+00:00</updated><id>https://squirogar.github.io/blog/2023/test</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/test/"><![CDATA[]]></content><author><name></name></author><category term="test" /><summary type="html"><![CDATA[Esta es simplemente una prueba para el blog]]></summary></entry><entry><title type="html">a post with custom blockquotes</title><link href="https://squirogar.github.io/blog/2023/custom-blockquotes/" rel="alternate" type="text/html" title="a post with custom blockquotes" /><published>2023-05-12T19:53:00+00:00</published><updated>2023-05-12T19:53:00+00:00</updated><id>https://squirogar.github.io/blog/2023/custom-blockquotes</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/custom-blockquotes/"><![CDATA[<p>This post shows how to add custom styles for blockquotes. Based on <a href="https://github.com/sighingnow/jekyll-gitbook">jekyll-gitbook</a> implementation.</p>
+</ol>
+
+<h2 id="ii-definición-formal-de-k-means">II. Definición formal de K-means</h2>
+
+<ol>
+  <li>Aleatoriamente inicializar \(K\) centroids \(\mu_1\),</li>
+</ol>
+
+<p>Randomly initialize $K$ cluster centroids $\mu_1, \mu_2, …, \mu_k$.</p>
+<ul>
+  <li>randomly choose a location for the centroids</li>
+  <li>$\mu_1, \mu_2, …, \mu_k$ are vectors which have the same dimension as your training examples $x^{(1)}, x^{(2)}, …, x^{(m)}$. All of the centroids are lists of $n$ numbers or $n$-dimension vectors, where $n$ is the number of features for each of the training examples. For example, if $n=2$, we have 2 features $x_1$ and $x_2$, then $\mu_1$ and $\mu_2$ will be vectors with 2 numbers in them.</li>
+</ul>
+
+<ol>
+  <li>
+    <p>K-means will repeatedly carry out the two steps that we saw previously:</p>
+
+    <p>2.1. assign data points to clusters centroids, meaning color each of the points according the color of the centroid.</p>
+  </li>
+</ol>
+
+<p>2.2. Move the cluster centroids. We are going to update the location of the cluster centroids to be the average or the mean of the points assigned to that cluster. Concretely, we’ll look at all data points assigned to the cluster centroid and look at their position on the horizontal axis (look at the value of the first feature $x_1$) and average that out, and compute the average value on the vertical axis as well. After computing those two averages, we find the mean and move the corresponding cluster centroid.</p>
+<ul>
+  <li>en python esto sería:
+    <code class="language-plaintext highlighter-rouge">
+        a = np.array([x^(1), x^(5), x^(6), x^(10)])
+        mu_1 = np.sum(a) / 4
+        # x^(m) es un vector de tam n, con n=num. features
+        # mu_1 es un vector de tam n, con n=num. features
+   </code></li>
+</ul>
+
+<p>En código el algoritmo es:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Randomly initialize K cluster centroids mu_1, mu_2, ..., mu_k
+
+repeat {
+	# assign points to cluster centorids
+	for i = 1 to m:
+		c^(i) := index (from 1 to K) of cluster centroid closest to x^(i).
+			# this is equal to: min_k ||x^(i) - mu_k||^2
+			# ver nota1, nota2 y nota3
+
+	# move cluster centroids
+	for k = 1 to K:
+		mu_k := average (mean) of points assigned to cluster k
+}
+</code></pre></div></div>
+
+<ul>
+  <li>Nota 1:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c^(i) := index (from 1 to K) of cluster centroid closest to x^(i)
+</code></pre></div>    </div>
+    <p>Esto es lo mismo que: 
+\(min_k ||x^{(i)}-\mu_k||^2_2\)</p>
+  </li>
+</ul>
+
+<p>Explicación:</p>
+<ul>
+  <li>$x^{(i)}$ es el i-ésimo training example</li>
+  <li>matemáticamente esto es calcular la distancia entre $x^{(i)}$ y $\mu_k$.</li>
+  <li>El cálculo de la distancia entre 2 puntos es:
+\(||x^{(i)} - \mu_k||_2\)
+A esto se le llama $L2$-norm.</li>
+  <li>Queremos encontrar el centroid $k$ que minimiza esta distancia al cuadrado.</li>
+</ul>
+
+<h2 id="1-l2-norm">1. $L2$ norm</h2>
+<p>Dado el vector 
+\(\begin{align}
+    x &amp;= \begin{bmatrix}
+           x_{1} \\\\
+					 x_{2} \\\\
+           \vdots \\\\
+           x_{n}
+         \end{bmatrix}
+\end{align}\)</p>
+
+<p>La $L2$ norm está dada por:</p>
+
+\[||x||_2=(\sum_{i=1}^{n} {x}_i^2)^{1/2}=\sqrt{\sum_{i=1}^{n} {x}_i^2}\]
+
+<p>Esta es la norma euclidiana que se utiliza para calcular la distancia entre 2 puntos.</p>
+
+<p>En python podemos calcular la norma $L2$ así:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>numpy.linalg.norm(x)
+</code></pre></div></div>
+
+<p>Sin embargo, en machine learning se utiliza la norma $L2$ al cuadrado: $||x||^2_2$, ¿por qué?:</p>
+<ul>
+  <li>porque se deshace de la raíz cuadrada haciéndola más fácil para operar.</li>
+  <li>y terminamos con una simple suma de cada elemento del vector al cuadrado.</li>
+  <li>Es ampliamente usada en machine learning porque puede ser calculada con la operación de vector $x^\text{T}x$ (recordar las operaciones mediante vectorización). Así, tenemos mejor rendimiento debido a la optimización (*).</li>
+  <li>El cluster centroid con la distancia al cuadrado más pequeña es el mismo que el cluster centroid con la distancia más pequeña (sin elevar al cuadrado).</li>
+</ul>
+
+\[||x||^2_2=\sum_{i=1}^{n} {x}_i^2= (x_1)^2+(x_2)^2+...+(x_n)^2\]
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># l2-norm squared
+np.linalg.norm(x)**2
+
+</code></pre></div></div>
+
+<ul>
+  <li>(*):
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># x^Tx es lo mismo que la l2-norm
+x^T = [1,
+      2,
+      3]
+x = [1, 2, 3]
+x^T dot product x = (1*1 + 2*2 + 3*3) = 14
+</code></pre></div>    </div>
+  </li>
+</ul>]]></content><author><name></name></author><category term="algoritmos" /><summary type="html"><![CDATA[Definición, análisis, implementación y consejos del algoritmo K-means]]></summary></entry><entry><title type="html">Esta es una prueba</title><link href="https://squirogar.github.io/blog/2023/test/" rel="alternate" type="text/html" title="Esta es una prueba" /><published>2023-06-09T21:35:00+00:00</published><updated>2023-06-09T21:35:00+00:00</updated><id>https://squirogar.github.io/blog/2023/test</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/test/"><![CDATA[]]></content><author><name></name></author><category term="test" /><summary type="html"><![CDATA[Esta es simplemente una prueba para el blog]]></summary></entry><entry><title type="html">a post with custom blockquotes</title><link href="https://squirogar.github.io/blog/2023/custom-blockquotes/" rel="alternate" type="text/html" title="a post with custom blockquotes" /><published>2023-05-12T19:53:00+00:00</published><updated>2023-05-12T19:53:00+00:00</updated><id>https://squirogar.github.io/blog/2023/custom-blockquotes</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/custom-blockquotes/"><![CDATA[<p>This post shows how to add custom styles for blockquotes. Based on <a href="https://github.com/sighingnow/jekyll-gitbook">jekyll-gitbook</a> implementation.</p>
 
 <p>We decided to support the same custom blockquotes as in <a href="https://sighingnow.github.io/jekyll-gitbook/jekyll/2022-06-30-tips_warnings_dangers.html">jekyll-gitbook</a>, which are also found in a lot of other sites’ styles. The styles definitions can be found on the <a href="https://github.com/alshedivat/al-folio/blob/master/_sass/_base.scss">_base.scss</a> file, more specifically:</p>
 
