@@ -415,8 +415,8 @@ repeat {
 
 <p>Hay 2 soluciones:</p>
 <ul>
-  <li>a. La más común: eliminar ese cluster, por lo que terminaremos con \(K-1\) clusters</li>
-  <li>b. Si realmente necesitamos los \(K\) clusters, entonces aleatoriamente reinicializar ese cluster y esperar a que se le asignen data points la próxima vez.</li>
+  <li>Solución 1: La más común: eliminar ese cluster, por lo que terminaremos con \(K-1\) clusters</li>
+  <li>Solución 2: Si realmente necesitamos los \(K\) clusters, entonces aleatoriamente reinicializar ese cluster y esperar a que se le asignen data points la próxima vez.</li>
 </ul>
 
 <h2 id="vii-ejecución-de-k-means-múltiples-veces">VII. Ejecución de K-means múltiples veces</h2>
@@ -507,10 +507,12 @@ repeat {
   <li>¿Por qué con K-means resultan clusters tan diferentes?
     <ul>
       <li>Tiene que ver con la data. Si nuestros clusters tienen un límite bien definido entre ellos siempre encontraremos los mismos centroids y solo dependerá del parámetro \(K\). Si nuestra data no tiene un límite claro entre cada cluster (datos más dispersos) entonces inicializar los centroids aleatoriamente darán diferentes resultados dependiendo de la inicialización.</li>
+    </ul>
+    <ul>
       <li>Una sugerencia es usar el parámetro <code class="language-plaintext highlighter-rouge">random_state</code> cuando usemos la implementación de K-means de la librería <code class="language-plaintext highlighter-rouge">scikit-learn</code>, ya que si lo establecemos con un valor podemos garantizar que tendremos los mismos centroids cada vez que usemos el modelo (que lo entrenemos).
         <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>from sklearn.cluster import KMeans
-kmeans = KMeans(n_clusters=3, random_state=42)
+<div class="highlight"><pre class="highlight"><code> from sklearn.cluster import KMeans
+ kmeans = KMeans(n_clusters=3, random_state=42)
 </code></pre></div>        </div>
       </li>
     </ul>
