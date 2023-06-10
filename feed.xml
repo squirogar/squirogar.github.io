@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-06-10T20:01:50+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-06-10T20:23:25+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 </subtitle><entry><title type="html">K-means clustering algorithm</title><link href="https://squirogar.github.io/blog/2023/clustering-kmeans/" rel="alternate" type="text/html" title="K-means clustering algorithm" /><published>2023-06-09T21:41:00+00:00</published><updated>2023-06-09T21:41:00+00:00</updated><id>https://squirogar.github.io/blog/2023/clustering-kmeans</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/clustering-kmeans/"><![CDATA[<p>K-means es un algoritmo de clustering. Antes de ver en qué consiste K-means, es bueno saber qué es un algoritmo de clustering.</p>
 
 <h1 id="clustering">Clustering</h1>
@@ -88,14 +88,14 @@ repeat {
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c^(i) := índice (de 1 a K) del centroids más cercano a x^(i).
 </code></pre></div></div>
 <p>Esto es lo mismo que: 
-\(min_k ||x^{(i)}-\mu_k||^2_2\)</p>
+\(min_k ||x^{(i)}-\mu_k||^2\)</p>
 
 <p>Explicación:</p>
 <ul>
   <li>\(x^{(i)}\) es el i-ésimo ejemplo de entrenamiento en el dataset</li>
   <li>matemáticamente esto es calcular la distancia entre \(x^{(i)}\) y \(\mu_k\).</li>
   <li>El cálculo de la distancia entre 2 puntos es:
-\(||x^{(i)} - \mu_k||_2\)
+\(||x^{(i)} - \mu_k||\)
 A esto se le llama norma \(L2\).</li>
   <li>Queremos encontrar el centroid \(k\) que minimiza esta distancia al cuadrado.</li>
 </ul>
@@ -113,7 +113,7 @@ A esto se le llama norma \(L2\).</li>
 
 <p>La \(L2\) norm está dada por:</p>
 
-\[||x||_2=(\sum_{i=1}^{n} {x}_i^2)^{1/2}=\sqrt{\sum_{i=1}^{n} {x}_i^2}\]
+\[||x||=(\sum_{i=1}^{n} {x}_i^2)^{1/2}=\sqrt{\sum_{i=1}^{n} {x}_i^2}\]
 
 <p>Esta es la norma euclidiana que se utiliza para calcular la distancia entre 2 puntos.</p>
 
@@ -121,7 +121,7 @@ A esto se le llama norma \(L2\).</li>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>numpy.linalg.norm(x)
 </code></pre></div></div>
 
-<p>Sin embargo, en machine learning se utiliza la norma \(L2\) al cuadrado: \(||x||^2_2\), ¿por qué?:</p>
+<p>Sin embargo, en machine learning se utiliza la norma \(L2\) al cuadrado: \(||x||^2\), ¿por qué?:</p>
 <ul>
   <li>Porque se deshace de la raíz cuadrada haciéndola más fácil para operar.</li>
   <li>y terminamos con una simple suma de cada elemento del vector al cuadrado.</li>
@@ -129,7 +129,7 @@ A esto se le llama norma \(L2\).</li>
   <li>El centroid con la distancia al cuadrado más pequeña es el mismo que el centroid con la distancia más pequeña sin elevar al cuadrado.</li>
 </ul>
 
-\[||x||^2_2=\sum_{i=1}^{n} {x}_i^2= (x_1)^2+(x_2)^2+...+(x_n)^2\]
+\[||x||^2=\sum_{i=1}^{n} {x}_i^2= (x_1)^2+(x_2)^2+...+(x_n)^2\]
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># l2-norm squared
 np.linalg.norm(x)**2
@@ -164,7 +164,7 @@ x^T dot product x = (1*1 + 2*2 + 3*3) = 14
 
 <ul>
   <li>El nombre de esta cost function es: <strong>Distortion function</strong>.</li>
-  <li>\(J\) es función de \(c^{(1)},...,c^{(m)}\) y \(\mu_1,...,\mu_k\).</li>
+  <li>\(J\) es función de \(c^{(1)},...,c^{(m)}\) y \(\mu_1,...,\mu_K\).</li>
   <li>\(J\) es el promedio de la distancia al cuadrado entre cada training example \(x^{(i)}\) y la ubicación del centroid \(\mu_{c^{(i)}}\) al que se le asignó el training example \(x^{(i)}\). Por ejemplo, para el décimo ejemplo la distancia al cuadrado sería: \((x^{(10)} - \mu_{c^{(10)}})^2\).</li>
   <li>K-means con esto intenta encontrar asignaciones de puntos a centroids y ubicaciones de centroids que minimizan la distancia al cuadrado.</li>
 </ul>
@@ -216,12 +216,12 @@ repeat {
 <h2 id="v-convergencia-de-k-means">V. Convergencia de K-means</h2>
 <p>El hecho de que K-means optimice una cost function \(J\) significa que la convergencia está garantizada, es decir, en cada iteracion la distortion cost function debería bajar o mantenerse igual, pero <strong>NUNCA SUBIR!</strong>, si ese es el caso, hay un bug en el código, ya que en cada paso de K-means se está estableciendo el valor \(c^{(i)}\) y \(\mu_k\) para intentar reducir la cost function.</p>
 
-<p>También, si la cost function para de bajar, esto nos da una forma para probar si K-means ha convergido. Una vez que haya una sola iteración que se mantiene igual, eso usualmente significa que K-means ha convergido y deberíamos parar el algoritmo. O en algunos casos, ejecutaremos K-means por un largo tiempo, y la cost function va bajando muy, muy lentamente, esto es pareciddo al gradient descent, donde quizás ejecutarlo por más tiempo puede mejorar, pero si la tasa a la que la cost function está bajando es muy, muy lenta, también podemos decir que es suficiente y está muy cerca de la convergencia.</p>
+<p>También, si la cost function para de bajar, esto nos da una forma para probar si K-means ha convergido. Una vez que haya una sola iteración que se mantiene igual, eso usualmente significa que K-means ha convergido y deberíamos parar el algoritmo. O en algunos casos, ejecutaremos K-means por un largo tiempo, y la cost function va bajando muy, muy lentamente, esto es parecido al gradient descent, donde quizás ejecutarlo por más tiempo puede mejorar, pero si la tasa a la que la cost function está bajando es muy, muy lenta, también podemos decir que es suficiente y está muy cerca de la convergencia.</p>
 
 <h2 id="vi-inicializando-clusters-de-k-means">VI. Inicializando clusters de K-means</h2>
 <p>El uso de múltiples inicializaciones aleatorias diferentes de los centroids dará como resultado la búsqueda de un mejor conjunto de clusters.</p>
 
-<p>El primer paso es elegir ubicaciones aleatorias como suposiciones iniciales para los centroids $#\mu_1,…,\mu_K$$.</p>
+<p>El primer paso es elegir ubicaciones aleatorias como suposiciones iniciales para los centroids \(\mu_1,...,\mu_K\).</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#paso 0: aleatoriamente inicializar K centroids mu_1, mu_2, ..., mu_K
 
@@ -232,17 +232,19 @@ repeat {
 </code></pre></div></div>
 <p>¿Cómo implementamos el <strong>paso 0</strong>?</p>
 
-<h3 id="1-punto-a-tener-en-cuenta">1. Punto a tener en cuenta</h3>
-<p>Siempre elegir un valor de \(K\) menor a \(m\):
-\(K &lt; m\)
-\(k\) es el número de clusters y \(m\) es el número de training examples.</p>
+<h3 id="1-a-tener-en-cuenta">1. A tener en cuenta</h3>
+<p>Siempre elegir un valor de \(K\) menor a \(m\):</p>
+
+\[K &lt; m\]
+
+<p>\(K\) es el número de clusters y \(m\) es el número de training examples.</p>
 
 <p>No tiene sentido tener más centroids que ejemplos \(m\) porque no habrán suficientes training examples para que cada cluster tenga al menos un ejemplo dentro.</p>
 
 <h3 id="2-inicialización-de-clusters">2. Inicialización de clusters</h3>
 <p>La forma de inicializarlos más común es aleatoriamente escoger \(K\) datos de nuestro dataset de entrenamiento y establecer \(\mu_1, ..., \mu_K\) con un valor igual a estos \(K\) datos. Por ejemplo, si \(K=2\), entonces elegimos 2 training examples y ubicamos los 2 centroids, \(\mu_1\) y \(\mu_2\) en el mismo lugar que éstos.</p>
 
-<h3 id="3-puntos-a-considerar-en-la-inicialización-de-clusters">3. Puntos a considerar en la inicialización de clusters</h3>
+<h3 id="3-a-considerar-en-la-inicialización-de-clusters">3. A considerar en la inicialización de clusters</h3>
 <p>La forma anterior de inicializar los cluster centroids tiene algunos puntos a considerar:</p>
 <ul>
   <li>
@@ -259,10 +261,11 @@ repeat {
 <h3 id="5-y-si-hay-un-cluster-que-no-tenga-data-points-asignados">5. ¿Y si hay un cluster que no tenga data points asignados?</h3>
 <p>En el <strong>paso 2</strong>, \(\mu_k\) intentaría calcular el promedio de \(0\) training examples, lo cual no está definido.</p>
 
-<p>Hay 2 soluciones:
-    a. La más común: eliminar ese cluster, por lo que terminaremos con \(K-1\) clusters</p>
+<p>Hay 2 soluciones:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>b. Si realmente necesitamos los $$K$$ clusters, entonces aleatoriamente reinicializar ese cluster y esperar a que se le asignen data points la próxima vez.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a. La más común: eliminar ese cluster, por lo que terminaremos con $$K-1$$ clusters
+
+b. Si realmente necesitamos los $$K$$ clusters, entonces aleatoriamente reinicializar ese cluster y esperar a que se le asignen data points la próxima vez.
 </code></pre></div></div>
 
 <h2 id="vii-ejecución-de-k-means-múltiples-veces">VII. Ejecución de K-means múltiples veces</h2>
@@ -276,22 +279,23 @@ repeat {
 		# Elegir K ejemplos de entrenamiento aleatorios e inicializar los K centroids en esas ubicaciones.
 
 	Ejecutar K-means hasta la convergencia:
-    Obtener c^(1), ..., c^(m), mu_1, mu_2, ..., mu_K
-	Calcular cost function (distortion) J(c^(1), ..., c^(m), mu_1, mu_2, ..., mu_K)
+        Obtener c^(1), ..., c^(m), mu_1, mu_2, ..., mu_K
+
+	    Calcular cost function (distortion) J(c^(1), ..., c^(m), mu_1, mu_2, ..., mu_K)
 }
 </code></pre></div></div>
 
 <blockquote>
-  <p>Elegir el set de clusters que dan la cost function $J$ más baja.</p>
+  <p>Elegir el set de clusters que dan la cost function \(J\) más baja.</p>
 </blockquote>
 
-<p>Después de ejecutar este bucle 100 veces (el número es arbitrario), escogeremos el set de clusters que nos dan el costo $J$ más bajo. Si hacemos esto, a menudo obtendremos un mejor set de clusters que si ejecutaramos K-means una sola vez.</p>
+<p>Después de ejecutar este bucle 100 veces (el número es arbitrario), escogeremos el set de clusters que nos dan el costo \(J\) más bajo. Si hacemos esto, a menudo obtendremos un mejor set de clusters que si ejecutaramos K-means una sola vez.</p>
 
 <h4 id="sobre-el-número-de-veces-que-tenemos-que-ejecutar-k-means">Sobre el número de veces que tenemos que ejecutar K-means</h4>
 <p>Se recomienda un número entre 50 a 1000 (en el ejemplo pusimos 100). Si ejecutamos K-means más de 1000 veces tiende a ser computacionalmente caro y obtendremos muy pocas mejoras si lo ejecutamos más de esas veces.</p>
 
 <h2 id="viii-cómo-elegir-el-número-de-clusters-k">VIII. Cómo elegir el número de clusters K</h2>
-<p>Para muchos problemas de clustering, el valor correcto de \(K\) es ambigüo. Hay muchas aplicaciones donde los datos no da un indicador claro de cuántos clusters hay en ellos.</p>
+<p>Para muchos problemas de clustering, el valor correcto de \(K\) es ambigüo. Hay muchas aplicaciones donde los datos no dan un indicador claro de cuántos clusters hay en ellos.</p>
 
 <h3 id="1-método-1-elbow-method">1. Método 1: Elbow method</h3>
 <p>Técnica para encontrar automáticamente el número de clusters para usar en una aplicación.</p>
@@ -309,7 +313,7 @@ repeat {
 <h3 id="3-método-3-recomendado-decidir-qué-tiene-sentido-para-la-aplicación">3. Método 3 (recomendado): decidir qué tiene sentido para la aplicación</h3>
 <p>A menudo, ejecutamos K-means para obtener clusters y usarlos para algún propósito posterior. Lo que es recomendable, es evaluar K-means en función de qué tan bien se desempeñe para ese propósito posterior. Por ejemplo, tenemos una nube de puntos dispersos y los ejes son: <em>altura</em> y <em>peso</em>. Dado estas medidas de personas, queremos agruparlas en clusters para determinar cómo medir las poleras <em>S (small)</em>, <em>M (medium)</em> y <em>L (large)</em>. Elegimos \(K=3\). Sin embargo, podemos ejecutar K-means con 5 clusters \((K=5)\) y así podemos medir las poleras de acuerdo a <em>XS (extra small), S, M, L y XL (extra large)</em>. Entonces, Ambas opciones son completamente válidas, por lo que la elección dependerá de lo que tenga sentido para el negocio de las poleras.</p>
 
-<p>Hay un trade-off entre qué tan bien las poleras entran o se ajustan a las personas, dependiendo si tenemos 3 tallas o 5 tallas, pero habrá un costo extra asociado a la manufactura y al envío de las poleras. ¿Qué hacemos? Ejecutar K-means con \(K=3\) y \(K=5\) y con estas 2 soluciones elegir, basandonos en el trade-off entre el ajuste de las poleras con más tamaños implicando un mejor ajuste, versus el costo extra de hacer más poleras.</p>
+<p>Hay un trade-off entre qué tan bien las poleras entran o se ajustan a las personas, dependiendo si tenemos 3 tallas o 5 tallas, pero habrá un costo extra asociado a la manufactura y al envío de las poleras. ¿Qué hacemos? Ejecutar K-means con \(K=3\) y \(K=5\) y con estas 2 soluciones elegir, basandonos en el trade-off entre fabricar las poleras con más tamaños implicando un mejor ajuste, y el costo extra de hacer más poleras.</p>
 
 <h2 id="ix-por-qué-normalizar-las-features-en-k-means">IX. ¿Por qué normalizar las features en K-means?</h2>
 <p>Es siempre mejor normalizar las features cuando usamos K-means porque K-means es basado en distancia, lo que significa que es sensible a la diferencia de las escalas de las features.</p>
@@ -356,10 +360,13 @@ repeat {
   </li>
 </ol>
 
-<p>Una sugerencia es usar el parámetro <code class="language-plaintext highlighter-rouge">random_state</code> cuando usemos la implementación de K-means de la librería <code class="language-plaintext highlighter-rouge">scikit-learn</code>, ya que si lo establecemos con un valor podemos garantizar que tendremos los mismos centroids cada vez que usemos el modelo (que lo entrenemos).</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sklearn.cluster import KMeans
+<ul>
+  <li>Una sugerencia es usar el parámetro <code class="language-plaintext highlighter-rouge">random_state</code> cuando usemos la implementación de K-means de la librería <code class="language-plaintext highlighter-rouge">scikit-learn</code>, ya que si lo establecemos con un valor podemos garantizar que tendremos los mismos centroids cada vez que usemos el modelo (que lo entrenemos).
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sklearn.cluster import KMeans
 kmeans = KMeans(n_clusters=3, random_state=42)
-</code></pre></div></div>
+</code></pre></div>    </div>
+  </li>
+</ul>
 
 <ol>
   <li>¿Por qué hay clusters sin puntos asignados?
