@@ -257,8 +257,8 @@ Si le damos muchas oportunidades o ejecuciones al algoritmo K-means para encontr
 En el **paso 2**, $$\mu_k$$ intentaría calcular el promedio de $$0$$ training examples, lo cual no está definido.
 
 Hay 2 soluciones:
-* a. La más común: eliminar ese cluster, por lo que terminaremos con $$K-1$$ clusters
-* b. Si realmente necesitamos los $$K$$ clusters, entonces aleatoriamente reinicializar ese cluster y esperar a que se le asignen data points la próxima vez.
+- Solución 1: La más común: eliminar ese cluster, por lo que terminaremos con $$K-1$$ clusters
+- Solución 2: Si realmente necesitamos los $$K$$ clusters, entonces aleatoriamente reinicializar ese cluster y esperar a que se le asignen data points la próxima vez.
 
 ## VII. Ejecución de K-means múltiples veces
 Si ejecutamos varias veces a K-means, debemos elegir uno de entre varios clustering. Una forma de elegir cuál clustering es el mejor, o sea, qué tirada nos dió mejores resultados, es calcular la cost function $$J$$ para **todas** las soluciones, para todas las alternativas de clustering encontradas en las ejecuciones de K-means, y elegir una de éstas de acuerdo a cuál da el menor valor para la cost function $$J$$.
@@ -338,11 +338,11 @@ El problema está en que en K-means, si las features están a escalas muy difere
 ## X. Algunas Q&A
 1. ¿Por qué con K-means resultan clusters tan diferentes?
 - Tiene que ver con la data. Si nuestros clusters tienen un límite bien definido entre ellos siempre encontraremos los mismos centroids y solo dependerá del parámetro $$K$$. Si nuestra data no tiene un límite claro entre cada cluster (datos más dispersos) entonces inicializar los centroids aleatoriamente darán diferentes resultados dependiendo de la inicialización.
-- Una sugerencia es usar el parámetro `random_state` cuando usemos la implementación de K-means de la librería `scikit-learn`, ya que si lo establecemos con un valor podemos garantizar que tendremos los mismos centroids cada vez que usemos el modelo (que lo entrenemos).
-```
-from sklearn.cluster import KMeans
-kmeans = KMeans(n_clusters=3, random_state=42)
-```
+    - Una sugerencia es usar el parámetro `random_state` cuando usemos la implementación de K-means de la librería `scikit-learn`, ya que si lo establecemos con un valor podemos garantizar que tendremos los mismos centroids cada vez que usemos el modelo (que lo entrenemos).
+    ```
+    from sklearn.cluster import KMeans
+    kmeans = KMeans(n_clusters=3, random_state=42)
+    ```
 
 2. ¿Por qué hay clusters sin puntos asignados?
 - A medida que aumenta $$K$$ (más centroids) existe más probabilidad de que un centroid no sea el más cercano de ningún punto, o sea, no se le asigne ningún data point. También existe el caso que si hay 2 centroids muy cerca y le asignamos correctamente de forma aleatoria sus ubicaciones, pero tenemos datos con ejemplos repetidos; al momento de asignar los centroids más cercanos a cada uno de los puntos, puede pasar que uno le "robe" el dato a otro, quedandose con dos datos asignados y el otro sin nada, esto pasa en el caso de aplicar K-means para comprimir imágenes, en donde dos pixeles pueden tener exactamente el mismo valor. 
