@@ -43,13 +43,14 @@ El algoritmo consta de 3 pasos. El primero se realiza una sola vez, mientras que
     - Un **centroid** es el centro de un cluster. Y un **cluster** es un grupo de puntos de datos relacionados.
 
 2. K-means repetidamente hará estos dos pasos:
-    2.1 Asignar puntos de datos a los centroids
-    - K-means recorrerá cada dato en nuestro dataset y le asignará el centroid más cercano, ya sea el *centroid1* o al *centroid2* (recordar que para este ejemplo elegimos 2 clusters).
-    2.2 Mover los centroids
-    - K-means mirará todos los puntos de datos asignados al *centroid1* y tomará un promedio de ellos. Luego, moverá el *centroid1* a la ubicación del promedio de estos puntos de datos.
-    - Para el *centroid2* se hace exactamente lo mismo: se toman todos los puntos de datos asignados a este centroid y se calcula el promedio, para luego mover el *centroid2* a esa ubicación.
 
-3. K-means recorrerá todos los datos de nuestro dataset de nuevo y repetirá el *paso 2* completo. En otras palabras, asociaremos cada punto de dato al centroid más cercano (*paso 2.1*). Algunos datos puede que sean asignados a diferentes centroids con el pasar de las iteraciones, esto es normal, ya que queremos determinar correctamente cuáles son sus centroids más cercanos. Después de esto, recalcularemos los centroids (o los moveremos que es lo mismo) (*paso 2.2*). Hacemos esto hasta que no hayan más cambios en la asignación de los datos a centroids o que no haya cambio al mover los centroids. En ese momento, K-means habrá **convergido**. Así, se habrán formado 2 clusters conteniendo cada uno data points similares.
+    2.1 Asignar puntos de datos a los centroids
+        - K-means recorrerá cada dato en nuestro dataset y le asignará el centroid más cercano, ya sea el **centroid1** o al **centroid2** (recordar que para este ejemplo elegimos 2 clusters).
+    2.2 Mover los centroids
+        - K-means mirará todos los puntos de datos asignados al **centroid1** y tomará un promedio de ellos. Luego, moverá el **centroid1** a la ubicación del promedio de estos puntos de datos.
+        - Para el **centroid2** se hace exactamente lo mismo: se toman todos los puntos de datos asignados a este centroid y se calcula el promedio, para luego mover el *centroid2* a esa ubicación.
+
+3. K-means recorrerá todos los datos de nuestro dataset de nuevo y repetirá el **paso 2** completo. En otras palabras, asociaremos cada punto de dato al centroid más cercano (**paso 2.1**). Algunos datos puede que sean asignados a diferentes centroids con el pasar de las iteraciones, esto es normal, ya que queremos determinar correctamente cuáles son sus centroids más cercanos. Después de esto, recalcularemos los centroids (o los moveremos que es lo mismo) (**paso 2.2**). Hacemos esto hasta que no hayan más cambios en la asignación de los datos a centroids o que no haya cambio al mover los centroids. En ese momento, K-means habrá **convergido**. Así, se habrán formado 2 clusters conteniendo cada uno data points similares.
 
 
 
