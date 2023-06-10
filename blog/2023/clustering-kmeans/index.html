@@ -195,10 +195,10 @@
 <h2 id="ii-definición-formal-de-k-means">II. Definición formal de K-means</h2>
 
 <ol>
-  <li>Aleatoriamente inicializar \(K\) centroids \(\mu_1, \mu_2, ..., \mu_k\):
+  <li>Aleatoriamente inicializar \(K\) centroids \(\mu_1, \mu_2, ..., \mu_K\):
     <ul>
       <li>Elegir aleatoriamente una ubicación para los centroids</li>
-      <li>\(\mu_1, \mu_2, ..., \mu_k\) son vectores que tienen la misma dimensión que el dataset de ejemplos de entrenamiento \(x^{(1)}, x^{(2)}, ..., x^{(m)}\). Todos los centroids son listas de \(n\) números o vectores de \(n\)-dimensiones, donde \(n\) es el número de features por cada uno de los ejemplos de entrenamiento. Por ejemplo, si \(n=2\), tenemos 2 features \(x_1\) y \(x_2\), entonces \(\mu_1\) y \(\mu_2\) serán vectores con 2 números en ellos.</li>
+      <li>\(\mu_1, \mu_2, ..., \mu_K\) son vectores que tienen la misma dimensión que el dataset de ejemplos de entrenamiento \(x^{(1)}, x^{(2)}, ..., x^{(m)}\). Todos los centroids son listas de \(n\) números o vectores de \(n\)-dimensiones, donde \(n\) es el número de features por cada uno de los ejemplos de entrenamiento. Por ejemplo, si \(n=2\), tenemos 2 features \(x_1\) y \(x_2\), entonces \(\mu_1\) y \(\mu_2\) serán vectores con 2 números en ellos.</li>
     </ul>
   </li>
   <li>
@@ -221,42 +221,38 @@
 
 <p>En pseudocódigo el algoritmo es:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Randomly initialize K cluster centroids mu_1, mu_2, ..., mu_k
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Aleatoriamente inicializar K clusters mu_1, mu_2, ..., mu_K
 
 repeat {
-	# assign points to cluster centorids
+	# asignar cada data point al centroid más cercano
 	for i = 1 to m:
-		c^(i) := index (from 1 to K) of cluster centroid closest to x^(i).
-			# this is equal to: min_k ||x^(i) - mu_k||^2
-			# ver nota1, nota2 y nota3
+		c^(i) := índice (de 1 a K) del centroids más cercano a x^(i).
+		# esto es igual a: min_k ||x^(i) - mu_k||^2
+		# ver nota
 
-	# move cluster centroids
+	# mver los centroids
 	for k = 1 to K:
-		mu_k := average (mean) of points assigned to cluster k
+		mu_k := media de los data points asignados al cluster k
 }
 </code></pre></div></div>
 
-<ul>
-  <li>Nota 1:
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>c^(i) := index (from 1 to K) of cluster centroid closest to x^(i)
-</code></pre></div>    </div>
-    <p>Esto es lo mismo que: 
+<p>Nota:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c^(i) := índice (de 1 a K) del centroids más cercano a x^(i).
+</code></pre></div></div>
+<p>Esto es lo mismo que: 
 \(min_k ||x^{(i)}-\mu_k||^2_2\)</p>
-  </li>
-</ul>
 
 <p>Explicación:</p>
 <ul>
-  <li>$x^{(i)}$ es el i-ésimo training example</li>
-  <li>matemáticamente esto es calcular la distancia entre $x^{(i)}$ y $\mu_k$.</li>
+  <li>\(x^{(i)}\) es el i-ésimo ejemplo de entrenamiento en el dataset</li>
+  <li>matemáticamente esto es calcular la distancia entre \(x^{(i)}\) y \(\mu_k\).</li>
   <li>El cálculo de la distancia entre 2 puntos es:
 \(||x^{(i)} - \mu_k||_2\)
-A esto se le llama $L2$-norm.</li>
-  <li>Queremos encontrar el centroid $k$ que minimiza esta distancia al cuadrado.</li>
+A esto se le llama norma \(L2\).</li>
+  <li>Queremos encontrar el centroid \(k\) que minimiza esta distancia al cuadrado.</li>
 </ul>
 
-<h2 id="1-l2-norm">1. $L2$ norm</h2>
+<h3 id="1-norma-l2">1. Norma \(L2\)</h3>
 <p>Dado el vector 
 \(\begin{align}
     x &amp;= \begin{bmatrix}
@@ -267,22 +263,22 @@ A esto se le llama $L2$-norm.</li>
          \end{bmatrix}
 \end{align}\)</p>
 
-<p>La $L2$ norm está dada por:</p>
+<p>La \(L2\) norm está dada por:</p>
 
 \[||x||_2=(\sum_{i=1}^{n} {x}_i^2)^{1/2}=\sqrt{\sum_{i=1}^{n} {x}_i^2}\]
 
 <p>Esta es la norma euclidiana que se utiliza para calcular la distancia entre 2 puntos.</p>
 
-<p>En python podemos calcular la norma $L2$ así:</p>
+<p>En python podemos calcular la norma \(L2\) así:</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>numpy.linalg.norm(x)
 </code></pre></div></div>
 
-<p>Sin embargo, en machine learning se utiliza la norma $L2$ al cuadrado: $||x||^2_2$, ¿por qué?:</p>
+<p>Sin embargo, en machine learning se utiliza la norma \(L2\) al cuadrado: \(||x||^2_2\), ¿por qué?:</p>
 <ul>
-  <li>porque se deshace de la raíz cuadrada haciéndola más fácil para operar.</li>
+  <li>Porque se deshace de la raíz cuadrada haciéndola más fácil para operar.</li>
   <li>y terminamos con una simple suma de cada elemento del vector al cuadrado.</li>
-  <li>Es ampliamente usada en machine learning porque puede ser calculada con la operación de vector $x^\text{T}x$ (recordar las operaciones mediante vectorización). Así, tenemos mejor rendimiento debido a la optimización (*).</li>
-  <li>El cluster centroid con la distancia al cuadrado más pequeña es el mismo que el cluster centroid con la distancia más pequeña (sin elevar al cuadrado).</li>
+  <li>Es ampliamente usada en machine learning porque puede ser calculada con la operación de vector \(x^\text{T}x\), operación que se puede hacer muy rápidamente mediante la vectorización. Así, tenemos mejor rendimiento debido a la optimización (*).</li>
+  <li>El centroid con la distancia al cuadrado más pequeña es el mismo que el centroid con la distancia más pequeña sin elevar al cuadrado.</li>
 </ul>
 
 \[||x||^2_2=\sum_{i=1}^{n} {x}_i^2= (x_1)^2+(x_2)^2+...+(x_n)^2\]
