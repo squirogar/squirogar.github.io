@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Metadata, OpenGraph and Schema.org -->
+    
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Reinforcement Learning | Sebastián  Quiroga</title>
+    <meta name="author" content="Sebastián  Quiroga">
+    <meta name="description" content="Definición y workflow del Aprendizaje por refuerzo">
+    <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+    <!-- Bootstrap & MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+    <!-- Bootstrap Table -->
+    <link defer rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.css">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+    <!-- Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
+
+    
+
+    <!-- Styles -->
+    
+    <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="canonical" href="https://squirogar.github.io/blog/2022/reinforcement-learning/">
+
+    <!-- Dark Mode -->
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/dark_mode.js"></script>
+    
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav ">
+
+    <!-- Header -->
+    <header>
+
+      <!-- Nav Bar -->
+      <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+        <div class="container">
+          <a class="navbar-brand title font-weight-lighter" href="/"><span class="font-weight-bold">Sebastián </span>Quiroga</a>
+          <!-- Navbar Toggle -->
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse text-right" id="navbarNav">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+
+              <!-- About -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/">about</a>
+              </li>
+              
+              <!-- Blog -->
+              <li class="nav-item active">
+                <a class="nav-link" href="/blog/">blog<span class="sr-only">(current)</span></a>
+              </li>
+
+              <!-- Other pages -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/publications/">publications</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/projects/">projects</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/repositories/">repositories</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/cv/">cv</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/teaching/">teaching</a>
+              </li>
+              <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">submenus</a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/publications/">publications</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/projects/">projects</a>
+                </div>
+              </li>
+
+              <!-- Toogle theme mode -->
+              <li class="toggle-container">
+                <button id="light-toggle" title="Change theme">
+                  <i class="fas fa-moon"></i>
+                  <i class="fas fa-sun"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Scrolling Progress Bar -->
+      <progress id="progress" value="0">
+        <div class="progress-container">
+          <span class="progress-bar"></span>
+        </div>
+      </progress>
+    </header>
+
+
+    <!-- Content -->
+    <div class="container mt-5">
+      
+        <!-- _layouts/post.html -->
+
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Reinforcement Learning</h1>
+    <p class="post-meta">January 10, 2022</p>
+    <p class="post-tags">
+      <a href="/blog/2022"> <i class="fas fa-calendar fa-sm"></i> 2022 </a>
+        ·  
+        <a href="/blog/category/algoritmos">
+          <i class="fas fa-tag fa-sm"></i> algoritmos</a>  
+          
+
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <p><em>Material obtenido del e-book de matlab de Reinforcement Learning</em></p>
+
+<h1 id="reinforcement-learning-rl">Reinforcement Learning (RL)</h1>
+
+<p>Permite resolver problemas muy difíciles de control. Por ejemplo, un robot caminante. Un robot caminante es muy difícil de lograr con el enfoque de control, ya que necesitaríamos muchos loops de control, sensores, controladores de motor, etc.</p>
+
+<p>En RL, trabajamos con un entorno dinámico, a diferencia del Supervised learning y el Unsupervised learning que son datasets estáticos.</p>
+
+<p>RL consiste en un agente que se relaciona con un entorno y va tomando acciones que afectan a ese entorno. Dicho entorno cambia de estado tras cada acción que tome el agente y además le proporciona una recompensa al agente por cada acción que ejecute. Estas acciones o decisiones pueden ser buenas o malas, y dependiendo de ésto va a recibir un recompensa buena o mala respectivamente. Cabe destacar que <strong>al agente nunca se le dice qué hacer, sino que él mismo debe descubrir qué acciones tomar, de tal forma que produzca la mayor recompensa a largo plazo</strong>.</p>
+
+<blockquote>
+  <p>Con RL, queremos encontrar la mejor secuencia de acciones que generarán la salida óptima, o sea, la que genera la mejor recompensa final. La idea es maximizar esta recompensa a largo plazo.</p>
+</blockquote>
+
+<ul>
+  <li>Agente: el agente es un software que explora, interactúa y aprende del entorno</li>
+</ul>
+
+<p>… Aprende … ¿Cómo un agente <em>aprende</em> del entorno? El agente usa la información que obtiene del entorno (observaciones del estado del entorno y recompensa) para ajustar sus acciones a futuro. La recompensa es muy importante porque le va a decir al agente qué tan buena fue la acción que acaba de realizar.</p>
+
+<p>Ejemplo de reinforcement learning:</p>
+<ol>
+  <li>agente: ser humano</li>
+  <li>entorno: ciudad en la que vive el agente</li>
+  <li>acción 1: el agente mira a ambos lados para cruzar la calle</li>
+  <li>Luego de la acción 1, el entorno cambia de estado y el agente obtiene una recompensa:
+    <ul>
+      <li>observaciones de estado: el agente se encuentra en la otra vereda de la calle de la ciudad</li>
+      <li>recompensa: no resultó herido al cruzar la calle.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="funcionamiento-de-rl">Funcionamiento de RL</h2>
+<p>El procedimiento es el siguiente:</p>
+
+<ol>
+  <li>Agente observa el estado actual del entorno
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>AGENTE &lt;----observaciones--- ENTORNO
+</code></pre></div>    </div>
+  </li>
+  <li>Decide cual acción tomar dependiendo del estado
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>AGENTE ----acciones----&gt; ENTORNO
+</code></pre></div>    </div>
+  </li>
+  <li>Entorno cambia de estado y produce una recompensa por la acción ejecutada
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>AGENTE &lt;---- observaciones nuevo estado ---- ENTORNO
+    &lt;----  Recompensa -------------------
+</code></pre></div>    </div>
+  </li>
+  <li>¿Fueron buenas las acciones o malas?
+    <ul>
+      <li>buenas: repetirlas</li>
+      <li>malas: evitarlas
+Repetir hasta terminar el aprendizaje.
+        <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>AGENTE INTELIGENTE ----- acciones ----&gt; ENTORNO
+               &lt;---observaciones--
+               &lt;----recompensas---
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="política">Política</h2>
+<p>El agente internamente toma las observaciones del estado del entorno y las asigna a acciones realizando así un mapeo. En otras palabras, se puede entender este mapeo como una función que recibe entradas y genera una salida. A este mapeo se le llama <strong>política</strong>. La política es muy importante, ya que decide qué acción ejecutar dado un conjunto de observaciones de estado. Básicamente la política es el <em>cerebro</em> de nuestro agente, y le va a indicar qué hacer. La política se puede representar de varias formas, una forma muy útil es que si tenemos observaciones de estado complejas como por ejemplo, imágenes, entonces podemos usar una red neuronal para procesar dichos datos.</p>
+
+<p>Ejemplo de política en un robot caminante:</p>
+<ol>
+  <li>observaciones: estado de cada articulación y los miles de pixeles de un sensor de cámara</li>
+  <li>política: toma las observaciones y genera comandos de acción que mueven al robot</li>
+  <li>recompensa: qué tan bien funcionaron los comandos: ¿Se cayó el robot?, ¿Se desvió del camino?, ¿Se está arrastrando? ¿Esta caminando erguido? Etc.</li>
+</ol>
+
+<h2 id="algoritmo-de-reinforcement-learning">Algoritmo de Reinforcement Learning</h2>
+<p>La política debe ajustarse, no puede ser estática, ya que el entorno es dinámico; para esto existen los <strong>algoritmos de Reinforcement Learning</strong>. Un algoritmo de RL hace óptima a la política, cambiandola en función de las acciones que se tomaron, las observaciones del estado del entorno y la cantidad de recompensa recolectada.</p>
+
+<blockquote>
+  <p>Un agente de RL utiliza un algoritmo de RL para modificar su política a medida que interactúa con el entorno, de modo que eventualmente, dado cualquier estado, siempre tomará la mejor acción: la que producirá la mayor recompensa a largo plazo.</p>
+</blockquote>
+
+<p><em>—–imagen de como es rl—-</em></p>
+
+<h2 id="valor-y-recompensa">Valor y recompensa</h2>
+<ul>
+  <li>Valor: recompensa total que un agente puede esperar recibir desde ese estado en adelante.</li>
+  <li>Recompensa: beneficio inmediato de estar en un estado específico.</li>
+</ul>
+
+<h3 id="por-qué-es-importante-el-valor">¿Por qué es importante el valor?</h3>
+<p>Evaluar el valor de un estado en vez de la recompensa inmediata ayuda al agente a elegir la acción que obtendrá la mayor recompensa a lo largo del tiempo, en vez de un beneficio a corto plazo.</p>
+
+<p>Supongamos que tenemos la siguiente situación:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+1  agente  -1  -1  +10
+</code></pre></div></div>
+<p>¿Dónde debe ir el agente? Si va al estado de la izquierda obtendrá un beneficio instantáneo. Pero, si va a la derecha obtendrá un beneficio a futuro mayor de +8.</p>
+
+<p>Ahora, tenemos la siguiente situación en la que sólo podemos dar 2 pasos:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                    agente
+                      |
+Valor             0   |     +4
+Recompensa   -1  +1   0     -1    +5
+Estado       s0  s1   s2    s3    s4
+</code></pre></div></div>
+<p>El valor para el estado s3 es +4 porque se espera recibir desde aquí en adelante +4 de recompensa total.</p>
+
+<ul>
+  <li>Si se elige en base a la recompensa:
+  ```
+    <ol>
+      <li>agente va a s1 —&gt; recompensa_total = +1</li>
+      <li>agente vuelve a s2 —&gt; recompensa_total = +1
+  ```</li>
+    </ol>
+  </li>
+  <li>Si se elige en base a al valor estimado de un estado:
+  ```
+    <ol>
+      <li>Agente va a s3 —&gt; recompensa_total = -1</li>
+      <li>Agente va a s4 —&gt; recompensa_total = +4
+  ```</li>
+    </ol>
+  </li>
+</ul>
+
+<p>No obstante, elegir a corto plazo igual puede servir:</p>
+<ul>
+  <li>Recompensa inmediata puede ser mejor que esperar por una futura.</li>
+  <li>Predicción de recompensas puede fallar y esa recompensa alta puede que no esté cuando lleguemos a esos estados, o sea, existe mayor incertidumbre.</li>
+  <li>La solución a esto es descontar recompensas mientras más lejos estén el futuro.</li>
+</ul>
+
+<p>¿Y qué pasa cuando hay estados que no se conocen? Cabe la posibilidad de que existan estados que sean desconocidos para el agente, pero éstos pueden contener recompensas mayores a las de los estados que actualmente conocemos. Es aquí donde entran los dos enfoques que puede aplicar el agente.</p>
+
+<h2 id="enfoque-muy-codicioso-explotación-del-entorno">Enfoque muy codicioso: explotación del entorno</h2>
+<p>Recolectamos la mayor cantidad de recompensas que se conozcan, o sea, las más cercanas. Le damos más relevancia al beneficio inmediato que al futuro.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+1  agente  -1  ?  ?
+</code></pre></div></div>
+<p>El agente irá a la izquierda.</p>
+
+<h2 id="enfoque-poco-codicioso-exploración-del-entorno">Enfoque poco codicioso: exploración del entorno</h2>
+<p>Exploramos estados desconocidos del entorno con la esperanza de obtener mejores recompensas y por consiguiente, una mejor recompensa a largo plazo. Sin embargo, corremos el riesgo de recolectar peores recompensas por algún tiempo, o que incluso descubramos que estas recompensas no sean tan buenas como las que conocíamos.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+1  agente  -1  -1  -1   10
+</code></pre></div></div>
+<p>El agente irá a la derecha.</p>
+
+<h2 id="explotación-vs-exploración">Explotación vs Exploración</h2>
+<p>El algoritmo de RL explorará o explotará el espacio de estados, convirtiéndose esto en un problema de optimización</p>
+
+<p>Si bien explorar para obtener una gran recompensa en el futuro puede ser muy tentador a elegir, puede que no sea tan buena opción, esto se debe a que es posible que:</p>
+<ol>
+  <li>La recompensa actual es mayor que la recompensa después</li>
+  <li>Las recompensas en el futuro son menos confiables, ya que podrían no estar allí cuando se alcancen, por lo que no hay que confiar 100% en la predicción de recompensa.</li>
+</ol>
+
+<blockquote>
+  <p>RL descuenta las recompensas en una cantidad mayor cuanto más lejos estén en el futuro.</p>
+</blockquote>
+
+<blockquote>
+  <p>El algoritmo de RL establece un equilibrio entre exploración y explotación. Este trade-off se da mientras el agente interactúa con el entorno.</p>
+</blockquote>
+
+<h2 id="control-de-sistamas-y-rl">Control de sistamas y RL</h2>
+<p>Tenemos un sistema o proceso industrial que queremos controlar. Controlamos las entradas del sistema (acciones) para intentar generar las salidas deseadas (comportamientos).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>acción -&gt; sistema -&gt; comportamiento deseado
+</code></pre></div></div>
+
+<p>Controlamos las entradas mediante un software controlador.</p>
+
+<p>Utilizamos las observaciones del estado (retroalimentación) para mejorar el rendimiento y corregir errores</p>
+
+<p><em>—-imagen de lazo cerrado—–</em></p>
+
+<p>Si el problema es muy complejo, utilizamos loops de control andidados, sensores y controladores, lo que es muy difícil de implementar y modificar. En control, el diseñador es el que se preocupa de modificar explícitamente el sistema para que tenga el comportamiento idóneo. No obstante, podemos utilizar RL para resolver los problemas de control. En RL, el software por sí mismo intenta aprender el comportamiento óptimo a lo largo del tiempo. La idea es tomar las observaciones del estado del sistema y el agente generará la mejor acción para controlar el sistema. <em>El agente sería el controlador</em>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>observaciones del estado -&gt; agente RL (controlador) -&gt; acciones
+</code></pre></div></div>
+
+<p><em>—imagen rl + control—-</em></p>
+
+<p>Estrictamente hablando, el controlador sería la política (recordar que la política es el cerebro del agente), ya que va a mapear las observaciones del estado del sistema a comandos de acción que permitan generar el comportamiento que queremos que este sistema tenga. Nótese que <em>el entorno sería el sistema a controlar</em>.</p>
+
+<blockquote>
+  <p>El controlador influye sobre el sistema cambiando su estado</p>
+</blockquote>
+
+<h2 id="uso-de-rl-en-control">Uso de RL en control</h2>
+<p>Para utilizar RL en control tenemos que:</p>
+<ol>
+  <li>Establecer la estructura del controlador: definir la política</li>
+  <li>Definir ¿qué es un resultado exitoso? Y establecer recompensas cuando se consiga: Establecer una función de recompensa que el indique al algoritmo si está mejorando o no.</li>
+  <li>Aplicar un algoritmo de aprendizaje eficiente que sepa cómo ajustar los parámetros para que el proceso converja en un tiempo razonable: Elegir un algoritmo de RL</li>
+</ol>
+
+<h2 id="workflow-de-rl">Workflow de RL</h2>
+<p>El flujo de trabajo de RL consiste en:</p>
+<ol>
+  <li>Establecer un entorno: qué debe existir en ese entorno. Además debemos decidir: ¿Durante el entrenamiento probamos con un entorno real (hardware real) o simulado (uso de modelos matemáticos del sistema)?</li>
+  <li>definir la señal de recompensa: qué debe hacer el agente, cómo debe llegar al objetivo, diseñar la función de recompensa</li>
+  <li>Establecer la política: cómo representamos la política: estructuración de los parámetros y la lógica de la toma de decisiones del agente. ¿Cuál es la información que recibe el agente? ¿Cuál debe ser la salida que genera el agente? ¿De qué tipo son estas entradas y salidas? ¿Voy a representar la política con una red neuronal? Etc.</li>
+  <li>Algoritmo de RL: mediante el algoritmo obtendremos la política óptima. Se debe elegir el mejor de acuerdo a nuestro caso. Existen algoritmo de RL que dependen de que si las entradas y salidas son continuas o discretas.</li>
+  <li>Deploy/verificación: se implementa la política en un agente y se verfican los resultados.</li>
+</ol>
+
+<h3 id="1-entorno">1. Entorno</h3>
+<p>En RL, el entorno es de dónde el agente aprende. El entorno es todo lo que está <strong>afuera</strong> del agente. Esto llevado a control sería todo lo que no es el controlador: lazo de retroalimentación, sistema, señal de referencia, etc.</p>
+
+<p>Un agente realiza <strong>acciones</strong> que influyen sobre el entorno. El entorno cambia de estado, al hacerlo, informa al agente entregándole <strong>observaciones de estado</strong> y una <strong>recompensa</strong>.</p>
+
+<p>Existen dos tipos de RL:</p>
+<h3 id="11-rl-sin-modelo">1.1. RL sin modelo</h3>
+<p>El agente no necesita saber nada sobre el entorno. Se coloca un agente RL en cualquier sistema y asumiendo que a la política se le da acceso a las observaciones, acciones y estados internos, el agente obtendrá la mayor recompensa por sí solo.</p>
+
+<p>El agente debe explorar todo el espacio de estados para calcular la mayor recompensa, lo que conlleva más tiempo en aprender la política óptima.</p>
+
+<p>El RL sin modelo se utiliza cuando es difícil generar un modelo. Ej: controlar un auto, robot caminante.</p>
+
+<h3 id="12-rl-basado-en-modelo">1.2. RL basado en modelo:</h3>
+<p>Sin ninguna comprensión del entorno el agente deberá explorar todas las áreas del espacio de estados, para cumplir su función de valor, por lo que gastará tiempo explorando áreas de bajas recompensas mientras está aprendiendo. Al proporcionar un modelo del entorno, proporcionamos al agente información de zonas del espacio de estado que no valen la pena explorar. Entonces, el modelo puede complementar el proceso de aprendizaje evitando áreas que sabe que son malas y el agente aprenderá mejor.</p>
+
+<p>Este modelo sirve de guía para el agente, complementando el aprendizaje de este último. El tiempo es menor en aprender la política óptima.</p>
+
+<h3 id="13-entorno-real-físico-o-simulado">1.3. ¿Entorno real (físico) o simulado?</h3>
+<p>Cuando puede ocurrir daño en el hardware o a las personas se ocupa un entorno simulado, debido a los costos. Además, la simulación es más rápida que en tiempo real y se pueden ejecutar en paralelo.</p>
+
+<p>Comparación entorno real vs simulado:</p>
+<ol>
+  <li>Real
+    <ul>
+      <li>preciso</li>
+      <li>simple</li>
+      <li>algunas veces necesario (difícil de hacer modelo)</li>
+    </ul>
+  </li>
+  <li>Simulado
+    <ul>
+      <li>veloz</li>
+      <li>fácil de modelar condiciones de testeo</li>
+      <li>seguro</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="2-señal-de-recompensa">2. Señal de recompensa</h2>
+<p>Debemos recompensar al agente por sus acciones, para así orientarlo a alcanzar el objetivo.</p>
+
+<p>En RL no hay un límite para crear una función de recompensa, podemos tener muchas, pocas, sólo al final de un episodio, por tiempo, por alcanzar el objetivo final, etc. Lo que sí hay que tener en cuenta es que la función de recompensa debe producir un número escalar que indique la <em>bondad</em> de estar en un estado y haber ejecutado una acción determinada.</p>
+
+\[recompensa = f(estado, acción)\]
+
+<p>Las recompensas pueden ser:</p>
+<ul>
+  <li>escasas</li>
+  <li>en cada paso de tiempo (time step)</li>
+  <li>al final de cada episodio</li>
+  <li>basada en parámetros</li>
+  <li>etc.</li>
+</ul>
+
+<p>Hacer una función de recompensa buena es difícil. No existe una forma sencilla de diseñar una señal o función de recompensa para garantizar que el agente converja a la solución que se quiere. Esto se debe a dos razones:</p>
+
+<ol>
+  <li>
+    <p>A menudo el objetivo viene de una larga secuencia de acciones. Si sólo recompensamos por cumplir el objeivo, el agente se equivocará por largos periodos de tiempo sin recibir recompensa, a esto se le llama <strong>recompensas escasas</strong>. Es muy poco probable que el agente se tope al azar con la secuencia de acciones que produce la recompensa escasa. Confiar en esta exploración aleatoria es bastante ineficiente, ya que es un aprendizaje muy lento, incluso llega a no ser práctico. Este problema se puede solucionar con el <strong>reward shaping</strong> o dar forma a la recompensa. Si proporcionamos <strong>recompensas intermedias</strong> más pequeñas que induzcan al agente a seguir el camino correcto, lograremos que el agente consiga su objetivo.</p>
+  </li>
+  <li>
+    <p>Si se le da un atajo a un algoritmo de optimización, él lo tomará. Esto hace que el agente converja a la solución que queremos dada la función de recompensa, pero no de una manera idónea. Los atajos están ocultos en la función de recompensa. Por ejemplo: tenemos un robot caminante cuyo objetivo es caminar hasta los 10 metros. Supongamos que tenemos pensado darle 2 recompensas intermedias y 1 final por llegar a los 10 metros. Además de llegar al objetivo es importante considerar el <em>cómo</em> se llega a él; para este robot desplomarse y arrastrase hasta llegar a los 10 metros es lo mismo que caminar erguido y sin desviarse hasta los 10 metros. Al agente le da lo mismo porque al final igual va a recibir la recompensa. Sin embargo, a nosotros nos interesa que el robot cumpla su objetivo de manera idónea.</p>
+  </li>
+</ol>
+
+<p>¿Cómo solucionamos el problema de los atajos? Inyectando conocimiento específico del dominio en el agente. Vamos a recompensar al agente no solo por llegar al objetivo sino también por el <em>cómo lo hace</em>. Por ejemplo, recompensar al robot por caminar erguido, a una velocidad determinada, que no se desvíe del camino, etc.</p>
+
+<h3 id="21-exploración-y-explotación">2.1. Exploración y explotación</h3>
+<p>La idea es la siguiente:</p>
+<ul>
+  <li>Explotación: agente explota el entorno eligiendo las acciones que recogen la mayor cantidad de recompensas que ya conoce.</li>
+  <li>Exploración: elegir acciones que exploran partes del entorno que aún no se conocen.</li>
+</ul>
+
+<p>Existe un trade-off entre exploración y explotación mientras el agente interactúa con el entorno.</p>
+
+<p>Las acciones que hace el agente determinan la información que recibe y, por lo tanto, lo que aprende.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                    Estado actual
+                          s1
+         explotar    a1 /     \ a2     explorar
+                      /         \
+                    s2          s3
+                  R. conocida     R. desconocida
+</code></pre></div></div>
+<p>Si ejecutamos <code class="language-plaintext highlighter-rouge">a1</code> el agente sólo recibirá información de <code class="language-plaintext highlighter-rouge">s2</code> obteniendo una recompensa conocidad y nada sobre <code class="language-plaintext highlighter-rouge">s3</code>. Si realizamos <code class="language-plaintext highlighter-rouge">a2</code> el agente sólo recibirá información de <code class="language-plaintext highlighter-rouge">s3</code> (un estado nuevo) y la recompensa puede que sea mejor que la entregada por <code class="language-plaintext highlighter-rouge">s2</code>.</p>
+
+<h4 id="explotación-pura">Explotación pura</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>estados conocidos      estado actual            estados desconocidos
+0    +1   0    +1        agente          +1     ¿?   ¿?
+s0   s1   s2   s3          s4            s5     s6   s7
+      |____|____|___________v   
+</code></pre></div></div>
+<p>El agente nunca recibirá información adicional sobre los estados desconocidos.</p>
+
+<p>Con explotación pura, el algoritmo de aprendizaje converge en una política subóptima. No sabremos si las áreas desconocidas poseían mayores recompensas.</p>
+
+<h4 id="exploración-pura">Exploración pura</h4>
+<p>Si bien existe riesgo de recibir menos recompensas, la exploración permite expandir la política para los nuevos estados. Tenemos la chance de recibir mejores recompensas, y por ende, más posibilidades de encontrar la solución global.</p>
+
+<p>La exploración pura no es buena cuando se entrena con hardware físico, ya que lo puede dañar. Además el aprendizaje es más lento y puede que no encontremos una solución en tiempo razonable.</p>
+
+<p>Los mejores algoritmos son los que logran el equilibrio entre ambas.</p>
+
+<h2 id="3-política">3. Política</h2>
+<p>El agente se compone de una política y un algoritmo de aprendizaje de RL. Muchos algoritmos de aprendizaje requieren una estructura de política específica. La elección del algoritmo también depende de la naturaleza del entorno.</p>
+
+<p>En la política se representan la lógica y los parámetros. Esta política es una función matemática que toma las observaciones de estado y genera las acciones.
+\(\text{observaciones} \rightarrow f(x) \rightarrow \text{acciones}\)</p>
+
+<p>Existen dos enfoques para estructurar la función de política:</p>
+<ol>
+  <li>Directo (actores o policy-based): hace un mapeo entre observaciones y acciones específico.</li>
+  <li>Indirecto (críticos o value-based): se basa en otras métricas como el valor para inferir el mapeo óptimo.</li>
+</ol>
+
+<h3 id="representamos-la-política-con-una-tabla-función-o-tabla-q">Representamos la política con una tabla: Función o Tabla Q</h3>
+<p>Si los espacios de estado y acción son <strong>discretos</strong> y pequeños en número, podemos ocupar una tabla simple para representar la política.</p>
+
+<p>La función o tabla Q es una tabla que asigna estados y acciones a valores. Entonces, dado un estado <em>S</em>, la política sería buscar el valor de cada acción <em>A</em> posible en ese estado y elegir la acción con el valor más alto.</p>
+
+\[\begin{table}[]
+\begin{tabular}{lllll}
+ &amp; a1 &amp; a2 &amp; a3 \\
+ s1 &amp; -1 &amp; 2 &amp; 0 \\
+ s2 &amp; 0 &amp; 1 &amp; 5 \\
+ s3 &amp; 3 &amp; -1 &amp; 2 
+\end{tabular}
+\end{table}\]
+
+<blockquote>
+  <p>Entrenar a un agente con una Tabla Q consistiría en calcular los valores para todas las acciones posibles en cada estado.</p>
+</blockquote>
+
+<blockquote>
+  <p>La función Q falla cuando el número de acciones aumentan mucho o se vuelve infinito, en otras palabras, cuando son continuos.</p>
+</blockquote>
+
+<p>Calcular los valores para muchísimas acciones posibles para cada uno de los muchísimos estados que tenemos no es factible. Si una función o tabla Q no nos sirve, entonces necesitamos una función continua que sea capaz de representar la política, aunque es bastante difícil de diseñar. La solución a esto es usar un <strong>aproximador de función</strong> de propósito general para representar la política, algo que pueda manejar estados y acciones dentro de un espacio continuo: <strong>Las redes neuronales profundas (Deep Learning)</strong>.</p>
+
+<h4 id="por-qué-usar-redes-neuronales-y-no-tablas-o-una-función-de-transferencia-para-la-política">¿Por qué usar redes neuronales y no tablas o una función de transferencia para la política?</h4>
+
+<p><em>Nota: la función de transferencia es una función que relaciona las entradas con las salidas de un sistema. Se utiliza mucho en control.</em></p>
+
+<p>Las tablas no son prácticas cuando el espacio de estados y acciones son muy grandes (continuos).</p>
+
+<p>Para el caso de las funciones de transferencia, es difícil diseñar la estructura de estas funciones para entornos complejos.</p>
+
+<h2 id="21-política-como-red-neuronal">2.1 Política como red neuronal</h2>
+<p>Una red neurona es un grupo de nodos llamados <strong>neuronas artificiales</strong> que están interconectados de forma que se vuelven un <strong>aproximador de función universal</strong>. Esto significa que se puede configurar la red con la correcta combinación de nodos y conexiones para imitar cualquier relación de entrada y salida. La función generada por la red neuronal puede ser extremadamente compleja, sin embargo, la naturaleza de las redes neuronales asegura que se toda función se puede aproximar.</p>
+
+<p>El aprendizaje de la red consiste en el ajuste de los parámetros sistemáticamente para encontrar la relación óptima de entrada/salida.</p>
+
+<p><em>—-imagen de red neuronal—-</em></p>
+
+<p>La salida de una neurona está dada por:
+\(a = f(w_0\cdot x_0 + w_1\cdot x_1 + ... + w_{n-1}\cdot x_{n-1} + b)\)
+donde \(b\) es el <strong>bias</strong> o sesgo, \(w\) son los pesos asginados a cada entrada \(x\).</p>
+
+<p>Sin \(f\) la salida o activación de una neurona es una operación lineal (\(w\cdot x + b\) es una suma ponderada o combinación lineal). Si ninguna neurona de nuestra red neuronal utilizara la función \(f\), la salida de la red sería lineal. El inconveniente es que los problemas lineales son simples, muy por el contrario de los problemas de la vida real que son complejos, o sea, no lineales. Es por esto que se utiliza una <strong>función de activación \(f\)</strong> para poder aproximar funciones no lineales. Esta función de activación transforma el valor de la suma ponderada a otro valor (depende de la función) que es el que finalmente sale de la neurona y sirve de entrada a las neuronas de las siguientes capas.</p>
+
+<h3 id="funciones-de-activación">Funciones de activación</h3>
+<p>Las 3 funciones de activación más populares son:</p>
+<ol>
+  <li>Linear: simplemente es dejar como salida de la neurona a la suma ponderada \(w\cdot x + b\).</li>
+  <li>Sigmoid: se mapea \(w\cdot x + b\) a un valor entre 0 y 1.</li>
+  <li>ReLU: si \(w\cdot x + b\) es positivo, se deja como salida \(w\cdot x + b\). Si es 0 o negativo, la salida será 0.</li>
+</ol>
+
+<p>Existen más funciones de activación no lineales como por ejemplo, <strong>Tanh</strong>, <strong>LeakyReLU</strong>, <strong>Softmax</strong>, etc., que igualmente se utilizan, pero son menos populares.</p>
+
+\[\begin{table}[]
+\begin{tabular}{lllll}
+ Valor &amp; Sigmoid &amp; ReLU \\
+ -2 &amp; 0.12 &amp; 0 \\
+ -1 &amp; 0.27 &amp; 0 \\
+ 1 &amp; 0.73 &amp; 1 \\
+ 2 &amp; 0.88 &amp; 2 \\
+\end{tabular}
+\end{table}\]
+
+<blockquote>
+  <p>Se debe tener en cuenta que la red neuronal debe ser lo suficientemente compleja como para aproximarse a la función, pero no tan compleja como para que el entrenamiento no sea posible o sea muy lento.</p>
+</blockquote>
+
+<h3 id="diseño-de-una-red-neuronal">Diseño de una red neuronal</h3>
+<p>Se debe elegir lo siguiente para implementar una red neuronal:</p>
+<ul>
+  <li>Función de activación para las capas ocultas y la capa de salida respectivamente (pueden ser distintas o para los dos tipos de capa puede ser la misma)</li>
+  <li>Número de capas ocultas</li>
+  <li>Número de neurona en cada capa</li>
+  <li>Estructura interna de la red: ¿Totalmente conectada (fully connected)? ¿Nos saltamos capas (red residual)? ¿La red tiene memoria interna (red recurrente)? ¿Grupos de neuronas trabajan en conjunto (red convolusional)?</li>
+</ul>
+
+<p><em>— imagen de los tipo de redes —-</em></p>
+
+<p>No existe un enfoque preestablecido para la estructura de la red, pero una idea sería comenzar con una estructura que ya ha funcionado para el tipo de problema que estamos resolviendo.</p>
+
+<h2 id="4-algortimos-de-aprendizaje-rl">4. Algortimos de aprendizaje RL</h2>
+<p>Existen 3 tipos:</p>
+<ol>
+  <li>Policy function</li>
+  <li>Value function</li>
+  <li>Actor / critic</li>
+</ol>
+
+<h3 id="41-policy-function">4.1. Policy function</h3>
+
+    </div>
+  </article><div id="giscus_thread" style="max-width: 800px; margin: 0 auto;">
+  <script>
+    let giscusTheme = localStorage.getItem("theme");
+    let giscusAttributes = {
+        "src": "https://giscus.app/client.js",
+        "data-repo": "squirogar/squirogar.github.io",
+        "data-repo-id": "R_kgDOJtf6_Q",
+        "data-category": "Announcements",
+        "data-category-id": "DIC_kwDOJtf6_c4CXHce",
+        "data-mapping": "pathname",
+        "data-strict": "1",
+        "data-reactions-enabled": "1",
+        "data-emit-metadata": "0",
+        "data-input-position": "top",
+        "data-theme": giscusTheme,
+        "data-lang": "en",
+        "crossorigin": "anonymous",
+        "async": "",
+    };
+
+
+    let giscusScript = document.createElement("script");
+    Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    document.getElementById("giscus_thread").appendChild(giscusScript);
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by giscus.</a>
+</noscript>
+</div>
+</div>
+
+      
+    </div>
+
+    <!-- Footer -->    
+    <footer class="fixed-bottom">
+      <div class="container mt-0">
+        © Copyright 2023 Sebastián  Quiroga. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>.
+
+      </div>
+    </footer>
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Bootsrap & MDB scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+    <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  <script defer src="/assets/js/masonry.js" type="text/javascript"></script>
+    
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js"></script>
+
+  <!-- Bootstrap Table -->
+  <script defer src="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.js"></script>
+
+  <!-- Load Common JS -->
+  <script src="/assets/js/no_defer.js"></script>
+  <script defer src="/assets/js/common.js"></script>
+  <script defer src="/assets/js/copy_code.js" type="text/javascript"></script>
+
+    
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+    <!-- MathJax -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        tags: 'ams'
+      }
+    };
+  </script>
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    
+    
+
+<!-- Scrolling Progress Bar -->
+<script type="text/javascript">
+  /*
+   * This JavaScript code has been adapted from the article 
+   * https://css-tricks.com/reading-position-indicator/ authored by Pankaj Parashar, 
+   * published on the website https://css-tricks.com on the 7th of May, 2014.
+   * Couple of changes were made to the original code to make it compatible 
+   * with the `al-foio` theme.
+   */
+  const progressBar = $("#progress");
+  /*
+   * We set up the bar after all elements are done loading.
+   * In some cases, if the images in the page are larger than the intended
+   * size they'll have on the page, they'll be resized via CSS to accomodate
+   * the desired size. This mistake, however, breaks the computations as the
+   * scroll size is computed as soon as the elements finish loading.
+   * To account for this, a minimal delay was introduced before computing the
+   * values.
+   */
+  window.onload = function () {
+    setTimeout(progressBarSetup, 50);
+  };
+  /*
+   * We set up the bar according to the browser.
+   * If the browser supports the progress element we use that.
+   * Otherwise, we resize the bar thru CSS styling
+   */
+  function progressBarSetup() {
+    if ("max" in document.createElement("progress")) {
+      initializeProgressElement();
+      $(document).on("scroll", function() {
+        progressBar.attr({ value: getCurrentScrollPosition() });
+      });
+      $(window).on("resize", initializeProgressElement);
+    } else {
+      resizeProgressBar();
+      $(document).on("scroll", resizeProgressBar);
+      $(window).on("resize", resizeProgressBar);
+    }
+  }
+  /*
+   * The vertical scroll position is the same as the number of pixels that
+   * are hidden from view above the scrollable area. Thus, a value > 0 is
+   * how much the user has scrolled from the top
+   */
+  function getCurrentScrollPosition() {
+    return $(window).scrollTop();
+  }
+
+  function initializeProgressElement() {
+    let navbarHeight = $("#navbar").outerHeight(true);
+    $("body").css({ "padding-top": navbarHeight });
+    $("progress-container").css({ "padding-top": navbarHeight });
+    progressBar.css({ top: navbarHeight });
+    progressBar.attr({
+      max: getDistanceToScroll(),
+      value: getCurrentScrollPosition(),
+    });
+  }
+  /*
+   * The offset between the html document height and the browser viewport
+   * height will be greater than zero if vertical scroll is possible.
+   * This is the distance the user can scroll
+   */
+  function getDistanceToScroll() {
+    return $(document).height() - $(window).height();
+  }
+
+  function resizeProgressBar() {
+    progressBar.css({ width: getWidthPercentage() + "%" });
+  }
+  // The scroll ratio equals the percentage to resize the bar
+  function getWidthPercentage() {
+    return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
+  }
+</script>
+
+  </body>
+</html>
