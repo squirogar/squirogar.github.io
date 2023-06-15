@@ -8,6 +8,7 @@ giscus_comments: true
 related_posts: false
 ---
 
+*El siguiente contenido fue aprendido del curso de especialización de Machine Learning de Andrew Ng y deeplearning.ai*
 
 K-means es un algoritmo de clustering. Antes de ver en qué consiste K-means, es bueno saber qué es un algoritmo de clustering.
 
