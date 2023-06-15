@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Reinforcement Learning
-date: 2022-01-10 21:41
+date: 2023-06-10 20:30
 description: Definición y workflow del Aprendizaje por refuerzo
 categories: algoritmos
 giscus_comments: true
@@ -151,7 +151,7 @@ Si bien explorar para obtener una gran recompensa en el futuro puede ser muy ten
 > El algoritmo de RL establece un equilibrio entre exploración y explotación. Este trade-off se da mientras el agente interactúa con el entorno.
 
 
-## Control de sistamas y RL
+## Control de sistemas y RL
 Tenemos un sistema o proceso industrial que queremos controlar. Controlamos las entradas del sistema (acciones) para intentar generar las salidas deseadas (comportamientos).
 
 ```
@@ -187,7 +187,7 @@ Para utilizar RL en control tenemos que:
 ## Workflow de RL
 El flujo de trabajo de RL consiste en:
 1. Establecer un entorno: qué debe existir en ese entorno. Además debemos decidir: ¿Durante el entrenamiento probamos con un entorno real (hardware real) o simulado (uso de modelos matemáticos del sistema)?
-2. definir la señal de recompensa: qué debe hacer el agente, cómo debe llegar al objetivo, diseñar la función de recompensa
+2. Definir la señal de recompensa: qué debe hacer el agente, cómo debe llegar al objetivo, diseñar la función de recompensa
 3. Establecer la política: cómo representamos la política: estructuración de los parámetros y la lógica de la toma de decisiones del agente. ¿Cuál es la información que recibe el agente? ¿Cuál debe ser la salida que genera el agente? ¿De qué tipo son estas entradas y salidas? ¿Voy a representar la política con una red neuronal? Etc.
 4. Algoritmo de RL: mediante el algoritmo obtendremos la política óptima. Se debe elegir el mejor de acuerdo a nuestro caso. Existen algoritmo de RL que dependen de que si las entradas y salidas son continuas o discretas.
 5. Deploy/verificación: se implementa la política en un agente y se verfican los resultados.
@@ -232,7 +232,7 @@ Debemos recompensar al agente por sus acciones, para así orientarlo a alcanzar 
 En RL no hay un límite para crear una función de recompensa, podemos tener muchas, pocas, sólo al final de un episodio, por tiempo, por alcanzar el objetivo final, etc. Lo que sí hay que tener en cuenta es que la función de recompensa debe producir un número escalar que indique la *bondad* de estar en un estado y haber ejecutado una acción determinada.
 
 $$
-recompensa = f(estado, acción)
+\text{recompensa} = f(\text{estado}, \text{acción})
 $$
 
 Las recompensas pueden ser:
@@ -307,14 +307,17 @@ Si los espacios de estado y acción son **discretos** y pequeños en número, po
 La función o tabla Q es una tabla que asigna estados y acciones a valores. Entonces, dado un estado *S*, la política sería buscar el valor de cada acción *A* posible en ese estado y elegir la acción con el valor más alto.
 
 $$
-\begin{table}[]
-\begin{tabular}{lllll}
- & a1 & a2 & a3 \\
- s1 & -1 & 2 & 0 \\
- s2 & 0 & 1 & 5 \\
- s3 & 3 & -1 & 2 
-\end{tabular}
-\end{table}
+\begin{aligned}
+& \text {Tabla 1. Ejemplo de política como una Tabla Q}\\
+&\begin{array}{c|cc}
+\hline \hline \text {  } & \text { a1 } & \text { a2 } & \text { a3 }\\
+\hline
+s1 & -1 & 2 & 0 \\
+s2 &  0 & 1 & 5 \\
+s3 & 3 & -1 & 2 \\
+\hline
+\end{array}
+\end{aligned}
 $$
 
 > Entrenar a un agente con una Tabla Q consistiría en calcular los valores para todas las acciones posibles en cada estado.
@@ -342,7 +345,7 @@ La salida de una neurona está dada por:
 $$
 a = f(w_0\cdot x_0 + w_1\cdot x_1 + ... + w_{n-1}\cdot x_{n-1} + b)
 $$
-donde $$b$$ es el **bias** o sesgo, $$w$$ son los pesos asginados a cada entrada $$x$$.
+donde $$b$$ es el **bias** o sesgo, $$w$$ son los **weights** o pesos asginados a cada entrada $$x$$.
 
 Sin $$f$$ la salida o activación de una neurona es una operación lineal ($$w\cdot x + b$$ es una suma ponderada o combinación lineal). Si ninguna neurona de nuestra red neuronal utilizara la función $$f$$, la salida de la red sería lineal. El inconveniente es que los problemas lineales son simples, muy por el contrario de los problemas de la vida real que son complejos, o sea, no lineales. Es por esto que se utiliza una **función de activación $$f$$** para poder aproximar funciones no lineales. Esta función de activación transforma el valor de la suma ponderada a otro valor (depende de la función) que es el que finalmente sale de la neurona y sirve de entrada a las neuronas de las siguientes capas.
 
@@ -352,18 +355,21 @@ Las 3 funciones de activación más populares son:
 2. Sigmoid: se mapea $$w\cdot x + b$$ a un valor entre 0 y 1.
 3. ReLU: si $$w\cdot x + b$$ es positivo, se deja como salida $$w\cdot x + b$$. Si es 0 o negativo, la salida será 0.
 
-Existen más funciones de activación no lineales como por ejemplo, **Tanh**, **LeakyReLU**, **Softmax**, etc., que igualmente se utilizan, pero son menos populares.
+Existen más funciones de activación no lineales como por ejemplo, **Tanh**, **Leaky ReLU**, **Softmax**, etc., que igualmente se utilizan, pero son menos populares.
 
 $$
-\begin{table}[]
-\begin{tabular}{lllll}
- Valor & Sigmoid & ReLU \\
- -2 & 0.12 & 0 \\
- -1 & 0.27 & 0 \\
- 1 & 0.73 & 1 \\
- 2 & 0.88 & 2 \\
-\end{tabular}
-\end{table}
+\begin{aligned}
+& \text {Tabla 2. Ejemplos de transformación de valores para Sigmoid y ReLU}\\
+&\begin{array}{cccc}
+\hline \hline \text { Valor } & \text { Sigmoid } & \text { ReLU } \\
+\hline
+-2 & 0.12 & 0 \\
+-1 & 0.27 & 0 \\
+1 & 0.73 & 1 \\
+2 & 0.88 & 2 \\
+\hline
+\end{array}
+\end{aligned}
 $$
 
 > Se debe tener en cuenta que la red neuronal debe ser lo suficientemente compleja como para aproximarse a la función, pero no tan compleja como para que el entrenamiento no sea posible o sea muy lento.
@@ -384,9 +390,196 @@ No existe un enfoque preestablecido para la estructura de la red, pero una idea 
 
 
 ## 4. Algortimos de aprendizaje RL
-Existen 3 tipos:
+No se puede estructurar la política sin elegir el algoritmo de RL de aprendizaje.
+
+Existen 3 formas de estructurar la política:
 1. Policy function
 2. Value function
 3. Actor / critic
 
-### 4.1. Policy function
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/policy_estructura.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Formas de estructurar la política
+</div>
+
+
+### 4.1. Policy function - Policy-based algorithms
+Entrenan una red neuronal que toma las observaciones del estado y produce acciones. La política es una red neurona, la cual se llama **actor** porque le dice directamente al agente qué acciones tomar.
+
+*-----imagen del actor ----*
+
+¿Cómo entrenamos una red neuronal o política del tipo actor? La entrenamos con los métodos **policy gradient**.
+
+Veamos un ejemplo del uso de una red neuronal del tipo actor: Juego Breakout.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/breakout.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Captura de pantalla del juego.
+</div>
+
+- Acciones: mover la paleta a la izquierda, derecha, mantener. 3 salidas en total.
+- Estados: posición de la paleta, posición de la pelota, velocidad de la pelota, ubicación de los ladrillos. Casi infinitos estados en total.
+
+*-------imagen de la red actor con las entradas y salidas del juego------*
+
+Los métodos policy gradient funcionan con una **política estocástica**. Este tipo de política se refiere a que en vez de entregar la salida *izquierda, derecha o mantener* de forma tajante, el algoritmo entrega una **probabilidad** de mover a la izquierda, a la derecha o mantener. 
+
+La política estocástica incorpora la exploración en las probabilidades. Cuando el agente aprende, actualiza las probabilidades, para que así con el tiempo producir la mayor recompensa, ya que la mejor acción para ese estado tendrá una probabilidad tan alta que siempre será escogida.
+
+El funcionamiento de los métodos de policy gradient es el siguiente:
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/policy_gradient_ciclo.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Diagrama de flujo del funcionamiento de los métodos policy gradient.
+</div>
+
+Estos métodos toman la derivada de cada *weight* y *bias* en la red neuronal con respecto a la recompensa  los ajusta en la dirección de un aumento de recompensa positivo. Así, el algoritmo de aprendizaje mueve los *bias* y *weights* para ascender por la pendiente de recompensa, de ahí viene el nombre de gradiente.
+
+*-------imagen de la pendiente -------*
+
+#### 4.1.1. Lo malo de los métodos de policy gradient
+1. Seguir la dirección del ascenso más empinado puede hacer que se converja a un máximo local.
+    *------- imagen de la pendiente en maximo local -----*
+2. Convergen lentamente debido a su sensibilidad a las mediciones ruidosas, o sea, cuando se requieren varias acciones y las recompensas tienen gran variación entre episodios.
+    *-------- imagen de la sensibilidad ---------*
+
+### 4.2. Aprendizaje basado en la función de valor (value function-based learning):
+Una función toma el estado y una posible acción y calcularía su valor
+$$
+\text{valor} = f(\text{observaciones del estado}, \text{acción})
+$$
+
+El valor va a indicar qué tan buena es la acción estando en ese estado.
+
+> La política debe generar una acción y la función de valor entrega un valor. Por lo tanto, lo política sería usar esta función para chequear el valor de cada acción posible dado un estado determinado, y elegir la de mayor valor.
+
+*----- imagen esquema de critico -------*
+
+Esta función se llama **crítico**, ya que critica las posbiles acciones.
+
+Esta función se puede representar con un tabla si es que los espacios de acción y estado son discretos, o con una red neuronal si son continuos. La diferencia en este último caso, es que entran las observaciones de estado y las acciones, y salen los valores de esos pares estado/acción, y la política elige la acción con valor más alto.
+
+*------ imagen red de critico-------*
+
+#### Tabla Q como crítico
+En el caso de que el espacio de estados y de acciones fueran discretos los representamos con una tabla Q. El agente aprende estos valores a través de Q-learning:
+1. Con Q-learning, se comienza inicializando la tabla con ceros, por lo que todas las acciones tienen el mismo aspecto para el agente.
+2. El agente realiza una acción aleatoria, llega a un nuevo estado y recoge la recompensa del entorno.
+3. El agente usa esa recompensa como nueva información para acualizar el valor del estado anterior y la acción que tomó usando la ecuación de Bellman.
+
+
+#### Ecuación de Bellman
+Permite al agente resolver la tabla Q a lo largo del tiempo dividiendo todo el problema en varios pasos más simples. En lugar de resolver el valor real de un par estado/acción en un solo paso, el agente actualizará el valor cada vez que se visite el par estado/acción a través de la programación dinámica.
+
+La ecuación de Bellman es la siguiente:
+$$
+new Q(s,a) = Q(s,a) + \alpha \cdot [R(s,a) + \gamma \cdot max Q'(s',a')-Q(s,a)]
+$$
+1. Agente realiza una acción y recibe recompensa $$R(s,a)$$. El estado es $$s$$ y la acción es $$a$$.
+2. Recordar que el valor es la recompensa total esperado en el futuro
+
+FALTAAAAAAAAAAAAAAAAAAAAAA
+
+
+### 4.3. Algoritmos Actor-crítico
+Fusión de las dos técnicas anteriores.
+- Actor: red que está tratando de tomar lo que cree que es la mejor acción dado el estado actual, tal cual se hacía en los algoritmos de policy function (**sección 4.1.**).
+- Crítico: segunda red que está tratando de estimar el valor del par estado/acción que tomó el actor, como se hacía en los algoritmos de value function (**sección 4.2.**). Este valor es el valor esperado de la recompensa acumulada de largo plazo.
+
+Esto funciona para espacios de acción y estados continuos. 
+
+Para estos algoritmos el crítico sólo necesita mirar la acción individual que realizó el actor y no necesita tratar de encontrar la mejor acción evaluándolas todas.
+
+*--------imagen actor-critico-----------*
+
+
+
+#### Funcionamiento de actor-crítico
+1. El actor elige una acción de la misma manera que lo haría un algoritmo de policy function y se aplica al entorno.
+2. El crítico estima el valor para ese par estado/acción elegido 
+3. El crítico usa la recompensa recibida para determinar la precisión de su predicción de valor.
+    - El error es: $$\text{error}=\text{valor nuevo estimado del estado anterior}-\text{valor viejo para el estado anterior}$$
+    - El estado anterior es el estado desde el cual se ejecutó la acción actual.
+    - El nuevo valor estimado se basa en la recompensa recibida y el valor descontado del estado actual.
+    - El error permite que el crítico se de cuenta si las cosas salieron mejor o peor de lo esperado.
+4. El crítico usa este error para actualizarse a sí mismo para que así tenga una mejor predicción la próxima vez que esté en ese estado.
+5. El actor también se actualiza con la respuesta del crítico para que pueda ajustar sus probabilidades de volver a tomar esa acción en el futuro. De esta forma, la política asciende la pendiente de la recompensa en la dirección que recomienda el crítico en lugar de usar las recompensas directamente.
+
+
+*------ imagen de actor-critico---------*
+
+- El actor está aprendiendo las acciones correctas uasndo la retroalimentación del crítico.
+- El crítico está aprendiendo la función de valor para poder criticar correctamente la acción del actor.
+- Aprovecha lo mejor de los algoritmos de value function y policy function
+- Permiten acelerar el aprendizaje cuando hay gran variación en la recompensa.
+
+
+
+El error es la diferencia entre lo predicho y el valor anterior dele sado anterior (desde donde se movió). El nuevo valor se calcula a partir de la recompensa recibida y el valor descontado del estado, como en los algoritmos value function
+3. Se actualiza el crítico con el nuevo valor del par estado/acción. Se actualiza el acor con la respuesta del crítico y ajusta sus probabilidades de tomar la acción para ese estado.
+
+La política ahora asciende la pendiente de recompensas en dirección que recomienda el crítico.
+
+El actor aprende las acciones correctas utilizando la retroalimentación del crítico para saber qué es una acción mala y qué es buena.
+
+El crítico aprende la función de valor de las recompensas recibidas para poder criticar abundantemente la acción del actor.
+
+
+
+## 5. Deployment
+### 5.1. Despliegue de política
+Si el aprendizaje se hizo físicamente, o sea, en un entorno real, la política aprendida ya está en el agente y puede explotarse.
+ 
+Si el aprendizaje se hizo fuera de línea (offline), o sea, en una simulación; si la política es lo suficientemente óptima, se detiene el aprendizaje y la política estática se puede implementar en cualquier número de objetivos.
+
+*-----imagen offline simulation-----*
+
+### 5.2. Despligue del algoritmo de aprendizaje
+En algunos casos puede ser necesario continuar aprendiendo con hardware físico real después del despliegue. Algunos entornos pueden ser difíciles de modelar con precisión. 
+    - Esto quiere decir que la política es óptima para el modelo, pero no para el entorno real.
+    - El entorno cambia lentamente con el tiempo y el agente se debe adaptar a esos cambios.
+
+Es por todo esto que se recomienda desplegar o implementar tanto la política estática como el algoritmo de aprendizaje en el hardware de destino. Esto no da la opción de:
+    - Ejecutar la política estática, descativando el aprendizaje
+    - Continuar actualizando la política, activando el aprendizaje.
+
+
+## Lo malo del Reinforcement Learning
+Existen dos problemas principales:
+1. ¿Cómo sabemos que la solución que entrega RL funciona?
+2. ¿Se puede ajustar manualmente si no es perfecto?
+
+### Lo inexplicable de la red neuronal
+La política se conforma de red neuronal con:
+- Muchos weights
+- Muchos bias
+- funciones de activación no lineales
+- A esto hay que sumarle la estructura de la red neuronal
+Todo esto resulta en una función muy compleja!
+
+> La función que aproxima la red neuronal es una función muy compleja. Se comporta como una caja negra para el diseñador. No conocemos la razón del valor de un weight o bias dado dentro de la red.
+
+Si la política no cumple con una especificación o si el entorno operativo cambia, no sabremos como ajustar la política para abordar ese problema.
+
+No comprendemos el por qué de la solución entregada. En cambio, un sistema de control se puede explicar, dividir, ajustar, aislar las partes conflictivas, repararlas y volver a juntarlas. Una red neuronal **NO**. Por ejemplo, si tenemos un PID con un sistema $$x$$ y lo cambiamos al sistema $$y$$, simplemente cambiamos las ganancias.
+
+
+
+
+
+
+
+
+
