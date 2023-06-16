@@ -18,9 +18,9 @@ En RL, trabajamos con un entorno dinámico, a diferencia del Supervised learning
 
 RL consiste en un agente que se relaciona con un entorno y va tomando acciones que afectan a ese entorno. Dicho entorno cambia de estado tras cada acción que tome el agente y además le proporciona una recompensa al agente por cada acción que ejecute. Estas acciones o decisiones pueden ser buenas o malas, y dependiendo de ésto va a recibir un recompensa buena o mala respectivamente. Cabe destacar que **al agente nunca se le dice qué hacer, sino que él mismo debe descubrir qué acciones tomar, de tal forma que produzca la mayor recompensa a largo plazo**.
 
->Con RL, queremos encontrar la mejor secuencia de acciones que generarán la salida óptima, o sea, la que genera la mejor recompensa final. La idea es maximizar esta recompensa a largo plazo.
+> Con RL, queremos encontrar la mejor secuencia de acciones que generarán la salida óptima, o sea, la que genera la mejor recompensa final. La idea es maximizar esta recompensa a largo plazo.
 
-* Agente: el agente es un software que explora, interactúa y aprende del entorno
+> El agente es un software que explora, interactúa y aprende del entorno
 
 ... Aprende ... ¿Cómo un agente *aprende* del entorno? El agente usa la información que obtiene del entorno (observaciones del estado del entorno y recompensa) para ajustar sus acciones a futuro. La recompensa es muy importante porque le va a decir al agente qué tan buena fue la acción que acaba de realizar.
 
@@ -33,7 +33,7 @@ Ejemplo de reinforcement learning:
     - recompensa: no resultó herido al cruzar la calle.
 
 
-## Funcionamiento de RL
+## I. Funcionamiento de RL
 El procedimiento es el siguiente:
 
 1. Agente observa el estado actual del entorno
@@ -63,10 +63,7 @@ AGENTE INTELIGENTE ----- acciones ----> ENTORNO
 ```
 
 
-
-
-
-## Política
+## II. Política
 El agente internamente toma las observaciones del estado del entorno y las asigna a acciones realizando así un mapeo. En otras palabras, se puede entender este mapeo como una función que recibe entradas y genera una salida. A este mapeo se le llama **política**. La política es muy importante, ya que decide qué acción ejecutar dado un conjunto de observaciones de estado. Básicamente la política es el *cerebro* de nuestro agente, y le va a indicar qué hacer. La política se puede representar de varias formas, una forma muy útil es que si tenemos observaciones de estado complejas como por ejemplo, imágenes, entonces podemos usar una red neuronal para procesar dichos datos.
 
 Ejemplo de política en un robot caminante:
@@ -74,14 +71,14 @@ Ejemplo de política en un robot caminante:
 2. política: toma las observaciones y genera comandos de acción que mueven al robot
 3. recompensa: qué tan bien funcionaron los comandos: ¿Se cayó el robot?, ¿Se desvió del camino?, ¿Se está arrastrando? ¿Esta caminando erguido? Etc.
 
-## Algoritmo de Reinforcement Learning
+## III. Algoritmo de Reinforcement Learning
 La política debe ajustarse, no puede ser estática, ya que el entorno es dinámico; para esto existen los **algoritmos de Reinforcement Learning**. Un algoritmo de RL hace óptima a la política, cambiandola en función de las acciones que se tomaron, las observaciones del estado del entorno y la cantidad de recompensa recolectada.
 
 >Un agente de RL utiliza un algoritmo de RL para modificar su política a medida que interactúa con el entorno, de modo que eventualmente, dado cualquier estado, siempre tomará la mejor acción: la que producirá la mayor recompensa a largo plazo.
 
 *-----imagen de como es rl----*
 
-## Valor y recompensa
+## IV. Valor y recompensa
 * Valor: recompensa total que un agente puede esperar recibir desde ese estado en adelante.
 * Recompensa: beneficio inmediato de estar en un estado específico.
 
@@ -105,12 +102,14 @@ Estado       s0  s1   s2    s3    s4
 El valor para el estado s3 es +4 porque se espera recibir desde aquí en adelante +4 de recompensa total.
 
 - Si se elige en base a la recompensa:
+
     ```
     1. agente va a s1 ---> recompensa_total = +1
     2. agente vuelve a s2 ---> recompensa_total = +1
     ```
 
 - Si se elige en base a al valor estimado de un estado:
+
     ```
     1. Agente va a s3 ---> recompensa_total = -1
     2. Agente va a s4 ---> recompensa_total = +4
@@ -123,7 +122,7 @@ No obstante, elegir a corto plazo igual puede servir:
 
 ¿Y qué pasa cuando hay estados que no se conocen? Cabe la posibilidad de que existan estados que sean desconocidos para el agente, pero éstos pueden contener recompensas mayores a las de los estados que actualmente conocemos. Es aquí donde entran los dos enfoques que puede aplicar el agente.
 
-## Enfoque muy codicioso: explotación del entorno
+## V. Enfoque muy codicioso: explotación del entorno
 Recolectamos la mayor cantidad de recompensas que se conozcan, o sea, las más cercanas. Le damos más relevancia al beneficio inmediato que al futuro.
 
 ```
@@ -131,7 +130,7 @@ Recolectamos la mayor cantidad de recompensas que se conozcan, o sea, las más c
 ```
 El agente irá a la izquierda.
 
-## Enfoque poco codicioso: exploración del entorno
+## VI. Enfoque poco codicioso: exploración del entorno
 Exploramos estados desconocidos del entorno con la esperanza de obtener mejores recompensas y por consiguiente, una mejor recompensa a largo plazo. Sin embargo, corremos el riesgo de recolectar peores recompensas por algún tiempo, o que incluso descubramos que estas recompensas no sean tan buenas como las que conocíamos.
 
 ```
@@ -139,7 +138,7 @@ Exploramos estados desconocidos del entorno con la esperanza de obtener mejores 
 ```
 El agente irá a la derecha.
 
-## Explotación vs Exploración
+## VII. Explotación vs Exploración
 El algoritmo de RL explorará o explotará el espacio de estados, convirtiéndose esto en un problema de optimización
 
 Si bien explorar para obtener una gran recompensa en el futuro puede ser muy tentador a elegir, puede que no sea tan buena opción, esto se debe a que es posible que:
@@ -151,7 +150,7 @@ Si bien explorar para obtener una gran recompensa en el futuro puede ser muy ten
 > El algoritmo de RL establece un equilibrio entre exploración y explotación. Este trade-off se da mientras el agente interactúa con el entorno.
 
 
-## Control de sistemas y RL
+## VIII. Control de sistemas y RL
 Tenemos un sistema o proceso industrial que queremos controlar. Controlamos las entradas del sistema (acciones) para intentar generar las salidas deseadas (comportamientos).
 
 ```
@@ -178,13 +177,13 @@ Estrictamente hablando, el controlador sería la política (recordar que la pol�
 
 
 
-## Uso de RL en control
+## IX. Uso de RL en control
 Para utilizar RL en control tenemos que:
 1. Establecer la estructura del controlador: definir la política
 2. Definir ¿qué es un resultado exitoso? Y establecer recompensas cuando se consiga: Establecer una función de recompensa que el indique al algoritmo si está mejorando o no.
 3. Aplicar un algoritmo de aprendizaje eficiente que sepa cómo ajustar los parámetros para que el proceso converja en un tiempo razonable: Elegir un algoritmo de RL
 
-## Workflow de RL
+## X. Workflow de RL
 El flujo de trabajo de RL consiste en:
 1. Establecer un entorno: qué debe existir en ese entorno. Además debemos decidir: ¿Durante el entrenamiento probamos con un entorno real (hardware real) o simulado (uso de modelos matemáticos del sistema)?
 2. Definir la señal de recompensa: qué debe hacer el agente, cómo debe llegar al objetivo, diseñar la función de recompensa
@@ -192,7 +191,7 @@ El flujo de trabajo de RL consiste en:
 4. Algoritmo de RL: mediante el algoritmo obtendremos la política óptima. Se debe elegir el mejor de acuerdo a nuestro caso. Existen algoritmo de RL que dependen de que si las entradas y salidas son continuas o discretas.
 5. Deploy/verificación: se implementa la política en un agente y se verfican los resultados.
 
-### 1. Entorno
+## 1. Entorno
 En RL, el entorno es de dónde el agente aprende. El entorno es todo lo que está **afuera** del agente. Esto llevado a control sería todo lo que no es el controlador: lazo de retroalimentación, sistema, señal de referencia, etc.
 
 Un agente realiza **acciones** que influyen sobre el entorno. El entorno cambia de estado, al hacerlo, informa al agente entregándole **observaciones de estado** y una **recompensa**.
@@ -293,6 +292,7 @@ Los mejores algoritmos son los que logran el equilibrio entre ambas.
 El agente se compone de una política y un algoritmo de aprendizaje de RL. Muchos algoritmos de aprendizaje requieren una estructura de política específica. La elección del algoritmo también depende de la naturaleza del entorno.
 
 En la política se representan la lógica y los parámetros. Esta política es una función matemática que toma las observaciones de estado y genera las acciones.
+
 $$
 \text{observaciones} \rightarrow f(x) \rightarrow \text{acciones}
 $$
@@ -334,7 +334,7 @@ Las tablas no son prácticas cuando el espacio de estados y acciones son muy gra
 
 Para el caso de las funciones de transferencia, es difícil diseñar la estructura de estas funciones para entornos complejos.
 
-## 2.1 Política como red neuronal
+### 3.1 Política como red neuronal
 Una red neurona es un grupo de nodos llamados **neuronas artificiales** que están interconectados de forma que se vuelven un **aproximador de función universal**. Esto significa que se puede configurar la red con la correcta combinación de nodos y conexiones para imitar cualquier relación de entrada y salida. La función generada por la red neuronal puede ser extremadamente compleja, sin embargo, la naturaleza de las redes neuronales asegura que se toda función se puede aproximar.
 
 El aprendizaje de la red consiste en el ajuste de los parámetros sistemáticamente para encontrar la relación óptima de entrada/salida.
@@ -556,13 +556,13 @@ Es por todo esto que se recomienda desplegar o implementar tanto la política es
     - Continuar actualizando la política, activando el aprendizaje.
 
 
-## Lo malo del Reinforcement Learning
+## XI. Lo malo del Reinforcement Learning
 Existen dos problemas principales:
 1. ¿Cómo sabemos que la solución que entrega RL funciona?
 2. ¿Se puede ajustar manualmente si no es perfecto?
 
 ### Lo inexplicable de la red neuronal
-La política se conforma de red neuronal con:
+La política se conforma de una red neuronal con:
 - Muchos weights
 - Muchos bias
 - funciones de activación no lineales
@@ -573,13 +573,120 @@ Todo esto resulta en una función muy compleja!
 
 Si la política no cumple con una especificación o si el entorno operativo cambia, no sabremos como ajustar la política para abordar ese problema.
 
-No comprendemos el por qué de la solución entregada. En cambio, un sistema de control se puede explicar, dividir, ajustar, aislar las partes conflictivas, repararlas y volver a juntarlas. Una red neuronal **NO**. Por ejemplo, si tenemos un PID con un sistema $$x$$ y lo cambiamos al sistema $$y$$, simplemente cambiamos las ganancias.
+No comprendemos el porqué de la solución entregada. En cambio, un sistema de control se puede explicar, dividir, ajustar, aislar las partes conflictivas, repararlas y volver a juntarlas. Una red neuronal **NO**. Por ejemplo, si tenemos un PID con un sistema $$x$$ y lo cambiamos al sistema $$y$$, simplemente cambiamos las ganancias.
+
+Si el sistema no se comporta como queremos, entonces la política no es del todo correcta. ¿Corregimos la parte defectuosa? No podemos! Tenemos que rediseñar el agente o el modelo y volver a entrenarlo, lo que puede tomar tiempo.
+
+### ¿Cómo verificamos un sistema de control tradicional?
+A través de un testeo: simulación + modelo, y, con hardware físico; y verficamos que el sistema cumpla con las especificaciones, es decir, que hace lo correcto en todo el espacio de estados y en presencia de perturbaciones y fallas de hardware.
+
+Debemos hacer este mismo nivel de prueba con una política de RL. Si encontramos un error, se tiene que volver a entrenar la política (previo a un rediseño).
+
+El ciclo es el siguiente:
+1. Rediseño
+2. Entrenamiento
+3. Testeo
+
+Repetir hasta que se cumplan las especificaciones.
+
+### El problema de la precisión del modelo del entorno
+Es difícil desarrollar un modelo suficientemente realista que tenga en cuenta todas las dinámicas importantes del sistema, además que considere el ruido y las perturbaciones. En algún momento no reflejará la realidad de forma perfecta, por lo que se deben hacer prueba físicas en vez de confiar 100% en la simulación con un modelo.
+
+```
+MODELO DEL ENTORNO ------ usado para desarrollar-----> SISTEMA DE CONTROL: CONTROLADOR O AGENTE RL
+```
+
+> El modelo no es perfecto, entonces el controlador o agente RL tampoco.
+
+Podríamos ajustar y modificar un controlador, pero una red neuronal no.
+
+Como no podemos construir un modelo 100% realista, todo agente que entrene con ese modelo estará **ligeramente equivocado**. 
+
+> La solución es terminar de entrenar el agente en hardware físico, lo que puede ser desafiante.
+
+### ¿Cómo verificamos si la política cumple las especificaciones?
+Es difícil predecir cómo se comportará el sistema en un estado en función de su comportamiento en otro. Por ejemplo, queremos controlar un motor eléctrico:
+- Entrada 1: step input 0 a 100 RPM
+- Entrenamos el agente para que siga la señal de referencia de pasar de 0 a 100 RPM.
+- La salida será una curva con el aumento paulatino de RPM hasta llegar a 100.
+
+Sin embargo:
+- Entrada 2: step input 0 a 150 RPM
+¿El agente se comportará igual? La política anteriormente aprendida se comportará de forma similar a como se comportó con el step input anterior? No podemos saberlo de antemano, debemos testearlo.
+
+¿Y que pasa con un step input de 30-75? ¿o de 80-93? Tendríamos que probar **todas** las combinaciones para demostrar que la política funciona en un 100%. No hay una verificación matemática que cubra todo el rango.
+
+Un cambio ligero puede hacer que se active un conjunto de neuronas completamente diferentes y produzca un resultado no deseado. Debemos probarlo.
+
+> Probar más implica menos riesgo. Pero, ¿la política es 100% certera? Debemos probar todas las combinaciones de entrada. Pero, ¿y si la entrada es muy grande? Es imposible!
+
+### Métodos formales de verificación
+Las redes neuronales dificultan la verificación formal. La verificación formal garantiza que se cumpla alguna condición proporcionando una prueba formal en vez de un test.
+
+Ejemplos:
+1. Inspeccionando el código que demuestra que se cumplirá algo siempre.
+2. Cálculo de factores de estabilidad y robustez, como los márgenes de ganancia y fase.
+    - Esto es difícil para una red neuronal, ya que no podemos ofrecer garantías sobre cómo se comportará. No hay métodos para determinar su robustez o estabilidad. A una red neuronal no se le puede explicar su funcionamiento.
+
+### Reducción del problema
+Reducimos el alcance del agente RL para reducir la escala de estos problemas.
+
+> Solución: RL + control. RL se preocupará de un problema muy especializado, algo muy difícil de resolver con control tradicional. Con respecto al control, los controladores se preocuparán de lo demás.
+
+Una política más pequeña:
+- Está más enfocada y es más fácil de entender
+- Impacto limitado en todo el sistema
+- Menos tiempo de entrenamiento
+
+Esta sería la solución, sin embargo, **aún no podemos garantizar estabilidad, cumplimiento de especificaciones o resistencia a incertidumbres**
+
+#### Cómo lograr robustez y estabilidad
+Haciendo la política RL más robusta.
+
+1. Entrenar el agente en un entorno donde los parámetros importantes del entorno se ajustan cada vez que se haga simulación. 
+
+Por ejemplo, un robot caminante. Al comienzo de cada episodio cambiamos el valor del torque máximo.
+
+$$
+\begin{aligned}
+& \text {Tabla 3. Configuración de los parámetros del entorno}\\
+&\begin{array}{cccccc}
+\hline \hline \text { Episodio } & \text { Torque } & \text { Longitud } & \text { Delay } & \text { Referencia } & \text{ ... }\\
+\hline
+1 & 2 \text{ Nm.} & 1 \text{ Cm.} & 10 \text{ Ms.} & \text{Step} & \text{ ... }\\
+2 & 2.5 \text{ Nm.} & 1.3 \text{ Cm.} & 8 \text{ Ms.} & \text{Ramp} & \text{ ... }\\
+3 & 2.1 \text{ Nm.} & 1.7 \text{ Cm.} & 14 \text{ Ms.} & \text{Impulse} & \text{ ... }\\
+\text{ ... } & \text{ ... } & \text{ ... } & \text{ ... } & \text{ ... } & \text{ ... }\\
+\hline
+\end{array}
+\end{aligned}
+$$
+
+La política será más robusta para esos torques, y si hacemos lo mismo para `longitud`, `delay`, y `referencia`; más robusta será.
+
+La política eventualmente convergerá en algo robusto para esos márgenes, produciendo un diseño robusto en general. El resultado manejará un rango más amplio dentro del espacio de estados operativo.
+
+2. Para la seguridad, se puede hacer un software que ponga en *modo seguro* al agente en una situación peligrosa.
 
 
+## XII. RL + Control
+Utilizar el RL como herramienta para optimizar las ganancias del controlador en un sistema de control de arquitectura tradicional. Por ejemplo, un sistema de control con muchos bucles y controladores anidados, cada uno con varias ganancias. En vez de ajustar manualmente cada una de estas ganancias, puedes configurar un agente RL para aprender los mejores valores para todas a la vez.
+
+### Pasos de RL + Control
+1. Entorno: Sistema de control y planta
+2. Recompensa: qué tan bien se desempeña el sistema y cuanto esfuerzo necesitó
+3. Acciones: Ganancias del controlador
+4. Después de cada episodio, el algoritmo de aprendizaje modifica la red de manera que las ganancias se mueven en la dirección que aumenta la recompensa (más desdempeño y menos esfuerzo).
+    - Inicialmente, o sea, en el episodio 1, la red se inicializa aleatoriamente y generar los valores aleatorios, los cuales serán las ganancias y se ejecuta la simulación.
+5. Codificamos los valores de ganancia estáticos finales dentro del controlador.
+
+#### Ventajas
+1. Tenemos un sistema de control tradicional
+2. Sistema de control verificable
+3. Sistema de control manualmente ajustable en hardware
+4. Valores de ganancia óptimos gracias a RL
 
 
-
-
-
+*----- imagen rl + control -------*
 
 
