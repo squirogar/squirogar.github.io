@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-06-15T04:09:00+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-06-16T00:53:01+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 </subtitle><entry><title type="html">Reinforcement Learning</title><link href="https://squirogar.github.io/blog/2023/reinforcement-learning/" rel="alternate" type="text/html" title="Reinforcement Learning" /><published>2023-06-10T20:30:00+00:00</published><updated>2023-06-10T20:30:00+00:00</updated><id>https://squirogar.github.io/blog/2023/reinforcement-learning</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/reinforcement-learning/"><![CDATA[<p><em>Material obtenido del e-book de matlab de Reinforcement Learning</em></p>
 
 <h1 id="reinforcement-learning-rl">Reinforcement Learning (RL)</h1>
@@ -13,9 +13,9 @@
   <p>Con RL, queremos encontrar la mejor secuencia de acciones que generarán la salida óptima, o sea, la que genera la mejor recompensa final. La idea es maximizar esta recompensa a largo plazo.</p>
 </blockquote>
 
-<ul>
-  <li>Agente: el agente es un software que explora, interactúa y aprende del entorno</li>
-</ul>
+<blockquote>
+  <p>El agente es un software que explora, interactúa y aprende del entorno</p>
+</blockquote>
 
 <p>… Aprende … ¿Cómo un agente <em>aprende</em> del entorno? El agente usa la información que obtiene del entorno (observaciones del estado del entorno y recompensa) para ajustar sus acciones a futuro. La recompensa es muy importante porque le va a decir al agente qué tan buena fue la acción que acaba de realizar.</p>
 
@@ -32,7 +32,7 @@
   </li>
 </ol>
 
-<h2 id="funcionamiento-de-rl">Funcionamiento de RL</h2>
+<h2 id="i-funcionamiento-de-rl">I. Funcionamiento de RL</h2>
 <p>El procedimiento es el siguiente:</p>
 
 <ol>
@@ -63,7 +63,7 @@ Repetir hasta terminar el aprendizaje.
   </li>
 </ol>
 
-<h2 id="política">Política</h2>
+<h2 id="ii-política">II. Política</h2>
 <p>El agente internamente toma las observaciones del estado del entorno y las asigna a acciones realizando así un mapeo. En otras palabras, se puede entender este mapeo como una función que recibe entradas y genera una salida. A este mapeo se le llama <strong>política</strong>. La política es muy importante, ya que decide qué acción ejecutar dado un conjunto de observaciones de estado. Básicamente la política es el <em>cerebro</em> de nuestro agente, y le va a indicar qué hacer. La política se puede representar de varias formas, una forma muy útil es que si tenemos observaciones de estado complejas como por ejemplo, imágenes, entonces podemos usar una red neuronal para procesar dichos datos.</p>
 
 <p>Ejemplo de política en un robot caminante:</p>
@@ -73,7 +73,7 @@ Repetir hasta terminar el aprendizaje.
   <li>recompensa: qué tan bien funcionaron los comandos: ¿Se cayó el robot?, ¿Se desvió del camino?, ¿Se está arrastrando? ¿Esta caminando erguido? Etc.</li>
 </ol>
 
-<h2 id="algoritmo-de-reinforcement-learning">Algoritmo de Reinforcement Learning</h2>
+<h2 id="iii-algoritmo-de-reinforcement-learning">III. Algoritmo de Reinforcement Learning</h2>
 <p>La política debe ajustarse, no puede ser estática, ya que el entorno es dinámico; para esto existen los <strong>algoritmos de Reinforcement Learning</strong>. Un algoritmo de RL hace óptima a la política, cambiandola en función de las acciones que se tomaron, las observaciones del estado del entorno y la cantidad de recompensa recolectada.</p>
 
 <blockquote>
@@ -82,7 +82,7 @@ Repetir hasta terminar el aprendizaje.
 
 <p><em>—–imagen de como es rl—-</em></p>
 
-<h2 id="valor-y-recompensa">Valor y recompensa</h2>
+<h2 id="iv-valor-y-recompensa">IV. Valor y recompensa</h2>
 <ul>
   <li>Valor: recompensa total que un agente puede esperar recibir desde ese estado en adelante.</li>
   <li>Recompensa: beneficio inmediato de estar en un estado específico.</li>
@@ -106,21 +106,19 @@ Estado       s0  s1   s2    s3    s4
 <p>El valor para el estado s3 es +4 porque se espera recibir desde aquí en adelante +4 de recompensa total.</p>
 
 <ul>
-  <li>Si se elige en base a la recompensa:
-  ```
-    <ol>
-      <li>agente va a s1 —&gt; recompensa_total = +1</li>
-      <li>agente vuelve a s2 —&gt; recompensa_total = +1
-  ```</li>
-    </ol>
+  <li>
+    <p>Si se elige en base a la recompensa:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  1. agente va a s1 ---&gt; recompensa_total = +1
+  2. agente vuelve a s2 ---&gt; recompensa_total = +1
+</code></pre></div>    </div>
   </li>
-  <li>Si se elige en base a al valor estimado de un estado:
-  ```
-    <ol>
-      <li>Agente va a s3 —&gt; recompensa_total = -1</li>
-      <li>Agente va a s4 —&gt; recompensa_total = +4
-  ```</li>
-    </ol>
+  <li>
+    <p>Si se elige en base a al valor estimado de un estado:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  1. Agente va a s3 ---&gt; recompensa_total = -1
+  2. Agente va a s4 ---&gt; recompensa_total = +4
+</code></pre></div>    </div>
   </li>
 </ul>
 
@@ -133,21 +131,21 @@ Estado       s0  s1   s2    s3    s4
 
 <p>¿Y qué pasa cuando hay estados que no se conocen? Cabe la posibilidad de que existan estados que sean desconocidos para el agente, pero éstos pueden contener recompensas mayores a las de los estados que actualmente conocemos. Es aquí donde entran los dos enfoques que puede aplicar el agente.</p>
 
-<h2 id="enfoque-muy-codicioso-explotación-del-entorno">Enfoque muy codicioso: explotación del entorno</h2>
+<h2 id="v-enfoque-muy-codicioso-explotación-del-entorno">V. Enfoque muy codicioso: explotación del entorno</h2>
 <p>Recolectamos la mayor cantidad de recompensas que se conozcan, o sea, las más cercanas. Le damos más relevancia al beneficio inmediato que al futuro.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+1  agente  -1  ?  ?
 </code></pre></div></div>
 <p>El agente irá a la izquierda.</p>
 
-<h2 id="enfoque-poco-codicioso-exploración-del-entorno">Enfoque poco codicioso: exploración del entorno</h2>
+<h2 id="vi-enfoque-poco-codicioso-exploración-del-entorno">VI. Enfoque poco codicioso: exploración del entorno</h2>
 <p>Exploramos estados desconocidos del entorno con la esperanza de obtener mejores recompensas y por consiguiente, una mejor recompensa a largo plazo. Sin embargo, corremos el riesgo de recolectar peores recompensas por algún tiempo, o que incluso descubramos que estas recompensas no sean tan buenas como las que conocíamos.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+1  agente  -1  -1  -1   10
 </code></pre></div></div>
 <p>El agente irá a la derecha.</p>
 
-<h2 id="explotación-vs-exploración">Explotación vs Exploración</h2>
+<h2 id="vii-explotación-vs-exploración">VII. Explotación vs Exploración</h2>
 <p>El algoritmo de RL explorará o explotará el espacio de estados, convirtiéndose esto en un problema de optimización</p>
 
 <p>Si bien explorar para obtener una gran recompensa en el futuro puede ser muy tentador a elegir, puede que no sea tan buena opción, esto se debe a que es posible que:</p>
@@ -164,7 +162,7 @@ Estado       s0  s1   s2    s3    s4
   <p>El algoritmo de RL establece un equilibrio entre exploración y explotación. Este trade-off se da mientras el agente interactúa con el entorno.</p>
 </blockquote>
 
-<h2 id="control-de-sistemas-y-rl">Control de sistemas y RL</h2>
+<h2 id="viii-control-de-sistemas-y-rl">VIII. Control de sistemas y RL</h2>
 <p>Tenemos un sistema o proceso industrial que queremos controlar. Controlamos las entradas del sistema (acciones) para intentar generar las salidas deseadas (comportamientos).</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>acción -&gt; sistema -&gt; comportamiento deseado
@@ -189,7 +187,7 @@ Estado       s0  s1   s2    s3    s4
   <p>El controlador influye sobre el sistema cambiando su estado</p>
 </blockquote>
 
-<h2 id="uso-de-rl-en-control">Uso de RL en control</h2>
+<h2 id="ix-uso-de-rl-en-control">IX. Uso de RL en control</h2>
 <p>Para utilizar RL en control tenemos que:</p>
 <ol>
   <li>Establecer la estructura del controlador: definir la política</li>
@@ -197,7 +195,7 @@ Estado       s0  s1   s2    s3    s4
   <li>Aplicar un algoritmo de aprendizaje eficiente que sepa cómo ajustar los parámetros para que el proceso converja en un tiempo razonable: Elegir un algoritmo de RL</li>
 </ol>
 
-<h2 id="workflow-de-rl">Workflow de RL</h2>
+<h2 id="x-workflow-de-rl">X. Workflow de RL</h2>
 <p>El flujo de trabajo de RL consiste en:</p>
 <ol>
   <li>Establecer un entorno: qué debe existir en ese entorno. Además debemos decidir: ¿Durante el entrenamiento probamos con un entorno real (hardware real) o simulado (uso de modelos matemáticos del sistema)?</li>
@@ -207,7 +205,7 @@ Estado       s0  s1   s2    s3    s4
   <li>Deploy/verificación: se implementa la política en un agente y se verfican los resultados.</li>
 </ol>
 
-<h3 id="1-entorno">1. Entorno</h3>
+<h2 id="1-entorno">1. Entorno</h2>
 <p>En RL, el entorno es de dónde el agente aprende. El entorno es todo lo que está <strong>afuera</strong> del agente. Esto llevado a control sería todo lo que no es el controlador: lazo de retroalimentación, sistema, señal de referencia, etc.</p>
 
 <p>Un agente realiza <strong>acciones</strong> que influyen sobre el entorno. El entorno cambia de estado, al hacerlo, informa al agente entregándole <strong>observaciones de estado</strong> y una <strong>recompensa</strong>.</p>
@@ -315,8 +313,9 @@ s0   s1   s2   s3          s4            s5     s6   s7
 <h2 id="3-política">3. Política</h2>
 <p>El agente se compone de una política y un algoritmo de aprendizaje de RL. Muchos algoritmos de aprendizaje requieren una estructura de política específica. La elección del algoritmo también depende de la naturaleza del entorno.</p>
 
-<p>En la política se representan la lógica y los parámetros. Esta política es una función matemática que toma las observaciones de estado y genera las acciones.
-\(\text{observaciones} \rightarrow f(x) \rightarrow \text{acciones}\)</p>
+<p>En la política se representan la lógica y los parámetros. Esta política es una función matemática que toma las observaciones de estado y genera las acciones.</p>
+
+\[\text{observaciones} \rightarrow f(x) \rightarrow \text{acciones}\]
 
 <p>Existen dos enfoques para estructurar la función de política:</p>
 <ol>
@@ -359,7 +358,7 @@ s3 &amp; 3 &amp; -1 &amp; 2 \\
 
 <p>Para el caso de las funciones de transferencia, es difícil diseñar la estructura de estas funciones para entornos complejos.</p>
 
-<h2 id="21-política-como-red-neuronal">2.1 Política como red neuronal</h2>
+<h3 id="31-política-como-red-neuronal">3.1 Política como red neuronal</h3>
 <p>Una red neurona es un grupo de nodos llamados <strong>neuronas artificiales</strong> que están interconectados de forma que se vuelven un <strong>aproximador de función universal</strong>. Esto significa que se puede configurar la red con la correcta combinación de nodos y conexiones para imitar cualquier relación de entrada y salida. La función generada por la red neuronal puede ser extremadamente compleja, sin embargo, la naturaleza de las redes neuronales asegura que se toda función se puede aproximar.</p>
 
 <p>El aprendizaje de la red consiste en el ajuste de los parámetros sistemáticamente para encontrar la relación óptima de entrada/salida.</p>
@@ -632,7 +631,7 @@ donde \(b\) es el <strong>bias</strong> o sesgo, \(w\) son los <strong>weights</
     - Ejecutar la política estática, descativando el aprendizaje
     - Continuar actualizando la política, activando el aprendizaje.</p>
 
-<h2 id="lo-malo-del-reinforcement-learning">Lo malo del Reinforcement Learning</h2>
+<h2 id="xi-lo-malo-del-reinforcement-learning">XI. Lo malo del Reinforcement Learning</h2>
 <p>Existen dos problemas principales:</p>
 <ol>
   <li>¿Cómo sabemos que la solución que entrega RL funciona?</li>
@@ -640,7 +639,7 @@ donde \(b\) es el <strong>bias</strong> o sesgo, \(w\) son los <strong>weights</
 </ol>
 
 <h3 id="lo-inexplicable-de-la-red-neuronal">Lo inexplicable de la red neuronal</h3>
-<p>La política se conforma de red neuronal con:</p>
+<p>La política se conforma de una red neuronal con:</p>
 <ul>
   <li>Muchos weights</li>
   <li>Muchos bias</li>
@@ -655,7 +654,148 @@ Todo esto resulta en una función muy compleja!</li>
 
 <p>Si la política no cumple con una especificación o si el entorno operativo cambia, no sabremos como ajustar la política para abordar ese problema.</p>
 
-<p>No comprendemos el por qué de la solución entregada. En cambio, un sistema de control se puede explicar, dividir, ajustar, aislar las partes conflictivas, repararlas y volver a juntarlas. Una red neuronal <strong>NO</strong>. Por ejemplo, si tenemos un PID con un sistema \(x\) y lo cambiamos al sistema \(y\), simplemente cambiamos las ganancias.</p>]]></content><author><name></name></author><category term="algoritmos" /><summary type="html"><![CDATA[Definición y workflow del Aprendizaje por refuerzo]]></summary></entry><entry><title type="html">K-means clustering algorithm</title><link href="https://squirogar.github.io/blog/2023/clustering-kmeans/" rel="alternate" type="text/html" title="K-means clustering algorithm" /><published>2023-06-09T21:41:00+00:00</published><updated>2023-06-09T21:41:00+00:00</updated><id>https://squirogar.github.io/blog/2023/clustering-kmeans</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/clustering-kmeans/"><![CDATA[<p><em>El siguiente contenido fue aprendido del curso de especialización de Machine Learning de Andrew Ng y deeplearning.ai</em></p>
+<p>No comprendemos el porqué de la solución entregada. En cambio, un sistema de control se puede explicar, dividir, ajustar, aislar las partes conflictivas, repararlas y volver a juntarlas. Una red neuronal <strong>NO</strong>. Por ejemplo, si tenemos un PID con un sistema \(x\) y lo cambiamos al sistema \(y\), simplemente cambiamos las ganancias.</p>
+
+<p>Si el sistema no se comporta como queremos, entonces la política no es del todo correcta. ¿Corregimos la parte defectuosa? No podemos! Tenemos que rediseñar el agente o el modelo y volver a entrenarlo, lo que puede tomar tiempo.</p>
+
+<h3 id="cómo-verificamos-un-sistema-de-control-tradicional">¿Cómo verificamos un sistema de control tradicional?</h3>
+<p>A través de un testeo: simulación + modelo, y, con hardware físico; y verficamos que el sistema cumpla con las especificaciones, es decir, que hace lo correcto en todo el espacio de estados y en presencia de perturbaciones y fallas de hardware.</p>
+
+<p>Debemos hacer este mismo nivel de prueba con una política de RL. Si encontramos un error, se tiene que volver a entrenar la política (previo a un rediseño).</p>
+
+<p>El ciclo es el siguiente:</p>
+<ol>
+  <li>Rediseño</li>
+  <li>Entrenamiento</li>
+  <li>Testeo</li>
+</ol>
+
+<p>Repetir hasta que se cumplan las especificaciones.</p>
+
+<h3 id="el-problema-de-la-precisión-del-modelo-del-entorno">El problema de la precisión del modelo del entorno</h3>
+<p>Es difícil desarrollar un modelo suficientemente realista que tenga en cuenta todas las dinámicas importantes del sistema, además que considere el ruido y las perturbaciones. En algún momento no reflejará la realidad de forma perfecta, por lo que se deben hacer prueba físicas en vez de confiar 100% en la simulación con un modelo.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MODELO DEL ENTORNO ------ usado para desarrollar-----&gt; SISTEMA DE CONTROL: CONTROLADOR O AGENTE RL
+</code></pre></div></div>
+
+<blockquote>
+  <p>El modelo no es perfecto, entonces el controlador o agente RL tampoco.</p>
+</blockquote>
+
+<p>Podríamos ajustar y modificar un controlador, pero una red neuronal no.</p>
+
+<p>Como no podemos construir un modelo 100% realista, todo agente que entrene con ese modelo estará <strong>ligeramente equivocado</strong>.</p>
+
+<blockquote>
+  <p>La solución es terminar de entrenar el agente en hardware físico, lo que puede ser desafiante.</p>
+</blockquote>
+
+<h3 id="cómo-verificamos-si-la-política-cumple-las-especificaciones">¿Cómo verificamos si la política cumple las especificaciones?</h3>
+<p>Es difícil predecir cómo se comportará el sistema en un estado en función de su comportamiento en otro. Por ejemplo, queremos controlar un motor eléctrico:</p>
+<ul>
+  <li>Entrada 1: step input 0 a 100 RPM</li>
+  <li>Entrenamos el agente para que siga la señal de referencia de pasar de 0 a 100 RPM.</li>
+  <li>La salida será una curva con el aumento paulatino de RPM hasta llegar a 100.</li>
+</ul>
+
+<p>Sin embargo:</p>
+<ul>
+  <li>Entrada 2: step input 0 a 150 RPM
+¿El agente se comportará igual? La política anteriormente aprendida se comportará de forma similar a como se comportó con el step input anterior? No podemos saberlo de antemano, debemos testearlo.</li>
+</ul>
+
+<p>¿Y que pasa con un step input de 30-75? ¿o de 80-93? Tendríamos que probar <strong>todas</strong> las combinaciones para demostrar que la política funciona en un 100%. No hay una verificación matemática que cubra todo el rango.</p>
+
+<p>Un cambio ligero puede hacer que se active un conjunto de neuronas completamente diferentes y produzca un resultado no deseado. Debemos probarlo.</p>
+
+<blockquote>
+  <p>Probar más implica menos riesgo. Pero, ¿la política es 100% certera? Debemos probar todas las combinaciones de entrada. Pero, ¿y si la entrada es muy grande? Es imposible!</p>
+</blockquote>
+
+<h3 id="métodos-formales-de-verificación">Métodos formales de verificación</h3>
+<p>Las redes neuronales dificultan la verificación formal. La verificación formal garantiza que se cumpla alguna condición proporcionando una prueba formal en vez de un test.</p>
+
+<p>Ejemplos:</p>
+<ol>
+  <li>Inspeccionando el código que demuestra que se cumplirá algo siempre.</li>
+  <li>Cálculo de factores de estabilidad y robustez, como los márgenes de ganancia y fase.
+    <ul>
+      <li>Esto es difícil para una red neuronal, ya que no podemos ofrecer garantías sobre cómo se comportará. No hay métodos para determinar su robustez o estabilidad. A una red neuronal no se le puede explicar su funcionamiento.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="reducción-del-problema">Reducción del problema</h3>
+<p>Reducimos el alcance del agente RL para reducir la escala de estos problemas.</p>
+
+<blockquote>
+  <p>Solución: RL + control. RL se preocupará de un problema muy especializado, algo muy difícil de resolver con control tradicional. Con respecto al control, los controladores se preocuparán de lo demás.</p>
+</blockquote>
+
+<p>Una política más pequeña:</p>
+<ul>
+  <li>Está más enfocada y es más fácil de entender</li>
+  <li>Impacto limitado en todo el sistema</li>
+  <li>Menos tiempo de entrenamiento</li>
+</ul>
+
+<p>Esta sería la solución, sin embargo, <strong>aún no podemos garantizar estabilidad, cumplimiento de especificaciones o resistencia a incertidumbres</strong></p>
+
+<h4 id="cómo-lograr-robustez-y-estabilidad">Cómo lograr robustez y estabilidad</h4>
+<p>Haciendo la política RL más robusta.</p>
+
+<ol>
+  <li>Entrenar el agente en un entorno donde los parámetros importantes del entorno se ajustan cada vez que se haga simulación.</li>
+</ol>
+
+<p>Por ejemplo, un robot caminante. Al comienzo de cada episodio cambiamos el valor del torque máximo.</p>
+
+\[\begin{aligned}
+&amp; \text {Tabla 3. Configuración de los parámetros del entorno}\\
+&amp;\begin{array}{cccccc}
+\hline \hline \text { Episodio } &amp; \text { Torque } &amp; \text { Longitud } &amp; \text { Delay } &amp; \text { Referencia } &amp; \text{ ... }\\
+\hline
+1 &amp; 2 \text{ Nm.} &amp; 1 \text{ Cm.} &amp; 10 \text{ Ms.} &amp; \text{Step} &amp; \text{ ... }\\
+2 &amp; 2.5 \text{ Nm.} &amp; 1.3 \text{ Cm.} &amp; 8 \text{ Ms.} &amp; \text{Ramp} &amp; \text{ ... }\\
+3 &amp; 2.1 \text{ Nm.} &amp; 1.7 \text{ Cm.} &amp; 14 \text{ Ms.} &amp; \text{Impulse} &amp; \text{ ... }\\
+\text{ ... } &amp; \text{ ... } &amp; \text{ ... } &amp; \text{ ... } &amp; \text{ ... } &amp; \text{ ... }\\
+\hline
+\end{array}
+\end{aligned}\]
+
+<p>La política será más robusta para esos torques, y si hacemos lo mismo para <code class="language-plaintext highlighter-rouge">longitud</code>, <code class="language-plaintext highlighter-rouge">delay</code>, y <code class="language-plaintext highlighter-rouge">referencia</code>; más robusta será.</p>
+
+<p>La política eventualmente convergerá en algo robusto para esos márgenes, produciendo un diseño robusto en general. El resultado manejará un rango más amplio dentro del espacio de estados operativo.</p>
+
+<ol>
+  <li>Para la seguridad, se puede hacer un software que ponga en <em>modo seguro</em> al agente en una situación peligrosa.</li>
+</ol>
+
+<h2 id="xii-rl--control">XII. RL + Control</h2>
+<p>Utilizar el RL como herramienta para optimizar las ganancias del controlador en un sistema de control de arquitectura tradicional. Por ejemplo, un sistema de control con muchos bucles y controladores anidados, cada uno con varias ganancias. En vez de ajustar manualmente cada una de estas ganancias, puedes configurar un agente RL para aprender los mejores valores para todas a la vez.</p>
+
+<h3 id="pasos-de-rl--control">Pasos de RL + Control</h3>
+<ol>
+  <li>Entorno: Sistema de control y planta</li>
+  <li>Recompensa: qué tan bien se desempeña el sistema y cuanto esfuerzo necesitó</li>
+  <li>Acciones: Ganancias del controlador</li>
+  <li>Después de cada episodio, el algoritmo de aprendizaje modifica la red de manera que las ganancias se mueven en la dirección que aumenta la recompensa (más desdempeño y menos esfuerzo).
+    <ul>
+      <li>Inicialmente, o sea, en el episodio 1, la red se inicializa aleatoriamente y generar los valores aleatorios, los cuales serán las ganancias y se ejecuta la simulación.</li>
+    </ul>
+  </li>
+  <li>Codificamos los valores de ganancia estáticos finales dentro del controlador.</li>
+</ol>
+
+<h4 id="ventajas">Ventajas</h4>
+<ol>
+  <li>Tenemos un sistema de control tradicional</li>
+  <li>Sistema de control verificable</li>
+  <li>Sistema de control manualmente ajustable en hardware</li>
+  <li>Valores de ganancia óptimos gracias a RL</li>
+</ol>
+
+<p><em>—– imagen rl + control ——-</em></p>]]></content><author><name></name></author><category term="algoritmos" /><summary type="html"><![CDATA[Definición y workflow del Aprendizaje por refuerzo]]></summary></entry><entry><title type="html">K-means clustering algorithm</title><link href="https://squirogar.github.io/blog/2023/clustering-kmeans/" rel="alternate" type="text/html" title="K-means clustering algorithm" /><published>2023-06-09T21:41:00+00:00</published><updated>2023-06-09T21:41:00+00:00</updated><id>https://squirogar.github.io/blog/2023/clustering-kmeans</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/clustering-kmeans/"><![CDATA[<p><em>El siguiente contenido fue aprendido del curso de especialización de Machine Learning de Andrew Ng y deeplearning.ai</em></p>
 
 <p>K-means es un algoritmo de clustering. Antes de ver en qué consiste K-means, es bueno saber qué es un algoritmo de clustering.</p>
 
