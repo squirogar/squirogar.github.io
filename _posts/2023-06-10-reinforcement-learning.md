@@ -11,18 +11,25 @@ related_posts: false
 *Material obtenido del e-book de matlab de Reinforcement Learning*
 
 # Reinforcement Learning (RL)
-
 Permite resolver problemas muy difíciles de control. Por ejemplo, un robot caminante. Un robot caminante es muy difícil de lograr con el enfoque de control, ya que necesitaríamos muchos loops de control, sensores, controladores de motor, etc.
 
 En RL, trabajamos con un entorno dinámico, a diferencia del Supervised learning y el Unsupervised learning que son datasets estáticos.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/ul_sl_rl.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Unsupervised learning, Supervised learning y Reinforcement Learning se utilizan para problemas diferentes. El primero para encontrar patrones ocultos interesantes, el segundo para etiquetar correctamente los datos, y el tercero se utiliza para encontrar la mejor secuencia de acciones que generan la salida óptima.
+</div>
+
 
 RL consiste en un agente que se relaciona con un entorno y va tomando acciones que afectan a ese entorno. Dicho entorno cambia de estado tras cada acción que tome el agente y además le proporciona una recompensa al agente por cada acción que ejecute. Estas acciones o decisiones pueden ser buenas o malas, y dependiendo de ésto va a recibir un recompensa buena o mala respectivamente. Cabe destacar que **al agente nunca se le dice qué hacer, sino que él mismo debe descubrir qué acciones tomar, de tal forma que produzca la mayor recompensa a largo plazo**.
 
 > Con RL, queremos encontrar la mejor secuencia de acciones que generarán la salida óptima, o sea, la que genera la mejor recompensa final. La idea es maximizar esta recompensa a largo plazo.
 
 > El agente es un software que explora, interactúa y aprende del entorno
-
-... Aprende ... ¿Cómo un agente *aprende* del entorno? El agente usa la información que obtiene del entorno (observaciones del estado del entorno y recompensa) para ajustar sus acciones a futuro. La recompensa es muy importante porque le va a decir al agente qué tan buena fue la acción que acaba de realizar.
 
 Ejemplo de reinforcement learning:
 1. agente: ser humano
@@ -33,50 +40,90 @@ Ejemplo de reinforcement learning:
     - recompensa: no resultó herido al cruzar la calle.
 
 
+
 ## I. Funcionamiento de RL
 El procedimiento es el siguiente:
 
 1. Agente observa el estado actual del entorno
-```
-AGENTE <----observaciones--- ENTORNO
-```
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/paso1.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
 2. Decide cual acción tomar dependiendo del estado
-```
-AGENTE ----acciones----> ENTORNO
-```
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/paso2.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
 3. Entorno cambia de estado y produce una recompensa por la acción ejecutada
-```
-AGENTE <---- observaciones nuevo estado ---- ENTORNO
-       <----  Recompensa -------------------
-```
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/paso3.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
 4. ¿Fueron buenas las acciones o malas?
 - buenas: repetirlas
 - malas: evitarlas
 Repetir hasta terminar el aprendizaje.
-```
-AGENTE INTELIGENTE ----- acciones ----> ENTORNO
-                    <---observaciones--
-                    <----recompensas---
-```
-
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/paso4.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
 ## II. Política
 El agente internamente toma las observaciones del estado del entorno y las asigna a acciones realizando así un mapeo. En otras palabras, se puede entender este mapeo como una función que recibe entradas y genera una salida. A este mapeo se le llama **política**. La política es muy importante, ya que decide qué acción ejecutar dado un conjunto de observaciones de estado. Básicamente la política es el *cerebro* de nuestro agente, y le va a indicar qué hacer. La política se puede representar de varias formas, una forma muy útil es que si tenemos observaciones de estado complejas como por ejemplo, imágenes, entonces podemos usar una red neuronal para procesar dichos datos.
 
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/politica.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    La política es la función que toma observaciones y genera acciones que influyen sobre el entorno.
+</div>
+
+
 Ejemplo de política en un robot caminante:
-1. observaciones: estado de cada articulación y los miles de pixeles de un sensor de cámara
-2. política: toma las observaciones y genera comandos de acción que mueven al robot
-3. recompensa: qué tan bien funcionaron los comandos: ¿Se cayó el robot?, ¿Se desvió del camino?, ¿Se está arrastrando? ¿Esta caminando erguido? Etc.
+1. Observaciones: ángulo de cada articulación, aceleración, velocida angular del tronco y los miles de pixeles de un sensor de visión.
+2. Política: toma las observaciones y genera comandos de acción que mueven los brazos y piernas del robot.
+3. Recompensa: qué tan bien funcionaron la combinación de comandos: ¿Se cayó el robot?, ¿Se desvió del camino?, ¿Se está arrastrando? ¿Esta caminando erguido? Etc.
+
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/politica_robot.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    RL en un robot caminante.
+</div>
 
 ## III. Algoritmo de Reinforcement Learning
 La política debe ajustarse, no puede ser estática, ya que el entorno es dinámico; para esto existen los **algoritmos de Reinforcement Learning**. Un algoritmo de RL hace óptima a la política, cambiandola en función de las acciones que se tomaron, las observaciones del estado del entorno y la cantidad de recompensa recolectada.
 
->Un agente de RL utiliza un algoritmo de RL para modificar su política a medida que interactúa con el entorno, de modo que eventualmente, dado cualquier estado, siempre tomará la mejor acción: la que producirá la mayor recompensa a largo plazo.
+> Un agente de RL utiliza un algoritmo de RL para modificar su política a medida que interactúa con el entorno, de modo que eventualmente, dado cualquier estado, siempre tomará la mejor acción: la que producirá la mayor recompensa a largo plazo.
 
-*-----imagen de como es rl----*
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/agente_alg.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Algoritmos RL + la política.
+</div>
+
+## IV. ¿Cómo un agente aprende del entorno? 
+Una política es una función compuesta por parámetros lógicos y ajustables. Para una estructura de política dada, existe un conjunto de parámetros que producirán una política óptima, o sea, un mapeo de los estados a las acciones que producen la recompensa más grande a largo plazo.
+
+> El aprendizaje es el término que se le da al proceso de ajustar sistemáticamente esos parámetros para converger en la política óptima.
+
+El agente usa la información que obtiene del entorno (observaciones del estado del entorno y recompensa) para ajustar sus acciones a futuro. La recompensa es muy importante porque le va a decir al agente qué tan buena fue la acción que acaba de realizar.
+
 
 ## IV. Valor y recompensa
 * Valor: recompensa total que un agente puede esperar recibir desde ese estado en adelante.
@@ -153,29 +200,66 @@ Si bien explorar para obtener una gran recompensa en el futuro puede ser muy ten
 ## VIII. Control de sistemas y RL
 Tenemos un sistema o proceso industrial que queremos controlar. Controlamos las entradas del sistema (acciones) para intentar generar las salidas deseadas (comportamientos).
 
-```
-acción -> sistema -> comportamiento deseado
-```
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/control.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Sistema de control.
+</div>
 
 Controlamos las entradas mediante un software controlador.
 
-Utilizamos las observaciones del estado (retroalimentación) para mejorar el rendimiento y corregir errores
+Utilizamos las observaciones del estado (retroalimentación) para mejorar el rendimiento y corregir errores y perturbaciones aleatorias.
 
-*----imagen de lazo cerrado-----*
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/lazo_cerrado.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Un sistema de control en lazo cerrado utiliza la retroalimentación para ajustar las acciones.
+</div>
 
-Si el problema es muy complejo, utilizamos loops de control andidados, sensores y controladores, lo que es muy difícil de implementar y modificar. En control, el diseñador es el que se preocupa de modificar explícitamente el sistema para que tenga el comportamiento idóneo. No obstante, podemos utilizar RL para resolver los problemas de control. En RL, el software por sí mismo intenta aprender el comportamiento óptimo a lo largo del tiempo. La idea es tomar las observaciones del estado del sistema y el agente generará la mejor acción para controlar el sistema. *El agente sería el controlador*.
+Si el problema es muy complejo, utilizamos múltiples loops de control andidados, motores, sensores y controladores, lo que es muy difícil de implementar y modificar. 
 
-```
-observaciones del estado -> agente RL (controlador) -> acciones
-```
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/loops.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Este sería el controlador para un robot. Estos loops interactúan entre sí.
+</div>
 
-*---imagen rl + control----*
+
+El controlador tiene que encontrar la combinación de comandos o acciones que hacen que el sistema de comporte correctamente, incluso frente a perturbarciones.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/robot_control.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Para el caso de un robot caminante, el controlador tendría que mover cada articulación del robot para que camine y no tropiece, incluso frente a obstáculos.
+</div>
+
+
+En control, el diseñador es el que se preocupa de modificar explícitamente el sistema para que tenga el comportamiento idóneo. No obstante, podemos utilizar RL para resolver los problemas de control. En RL, el software por sí mismo intenta aprender el comportamiento óptimo a lo largo del tiempo. La idea es tomar las observaciones del estado del sistema y el agente generará las mejores acciones para controlar el sistema. *El agente sería el controlador*.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/rl_ayuda_control.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    RL permite generar una sola función matemática que reemplace a todas esos loops complicados de control.
+</div>
 
 Estrictamente hablando, el controlador sería la política (recordar que la política es el cerebro del agente), ya que va a mapear las observaciones del estado del sistema a comandos de acción que permitan generar el comportamiento que queremos que este sistema tenga. Nótese que *el entorno sería el sistema a controlar*. 
 
-> El controlador influye sobre el sistema cambiando su estado
-
-
+> El controlador influye sobre el sistema cambiando su estado.
 
 ## IX. Uso de RL en control
 Para utilizar RL en control tenemos que:
@@ -183,33 +267,122 @@ Para utilizar RL en control tenemos que:
 2. Definir ¿qué es un resultado exitoso? Y establecer recompensas cuando se consiga: Establecer una función de recompensa que el indique al algoritmo si está mejorando o no.
 3. Aplicar un algoritmo de aprendizaje eficiente que sepa cómo ajustar los parámetros para que el proceso converja en un tiempo razonable: Elegir un algoritmo de RL
 
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/uso_rl_control.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Uso de RL en un sistema de control.
+</div>
+
+
 ## X. Workflow de RL
 El flujo de trabajo de RL consiste en:
 1. Establecer un entorno: qué debe existir en ese entorno. Además debemos decidir: ¿Durante el entrenamiento probamos con un entorno real (hardware real) o simulado (uso de modelos matemáticos del sistema)?
-2. Definir la señal de recompensa: qué debe hacer el agente, cómo debe llegar al objetivo, diseñar la función de recompensa
-3. Establecer la política: cómo representamos la política: estructuración de los parámetros y la lógica de la toma de decisiones del agente. ¿Cuál es la información que recibe el agente? ¿Cuál debe ser la salida que genera el agente? ¿De qué tipo son estas entradas y salidas? ¿Voy a representar la política con una red neuronal? Etc.
-4. Algoritmo de RL: mediante el algoritmo obtendremos la política óptima. Se debe elegir el mejor de acuerdo a nuestro caso. Existen algoritmo de RL que dependen de que si las entradas y salidas son continuas o discretas.
-5. Deploy/verificación: se implementa la política en un agente y se verfican los resultados.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/1_entorno.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+
+2. Definir la señal de recompensa: qué debe hacer el agente, cómo debe llegar al objetivo, diseñar la función de recompensa que incentive al agente.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/2_recompensa.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+3. Establecer la política: cómo representamos la política: estructuración de los parámetros y la lógica de la toma de decisiones del agente. ¿Cuál es la información que recibe el agente? ¿Cuál debe ser la salida que genera el agente? ¿De qué tipo son estas entradas? ¿Voy a representar la política con una red neuronal? Etc.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/3_politica.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+4. Entrenamiento: necesitamos escoger un algoritmo de RL que permita obtener la política óptima. Se debe elegir el mejor de acuerdo a nuestro caso. Los algoritmos de RL dependen de la estructuración de la política.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/4_entrenamiento.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+5. Deploy/Implementación: se implementa la política en un entorno real y se verfican los resultados.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/5_deploy.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
 
 ## 1. Entorno
-En RL, el entorno es de dónde el agente aprende. El entorno es todo lo que está **afuera** del agente. Esto llevado a control sería todo lo que no es el controlador: lazo de retroalimentación, sistema, señal de referencia, etc.
+En RL, el entorno es de dónde el agente aprende. El entorno es todo lo que está **afuera** del agente. Es donde el agente envía acciones, y es lo que genera recomepensas y observaciones. 
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/entorno_rl.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Entorno en RL.
+</div>
+
+En RL, el entorno es todo menos el agente. Esto llevado a control sería todo lo que no es el controlador: lazo de retroalimentación, sistema, señal de referencia, etc.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/entorno_rl_control.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Entorno RL en control.
+</div>
+
 
 Un agente realiza **acciones** que influyen sobre el entorno. El entorno cambia de estado, al hacerlo, informa al agente entregándole **observaciones de estado** y una **recompensa**.
 
 
 Existen dos tipos de RL:
-### 1.1. RL sin modelo 
-El agente no necesita saber nada sobre el entorno. Se coloca un agente RL en cualquier sistema y asumiendo que a la política se le da acceso a las observaciones, acciones y estados internos, el agente obtendrá la mayor recompensa por sí solo.
+### 1.1. RL sin modelo (model-free RL)
+El agente aún no sabiendo nada sobre el entorno es capaz de aprender la política óptima. Por ejemplo, el agente no necesita saber las leyes que rigen al robot caminante ni como se mueven las articulaciones. Se coloca un agente RL en cualquier sistema y asumiendo que a la política se le da acceso a las observaciones, acciones y estados internos, el agente obtendrá la mayor recompensa por sí solo. A esto se le llama **RL sin modelo**. 
 
-El agente debe explorar todo el espacio de estados para calcular la mayor recompensa, lo que conlleva más tiempo en aprender la política óptima.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/rl_no_modelo.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    RL sin un modelo que lo ayude.
+</div>
+
+Como el agente no tiene conocimiento del entorno, debe explorar todas las áreas del espacio de estados para averiguar cómo recolectar la mayor recompensa, lo que conlleva más tiempo en aprender la política óptima.
 
 El RL sin modelo se utiliza cuando es difícil generar un modelo. Ej: controlar un auto, robot caminante.
 
 
-### 1.2. RL basado en modelo: 
-Sin ninguna comprensión del entorno el agente deberá explorar todas las áreas del espacio de estados, para cumplir su función de valor, por lo que gastará tiempo explorando áreas de bajas recompensas mientras está aprendiendo. Al proporcionar un modelo del entorno, proporcionamos al agente información de zonas del espacio de estado que no valen la pena explorar. Entonces, el modelo puede complementar el proceso de aprendizaje evitando áreas que sabe que son malas y el agente aprenderá mejor.
+### 1.2. RL basado en modelo (Model-based RL) 
+Sin ninguna comprensión del entorno el agente deberá explorar todas las áreas del espacio de estados, por lo que gastará tiempo explorando áreas de bajas recompensas mientras está aprendiendo. Al proporcionar un modelo del entorno, o parte de él, proporcionamos al agente información de zonas del espacio de estado que no valen la pena explorar. Entonces, el modelo puede complementar el proceso de aprendizaje evitando áreas que sabe que son malas y el agente aprenderá mejor.
 
 Este modelo sirve de guía para el agente, complementando el aprendizaje de este último. El tiempo es menor en aprender la política óptima.
+
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/rl_con_modelo.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    RL con un modelo que lo ayude.
+</div>
+
 
 
 ### 1.3. ¿Entorno real (físico) o simulado?
@@ -217,24 +390,38 @@ Cuando puede ocurrir daño en el hardware o a las personas se ocupa un entorno s
 
 Comparación entorno real vs simulado:
 1. Real 
-    - preciso
-    - simple
-    - algunas veces necesario (difícil de hacer modelo)
+    - Preciso
+    - Simple: no se gasta tiempo creando y validando el modelo
+    - Necesario: algunas veces necesario (difícil de hacer modelo)
 2. Simulado
-    - veloz
-    - fácil de modelar condiciones de testeo
-    - seguro
+    - Veloz y paralelizable
+    - Fácil de modelar condiciones de testeo
+    - Seguro
+
+#### RL en matlab
+Si ya tenemos un modelo en Matlab de nuestro sistema, reemplazamos el controlador existente con un agente RL, y añadimos una función de recompensa al entorno, y así empezamos el proceso de aprendizaje.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/rl_matlab.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Implementación de RL con modelo Matlab.
+</div>
+
 
 ## 2. Señal de recompensa
-Debemos recompensar al agente por sus acciones, para así orientarlo a alcanzar el objetivo. 
+Debemos recompensar al agente por sus acciones, para así orientarlo a alcanzar el objetivo. Esto requiere crear una función de recompensa para que el algoritmo de aprendizaje entienda cuando la política se está volviendo mejor.
 
-En RL no hay un límite para crear una función de recompensa, podemos tener muchas, pocas, sólo al final de un episodio, por tiempo, por alcanzar el objetivo final, etc. Lo que sí hay que tener en cuenta es que la función de recompensa debe producir un número escalar que indique la *bondad* de estar en un estado y haber ejecutado una acción determinada.
+### 2.1. ¿Qué es una recompensa?
+> La recompensa es una función que produce un número escalar que representa la *bondad* de estar en un estado particular y realizar una acción determinada.
 
 $$
 \text{recompensa} = f(\text{estado}, \text{acción})
 $$
 
-Las recompensas pueden ser:
+En RL no hay un límite para crear una función de recompensa. Las recompensas pueden ser:
 - escasas
 - en cada paso de tiempo (time step)
 - al final de cada episodio
@@ -243,17 +430,36 @@ Las recompensas pueden ser:
 
 Hacer una función de recompensa buena es difícil. No existe una forma sencilla de diseñar una señal o función de recompensa para garantizar que el agente converja a la solución que se quiere. Esto se debe a dos razones:
 
-1. A menudo el objetivo viene de una larga secuencia de acciones. Si sólo recompensamos por cumplir el objeivo, el agente se equivocará por largos periodos de tiempo sin recibir recompensa, a esto se le llama **recompensas escasas**. Es muy poco probable que el agente se tope al azar con la secuencia de acciones que produce la recompensa escasa. Confiar en esta exploración aleatoria es bastante ineficiente, ya que es un aprendizaje muy lento, incluso llega a no ser práctico. Este problema se puede solucionar con el **reward shaping** o dar forma a la recompensa. Si proporcionamos **recompensas intermedias** más pequeñas que induzcan al agente a seguir el camino correcto, lograremos que el agente consiga su objetivo.
+1. A menudo el objetivo se cumple luego de una larga secuencia de acciones. Si sólo recompensamos por cumplir el objetivo, el agente se equivocará por largos periodos de tiempo sin recibir recompensas, a esto se le llama **recompensas escasas**. Es muy poco probable que el agente se tope al azar con la secuencia de acciones que produce la recompensa escasa. Confiar en esta exploración aleatoria es bastante ineficiente, ya que es un aprendizaje muy lento, incluso llega a no ser práctico. Este problema se puede solucionar con el **reward shaping** o dar forma a las recompensas. Si proporcionamos **recompensas intermedias** más pequeñas que induzcan al agente a seguir el camino correcto, lograremos que el agente consiga su objetivo.
 
-2. Si se le da un atajo a un algoritmo de optimización, él lo tomará. Esto hace que el agente converja a la solución que queremos dada la función de recompensa, pero no de una manera idónea. Los atajos están ocultos en la función de recompensa. Por ejemplo: tenemos un robot caminante cuyo objetivo es caminar hasta los 10 metros. Supongamos que tenemos pensado darle 2 recompensas intermedias y 1 final por llegar a los 10 metros. Además de llegar al objetivo es importante considerar el *cómo* se llega a él; para este robot desplomarse y arrastrase hasta llegar a los 10 metros es lo mismo que caminar erguido y sin desviarse hasta los 10 metros. Al agente le da lo mismo porque al final igual va a recibir la recompensa. Sin embargo, a nosotros nos interesa que el robot cumpla su objetivo de manera idónea.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/reward_shaping.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Reward shaping.
+</div>
+
+
+2. El reward shaping viene con su propio conjunto de problemas. Si se le da un atajo a un algoritmo de optimización, él lo tomará. Los atajos están ocultos en la función de recompensa. Una función de recompensa mal moldeada puede hacer que el agente converja a una solución no ideal, incluso si produce la mayor recompensa. Por ejemplo: tenemos un robot caminante cuyo objetivo es caminar hasta los 10 metros. Supongamos que tenemos pensado darle recompensas intermedias y 1 grande al final por llegar a los 10 metros. Además de llegar al objetivo es importante considerar el *cómo* se llega a él; para este robot desplomarse y arrastrase como una oruga hasta llegar a los 10 metros es lo mismo que caminar erguido y sin desviarse hasta los 10 metros. Al agente le da lo mismo porque al final igual va a recibir la recompensa. Sin embargo, a nosotros nos interesa que el robot cumpla su objetivo de manera idónea.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/reward_shaping_problema.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    El problema del reward shaping.
+</div>
 
 ¿Cómo solucionamos el problema de los atajos? Inyectando conocimiento específico del dominio en el agente. Vamos a recompensar al agente no solo por llegar al objetivo sino también por el *cómo lo hace*. Por ejemplo, recompensar al robot por caminar erguido, a una velocidad determinada, que no se desvíe del camino, etc.
 
-### 2.1. Exploración y explotación
+### 2.2. Exploración y explotación
 La idea es la siguiente:
 - Explotación: agente explota el entorno eligiendo las acciones que recogen la mayor cantidad de recompensas que ya conoce.
 - Exploración: elegir acciones que exploran partes del entorno que aún no se conocen.
-
 
 Existe un trade-off entre exploración y explotación mientras el agente interactúa con el entorno.
 
@@ -283,9 +489,9 @@ Con explotación pura, el algoritmo de aprendizaje converge en una política sub
 #### Exploración pura
 Si bien existe riesgo de recibir menos recompensas, la exploración permite expandir la política para los nuevos estados. Tenemos la chance de recibir mejores recompensas, y por ende, más posibilidades de encontrar la solución global.
 
-La exploración pura no es buena cuando se entrena con hardware físico, ya que lo puede dañar. Además el aprendizaje es más lento y puede que no encontremos una solución en tiempo razonable.
+La exploración pura no es buena cuando se entrena con hardware físico, ya que lo puede dañar, o peor aún, puede dañar a las personas, por ejemplo, probar una entrada de volante aleatoria en un auto autónomo. Además el aprendizaje es más lento y puede que no encontremos una solución en tiempo razonable.
 
-Los mejores algoritmos son los que logran el equilibrio entre ambas.
+Los mejores algoritmos de aprendizaje RL son los que logran el equilibrio entre ambas. Generalmente, un agente explora más al comienzo del aprendizaje y gradualmente pasa a un rol más de explotación al final. 
 
 
 ## 3. Política
@@ -544,22 +750,55 @@ Si el aprendizaje se hizo físicamente, o sea, en un entorno real, la política 
  
 Si el aprendizaje se hizo fuera de línea (offline), o sea, en una simulación; si la política es lo suficientemente óptima, se detiene el aprendizaje y la política estática se puede implementar en cualquier número de objetivos.
 
-*-----imagen offline simulation-----*
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/deploy_politica.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Despliegue de la política en hardaware objetivo.
+</div>
 
 ### 5.2. Despligue del algoritmo de aprendizaje
-En algunos casos puede ser necesario continuar aprendiendo con hardware físico real después del despliegue. Algunos entornos pueden ser difíciles de modelar con precisión. 
-    - Esto quiere decir que la política es óptima para el modelo, pero no para el entorno real.
-    - El entorno cambia lentamente con el tiempo y el agente se debe adaptar a esos cambios.
+En algunos casos puede ser necesario continuar aprendiendo con hardware físico real después del despliegue. Algunos entornos pueden ser difíciles de modelar con precisión. Esto quiere decir que una política óptima para el modelo puede que no lo sea para el entorno real. Otra razón puede ser que el entorno cambia lentamente con el tiempo y el agente se debe adaptar a esos cambios.
 
-Es por todo esto que se recomienda desplegar o implementar tanto la política estática como el algoritmo de aprendizaje en el hardware de destino. Esto no da la opción de:
-    - Ejecutar la política estática, descativando el aprendizaje
-    - Continuar actualizando la política, activando el aprendizaje.
+Es por todo esto que se recomienda desplegar o implementar tanto la política estática como el algoritmo de aprendizaje en el hardware de destino. Con esta configuración, tenemos la opción de ejecutar la política estática, desactivando el aprendizaje; o continuar actualizando la política, activando el aprendizaje.
+
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/deploy_alg.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Despliegue del algoritmo RL en hardaware objetivo.
+</div>
+
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/deploy_alg2.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    El aprendizaje puede ser complementario entre el entorno simulado y el entorno real. 
+</div>
 
 
 ## XI. Lo malo del Reinforcement Learning
 Existen dos problemas principales:
 1. ¿Cómo sabemos que la solución que entrega RL funciona?
 2. ¿Se puede ajustar manualmente si no es perfecto?
+
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/mal_rl.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Podemos tener un agente perfecto, un entorno perfecto y un algoritmo RL que converje a una solución, sin embargo, la política puede que no sea tan buena.
+</div>
 
 ### Lo inexplicable de la red neuronal
 La política se conforma de una red neuronal con:
@@ -568,6 +807,15 @@ La política se conforma de una red neuronal con:
 - funciones de activación no lineales
 - A esto hay que sumarle la estructura de la red neuronal
 Todo esto resulta en una función muy compleja!
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/complex_red.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Una red neuronal es muy compleja.
+</div>
 
 > La función que aproxima la red neuronal es una función muy compleja. Se comporta como una caja negra para el diseñador. No conocemos la razón del valor de un weight o bias dado dentro de la red.
 
