@@ -153,10 +153,33 @@
       <p><em>Material obtenido del e-book de matlab de Reinforcement Learning</em></p>
 
 <h1 id="reinforcement-learning-rl">Reinforcement Learning (RL)</h1>
-
 <p>Permite resolver problemas muy difíciles de control. Por ejemplo, un robot caminante. Un robot caminante es muy difícil de lograr con el enfoque de control, ya que necesitaríamos muchos loops de control, sensores, controladores de motor, etc.</p>
 
 <p>En RL, trabajamos con un entorno dinámico, a diferencia del Supervised learning y el Unsupervised learning que son datasets estáticos.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/ul_sl_rl-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/ul_sl_rl-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/ul_sl_rl-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/ul_sl_rl.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Unsupervised learning, Supervised learning y Reinforcement Learning se utilizan para problemas diferentes. El primero para encontrar patrones ocultos interesantes, el segundo para etiquetar correctamente los datos, y el tercero se utiliza para encontrar la mejor secuencia de acciones que generan la salida óptima.
+</div>
 
 <p>RL consiste en un agente que se relaciona con un entorno y va tomando acciones que afectan a ese entorno. Dicho entorno cambia de estado tras cada acción que tome el agente y además le proporciona una recompensa al agente por cada acción que ejecute. Estas acciones o decisiones pueden ser buenas o malas, y dependiendo de ésto va a recibir un recompensa buena o mala respectivamente. Cabe destacar que <strong>al agente nunca se le dice qué hacer, sino que él mismo debe descubrir qué acciones tomar, de tal forma que produzca la mayor recompensa a largo plazo</strong>.</p>
 
@@ -167,8 +190,6 @@
 <blockquote>
   <p>El agente es un software que explora, interactúa y aprende del entorno</p>
 </blockquote>
-
-<p>… Aprende … ¿Cómo un agente <em>aprende</em> del entorno? El agente usa la información que obtiene del entorno (observaciones del estado del entorno y recompensa) para ajustar sus acciones a futuro. La recompensa es muy importante porque le va a decir al agente qué tan buena fue la acción que acaba de realizar.</p>
 
 <p>Ejemplo de reinforcement learning:</p>
 <ol>
@@ -187,46 +208,164 @@
 <p>El procedimiento es el siguiente:</p>
 
 <ol>
-  <li>Agente observa el estado actual del entorno
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>AGENTE &lt;----observaciones--- ENTORNO
-</code></pre></div>    </div>
-  </li>
-  <li>Decide cual acción tomar dependiendo del estado
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>AGENTE ----acciones----&gt; ENTORNO
-</code></pre></div>    </div>
-  </li>
-  <li>Entorno cambia de estado y produce una recompensa por la acción ejecutada
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>AGENTE &lt;---- observaciones nuevo estado ---- ENTORNO
-    &lt;----  Recompensa -------------------
-</code></pre></div>    </div>
-  </li>
+  <li>Agente observa el estado actual del entorno</li>
+</ol>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/paso1-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/paso1-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/paso1-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/paso1.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<ol>
+  <li>Decide cual acción tomar dependiendo del estado</li>
+</ol>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/paso2-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/paso2-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/paso2-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/paso2.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<ol>
+  <li>Entorno cambia de estado y produce una recompensa por la acción ejecutada</li>
+</ol>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/paso3-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/paso3-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/paso3-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/paso3.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<ol>
   <li>¿Fueron buenas las acciones o malas?
     <ul>
       <li>buenas: repetirlas</li>
       <li>malas: evitarlas
-Repetir hasta terminar el aprendizaje.
-        <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>AGENTE INTELIGENTE ----- acciones ----&gt; ENTORNO
-               &lt;---observaciones--
-               &lt;----recompensas---
-</code></pre></div>        </div>
-      </li>
+Repetir hasta terminar el aprendizaje.</li>
     </ul>
   </li>
 </ol>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/paso4-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/paso4-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/paso4-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/paso4.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
 
 <h2 id="ii-política">II. Política</h2>
 <p>El agente internamente toma las observaciones del estado del entorno y las asigna a acciones realizando así un mapeo. En otras palabras, se puede entender este mapeo como una función que recibe entradas y genera una salida. A este mapeo se le llama <strong>política</strong>. La política es muy importante, ya que decide qué acción ejecutar dado un conjunto de observaciones de estado. Básicamente la política es el <em>cerebro</em> de nuestro agente, y le va a indicar qué hacer. La política se puede representar de varias formas, una forma muy útil es que si tenemos observaciones de estado complejas como por ejemplo, imágenes, entonces podemos usar una red neuronal para procesar dichos datos.</p>
 
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/politica-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/politica-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/politica-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/politica.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    La política es la función que toma observaciones y genera acciones que influyen sobre el entorno.
+</div>
+
 <p>Ejemplo de política en un robot caminante:</p>
 <ol>
-  <li>observaciones: estado de cada articulación y los miles de pixeles de un sensor de cámara</li>
-  <li>política: toma las observaciones y genera comandos de acción que mueven al robot</li>
-  <li>recompensa: qué tan bien funcionaron los comandos: ¿Se cayó el robot?, ¿Se desvió del camino?, ¿Se está arrastrando? ¿Esta caminando erguido? Etc.</li>
+  <li>Observaciones: ángulo de cada articulación, aceleración, velocida angular del tronco y los miles de pixeles de un sensor de visión.</li>
+  <li>Política: toma las observaciones y genera comandos de acción que mueven los brazos y piernas del robot.</li>
+  <li>Recompensa: qué tan bien funcionaron la combinación de comandos: ¿Se cayó el robot?, ¿Se desvió del camino?, ¿Se está arrastrando? ¿Esta caminando erguido? Etc.</li>
 </ol>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/politica_robot-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/politica_robot-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/politica_robot-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/politica_robot.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    RL en un robot caminante.
+</div>
 
 <h2 id="iii-algoritmo-de-reinforcement-learning">III. Algoritmo de Reinforcement Learning</h2>
 <p>La política debe ajustarse, no puede ser estática, ya que el entorno es dinámico; para esto existen los <strong>algoritmos de Reinforcement Learning</strong>. Un algoritmo de RL hace óptima a la política, cambiandola en función de las acciones que se tomaron, las observaciones del estado del entorno y la cantidad de recompensa recolectada.</p>
@@ -235,7 +374,38 @@ Repetir hasta terminar el aprendizaje.
   <p>Un agente de RL utiliza un algoritmo de RL para modificar su política a medida que interactúa con el entorno, de modo que eventualmente, dado cualquier estado, siempre tomará la mejor acción: la que producirá la mayor recompensa a largo plazo.</p>
 </blockquote>
 
-<p><em>—–imagen de como es rl—-</em></p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/agente_alg-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/agente_alg-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/agente_alg-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/agente_alg.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Algoritmos RL + la política.
+</div>
+
+<h2 id="iv-cómo-un-agente-aprende-del-entorno">IV. ¿Cómo un agente aprende del entorno?</h2>
+<p>Una política es una función compuesta por parámetros lógicos y ajustables. Para una estructura de política dada, existe un conjunto de parámetros que producirán una política óptima, o sea, un mapeo de los estados a las acciones que producen la recompensa más grande a largo plazo.</p>
+
+<blockquote>
+  <p>El aprendizaje es el término que se le da al proceso de ajustar sistemáticamente esos parámetros para converger en la política óptima.</p>
+</blockquote>
+
+<p>El agente usa la información que obtiene del entorno (observaciones del estado del entorno y recompensa) para ajustar sus acciones a futuro. La recompensa es muy importante porque le va a decir al agente qué tan buena fue la acción que acaba de realizar.</p>
 
 <h2 id="iv-valor-y-recompensa">IV. Valor y recompensa</h2>
 <ul>
@@ -322,26 +492,140 @@ Estado       s0  s1   s2    s3    s4
 <h2 id="viii-control-de-sistemas-y-rl">VIII. Control de sistemas y RL</h2>
 <p>Tenemos un sistema o proceso industrial que queremos controlar. Controlamos las entradas del sistema (acciones) para intentar generar las salidas deseadas (comportamientos).</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>acción -&gt; sistema -&gt; comportamiento deseado
-</code></pre></div></div>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/control-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/control-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/control-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/control.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Sistema de control.
+</div>
 
 <p>Controlamos las entradas mediante un software controlador.</p>
 
-<p>Utilizamos las observaciones del estado (retroalimentación) para mejorar el rendimiento y corregir errores</p>
+<p>Utilizamos las observaciones del estado (retroalimentación) para mejorar el rendimiento y corregir errores y perturbaciones aleatorias.</p>
 
-<p><em>—-imagen de lazo cerrado—–</em></p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
 
-<p>Si el problema es muy complejo, utilizamos loops de control andidados, sensores y controladores, lo que es muy difícil de implementar y modificar. En control, el diseñador es el que se preocupa de modificar explícitamente el sistema para que tenga el comportamiento idóneo. No obstante, podemos utilizar RL para resolver los problemas de control. En RL, el software por sí mismo intenta aprender el comportamiento óptimo a lo largo del tiempo. La idea es tomar las observaciones del estado del sistema y el agente generará la mejor acción para controlar el sistema. <em>El agente sería el controlador</em>.</p>
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/lazo_cerrado-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/lazo_cerrado-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/lazo_cerrado-1400.webp"></source>
+    
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>observaciones del estado -&gt; agente RL (controlador) -&gt; acciones
-</code></pre></div></div>
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/lazo_cerrado.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
 
-<p><em>—imagen rl + control—-</em></p>
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Un sistema de control en lazo cerrado utiliza la retroalimentación para ajustar las acciones.
+</div>
+
+<p>Si el problema es muy complejo, utilizamos múltiples loops de control andidados, motores, sensores y controladores, lo que es muy difícil de implementar y modificar.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/loops-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/loops-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/loops-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/loops.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Este sería el controlador para un robot. Estos loops interactúan entre sí.
+</div>
+
+<p>El controlador tiene que encontrar la combinación de comandos o acciones que hacen que el sistema de comporte correctamente, incluso frente a perturbarciones.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/robot_control-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/robot_control-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/robot_control-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/robot_control.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Para el caso de un robot caminante, el controlador tendría que mover cada articulación del robot para que camine y no tropiece, incluso frente a obstáculos.
+</div>
+
+<p>En control, el diseñador es el que se preocupa de modificar explícitamente el sistema para que tenga el comportamiento idóneo. No obstante, podemos utilizar RL para resolver los problemas de control. En RL, el software por sí mismo intenta aprender el comportamiento óptimo a lo largo del tiempo. La idea es tomar las observaciones del estado del sistema y el agente generará las mejores acciones para controlar el sistema. <em>El agente sería el controlador</em>.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/rl_ayuda_control-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/rl_ayuda_control-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/rl_ayuda_control-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/rl_ayuda_control.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    RL permite generar una sola función matemática que reemplace a todas esos loops complicados de control.
+</div>
 
 <p>Estrictamente hablando, el controlador sería la política (recordar que la política es el cerebro del agente), ya que va a mapear las observaciones del estado del sistema a comandos de acción que permitan generar el comportamiento que queremos que este sistema tenga. Nótese que <em>el entorno sería el sistema a controlar</em>.</p>
 
 <blockquote>
-  <p>El controlador influye sobre el sistema cambiando su estado</p>
+  <p>El controlador influye sobre el sistema cambiando su estado.</p>
 </blockquote>
 
 <h2 id="ix-uso-de-rl-en-control">IX. Uso de RL en control</h2>
@@ -352,33 +636,272 @@ Estado       s0  s1   s2    s3    s4
   <li>Aplicar un algoritmo de aprendizaje eficiente que sepa cómo ajustar los parámetros para que el proceso converja en un tiempo razonable: Elegir un algoritmo de RL</li>
 </ol>
 
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/uso_rl_control-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/uso_rl_control-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/uso_rl_control-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/uso_rl_control.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Uso de RL en un sistema de control.
+</div>
+
 <h2 id="x-workflow-de-rl">X. Workflow de RL</h2>
 <p>El flujo de trabajo de RL consiste en:</p>
 <ol>
   <li>Establecer un entorno: qué debe existir en ese entorno. Además debemos decidir: ¿Durante el entrenamiento probamos con un entorno real (hardware real) o simulado (uso de modelos matemáticos del sistema)?</li>
-  <li>Definir la señal de recompensa: qué debe hacer el agente, cómo debe llegar al objetivo, diseñar la función de recompensa</li>
-  <li>Establecer la política: cómo representamos la política: estructuración de los parámetros y la lógica de la toma de decisiones del agente. ¿Cuál es la información que recibe el agente? ¿Cuál debe ser la salida que genera el agente? ¿De qué tipo son estas entradas y salidas? ¿Voy a representar la política con una red neuronal? Etc.</li>
-  <li>Algoritmo de RL: mediante el algoritmo obtendremos la política óptima. Se debe elegir el mejor de acuerdo a nuestro caso. Existen algoritmo de RL que dependen de que si las entradas y salidas son continuas o discretas.</li>
-  <li>Deploy/verificación: se implementa la política en un agente y se verfican los resultados.</li>
 </ol>
 
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/1_entorno-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/1_entorno-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/1_entorno-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/1_entorno.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<ol>
+  <li>Definir la señal de recompensa: qué debe hacer el agente, cómo debe llegar al objetivo, diseñar la función de recompensa que incentive al agente.</li>
+</ol>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/2_recompensa-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/2_recompensa-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/2_recompensa-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/2_recompensa.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<ol>
+  <li>Establecer la política: cómo representamos la política: estructuración de los parámetros y la lógica de la toma de decisiones del agente. ¿Cuál es la información que recibe el agente? ¿Cuál debe ser la salida que genera el agente? ¿De qué tipo son estas entradas? ¿Voy a representar la política con una red neuronal? Etc.</li>
+</ol>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/3_politica-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/3_politica-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/3_politica-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/3_politica.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<ol>
+  <li>Entrenamiento: necesitamos escoger un algoritmo de RL que permita obtener la política óptima. Se debe elegir el mejor de acuerdo a nuestro caso. Los algoritmos de RL dependen de la estructuración de la política.</li>
+</ol>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/4_entrenamiento-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/4_entrenamiento-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/4_entrenamiento-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/4_entrenamiento.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<ol>
+  <li>Deploy/Implementación: se implementa la política en un entorno real y se verfican los resultados.</li>
+</ol>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/5_deploy-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/5_deploy-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/5_deploy-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/5_deploy.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
 <h2 id="1-entorno">1. Entorno</h2>
-<p>En RL, el entorno es de dónde el agente aprende. El entorno es todo lo que está <strong>afuera</strong> del agente. Esto llevado a control sería todo lo que no es el controlador: lazo de retroalimentación, sistema, señal de referencia, etc.</p>
+<p>En RL, el entorno es de dónde el agente aprende. El entorno es todo lo que está <strong>afuera</strong> del agente. Es donde el agente envía acciones, y es lo que genera recomepensas y observaciones.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/entorno_rl-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/entorno_rl-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/entorno_rl-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/entorno_rl.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Entorno en RL.
+</div>
+
+<p>En RL, el entorno es todo menos el agente. Esto llevado a control sería todo lo que no es el controlador: lazo de retroalimentación, sistema, señal de referencia, etc.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/entorno_rl_control-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/entorno_rl_control-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/entorno_rl_control-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/entorno_rl_control.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Entorno RL en control.
+</div>
 
 <p>Un agente realiza <strong>acciones</strong> que influyen sobre el entorno. El entorno cambia de estado, al hacerlo, informa al agente entregándole <strong>observaciones de estado</strong> y una <strong>recompensa</strong>.</p>
 
 <p>Existen dos tipos de RL:</p>
-<h3 id="11-rl-sin-modelo">1.1. RL sin modelo</h3>
-<p>El agente no necesita saber nada sobre el entorno. Se coloca un agente RL en cualquier sistema y asumiendo que a la política se le da acceso a las observaciones, acciones y estados internos, el agente obtendrá la mayor recompensa por sí solo.</p>
+<h3 id="11-rl-sin-modelo-model-free-rl">1.1. RL sin modelo (model-free RL)</h3>
+<p>El agente aún no sabiendo nada sobre el entorno es capaz de aprender la política óptima. Por ejemplo, el agente no necesita saber las leyes que rigen al robot caminante ni como se mueven las articulaciones. Se coloca un agente RL en cualquier sistema y asumiendo que a la política se le da acceso a las observaciones, acciones y estados internos, el agente obtendrá la mayor recompensa por sí solo. A esto se le llama <strong>RL sin modelo</strong>.</p>
 
-<p>El agente debe explorar todo el espacio de estados para calcular la mayor recompensa, lo que conlleva más tiempo en aprender la política óptima.</p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/rl_no_modelo-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/rl_no_modelo-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/rl_no_modelo-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/rl_no_modelo.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    RL sin un modelo que lo ayude.
+</div>
+
+<p>Como el agente no tiene conocimiento del entorno, debe explorar todas las áreas del espacio de estados para averiguar cómo recolectar la mayor recompensa, lo que conlleva más tiempo en aprender la política óptima.</p>
 
 <p>El RL sin modelo se utiliza cuando es difícil generar un modelo. Ej: controlar un auto, robot caminante.</p>
 
-<h3 id="12-rl-basado-en-modelo">1.2. RL basado en modelo:</h3>
-<p>Sin ninguna comprensión del entorno el agente deberá explorar todas las áreas del espacio de estados, para cumplir su función de valor, por lo que gastará tiempo explorando áreas de bajas recompensas mientras está aprendiendo. Al proporcionar un modelo del entorno, proporcionamos al agente información de zonas del espacio de estado que no valen la pena explorar. Entonces, el modelo puede complementar el proceso de aprendizaje evitando áreas que sabe que son malas y el agente aprenderá mejor.</p>
+<h3 id="12-rl-basado-en-modelo-model-based-rl">1.2. RL basado en modelo (Model-based RL)</h3>
+<p>Sin ninguna comprensión del entorno el agente deberá explorar todas las áreas del espacio de estados, por lo que gastará tiempo explorando áreas de bajas recompensas mientras está aprendiendo. Al proporcionar un modelo del entorno, o parte de él, proporcionamos al agente información de zonas del espacio de estado que no valen la pena explorar. Entonces, el modelo puede complementar el proceso de aprendizaje evitando áreas que sabe que son malas y el agente aprenderá mejor.</p>
 
 <p>Este modelo sirve de guía para el agente, complementando el aprendizaje de este último. El tiempo es menor en aprender la política óptima.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/rl_con_modelo-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/rl_con_modelo-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/rl_con_modelo-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/rl_con_modelo.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    RL con un modelo que lo ayude.
+</div>
 
 <h3 id="13-entorno-real-físico-o-simulado">1.3. ¿Entorno real (físico) o simulado?</h3>
 <p>Cuando puede ocurrir daño en el hardware o a las personas se ocupa un entorno simulado, debido a los costos. Además, la simulación es más rápida que en tiempo real y se pueden ejecutar en paralelo.</p>
@@ -387,28 +910,58 @@ Estado       s0  s1   s2    s3    s4
 <ol>
   <li>Real
     <ul>
-      <li>preciso</li>
-      <li>simple</li>
-      <li>algunas veces necesario (difícil de hacer modelo)</li>
+      <li>Preciso</li>
+      <li>Simple: no se gasta tiempo creando y validando el modelo</li>
+      <li>Necesario: algunas veces necesario (difícil de hacer modelo)</li>
     </ul>
   </li>
   <li>Simulado
     <ul>
-      <li>veloz</li>
-      <li>fácil de modelar condiciones de testeo</li>
-      <li>seguro</li>
+      <li>Veloz y paralelizable</li>
+      <li>Fácil de modelar condiciones de testeo</li>
+      <li>Seguro</li>
     </ul>
   </li>
 </ol>
 
-<h2 id="2-señal-de-recompensa">2. Señal de recompensa</h2>
-<p>Debemos recompensar al agente por sus acciones, para así orientarlo a alcanzar el objetivo.</p>
+<h4 id="rl-en-matlab">RL en matlab</h4>
+<p>Si ya tenemos un modelo en Matlab de nuestro sistema, reemplazamos el controlador existente con un agente RL, y añadimos una función de recompensa al entorno, y así empezamos el proceso de aprendizaje.</p>
 
-<p>En RL no hay un límite para crear una función de recompensa, podemos tener muchas, pocas, sólo al final de un episodio, por tiempo, por alcanzar el objetivo final, etc. Lo que sí hay que tener en cuenta es que la función de recompensa debe producir un número escalar que indique la <em>bondad</em> de estar en un estado y haber ejecutado una acción determinada.</p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/rl_matlab-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/rl_matlab-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/rl_matlab-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/rl_matlab.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Implementación de RL con modelo Matlab.
+</div>
+
+<h2 id="2-señal-de-recompensa">2. Señal de recompensa</h2>
+<p>Debemos recompensar al agente por sus acciones, para así orientarlo a alcanzar el objetivo. Esto requiere crear una función de recompensa para que el algoritmo de aprendizaje entienda cuando la política se está volviendo mejor.</p>
+
+<h3 id="21-qué-es-una-recompensa">2.1. ¿Qué es una recompensa?</h3>
+<blockquote>
+  <p>La recompensa es una función que produce un número escalar que representa la <em>bondad</em> de estar en un estado particular y realizar una acción determinada.</p>
+</blockquote>
 
 \[\text{recompensa} = f(\text{estado}, \text{acción})\]
 
-<p>Las recompensas pueden ser:</p>
+<p>En RL no hay un límite para crear una función de recompensa. Las recompensas pueden ser:</p>
 <ul>
   <li>escasas</li>
   <li>en cada paso de tiempo (time step)</li>
@@ -420,17 +973,64 @@ Estado       s0  s1   s2    s3    s4
 <p>Hacer una función de recompensa buena es difícil. No existe una forma sencilla de diseñar una señal o función de recompensa para garantizar que el agente converja a la solución que se quiere. Esto se debe a dos razones:</p>
 
 <ol>
-  <li>
-    <p>A menudo el objetivo viene de una larga secuencia de acciones. Si sólo recompensamos por cumplir el objeivo, el agente se equivocará por largos periodos de tiempo sin recibir recompensa, a esto se le llama <strong>recompensas escasas</strong>. Es muy poco probable que el agente se tope al azar con la secuencia de acciones que produce la recompensa escasa. Confiar en esta exploración aleatoria es bastante ineficiente, ya que es un aprendizaje muy lento, incluso llega a no ser práctico. Este problema se puede solucionar con el <strong>reward shaping</strong> o dar forma a la recompensa. Si proporcionamos <strong>recompensas intermedias</strong> más pequeñas que induzcan al agente a seguir el camino correcto, lograremos que el agente consiga su objetivo.</p>
-  </li>
-  <li>
-    <p>Si se le da un atajo a un algoritmo de optimización, él lo tomará. Esto hace que el agente converja a la solución que queremos dada la función de recompensa, pero no de una manera idónea. Los atajos están ocultos en la función de recompensa. Por ejemplo: tenemos un robot caminante cuyo objetivo es caminar hasta los 10 metros. Supongamos que tenemos pensado darle 2 recompensas intermedias y 1 final por llegar a los 10 metros. Además de llegar al objetivo es importante considerar el <em>cómo</em> se llega a él; para este robot desplomarse y arrastrase hasta llegar a los 10 metros es lo mismo que caminar erguido y sin desviarse hasta los 10 metros. Al agente le da lo mismo porque al final igual va a recibir la recompensa. Sin embargo, a nosotros nos interesa que el robot cumpla su objetivo de manera idónea.</p>
-  </li>
+  <li>A menudo el objetivo se cumple luego de una larga secuencia de acciones. Si sólo recompensamos por cumplir el objetivo, el agente se equivocará por largos periodos de tiempo sin recibir recompensas, a esto se le llama <strong>recompensas escasas</strong>. Es muy poco probable que el agente se tope al azar con la secuencia de acciones que produce la recompensa escasa. Confiar en esta exploración aleatoria es bastante ineficiente, ya que es un aprendizaje muy lento, incluso llega a no ser práctico. Este problema se puede solucionar con el <strong>reward shaping</strong> o dar forma a las recompensas. Si proporcionamos <strong>recompensas intermedias</strong> más pequeñas que induzcan al agente a seguir el camino correcto, lograremos que el agente consiga su objetivo.</li>
 </ol>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/reward_shaping-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/reward_shaping-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/reward_shaping-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/reward_shaping.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Reward shaping.
+</div>
+
+<ol>
+  <li>El reward shaping viene con su propio conjunto de problemas. Si se le da un atajo a un algoritmo de optimización, él lo tomará. Los atajos están ocultos en la función de recompensa. Una función de recompensa mal moldeada puede hacer que el agente converja a una solución no ideal, incluso si produce la mayor recompensa. Por ejemplo: tenemos un robot caminante cuyo objetivo es caminar hasta los 10 metros. Supongamos que tenemos pensado darle recompensas intermedias y 1 grande al final por llegar a los 10 metros. Además de llegar al objetivo es importante considerar el <em>cómo</em> se llega a él; para este robot desplomarse y arrastrase como una oruga hasta llegar a los 10 metros es lo mismo que caminar erguido y sin desviarse hasta los 10 metros. Al agente le da lo mismo porque al final igual va a recibir la recompensa. Sin embargo, a nosotros nos interesa que el robot cumpla su objetivo de manera idónea.</li>
+</ol>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/reward_shaping_problema-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/reward_shaping_problema-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/reward_shaping_problema-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/reward_shaping_problema.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    El problema del reward shaping.
+</div>
 
 <p>¿Cómo solucionamos el problema de los atajos? Inyectando conocimiento específico del dominio en el agente. Vamos a recompensar al agente no solo por llegar al objetivo sino también por el <em>cómo lo hace</em>. Por ejemplo, recompensar al robot por caminar erguido, a una velocidad determinada, que no se desvíe del camino, etc.</p>
 
-<h3 id="21-exploración-y-explotación">2.1. Exploración y explotación</h3>
+<h3 id="22-exploración-y-explotación">2.2. Exploración y explotación</h3>
 <p>La idea es la siguiente:</p>
 <ul>
   <li>Explotación: agente explota el entorno eligiendo las acciones que recogen la mayor cantidad de recompensas que ya conoce.</li>
@@ -463,9 +1063,9 @@ s0   s1   s2   s3          s4            s5     s6   s7
 <h4 id="exploración-pura">Exploración pura</h4>
 <p>Si bien existe riesgo de recibir menos recompensas, la exploración permite expandir la política para los nuevos estados. Tenemos la chance de recibir mejores recompensas, y por ende, más posibilidades de encontrar la solución global.</p>
 
-<p>La exploración pura no es buena cuando se entrena con hardware físico, ya que lo puede dañar. Además el aprendizaje es más lento y puede que no encontremos una solución en tiempo razonable.</p>
+<p>La exploración pura no es buena cuando se entrena con hardware físico, ya que lo puede dañar, o peor aún, puede dañar a las personas, por ejemplo, probar una entrada de volante aleatoria en un auto autónomo. Además el aprendizaje es más lento y puede que no encontremos una solución en tiempo razonable.</p>
 
-<p>Los mejores algoritmos son los que logran el equilibrio entre ambas.</p>
+<p>Los mejores algoritmos de aprendizaje RL son los que logran el equilibrio entre ambas. Generalmente, un agente explora más al comienzo del aprendizaje y gradualmente pasa a un rol más de explotación al final.</p>
 
 <h2 id="3-política">3. Política</h2>
 <p>El agente se compone de una política y un algoritmo de aprendizaje de RL. Muchos algoritmos de aprendizaje requieren una estructura de política específica. La elección del algoritmo también depende de la naturaleza del entorno.</p>
@@ -779,16 +1379,82 @@ donde \(b\) es el <strong>bias</strong> o sesgo, \(w\) son los <strong>weights</
 
 <p>Si el aprendizaje se hizo fuera de línea (offline), o sea, en una simulación; si la política es lo suficientemente óptima, se detiene el aprendizaje y la política estática se puede implementar en cualquier número de objetivos.</p>
 
-<p><em>—–imagen offline simulation—–</em></p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/deploy_politica-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/deploy_politica-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/deploy_politica-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/deploy_politica.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Despliegue de la política en hardaware objetivo.
+</div>
 
 <h3 id="52-despligue-del-algoritmo-de-aprendizaje">5.2. Despligue del algoritmo de aprendizaje</h3>
-<p>En algunos casos puede ser necesario continuar aprendiendo con hardware físico real después del despliegue. Algunos entornos pueden ser difíciles de modelar con precisión. 
-    - Esto quiere decir que la política es óptima para el modelo, pero no para el entorno real.
-    - El entorno cambia lentamente con el tiempo y el agente se debe adaptar a esos cambios.</p>
+<p>En algunos casos puede ser necesario continuar aprendiendo con hardware físico real después del despliegue. Algunos entornos pueden ser difíciles de modelar con precisión. Esto quiere decir que una política óptima para el modelo puede que no lo sea para el entorno real. Otra razón puede ser que el entorno cambia lentamente con el tiempo y el agente se debe adaptar a esos cambios.</p>
 
-<p>Es por todo esto que se recomienda desplegar o implementar tanto la política estática como el algoritmo de aprendizaje en el hardware de destino. Esto no da la opción de:
-    - Ejecutar la política estática, descativando el aprendizaje
-    - Continuar actualizando la política, activando el aprendizaje.</p>
+<p>Es por todo esto que se recomienda desplegar o implementar tanto la política estática como el algoritmo de aprendizaje en el hardware de destino. Con esta configuración, tenemos la opción de ejecutar la política estática, desactivando el aprendizaje; o continuar actualizando la política, activando el aprendizaje.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/deploy_alg-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/deploy_alg-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/deploy_alg-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/deploy_alg.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Despliegue del algoritmo RL en hardaware objetivo.
+</div>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/deploy_alg2-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/deploy_alg2-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/deploy_alg2-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/deploy_alg2.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    El aprendizaje puede ser complementario entre el entorno simulado y el entorno real. 
+</div>
 
 <h2 id="xi-lo-malo-del-reinforcement-learning">XI. Lo malo del Reinforcement Learning</h2>
 <p>Existen dos problemas principales:</p>
@@ -796,6 +1462,30 @@ donde \(b\) es el <strong>bias</strong> o sesgo, \(w\) son los <strong>weights</
   <li>¿Cómo sabemos que la solución que entrega RL funciona?</li>
   <li>¿Se puede ajustar manualmente si no es perfecto?</li>
 </ol>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/mal_rl-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/mal_rl-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/mal_rl-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/mal_rl.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Podemos tener un agente perfecto, un entorno perfecto y un algoritmo RL que converje a una solución, sin embargo, la política puede que no sea tan buena.
+</div>
 
 <h3 id="lo-inexplicable-de-la-red-neuronal">Lo inexplicable de la red neuronal</h3>
 <p>La política se conforma de una red neuronal con:</p>
@@ -806,6 +1496,30 @@ donde \(b\) es el <strong>bias</strong> o sesgo, \(w\) son los <strong>weights</
   <li>A esto hay que sumarle la estructura de la red neuronal
 Todo esto resulta en una función muy compleja!</li>
 </ul>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/complex_red-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/complex_red-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/complex_red-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/complex_red.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Una red neuronal es muy compleja.
+</div>
 
 <blockquote>
   <p>La función que aproxima la red neuronal es una función muy compleja. Se comporta como una caja negra para el diseñador. No conocemos la razón del valor de un weight o bias dado dentro de la red.</p>
