@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-06-17T18:52:18+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
-</subtitle><entry><title type="html">Reinforcement Learning</title><link href="https://squirogar.github.io/blog/2023/reinforcement-learning/" rel="alternate" type="text/html" title="Reinforcement Learning" /><published>2023-06-10T20:30:00+00:00</published><updated>2023-06-10T20:30:00+00:00</updated><id>https://squirogar.github.io/blog/2023/reinforcement-learning</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/reinforcement-learning/"><![CDATA[<p><em>Material obtenido del e-book de matlab de Reinforcement Learning</em></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-06-18T21:05:23+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+</subtitle><entry><title type="html">Reinforcement Learning y control</title><link href="https://squirogar.github.io/blog/2023/reinforcement-learning/" rel="alternate" type="text/html" title="Reinforcement Learning y control" /><published>2023-06-10T20:30:00+00:00</published><updated>2023-06-10T20:30:00+00:00</updated><id>https://squirogar.github.io/blog/2023/reinforcement-learning</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/reinforcement-learning/"><![CDATA[<p><em>Material obtenido del e-book de matlab de Reinforcement Learning</em></p>
 
 <h1 id="reinforcement-learning-rl">Reinforcement Learning (RL)</h1>
 <p>Permite resolver problemas muy difíciles de control. Por ejemplo, un robot caminante. Un robot caminante es muy difícil de lograr con el enfoque de control, ya que necesitaríamos muchos loops de control, sensores, controladores de motor, etc.</p>
@@ -256,14 +256,14 @@ Repetir hasta terminar el aprendizaje.</li>
 
 <p>El agente usa la información que obtiene del entorno (observaciones del estado del entorno y recompensa) para ajustar sus acciones a futuro. La recompensa es muy importante porque le va a decir al agente qué tan buena fue la acción que acaba de realizar.</p>
 
-<h2 id="iv-valor-y-recompensa">IV. Valor y recompensa</h2>
+<h2 id="v-valor-y-recompensa-value-and-reward">V. Valor y recompensa (Value and reward)</h2>
 <ul>
-  <li>Valor: recompensa total que un agente puede esperar recibir desde ese estado en adelante.</li>
-  <li>Recompensa: beneficio inmediato de estar en un estado específico.</li>
+  <li>Valor (value): recompensa total que un agente puede esperar recibir desde ese estado en adelante.</li>
+  <li>Recompensa (reward): beneficio inmediato de estar en un estado y realizar una acción específica.</li>
 </ul>
 
 <h3 id="por-qué-es-importante-el-valor">¿Por qué es importante el valor?</h3>
-<p>Evaluar el valor de un estado en vez de la recompensa inmediata ayuda al agente a elegir la acción que obtendrá la mayor recompensa a lo largo del tiempo, en vez de un beneficio a corto plazo.</p>
+<p>Evaluar el valor de un estado o una acción en vez de la recompensa inmediata ayuda al agente a elegir la acción que obtendrá la mayor recompensa a lo largo del tiempo, en vez de un beneficio a corto plazo.</p>
 
 <p>Supongamos que tenemos la siguiente situación:</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+1  agente  -1  -1  +10
@@ -298,28 +298,52 @@ Estado       s0  s1   s2    s3    s4
 
 <p>No obstante, elegir a corto plazo igual puede servir:</p>
 <ul>
-  <li>Recompensa inmediata puede ser mejor que esperar por una futura.</li>
+  <li>Recompensa inmediata puede ser mejor que esperar por una futura que implique una secuencia de varios pasos.</li>
   <li>Predicción de recompensas puede fallar y esa recompensa alta puede que no esté cuando lleguemos a esos estados, o sea, existe mayor incertidumbre.</li>
-  <li>La solución a esto es descontar recompensas mientras más lejos estén el futuro.</li>
+  <li>La solución a esto es descontar recompensas mientras más lejos estén el futuro. Esto se hace estableciendo el factor de descuento \(\gamma\) entre 0 y 1:</li>
 </ul>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/rec_descontada-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/rec_descontada-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/rec_descontada-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/rec_descontada.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Descuento de recompensas futuras.
+</div>
 
 <p>¿Y qué pasa cuando hay estados que no se conocen? Cabe la posibilidad de que existan estados que sean desconocidos para el agente, pero éstos pueden contener recompensas mayores a las de los estados que actualmente conocemos. Es aquí donde entran los dos enfoques que puede aplicar el agente.</p>
 
-<h2 id="v-enfoque-muy-codicioso-explotación-del-entorno">V. Enfoque muy codicioso: explotación del entorno</h2>
+<h3 id="enfoque-muy-codicioso-explotación-del-entorno">Enfoque muy codicioso: explotación del entorno</h3>
 <p>Recolectamos la mayor cantidad de recompensas que se conozcan, o sea, las más cercanas. Le damos más relevancia al beneficio inmediato que al futuro.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+1  agente  -1  ?  ?
 </code></pre></div></div>
 <p>El agente irá a la izquierda.</p>
 
-<h2 id="vi-enfoque-poco-codicioso-exploración-del-entorno">VI. Enfoque poco codicioso: exploración del entorno</h2>
+<h3 id="enfoque-poco-codicioso-exploración-del-entorno">Enfoque poco codicioso: exploración del entorno</h3>
 <p>Exploramos estados desconocidos del entorno con la esperanza de obtener mejores recompensas y por consiguiente, una mejor recompensa a largo plazo. Sin embargo, corremos el riesgo de recolectar peores recompensas por algún tiempo, o que incluso descubramos que estas recompensas no sean tan buenas como las que conocíamos.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+1  agente  -1  -1  -1   10
 </code></pre></div></div>
 <p>El agente irá a la derecha.</p>
 
-<h2 id="vii-explotación-vs-exploración">VII. Explotación vs Exploración</h2>
+<h3 id="explotación-vs-exploración">Explotación vs Exploración</h3>
 <p>El algoritmo de RL explorará o explotará el espacio de estados, convirtiéndose esto en un problema de optimización</p>
 
 <p>Si bien explorar para obtener una gran recompensa en el futuro puede ser muy tentador a elegir, puede que no sea tan buena opción, esto se debe a que es posible que:</p>
@@ -336,7 +360,7 @@ Estado       s0  s1   s2    s3    s4
   <p>El algoritmo de RL establece un equilibrio entre exploración y explotación. Este trade-off se da mientras el agente interactúa con el entorno.</p>
 </blockquote>
 
-<h2 id="viii-control-de-sistemas-y-rl">VIII. Control de sistemas y RL</h2>
+<h2 id="vi-control-de-sistemas-y-rl">VI. Control de sistemas y RL</h2>
 <p>Tenemos un sistema o proceso industrial que queremos controlar. Controlamos las entradas del sistema (acciones) para intentar generar las salidas deseadas (comportamientos).</p>
 
 <div class="row mt-3">
@@ -475,7 +499,7 @@ Estado       s0  s1   s2    s3    s4
   <p>El controlador influye sobre el sistema cambiando su estado.</p>
 </blockquote>
 
-<h2 id="ix-uso-de-rl-en-control">IX. Uso de RL en control</h2>
+<h2 id="vii-uso-de-rl-en-control">VII. Uso de RL en control</h2>
 <p>Para utilizar RL en control tenemos que:</p>
 <ol>
   <li>Establecer la estructura del controlador: definir la política</li>
@@ -507,7 +531,7 @@ Estado       s0  s1   s2    s3    s4
     Uso de RL en un sistema de control.
 </div>
 
-<h2 id="x-workflow-de-rl">X. Workflow de RL</h2>
+<h2 id="viii-workflow-de-rl">VIII. Workflow de RL</h2>
 <p>El flujo de trabajo de RL consiste en:</p>
 <ol>
   <li>Establecer un entorno: qué debe existir en ese entorno. Además debemos decidir: ¿Durante el entrenamiento probamos con un entorno real (hardware real) o simulado (uso de modelos matemáticos del sistema)?</li>
@@ -930,7 +954,7 @@ s0   s1   s2   s3          s4            s5     s6   s7
 <h3 id="representamos-la-política-con-una-tabla-función-o-tabla-q">Representamos la política con una tabla: Función o Tabla Q</h3>
 <p>Si los espacios de estado y acción son <strong>discretos</strong> y pequeños en número, podemos ocupar una tabla simple para representar la política.</p>
 
-<p>La función o tabla Q es una tabla que asigna estados y acciones a valores. Entonces, dado un estado <em>S</em>, la política sería buscar el valor de cada acción <em>A</em> posible en ese estado y elegir la acción con el valor más alto.</p>
+<p>La función o tabla Q es una tabla que asigna (mapea) estados y acciones a un valor.</p>
 
 \[\begin{aligned}
 &amp; \text {Tabla 1. Ejemplo de política como una Tabla Q}\\
@@ -944,15 +968,43 @@ s3 &amp; 3 &amp; -1 &amp; 2 \\
 \end{array}
 \end{aligned}\]
 
+<p>Entonces, dado un estado <em>S</em> actual, la política sería buscar el valor de cada acción <em>A</em> posible en ese estado y elegir la acción con el valor más alto.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/tablaq-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/tablaq-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/tablaq-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/tablaq.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    La política como tabla Q toma el estado actual en el que estamos y elige la acción con el valor más alto.
+</div>
+
 <blockquote>
-  <p>Entrenar a un agente con una Tabla Q consistiría en calcular los valores para todas las acciones posibles en cada estado.</p>
+  <p>Entrenar a un agente con una Tabla Q consistiría en calcular el valor para todas las acciones posibles en cada estado.</p>
 </blockquote>
 
 <blockquote>
-  <p>La función Q falla cuando el número de acciones aumentan mucho o se vuelve infinito, en otras palabras, cuando son continuos.</p>
+  <p>La función Q falla cuando el número de pares estado/acción se vuelve muy grande o infinito, en otras palabras, cuando son continuos.</p>
 </blockquote>
 
-<p>Calcular los valores para muchísimas acciones posibles para cada uno de los muchísimos estados que tenemos no es factible. Si una función o tabla Q no nos sirve, entonces necesitamos una función continua que sea capaz de representar la política, aunque es bastante difícil de diseñar. La solución a esto es usar un <strong>aproximador de función</strong> de propósito general para representar la política, algo que pueda manejar estados y acciones dentro de un espacio continuo: <strong>Las redes neuronales profundas (Deep Learning)</strong>.</p>
+<p>Por ejemplo, imaginemos que queremos controlar un péndulo invertido. El estado del péndulo puede ser cualquier ángulo de \(-\pi\) a \(\pi\). El espacio de acción es cualquier torque de motor desde el \(-\infty\) a \(\infty\). Tratar de capturar cada combinación de cada estado y acción en una tabla es imposible.</p>
+
+<p>Si una función o tabla Q no nos sirve, entonces necesitamos una función continua que sea capaz de representar la política, aunque es bastante difícil de diseñar. La solución a esto es usar un <strong>aproximador de función</strong> de propósito general para representar la política, algo que pueda manejar estados y acciones dentro de un espacio continuo: <strong>Las redes neuronales profundas (Deep Learning)</strong>.</p>
 
 <h4 id="por-qué-usar-redes-neuronales-y-no-tablas-o-una-función-de-transferencia-para-la-política">¿Por qué usar redes neuronales y no tablas o una función de transferencia para la política?</h4>
 
@@ -963,17 +1015,41 @@ s3 &amp; 3 &amp; -1 &amp; 2 \\
 <p>Para el caso de las funciones de transferencia, es difícil diseñar la estructura de estas funciones para entornos complejos.</p>
 
 <h3 id="31-política-como-red-neuronal">3.1 Política como red neuronal</h3>
-<p>Una red neurona es un grupo de nodos llamados <strong>neuronas artificiales</strong> que están interconectados de forma que se vuelven un <strong>aproximador de función universal</strong>. Esto significa que se puede configurar la red con la correcta combinación de nodos y conexiones para imitar cualquier relación de entrada y salida. La función generada por la red neuronal puede ser extremadamente compleja, sin embargo, la naturaleza de las redes neuronales asegura que se toda función se puede aproximar.</p>
+<p>Una red neurona es un grupo de nodos llamados <strong>neuronas artificiales</strong> que están interconectados de forma que se vuelven un <strong>aproximador de función universal</strong>. Esto significa que se puede configurar la red con la correcta combinación de nodos y conexiones para imitar cualquier relación de entrada y salida. La función generada por la red neuronal puede ser extremadamente compleja, sin embargo, la naturaleza de las redes neuronales asegura que toda función se puede aproximar.</p>
 
 <p>El aprendizaje de la red consiste en el ajuste de los parámetros sistemáticamente para encontrar la relación óptima de entrada/salida.</p>
 
-<p><em>—-imagen de red neuronal—-</em></p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/red_neuronal-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/red_neuronal-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/red_neuronal-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/red_neuronal.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Red con 2 entradas (recibe 2 valores), 2 capas ocultas con 3 neuronas cada una, y una capa de salida con las 2 salidas finales de la red.
+</div>
 
 <p>La salida de una neurona está dada por:
 \(a = f(w_0\cdot x_0 + w_1\cdot x_1 + ... + w_{n-1}\cdot x_{n-1} + b)\)
 donde \(b\) es el <strong>bias</strong> o sesgo, \(w\) son los <strong>weights</strong> o pesos asginados a cada entrada \(x\).</p>
 
 <p>Sin \(f\) la salida o activación de una neurona es una operación lineal (\(w\cdot x + b\) es una suma ponderada o combinación lineal). Si ninguna neurona de nuestra red neuronal utilizara la función \(f\), la salida de la red sería lineal. El inconveniente es que los problemas lineales son simples, muy por el contrario de los problemas de la vida real que son complejos, o sea, no lineales. Es por esto que se utiliza una <strong>función de activación \(f\)</strong> para poder aproximar funciones no lineales. Esta función de activación transforma el valor de la suma ponderada a otro valor (depende de la función) que es el que finalmente sale de la neurona y sirve de entrada a las neuronas de las siguientes capas.</p>
+
+<p>Que las funciones de activación sean no lineales es fundamental para crea una red que pueda aproximarse a cualquier función. Esto se debe a que muchas funciones no lineales se pueden dividir en una combinación ponderada de salidas de función de activación.</p>
 
 <h3 id="funciones-de-activación">Funciones de activación</h3>
 <p>Las 3 funciones de activación más populares son:</p>
@@ -1002,6 +1078,30 @@ donde \(b\) es el <strong>bias</strong> o sesgo, \(w\) son los <strong>weights</
   <p>Se debe tener en cuenta que la red neuronal debe ser lo suficientemente compleja como para aproximarse a la función, pero no tan compleja como para que el entrenamiento no sea posible o sea muy lento.</p>
 </blockquote>
 
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/red_neuronal2-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/red_neuronal2-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/red_neuronal2-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/red_neuronal2.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Política representada como una red neuronal.
+</div>
+
 <h3 id="diseño-de-una-red-neuronal">Diseño de una red neuronal</h3>
 <p>Se debe elegir lo siguiente para implementar una red neuronal:</p>
 <ul>
@@ -1011,17 +1111,39 @@ donde \(b\) es el <strong>bias</strong> o sesgo, \(w\) son los <strong>weights</
   <li>Estructura interna de la red: ¿Totalmente conectada (fully connected)? ¿Nos saltamos capas (red residual)? ¿La red tiene memoria interna (red recurrente)? ¿Grupos de neuronas trabajan en conjunto (red convolusional)?</li>
 </ul>
 
-<p><em>— imagen de los tipo de redes —-</em></p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/red_neuronal_tipos-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/red_neuronal_tipos-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/red_neuronal_tipos-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/red_neuronal_tipos.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Tipos de redes neuronales.
+</div>
 
 <p>No existe un enfoque preestablecido para la estructura de la red, pero una idea sería comenzar con una estructura que ya ha funcionado para el tipo de problema que estamos resolviendo.</p>
 
-<h2 id="4-algortimos-de-aprendizaje-rl">4. Algortimos de aprendizaje RL</h2>
-<p>No se puede estructurar la política sin elegir el algoritmo de RL de aprendizaje.</p>
+<h2 id="4-entrenamiento-algortimos-de-aprendizaje-rl">4. Entrenamiento: Algortimos de aprendizaje RL</h2>
+<p>La estructura de la política y el algoritmo de aprendizaje RL están íntimamente entrelazados. No se puede estructurar la política sin elegir el algoritmo de RL de aprendizaje.</p>
 
 <p>Existen 3 formas de estructurar la política:</p>
 <ol>
-  <li>Policy function</li>
-  <li>Value function</li>
+  <li>Policy function-based</li>
+  <li>Value function-based</li>
   <li>Actor / critic</li>
 </ol>
 
@@ -1046,13 +1168,35 @@ donde \(b\) es el <strong>bias</strong> o sesgo, \(w\) son los <strong>weights</
     </div>
 </div>
 <div class="caption">
-    Formas de estructurar la política
+    Formas de estructurar la política.
 </div>
 
-<h3 id="41-policy-function---policy-based-algorithms">4.1. Policy function - Policy-based algorithms</h3>
-<p>Entrenan una red neuronal que toma las observaciones del estado y produce acciones. La política es una red neurona, la cual se llama <strong>actor</strong> porque le dice directamente al agente qué acciones tomar.</p>
+<h3 id="41-policy-function-based-learning">4.1. Policy function-based learning</h3>
+<p>Estos algoritmos de aprendizaje entrenan una red neuronal que toma las observaciones del estado y produce acciones. Esta red neuronal es la política completa, de ahí el nombre de algoritmos basados en función de política. Esta red neuronal se llama <strong>actor</strong> porque le dice directamente al agente qué acciones tomar.</p>
 
-<p><em>—–imagen del actor —-</em></p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/actor-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/actor-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/actor-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/actor.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Red neuronal actor.
+</div>
 
 <p>¿Cómo entrenamos una red neuronal o política del tipo actor? La entrenamos con los métodos <strong>policy gradient</strong>.</p>
 
@@ -1082,16 +1226,71 @@ donde \(b\) es el <strong>bias</strong> o sesgo, \(w\) son los <strong>weights</
     Captura de pantalla del juego.
 </div>
 
+<p>En el juego, intentamos eliminar los ladrillos usando una paleta para dirigir una pelota que rebota. El juego tiene 3 acciones: mover la paleta a la izquierda, a la derecha, o no moverla. Además, tiene un espacio de estados casi continuo que incluye: posición de la paleta, posición de la pelota, velocidad de la pelota, ubicación de los ladrillos restantes.</p>
+
 <ul>
-  <li>Acciones: mover la paleta a la izquierda, derecha, mantener. 3 salidas en total.</li>
-  <li>Estados: posición de la paleta, posición de la pelota, velocidad de la pelota, ubicación de los ladrillos. Casi infinitos estados en total.</li>
+  <li>Entradas a la red de actor: estados de la paleta, la pelota y los bloques.</li>
+  <li>Salidas de la red de actor: nodos que representan las acciones: izquierda, derecha y mantener.</li>
 </ul>
 
-<p><em>——-imagen de la red actor con las entradas y salidas del juego——</em></p>
+<p>En lugar de calcular los estados manualmente e introducirlos en la red, podemos ingresar una captura de pantalla del juego y dejar que la red aprenda qué características de la imagen son las más importantes para basar su salida. El actor mapearía la intensidad de miles de píxeles a las tres salidas.</p>
 
-<p>Los métodos policy gradient funcionan con una <strong>política estocástica</strong>. Este tipo de política se refiere a que en vez de entregar la salida <em>izquierda, derecha o mantener</em> de forma tajante, el algoritmo entrega una <strong>probabilidad</strong> de mover a la izquierda, a la derecha o mantener.</p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
 
-<p>La política estocástica incorpora la exploración en las probabilidades. Cuando el agente aprende, actualiza las probabilidades, para que así con el tiempo producir la mayor recompensa, ya que la mejor acción para ese estado tendrá una probabilidad tan alta que siempre será escogida.</p>
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/red_breakout-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/red_breakout-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/red_breakout-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/red_breakout.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Red de actor para el juego Breakout.
+</div>
+
+<p>Una vez configurada la red, es hora de buscar enfoques para entrenarla. Un enfoque sería los <strong>métodos policy gradient</strong>. Los métodos policy gradient funcionan con una <strong>política estocástica</strong>. Este tipo de política se refiere a que en vez de entregar la salida <em>izquierda, derecha o mantener</em> determinista, la política generaría una <strong>probabilidad</strong> de mover a la izquierda, a la derecha o mantener.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/red_estocastica-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/red_estocastica-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/red_estocastica-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/red_estocastica.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Política estocástica.
+</div>
+
+<p>La política estocástica incorpora la exploración en las probabilidades. Cuando el agente aprende, actualiza las probabilidades, aumentando la probabilidad de la acción que produjo una buena recompensa.</p>
+
+<p>Con el tiempo, el agente empujará estas probabilidades en la dirección que produzca la mayor recompensa. Eventualmente, la acción venajosa para cada estado tendrá una probabilidad tan alta que el agente siempre realizará esa acción.</p>
+
+<h4 id="policy-gradient-methods">Policy gradient methods</h4>
+<p>¿Cómo el agente sabe si las acciones fueron buenas o no? La idea es la siguiente: ejecutar la política actual, recolectar recompensas a lo largo del camino y luego actualizar la red para aumentar las probabilidades de acciones que llevaron a recompensas más altas.</p>
 
 <p>El funcionamiento de los métodos de policy gradient es el siguiente:</p>
 
@@ -1119,35 +1318,176 @@ donde \(b\) es el <strong>bias</strong> o sesgo, \(w\) son los <strong>weights</
     Diagrama de flujo del funcionamiento de los métodos policy gradient.
 </div>
 
-<p>Estos métodos toman la derivada de cada <em>weight</em> y <em>bias</em> en la red neuronal con respecto a la recompensa  los ajusta en la dirección de un aumento de recompensa positivo. Así, el algoritmo de aprendizaje mueve los <em>bias</em> y <em>weights</em> para ascender por la pendiente de recompensa, de ahí viene el nombre de gradiente.</p>
+<p>Estos métodos toman la derivada de cada <em>weight</em> y <em>bias</em> en la red neuronal con respecto a la recompensa y los ajusta en la dirección de un aumento de recompensa positivo. Así, el algoritmo de aprendizaje mueve los <em>bias</em> y <em>weights</em> para ascender por la pendiente de recompensa, de ahí viene el nombre de gradiente.</p>
 
-<p><em>——-imagen de la pendiente ——-</em></p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/policy_gradient-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/policy_gradient-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/policy_gradient-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/policy_gradient.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Policy gradient methods.
+</div>
 
 <h4 id="411-lo-malo-de-los-métodos-de-policy-gradient">4.1.1. Lo malo de los métodos de policy gradient</h4>
 <ol>
-  <li>Seguir la dirección del ascenso más empinado puede hacer que se converja a un máximo local.
- <em>——- imagen de la pendiente en maximo local —–</em></li>
-  <li>Convergen lentamente debido a su sensibilidad a las mediciones ruidosas, o sea, cuando se requieren varias acciones y las recompensas tienen gran variación entre episodios.
- <em>——– imagen de la sensibilidad ———</em></li>
+  <li>El enfoque ingenuo de simplemente seguir la dirección del ascenso más empinado puede converger a un máximo local en vez de uno global.</li>
 </ol>
 
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/problema1_policy-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/problema1_policy-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/problema1_policy-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/problema1_policy.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Problema del máximo local.
+</div>
+
+<ol>
+  <li>Pueden converger lentamente debido a su sensibilidad a las mediciones ruidosas, o sea, cuando se necesitan muchas acciones secuenciales para recibir una recompensa y la recompensas acumulada resultante tiene gran variación entre episodios.</li>
+</ol>
+
+<p>Por ejemplo, en Breakout, el agente puede hacer muchos movimientos rápidos de paleta hacia la izquierda y hacia la derecha mientras la paleta finalmente se abre camino a través del campo para golpear la pelota y recibir la recompensa. ¿Todas esas acciones previas fueron realmente necesarias para obtener esa recompensa? El algoritmo de policy gradient tendría que tratar cada acción como si fuera necearia y ajustar las probabilidades es consecuencia.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/problema2_policy-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/problema2_policy-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/problema2_policy-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/problema2_policy.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Problema de la sensibilidad.
+</div>
+
 <h3 id="42-aprendizaje-basado-en-la-función-de-valor-value-function-based-learning">4.2. Aprendizaje basado en la función de valor (value function-based learning):</h3>
-<p>Una función toma el estado y una posible acción y calcularía su valor
+<p>Con un agente basado en la función de valor, una función toma el estado y una de las posibles acciones de ese estado y generaría el valor de tomar esa acción.
 \(\text{valor} = f(\text{observaciones del estado}, \text{acción})\)</p>
 
-<p>El valor va a indicar qué tan buena es la acción estando en ese estado.</p>
-
 <blockquote>
-  <p>La política debe generar una acción y la función de valor entrega un valor. Por lo tanto, lo política sería usar esta función para chequear el valor de cada acción posible dado un estado determinado, y elegir la de mayor valor.</p>
+  <p>El valor va a indicar qué tan buena es la acción estando en ese estado.</p>
 </blockquote>
 
-<p><em>—– imagen esquema de critico ——-</em></p>
+<p>Esta función sola no es suficiente para representar la política, ya que genera un valor y la política necesita generar una acción. Por lo tanto, la política sería usar esta función para chequear el valor de cada posible acción de un estado dado y elegir la acción con el valor más alto.</p>
 
-<p>Esta función se llama <strong>crítico</strong>, ya que critica las posbiles acciones.</p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/value_function-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/value_function-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/value_function-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/value_function.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    La política en value function-based learning es elegir la acción con el valor más alto dado un estado. Este valor es calculado por la función de valor.
+</div>
+
+<p>Esta función se llama <strong>crítico</strong>, ya que critica las posbiles acciones que el agente puede elegir.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/critico-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/critico-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/critico-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/critico.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Crítico.
+</div>
 
 <p>Esta función se puede representar con un tabla si es que los espacios de acción y estado son discretos, o con una red neuronal si son continuos. La diferencia en este último caso, es que entran las observaciones de estado y las acciones, y salen los valores de esos pares estado/acción, y la política elige la acción con valor más alto.</p>
 
-<p><em>—— imagen red de critico——-</em></p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/tablaq1-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/tablaq1-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/tablaq1-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/tablaq1.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Tabla Q.
+</div>
 
 <h4 id="tabla-q-como-crítico">Tabla Q como crítico</h4>
 <p>En el caso de que el espacio de estados y de acciones fueran discretos los representamos con una tabla Q. El agente aprende estos valores a través de Q-learning:</p>
@@ -1160,63 +1500,455 @@ donde \(b\) es el <strong>bias</strong> o sesgo, \(w\) son los <strong>weights</
 <h4 id="ecuación-de-bellman">Ecuación de Bellman</h4>
 <p>Permite al agente resolver la tabla Q a lo largo del tiempo dividiendo todo el problema en varios pasos más simples. En lugar de resolver el valor real de un par estado/acción en un solo paso, el agente actualizará el valor cada vez que se visite el par estado/acción a través de la programación dinámica.</p>
 
-<p>La ecuación de Bellman es la siguiente:
-\(new Q(s,a) = Q(s,a) + \alpha \cdot [R(s,a) + \gamma \cdot max Q'(s',a')-Q(s,a)]\)</p>
+<p>La ecuación de Bellman es la siguiente:</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/ec_bellman-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/ec_bellman-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/ec_bellman-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/ec_bellman.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Ecuación de Bellman.
+</div>
+
+<p>Una vez que el agente ha realizado una acción desde el estado <em>S</em>, recibe una recompensa.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/ec_bellman2-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/ec_bellman2-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/ec_bellman2-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/ec_bellman2.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<p>El valor es más que la recompensa instantánea de una acción; es el rendimiento máximo esperado en el futuro. Por lo tanto, el valor del par estado/acción es la recompensa que el agente acaba de recibir más la recompensa que el agente espera cobrar en el futuro.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/ec_bellman3-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/ec_bellman3-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/ec_bellman3-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/ec_bellman3.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<p>Descontamos las recompensas futuras por \(\gamma\) para que el agente no dependa demasiado de las recompensas en el futuro. \(\gamma\) es un número entre 0 (no mira recompensas futuras para evaluar el valor) y 1 (mira recompensas infinitamente lejanas en el futuro).</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/ec_bellman4-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/ec_bellman4-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/ec_bellman4-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/ec_bellman4.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<p>La suma es ahora el nuevo valor del par de estado y acción \((s,a)\), y lo comparamos con la estimación anterior para obtener el error.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/ec_bellman5-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/ec_bellman5-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/ec_bellman5-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/ec_bellman5.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<p>El error se multiplica por una tasa de aprendizaje que le da control sobre si debe reemplazar la estimación del valor anterior con la nueva \((\alfa = 1)\) o empujar el valor anterior en la dirección del nuevo \((\alfa &lt; 1)\).</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/ec_bellman6-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/ec_bellman6-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/ec_bellman6-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/ec_bellman6.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<p>Finalmente, el valor \(\delta\) resultante se agrega a la estimación anterior y se actualiza la tabla Q.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/ec_bellman7-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/ec_bellman7-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/ec_bellman7-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/ec_bellman7.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<h4 id="crítico-como-red-neuronal">Crítico como red neuronal</h4>
+<p>Imaginemos un péndulo invertido. Hay dos estados: ángulo y velocidad angular. Ambos son continuos.</p>
+
+<p>La función de valor o crítico se representa con una red neuronal. La idea es la misma que con una tabla:</p>
 <ol>
-  <li>Agente realiza una acción y recibe recompensa \(R(s,a)\). El estado es \(s\) y la acción es \(a\).</li>
-  <li>Recordar que el valor es la recompensa total esperado en el futuro</li>
+  <li>ingresamos las observaciones de estado y una acción</li>
+  <li>La red neuronal devuelve el valor de ese par de estado/acción</li>
+  <li>La política es elegir la acción con el valor más alto.</li>
 </ol>
 
-<p>FALTAAAAAAAAAAAAAAAAAAAAAA</p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/value_critico-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/value_critico-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/value_critico-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/value_critico.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Red neuronal como crítico en value function-based learning.
+</div>
+
+<p>Con el tiempo, la red convergerá lentamente en una función que genera el valor real de cada acción en cualquier lugar del espacio de estado continuo.</p>
+
+<h4 id="lo-malo-de-las-políticas-basadas-en-función-de-valor">Lo malo de las políticas basadas en función de valor</h4>
+<p>Podemos utilizar una red neuronal para definir la función de valor para espacios de estado continuos. Si el péndulo invertido tiene un espacio de acción discreto, podemos alimentar las acciones discretas a la red crítica de una en una.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/pendulo-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/pendulo-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/pendulo-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/pendulo.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Infinitos estados, pocas acciones posibles.
+</div>
+
+<p>Las políticas basadas en la función de valor no funcionan bien para espacios de acción continuos. Esto se debe a que no hay forma de calcular el valor uno a la vez para acción infinita para encontrar el valor máximo. Incluso para un espacio de acción grande, pero no infinito, esto se vuelve computacionalmente costoso. Esto es desafortunado porque a menudo en los problemas de control tiene un espacio de acción continuo, como aplicar un rango continuo de torque a un problema de péndulo invertido.</p>
+
+<p>¿Qué podemos hacer? Implementar un método policy-gradient vainilla (visto anteriormente en la sección pasada). Estos algoritmos pueden manear espacios de acción continua, pero tienen problemas para converger cuando hay una gran variación en las recompensas y el gradiente es ruidoso. Podemos fusionar las dos técnincas (value function-based learning y policy function-based) en una clase de algoritmos llamados actor-crítico.</p>
 
 <h3 id="43-algoritmos-actor-crítico">4.3. Algoritmos Actor-crítico</h3>
 <p>Fusión de las dos técnicas anteriores.</p>
 <ul>
   <li>Actor: red que está tratando de tomar lo que cree que es la mejor acción dado el estado actual, tal cual se hacía en los algoritmos de policy function (<strong>sección 4.1.</strong>).</li>
-  <li>Crítico: segunda red que está tratando de estimar el valor del par estado/acción que tomó el actor, como se hacía en los algoritmos de value function (<strong>sección 4.2.</strong>). Este valor es el valor esperado de la recompensa acumulada de largo plazo.</li>
+  <li>Crítico: segunda red que está tratando de estimar el valor del par estado/acción que tomó el actor, como se hacía en los algoritmos de value function (<strong>sección 4.2.</strong>).</li>
 </ul>
 
-<p>Esto funciona para espacios de acción y estados continuos.</p>
+<p>Este enfoque funciona para espacios de acción continua porque el crítico solo necesita mirar la accción individual que realizó el actor y no necesita tratar de encontrar la mejor acción evaluándolas todas.</p>
 
-<p>Para estos algoritmos el crítico sólo necesita mirar la acción individual que realizó el actor y no necesita tratar de encontrar la mejor acción evaluándolas todas.</p>
+<blockquote>
+  <p>Actor-crítico funciona para espacios de acción y estados continuos.</p>
+</blockquote>
 
-<p><em>——–imagen actor-critico———–</em></p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/metodo_actor_critico-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/metodo_actor_critico-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/metodo_actor_critico-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/metodo_actor_critico.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Algoritmos de actor-crítico.
+</div>
 
 <h4 id="funcionamiento-de-actor-crítico">Funcionamiento de actor-crítico</h4>
 <ol>
   <li>El actor elige una acción de la misma manera que lo haría un algoritmo de policy function y se aplica al entorno.</li>
-  <li>El crítico estima el valor para ese par estado/acción elegido</li>
+</ol>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/paso1_ac-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/paso1_ac-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/paso1_ac-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/paso1_ac.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Paso 1.
+</div>
+
+<ol>
+  <li>El crítico estima el valor para ese par estado/acción actual.</li>
+</ol>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/paso2_ac-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/paso2_ac-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/paso2_ac-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/paso2_ac.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Paso 2.
+</div>
+
+<ol>
   <li>El crítico usa la recompensa recibida para determinar la precisión de su predicción de valor.
     <ul>
-      <li>El error es: \(\text{error}=\text{valor nuevo estimado del estado anterior}-\text{valor viejo para el estado anterior}\)</li>
+      <li>El error es: \(\text{error}=\text{valor nuevo estimado del estado anterior}-\text{valor viejo para el estado anterior}\), ambos dados por la red crítica.</li>
       <li>El estado anterior es el estado desde el cual se ejecutó la acción actual.</li>
       <li>El nuevo valor estimado se basa en la recompensa recibida y el valor descontado del estado actual.</li>
       <li>El error permite que el crítico se de cuenta si las cosas salieron mejor o peor de lo esperado.</li>
     </ul>
   </li>
+</ol>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/paso3_ac-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/paso3_ac-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/paso3_ac-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/paso3_ac.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Paso 3.
+</div>
+
+<ol>
   <li>El crítico usa este error para actualizarse a sí mismo para que así tenga una mejor predicción la próxima vez que esté en ese estado.</li>
+</ol>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/paso4_ac-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/paso4_ac-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/paso4_ac-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/paso4_ac.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Paso 4.
+</div>
+
+<ol>
   <li>El actor también se actualiza con la respuesta del crítico para que pueda ajustar sus probabilidades de volver a tomar esa acción en el futuro. De esta forma, la política asciende la pendiente de la recompensa en la dirección que recomienda el crítico en lugar de usar las recompensas directamente.</li>
 </ol>
 
-<p><em>—— imagen de actor-critico———</em></p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
 
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/paso5_ac-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/paso5_ac-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/paso5_ac-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/paso5_ac.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Paso 5.
+</div>
+
+<p>El actor y el crítico son redes neuronales que intentan aprender el comportamiento óptimo:</p>
 <ul>
-  <li>El actor está aprendiendo las acciones correctas uasndo la retroalimentación del crítico.</li>
+  <li>El actor está aprendiendo las acciones correctas usando la retroalimentación del crítico.</li>
   <li>El crítico está aprendiendo la función de valor para poder criticar correctamente la acción del actor.</li>
-  <li>Aprovecha lo mejor de los algoritmos de value function y policy function</li>
-  <li>Permiten acelerar el aprendizaje cuando hay gran variación en la recompensa.</li>
 </ul>
 
-<p>El error es la diferencia entre lo predicho y el valor anterior dele sado anterior (desde donde se movió). El nuevo valor se calcula a partir de la recompensa recibida y el valor descontado del estado, como en los algoritmos value function</p>
-<ol>
-  <li>Se actualiza el crítico con el nuevo valor del par estado/acción. Se actualiza el acor con la respuesta del crítico y ajusta sus probabilidades de tomar la acción para ese estado.</li>
-</ol>
+<blockquote>
+  <p>Los métodos de actor-crítico aprovechan lo mejor de los algoritmos de value function y policy function. Los métodos actor-crítico permiten acelerar el aprendizaje cuando hay gran variación en la recompensa recibida. Además, pueden manejar tanto espacios de estado como de acción continuos.</p>
+</blockquote>
 
-<p>La política ahora asciende la pendiente de recompensas en dirección que recomienda el crítico.</p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
 
-<p>El actor aprende las acciones correctas utilizando la retroalimentación del crítico para saber qué es una acción mala y qué es buena.</p>
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/red_ac-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/red_ac-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/red_ac-1400.webp" />
+    
 
-<p>El crítico aprende la función de valor de las recompensas recibidas para poder criticar abundantemente la acción del actor.</p>
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/red_ac.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    En los algoritmos Actor-crítico se deben configurar dos redes neuronales al crear el agente: una para el actor y otra para el crítico.
+</div>
 
 <h2 id="5-deployment">5. Deployment</h2>
 <h3 id="51-despliegue-de-política">5.1. Despliegue de política</h3>
@@ -1301,7 +2033,7 @@ donde \(b\) es el <strong>bias</strong> o sesgo, \(w\) son los <strong>weights</
     El aprendizaje puede ser complementario entre el entorno simulado y el entorno real. 
 </div>
 
-<h2 id="xi-lo-malo-del-reinforcement-learning">XI. Lo malo del Reinforcement Learning</h2>
+<h2 id="ix-lo-malo-del-reinforcement-learning">IX. Lo malo del Reinforcement Learning</h2>
 <p>Existen dos problemas principales:</p>
 <ol>
   <li>¿Cómo sabemos que la solución que entrega RL funciona?</li>
@@ -1367,14 +2099,36 @@ Todo esto resulta en una función muy compleja!</li>
 </div>
 
 <blockquote>
-  <p>La función que aproxima la red neuronal es una función muy compleja. Se comporta como una caja negra para el diseñador. No conocemos la razón del valor de un weight o bias dado dentro de la red.</p>
+  <p>La función que aproxima la red neuronal es una función muy compleja. Se comporta como una caja negra para el diseñador. No conocemos la razón del valor de un weight o bias dado dentro de la red. Si la política no cumple con una especificación o si el entorno operativo cambia, no sabremos como ajustar la política para abordar ese problema.</p>
 </blockquote>
 
-<p>Si la política no cumple con una especificación o si el entorno operativo cambia, no sabremos como ajustar la política para abordar ese problema.</p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blackbox-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blackbox-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blackbox-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/blackbox.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    La red neuronal es una caja negra.
+</div>
 
 <p>No comprendemos el porqué de la solución entregada. En cambio, un sistema de control se puede explicar, dividir, ajustar, aislar las partes conflictivas, repararlas y volver a juntarlas. Una red neuronal <strong>NO</strong>. Por ejemplo, si tenemos un PID con un sistema \(x\) y lo cambiamos al sistema \(y\), simplemente cambiamos las ganancias.</p>
 
-<p>Si el sistema no se comporta como queremos, entonces la política no es del todo correcta. ¿Corregimos la parte defectuosa? No podemos! Tenemos que rediseñar el agente o el modelo y volver a entrenarlo, lo que puede tomar tiempo.</p>
+<p>Si el sistema no se comporta como queremos, entonces la política no es del todo correcta. ¿Corregimos la parte defectuosa? No podemos! Tenemos que rediseñar el agente o el modelo del entorno y volver a entrenarlo, lo que puede tomar tiempo.</p>
 
 <h3 id="cómo-verificamos-un-sistema-de-control-tradicional">¿Cómo verificamos un sistema de control tradicional?</h3>
 <p>A través de un testeo: simulación + modelo, y, con hardware físico; y verficamos que el sistema cumpla con las especificaciones, es decir, que hace lo correcto en todo el espacio de estados y en presencia de perturbaciones y fallas de hardware.</p>
@@ -1393,14 +2147,31 @@ Todo esto resulta en una función muy compleja!</li>
 <h3 id="el-problema-de-la-precisión-del-modelo-del-entorno">El problema de la precisión del modelo del entorno</h3>
 <p>Es difícil desarrollar un modelo suficientemente realista que tenga en cuenta todas las dinámicas importantes del sistema, además que considere el ruido y las perturbaciones. En algún momento no reflejará la realidad de forma perfecta, por lo que se deben hacer prueba físicas en vez de confiar 100% en la simulación con un modelo.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MODELO DEL ENTORNO ------ usado para desarrollar-----&gt; SISTEMA DE CONTROL: CONTROLADOR O AGENTE RL
-</code></pre></div></div>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
 
-<blockquote>
-  <p>El modelo no es perfecto, entonces el controlador o agente RL tampoco.</p>
-</blockquote>
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/problema1-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/problema1-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/problema1-1400.webp" />
+    
 
-<p>Podríamos ajustar y modificar un controlador, pero una red neuronal no.</p>
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/problema1.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    El modelo no es perfecto, entonces el controlador o agente RL tampoco.
+</div>
+
+<p>Podríamos ajustar y modificar un controlador en control tradicional, pero una red neuronal no.</p>
 
 <p>Como no podemos construir un modelo 100% realista, todo agente que entrene con ese modelo estará <strong>ligeramente equivocado</strong>.</p>
 
@@ -1409,18 +2180,66 @@ Todo esto resulta en una función muy compleja!</li>
 </blockquote>
 
 <h3 id="cómo-verificamos-si-la-política-cumple-las-especificaciones">¿Cómo verificamos si la política cumple las especificaciones?</h3>
-<p>Es difícil predecir cómo se comportará el sistema en un estado en función de su comportamiento en otro. Por ejemplo, queremos controlar un motor eléctrico:</p>
+<p>Con una política aprendida, es difícil predecir cómo se comportará el sistema en un estado en función de su comportamiento en otro. Por ejemplo, entrenamos a un agente para que controle la velocidad de un motor eléctrico haciendo que aprenda a seguir un step input de 0 a 100 RPM.</p>
 <ul>
   <li>Entrada 1: step input 0 a 100 RPM</li>
   <li>Entrenamos el agente para que siga la señal de referencia de pasar de 0 a 100 RPM.</li>
   <li>La salida será una curva con el aumento paulatino de RPM hasta llegar a 100.</li>
 </ul>
 
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/step100-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/step100-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/step100-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/step100.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Step 100 RPM.
+</div>
+
 <p>Sin embargo:</p>
 <ul>
   <li>Entrada 2: step input 0 a 150 RPM
 ¿El agente se comportará igual? La política anteriormente aprendida se comportará de forma similar a como se comportó con el step input anterior? No podemos saberlo de antemano, debemos testearlo.</li>
 </ul>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/step150-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/step150-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/step150-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/step150.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Step 150 RPM.
+</div>
 
 <p>¿Y que pasa con un step input de 30-75? ¿o de 80-93? Tendríamos que probar <strong>todas</strong> las combinaciones para demostrar que la política funciona en un 100%. No hay una verificación matemática que cubra todo el rango.</p>
 
@@ -1435,10 +2254,10 @@ Todo esto resulta en una función muy compleja!</li>
 
 <p>Ejemplos:</p>
 <ol>
-  <li>Inspeccionando el código que demuestra que se cumplirá algo siempre.</li>
+  <li>Inspeccionando el código que demuestra que se cumplirá algo siempre, por ejemplo, que la señal sea no negativa.</li>
   <li>Cálculo de factores de estabilidad y robustez, como los márgenes de ganancia y fase.
     <ul>
-      <li>Esto es difícil para una red neuronal, ya que no podemos ofrecer garantías sobre cómo se comportará. No hay métodos para determinar su robustez o estabilidad. A una red neuronal no se le puede explicar su funcionamiento.</li>
+      <li>Esto es difícil para una red neuronal, ya que no podemos ofrecer garantías sobre cómo se comportará. No hay métodos para determinar su robustez o estabilidad. No podemos expllicar qué hace la función internamente.</li>
     </ul>
   </li>
 </ol>
@@ -1457,13 +2276,37 @@ Todo esto resulta en una función muy compleja!</li>
   <li>Menos tiempo de entrenamiento</li>
 </ul>
 
-<p>Esta sería la solución, sin embargo, <strong>aún no podemos garantizar estabilidad, cumplimiento de especificaciones o resistencia a incertidumbres</strong></p>
+<p>Esta sería la solución, sin embargo, <strong>aún no podemos garantizar estabilidad, cumplimiento de especificaciones o resistencia a incertidumbres</strong>.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/reduccion_problema-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/reduccion_problema-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/reduccion_problema-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/reduccion_problema.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Reducimos la política para disminuir la complejidad.
+</div>
 
 <h4 id="cómo-lograr-robustez-y-estabilidad">Cómo lograr robustez y estabilidad</h4>
 <p>Haciendo la política RL más robusta.</p>
 
 <ol>
-  <li>Entrenar el agente en un entorno donde los parámetros importantes del entorno se ajustan cada vez que se haga simulación.</li>
+  <li>Entrenar el agente en un entorno donde los parámetros importantes del entorno se ajustan cada vez que se ejecute la simulación.</li>
 </ol>
 
 <p>Por ejemplo, un robot caminante. Al comienzo de cada episodio cambiamos el valor del torque máximo.</p>
@@ -1486,18 +2329,42 @@ Todo esto resulta en una función muy compleja!</li>
 <p>La política eventualmente convergerá en algo robusto para esos márgenes, produciendo un diseño robusto en general. El resultado manejará un rango más amplio dentro del espacio de estados operativo.</p>
 
 <ol>
-  <li>Para la seguridad, se puede hacer un software que ponga en <em>modo seguro</em> al agente en una situación peligrosa.</li>
+  <li>Para la seguridad, se puede hacer un software que ponga en <em>modo seguro</em> al agente en una situación peligrosa. Esto protegerá al sistema, lo que permite aprender cómo falla y ajustar la recompensa y entrenar para abordar esa falla.</li>
 </ol>
 
-<h2 id="xii-rl--control">XII. RL + Control</h2>
+<h2 id="x-rl--control">X. RL + Control</h2>
 <p>Utilizar el RL como herramienta para optimizar las ganancias del controlador en un sistema de control de arquitectura tradicional. Por ejemplo, un sistema de control con muchos bucles y controladores anidados, cada uno con varias ganancias. En vez de ajustar manualmente cada una de estas ganancias, puedes configurar un agente RL para aprender los mejores valores para todas a la vez.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/rl_con_control-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/rl_con_control-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/rl_con_control-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/rl_con_control.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Agente RL aprenderá las ganancias del controlador.
+</div>
 
 <h3 id="pasos-de-rl--control">Pasos de RL + Control</h3>
 <ol>
   <li>Entorno: Sistema de control y planta</li>
   <li>Recompensa: qué tan bien se desempeña el sistema y cuanto esfuerzo necesitó</li>
   <li>Acciones: Ganancias del controlador</li>
-  <li>Después de cada episodio, el algoritmo de aprendizaje modifica la red de manera que las ganancias se mueven en la dirección que aumenta la recompensa (más desdempeño y menos esfuerzo).
+  <li>Después de cada episodio, el algoritmo de aprendizaje modifica la red de manera que las ganancias se mueven en la dirección que aumenta la recompensa (más desempeño y menos esfuerzo).
     <ul>
       <li>Inicialmente, o sea, en el episodio 1, la red se inicializa aleatoriamente y generar los valores aleatorios, los cuales serán las ganancias y se ejecuta la simulación.</li>
     </ul>
@@ -1513,7 +2380,29 @@ Todo esto resulta en una función muy compleja!</li>
   <li>Valores de ganancia óptimos gracias a RL</li>
 </ol>
 
-<p><em>—– imagen rl + control ——-</em></p>]]></content><author><name></name></author><category term="algoritmos" /><summary type="html"><![CDATA[Definición y workflow del Aprendizaje por refuerzo]]></summary></entry><entry><title type="html">K-means clustering algorithm</title><link href="https://squirogar.github.io/blog/2023/clustering-kmeans/" rel="alternate" type="text/html" title="K-means clustering algorithm" /><published>2023-06-09T21:41:00+00:00</published><updated>2023-06-09T21:41:00+00:00</updated><id>https://squirogar.github.io/blog/2023/clustering-kmeans</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/clustering-kmeans/"><![CDATA[<p><em>El siguiente contenido fue aprendido del curso de especialización de Machine Learning de Andrew Ng y deeplearning.ai</em></p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/rl_con_control2-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/rl_con_control2-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/rl_con_control2-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/rl_con_control2.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    El agente RL calculará las ganancias óptimas del controlador.
+</div>]]></content><author><name></name></author><category term="algoritmos" /><summary type="html"><![CDATA[Definición y workflow del Aprendizaje por refuerzo, y su aplicación para la resolución de problemas de control.]]></summary></entry><entry><title type="html">K-means clustering algorithm</title><link href="https://squirogar.github.io/blog/2023/clustering-kmeans/" rel="alternate" type="text/html" title="K-means clustering algorithm" /><published>2023-06-09T21:41:00+00:00</published><updated>2023-06-09T21:41:00+00:00</updated><id>https://squirogar.github.io/blog/2023/clustering-kmeans</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/clustering-kmeans/"><![CDATA[<p><em>El siguiente contenido fue aprendido del curso de especialización de Machine Learning de Andrew Ng y deeplearning.ai</em></p>
 
 <p>K-means es un algoritmo de clustering. Antes de ver en qué consiste K-means, es bueno saber qué es un algoritmo de clustering.</p>
 
