@@ -860,7 +860,7 @@ La suma es ahora el nuevo valor del par de estado y acción $$(s,a)$$, y lo comp
     </div>
 </div>
 
-El error se multiplica por una tasa de aprendizaje que le da control sobre si debe reemplazar la estimación del valor anterior con la nueva $$(\alfa = 1)$$ o empujar el valor anterior en la dirección del nuevo $$(\alfa < 1)$$.
+El error se multiplica por una tasa de aprendizaje que le da control sobre si debe reemplazar la estimación del valor anterior con la nueva $$(\alpha = 1)$$ o empujar el valor anterior en la dirección del nuevo $$(\alpha < 1)$$.
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
@@ -934,63 +934,58 @@ Este enfoque funciona para espacios de acción continua porque el crítico solo 
 
 #### Funcionamiento de actor-crítico
 1. El actor elige una acción de la misma manera que lo haría un algoritmo de policy function y se aplica al entorno.
-
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/paso1_ac.png" class="img-fluid rounded z-depth-1" %}
+    <div class="row mt-3">
+        <div class="col-sm mt-3 mt-md-0">
+            {% include figure.html path="assets/img/paso1_ac.png" class="img-fluid rounded z-depth-1" %}
+        </div>
     </div>
-</div>
-<div class="caption">
-    Paso 1.
-</div>
+    <div class="caption">
+        Paso 1.
+    </div>
 
 2. El crítico estima el valor para ese par estado/acción actual.
-
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/paso2_ac.png" class="img-fluid rounded z-depth-1" %}
+    <div class="row mt-3">
+        <div class="col-sm mt-3 mt-md-0">
+            {% include figure.html path="assets/img/paso2_ac.png" class="img-fluid rounded z-depth-1" %}
+        </div>
     </div>
-</div>
-<div class="caption">
-    Paso 2.
-</div>
+    <div class="caption">
+        Paso 2.
+    </div>
 
 3. El crítico usa la recompensa recibida para determinar la precisión de su predicción de valor.
     - El error es: $$\text{error}=\text{valor nuevo estimado del estado anterior}-\text{valor viejo para el estado anterior}$$, ambos dados por la red crítica.
     - El estado anterior es el estado desde el cual se ejecutó la acción actual.
     - El nuevo valor estimado se basa en la recompensa recibida y el valor descontado del estado actual.
     - El error permite que el crítico se de cuenta si las cosas salieron mejor o peor de lo esperado.
-
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/paso3_ac.png" class="img-fluid rounded z-depth-1" %}
+    <div class="row mt-3">
+        <div class="col-sm mt-3 mt-md-0">
+            {% include figure.html path="assets/img/paso3_ac.png" class="img-fluid rounded z-depth-1" %}
+        </div>
     </div>
-</div>
-<div class="caption">
-    Paso 3.
-</div>
+    <div class="caption">
+        Paso 3.
+    </div>
 
 4. El crítico usa este error para actualizarse a sí mismo para que así tenga una mejor predicción la próxima vez que esté en ese estado.
-
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/paso4_ac.png" class="img-fluid rounded z-depth-1" %}
+    <div class="row mt-3">
+        <div class="col-sm mt-3 mt-md-0">
+            {% include figure.html path="assets/img/paso4_ac.png" class="img-fluid rounded z-depth-1" %}
+        </div>
     </div>
-</div>
-<div class="caption">
-    Paso 4.
-</div>
+    <div class="caption">
+        Paso 4.
+    </div>
 
 5. El actor también se actualiza con la respuesta del crítico para que pueda ajustar sus probabilidades de volver a tomar esa acción en el futuro. De esta forma, la política asciende la pendiente de la recompensa en la dirección que recomienda el crítico en lugar de usar las recompensas directamente.
-
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/paso5_ac.png" class="img-fluid rounded z-depth-1" %}
+    <div class="row mt-3">
+        <div class="col-sm mt-3 mt-md-0">
+            {% include figure.html path="assets/img/paso5_ac.png" class="img-fluid rounded z-depth-1" %}
+        </div>
     </div>
-</div>
-<div class="caption">
-    Paso 5.
-</div>
+    <div class="caption">
+        Paso 5.
+    </div>
 
 El actor y el crítico son redes neuronales que intentan aprender el comportamiento óptimo:
 - El actor está aprendiendo las acciones correctas usando la retroalimentación del crítico.
@@ -1197,27 +1192,24 @@ Esta sería la solución, sin embargo, **aún no podemos garantizar estabilidad,
 Haciendo la política RL más robusta.
 
 1. Entrenar el agente en un entorno donde los parámetros importantes del entorno se ajustan cada vez que se ejecute la simulación. 
+    Por ejemplo, un robot caminante. Al comienzo de cada episodio cambiamos el valor del torque máximo.
+    $$
+    \begin{aligned}
+    & \text {Tabla 3. Configuración de los parámetros del entorno}\\
+    &\begin{array}{cccccc}
+    \hline \hline \text { Episodio } & \text { Torque } & \text { Longitud } & \text { Delay } & \text { Referencia } & \text{ ... }\\
+    \hline
+    1 & 2 \text{ Nm.} & 1 \text{ Cm.} & 10 \text{ Ms.} & \text{Step} & \text{ ... }\\
+    2 & 2.5 \text{ Nm.} & 1.3 \text{ Cm.} & 8 \text{ Ms.} & \text{Ramp} & \text{ ... }\\
+    3 & 2.1 \text{ Nm.} & 1.7 \text{ Cm.} & 14 \text{ Ms.} & \text{Impulse} & \text{ ... }\\
+    \text{ ... } & \text{ ... } & \text{ ... } & \text{ ... } & \text{ ... } & \text{ ... }\\
+    \hline
+    \end{array}
+    \end{aligned}
+    $$
+    La política será más robusta para esos torques, y si hacemos lo mismo para `longitud`, `delay`, y `referencia`; más robusta será.
 
-Por ejemplo, un robot caminante. Al comienzo de cada episodio cambiamos el valor del torque máximo.
-
-$$
-\begin{aligned}
-& \text {Tabla 3. Configuración de los parámetros del entorno}\\
-&\begin{array}{cccccc}
-\hline \hline \text { Episodio } & \text { Torque } & \text { Longitud } & \text { Delay } & \text { Referencia } & \text{ ... }\\
-\hline
-1 & 2 \text{ Nm.} & 1 \text{ Cm.} & 10 \text{ Ms.} & \text{Step} & \text{ ... }\\
-2 & 2.5 \text{ Nm.} & 1.3 \text{ Cm.} & 8 \text{ Ms.} & \text{Ramp} & \text{ ... }\\
-3 & 2.1 \text{ Nm.} & 1.7 \text{ Cm.} & 14 \text{ Ms.} & \text{Impulse} & \text{ ... }\\
-\text{ ... } & \text{ ... } & \text{ ... } & \text{ ... } & \text{ ... } & \text{ ... }\\
-\hline
-\end{array}
-\end{aligned}
-$$
-
-La política será más robusta para esos torques, y si hacemos lo mismo para `longitud`, `delay`, y `referencia`; más robusta será.
-
-La política eventualmente convergerá en algo robusto para esos márgenes, produciendo un diseño robusto en general. El resultado manejará un rango más amplio dentro del espacio de estados operativo.
+    La política eventualmente convergerá en algo robusto para esos márgenes, produciendo un diseño robusto en general. El resultado manejará un rango más amplio dentro del espacio de estados operativo.
 
 2. Para la seguridad, se puede hacer un software que ponga en *modo seguro* al agente en una situación peligrosa. Esto protegerá al sistema, lo que permite aprender cómo falla y ajustar la recompensa y entrenar para abordar esa falla.
 
