@@ -44,36 +44,36 @@ Ejemplo de reinforcement learning:
 ## I. Funcionamiento de RL
 El procedimiento es el siguiente:
 
-1. Agente observa el estado actual del entorno
-    <div class="row mt-3">
-        <div class="col-sm mt-3 mt-md-0">
-            {% include figure.html path="assets/img/paso1.png" class="img-fluid rounded z-depth-1" %}
-        </div>
+* Paso 1: Agente observa el estado actual del entorno
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/paso1.png" class="img-fluid rounded z-depth-1" %}
     </div>
+</div>
 
-2. Decide cual acción tomar dependiendo del estado
-    <div class="row mt-3">
-        <div class="col-sm mt-3 mt-md-0">
-            {% include figure.html path="assets/img/paso2.png" class="img-fluid rounded z-depth-1" %}
-        </div>
+* Paso 2: Decide cual acción tomar dependiendo del estado
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/paso2.png" class="img-fluid rounded z-depth-1" %}
     </div>
+</div>
 
-3. Entorno cambia de estado y produce una recompensa por la acción ejecutada
-    <div class="row mt-3">
-        <div class="col-sm mt-3 mt-md-0">
-            {% include figure.html path="assets/img/paso3.png" class="img-fluid rounded z-depth-1" %}
-        </div>
+* Paso 3: Entorno cambia de estado y produce una recompensa por la acción ejecutada
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/paso3.png" class="img-fluid rounded z-depth-1" %}
     </div>
+</div>
 
-4. ¿Fueron buenas las acciones o malas?
-- buenas: repetirlas
-- malas: evitarlas
-Repetir hasta terminar el aprendizaje.
-    <div class="row mt-3">
-        <div class="col-sm mt-3 mt-md-0">
-            {% include figure.html path="assets/img/paso4.png" class="img-fluid rounded z-depth-1" %}
-        </div>
+* Paso 4: ¿Fueron buenas las acciones o malas?
+    - buenas: repetirlas
+    - malas: evitarlas
+    Repetir hasta terminar el aprendizaje.
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/paso4.png" class="img-fluid rounded z-depth-1" %}
     </div>
+</div>
 
 ## II. Política
 El agente internamente toma las observaciones del estado del entorno y las asigna a acciones realizando así un mapeo. En otras palabras, se puede entender este mapeo como una función que recibe entradas y genera una salida. A este mapeo se le llama **política**. La política es muy importante, ya que decide qué acción ejecutar dado un conjunto de observaciones de estado. Básicamente la política es el *cerebro* de nuestro agente, y le va a indicar qué hacer. La política se puede representar de varias formas, una forma muy útil es que si tenemos observaciones de estado complejas como por ejemplo, imágenes, entonces podemos usar una red neuronal para procesar dichos datos.
@@ -290,41 +290,41 @@ Para utilizar RL en control tenemos que:
 
 ## VIII. Workflow de RL
 El flujo de trabajo de RL consiste en:
-1. Establecer un entorno: qué debe existir en ese entorno. Además debemos decidir: ¿Durante el entrenamiento probamos con un entorno real (hardware real) o simulado (uso de modelos matemáticos del sistema)?
-    <div class="row mt-3">
-        <div class="col-sm mt-3 mt-md-0">
-            {% include figure.html path="assets/img/1_entorno.png" class="img-fluid rounded z-depth-1" %}
-        </div>
+* Paso 1: Establecer un entorno: qué debe existir en ese entorno. Además debemos decidir: ¿Durante el entrenamiento probamos con un entorno real (hardware real) o simulado (uso de modelos matemáticos del sistema)?
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/1_entorno.png" class="img-fluid rounded z-depth-1" %}
     </div>
+</div>
 
 
-2. Definir la señal de recompensa: qué debe hacer el agente, cómo debe llegar al objetivo, diseñar la función de recompensa que incentive al agente.
-    <div class="row mt-3">
-        <div class="col-sm mt-3 mt-md-0">
-            {% include figure.html path="assets/img/2_recompensa.png" class="img-fluid rounded z-depth-1" %}
-        </div>
+* Paso 2: Definir la señal de recompensa: qué debe hacer el agente, cómo debe llegar al objetivo, diseñar la función de recompensa que incentive al agente.
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/2_recompensa.png" class="img-fluid rounded z-depth-1" %}
     </div>
+</div>
 
-3. Establecer la política: cómo representamos la política: estructuración de los parámetros y la lógica de la toma de decisiones del agente. ¿Cuál es la información que recibe el agente? ¿Cuál debe ser la salida que genera el agente? ¿De qué tipo son estas entradas? ¿Voy a representar la política con una red neuronal? Etc.
-    <div class="row mt-3">
-        <div class="col-sm mt-3 mt-md-0">
-            {% include figure.html path="assets/img/3_politica.png" class="img-fluid rounded z-depth-1" %}
-        </div>
+* Paso 3: Establecer la política: cómo representamos la política: estructuración de los parámetros y la lógica de la toma de decisiones del agente. ¿Cuál es la información que recibe el agente? ¿Cuál debe ser la salida que genera el agente? ¿De qué tipo son estas entradas? ¿Voy a representar la política con una red neuronal? Etc.
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/3_politica.png" class="img-fluid rounded z-depth-1" %}
     </div>
+</div>
 
-4. Entrenamiento: necesitamos escoger un algoritmo de RL que permita obtener la política óptima. Se debe elegir el mejor de acuerdo a nuestro caso. Los algoritmos de RL dependen de la estructuración de la política.
-    <div class="row mt-3">
-        <div class="col-sm mt-3 mt-md-0">
-            {% include figure.html path="assets/img/4_entrenamiento.png" class="img-fluid rounded z-depth-1" %}
-        </div>
+* Paso 4: Entrenamiento: necesitamos escoger un algoritmo de RL que permita obtener la política óptima. Se debe elegir el mejor de acuerdo a nuestro caso. Los algoritmos de RL dependen de la estructuración de la política.
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/4_entrenamiento.png" class="img-fluid rounded z-depth-1" %}
     </div>
+</div>
 
-5. Deploy/Implementación: se implementa la política en un entorno real y se verfican los resultados.
-    <div class="row mt-3">
-        <div class="col-sm mt-3 mt-md-0">
-            {% include figure.html path="assets/img/5_deploy.png" class="img-fluid rounded z-depth-1" %}
-        </div>
+* Paso 5: Deploy/Implementación: se implementa la política en un entorno real y se verfican los resultados.
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/5_deploy.png" class="img-fluid rounded z-depth-1" %}
     </div>
+</div>
 
 
 ## 1. Entorno
@@ -435,26 +435,26 @@ En RL no hay un límite para crear una función de recompensa. Las recompensas p
 
 Hacer una función de recompensa buena es difícil. No existe una forma sencilla de diseñar una señal o función de recompensa para garantizar que el agente converja a la solución que se quiere. Esto se debe a dos razones:
 
-1. A menudo el objetivo se cumple luego de una larga secuencia de acciones. Si sólo recompensamos por cumplir el objetivo, el agente se equivocará por largos periodos de tiempo sin recibir recompensas, a esto se le llama **recompensas escasas**. Es muy poco probable que el agente se tope al azar con la secuencia de acciones que produce la recompensa escasa. Confiar en esta exploración aleatoria es bastante ineficiente, ya que es un aprendizaje muy lento, incluso llega a no ser práctico. Este problema se puede solucionar con el **reward shaping** o dar forma a las recompensas. Si proporcionamos **recompensas intermedias** más pequeñas que induzcan al agente a seguir el camino correcto, lograremos que el agente consiga su objetivo.
-    <div class="row mt-3">
-        <div class="col-sm mt-3 mt-md-0">
-            {% include figure.html path="assets/img/reward_shaping.png" class="img-fluid rounded z-depth-1" %}
-        </div>
+* 1.- A menudo el objetivo se cumple luego de una larga secuencia de acciones. Si sólo recompensamos por cumplir el objetivo, el agente se equivocará por largos periodos de tiempo sin recibir recompensas, a esto se le llama **recompensas escasas**. Es muy poco probable que el agente se tope al azar con la secuencia de acciones que produce la recompensa escasa. Confiar en esta exploración aleatoria es bastante ineficiente, ya que es un aprendizaje muy lento, incluso llega a no ser práctico. Este problema se puede solucionar con el **reward shaping** o dar forma a las recompensas. Si proporcionamos **recompensas intermedias** más pequeñas que induzcan al agente a seguir el camino correcto, lograremos que el agente consiga su objetivo.
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/reward_shaping.png" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="caption">
-        Reward shaping.
-    </div>
+</div>
+<div class="caption">
+    Reward shaping.
+</div>
 
 
-2. El reward shaping viene con su propio conjunto de problemas. Si se le da un atajo a un algoritmo de optimización, él lo tomará. Los atajos están ocultos en la función de recompensa. Una función de recompensa mal moldeada puede hacer que el agente converja a una solución no ideal, incluso si produce la mayor recompensa. Por ejemplo: tenemos un robot caminante cuyo objetivo es caminar hasta los 10 metros. Supongamos que tenemos pensado darle recompensas intermedias y 1 grande al final por llegar a los 10 metros. Además de llegar al objetivo es importante considerar el *cómo* se llega a él; para este robot desplomarse y arrastrase como una oruga hasta llegar a los 10 metros es lo mismo que caminar erguido y sin desviarse hasta los 10 metros. Al agente le da lo mismo porque al final igual va a recibir la recompensa. Sin embargo, a nosotros nos interesa que el robot cumpla su objetivo de manera idónea.
-    <div class="row mt-3">
-        <div class="col-sm mt-3 mt-md-0">
-            {% include figure.html path="assets/img/reward_shaping_problema.png" class="img-fluid rounded z-depth-1" %}
-        </div>
+* 2.- El reward shaping viene con su propio conjunto de problemas. Si se le da un atajo a un algoritmo de optimización, él lo tomará. Los atajos están ocultos en la función de recompensa. Una función de recompensa mal moldeada puede hacer que el agente converja a una solución no ideal, incluso si produce la mayor recompensa. Por ejemplo: tenemos un robot caminante cuyo objetivo es caminar hasta los 10 metros. Supongamos que tenemos pensado darle recompensas intermedias y 1 grande al final por llegar a los 10 metros. Además de llegar al objetivo es importante considerar el *cómo* se llega a él; para este robot desplomarse y arrastrase como una oruga hasta llegar a los 10 metros es lo mismo que caminar erguido y sin desviarse hasta los 10 metros. Al agente le da lo mismo porque al final igual va a recibir la recompensa. Sin embargo, a nosotros nos interesa que el robot cumpla su objetivo de manera idónea.
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/reward_shaping_problema.png" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="caption">
-        El problema del reward shaping.
-    </div>
+</div>
+<div class="caption">
+    El problema del reward shaping.
+</div>
 
 ¿Cómo solucionamos el problema de los atajos? Inyectando conocimiento específico del dominio en el agente. Vamos a recompensar al agente no solo por llegar al objetivo sino también por el *cómo lo hace*. Por ejemplo, recompensar al robot por caminar erguido, a una velocidad determinada, que no se desvíe del camino, etc.
 
@@ -742,27 +742,27 @@ Estos métodos toman la derivada de cada *weight* y *bias* en la red neuronal co
 </div>
 
 #### 4.1.1. Lo malo de los métodos de policy gradient
-1. El enfoque ingenuo de simplemente seguir la dirección del ascenso más empinado puede converger a un máximo local en vez de uno global.
-    <div class="row mt-3">
-        <div class="col-sm mt-3 mt-md-0">
-            {% include figure.html path="assets/img/problema1_policy.png" class="img-fluid rounded z-depth-1" %}
-        </div>
+* 1.- El enfoque ingenuo de simplemente seguir la dirección del ascenso más empinado puede converger a un máximo local en vez de uno global.
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/problema1_policy.png" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="caption">
-        Problema del máximo local.
-    </div>
+</div>
+<div class="caption">
+    Problema del máximo local.
+</div>
 
-2. Pueden converger lentamente debido a su sensibilidad a las mediciones ruidosas, o sea, cuando se necesitan muchas acciones secuenciales para recibir una recompensa y la recompensas acumulada resultante tiene gran variación entre episodios.
+* 2.- Pueden converger lentamente debido a su sensibilidad a las mediciones ruidosas, o sea, cuando se necesitan muchas acciones secuenciales para recibir una recompensa y la recompensas acumulada resultante tiene gran variación entre episodios.
 
 Por ejemplo, en Breakout, el agente puede hacer muchos movimientos rápidos de paleta hacia la izquierda y hacia la derecha mientras la paleta finalmente se abre camino a través del campo para golpear la pelota y recibir la recompensa. ¿Todas esas acciones previas fueron realmente necesarias para obtener esa recompensa? El algoritmo de policy gradient tendría que tratar cada acción como si fuera necearia y ajustar las probabilidades es consecuencia.
-    <div class="row mt-3">
-        <div class="col-sm mt-3 mt-md-0">
-            {% include figure.html path="assets/img/problema2_policy.png" class="img-fluid rounded z-depth-1" %}
-        </div>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/problema2_policy.png" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="caption">
-        Problema de la sensibilidad.
-    </div>
+</div>
+<div class="caption">
+    Problema de la sensibilidad.
+</div>
 
 ### 4.2. Aprendizaje basado en la función de valor (value function-based learning):
 Con un agente basado en la función de valor, una función toma el estado y una de las posibles acciones de ese estado y generaría el valor de tomar esa acción.
@@ -933,59 +933,44 @@ Este enfoque funciona para espacios de acción continua porque el crítico solo 
 </div>
 
 #### Funcionamiento de actor-crítico
-1. El actor elige una acción de la misma manera que lo haría un algoritmo de policy function y se aplica al entorno.
-    <div class="row mt-3">
-        <div class="col-sm mt-3 mt-md-0">
-            {% include figure.html path="assets/img/paso1_ac.png" class="img-fluid rounded z-depth-1" %}
-        </div>
+* Paso 1: El actor elige una acción de la misma manera que lo haría un algoritmo de policy function y se aplica al entorno.
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/paso1_ac.png" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="caption">
-        Paso 1.
-    </div>
+</div>
 
-2. El crítico estima el valor para ese par estado/acción actual.
-    <div class="row mt-3">
-        <div class="col-sm mt-3 mt-md-0">
-            {% include figure.html path="assets/img/paso2_ac.png" class="img-fluid rounded z-depth-1" %}
-        </div>
+* Paso 2: El crítico estima el valor para ese par estado/acción actual.
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/paso2_ac.png" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="caption">
-        Paso 2.
-    </div>
+</div>
 
-3. El crítico usa la recompensa recibida para determinar la precisión de su predicción de valor.
+* Paso 3: El crítico usa la recompensa recibida para determinar la precisión de su predicción de valor.
     - El error es: $$\text{error}=\text{valor nuevo estimado del estado anterior}-\text{valor viejo para el estado anterior}$$, ambos dados por la red crítica.
     - El estado anterior es el estado desde el cual se ejecutó la acción actual.
     - El nuevo valor estimado se basa en la recompensa recibida y el valor descontado del estado actual.
     - El error permite que el crítico se de cuenta si las cosas salieron mejor o peor de lo esperado.
-    <div class="row mt-3">
-        <div class="col-sm mt-3 mt-md-0">
-            {% include figure.html path="assets/img/paso3_ac.png" class="img-fluid rounded z-depth-1" %}
-        </div>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/paso3_ac.png" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="caption">
-        Paso 3.
-    </div>
+</div>
 
-4. El crítico usa este error para actualizarse a sí mismo para que así tenga una mejor predicción la próxima vez que esté en ese estado.
-    <div class="row mt-3">
-        <div class="col-sm mt-3 mt-md-0">
-            {% include figure.html path="assets/img/paso4_ac.png" class="img-fluid rounded z-depth-1" %}
-        </div>
+* Paso 4: El crítico usa este error para actualizarse a sí mismo para que así tenga una mejor predicción la próxima vez que esté en ese estado.
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/paso4_ac.png" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="caption">
-        Paso 4.
-    </div>
+</div>
 
-5. El actor también se actualiza con la respuesta del crítico para que pueda ajustar sus probabilidades de volver a tomar esa acción en el futuro. De esta forma, la política asciende la pendiente de la recompensa en la dirección que recomienda el crítico en lugar de usar las recompensas directamente.
-    <div class="row mt-3">
-        <div class="col-sm mt-3 mt-md-0">
-            {% include figure.html path="assets/img/paso5_ac.png" class="img-fluid rounded z-depth-1" %}
-        </div>
+* Paso 5: El actor también se actualiza con la respuesta del crítico para que pueda ajustar sus probabilidades de volver a tomar esa acción en el futuro. De esta forma, la política asciende la pendiente de la recompensa en la dirección que recomienda el crítico en lugar de usar las recompensas directamente.
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/paso5_ac.png" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="caption">
-        Paso 5.
-    </div>
+</div>
 
 El actor y el crítico son redes neuronales que intentan aprender el comportamiento óptimo:
 - El actor está aprendiendo las acciones correctas usando la retroalimentación del crítico.
@@ -1191,27 +1176,28 @@ Esta sería la solución, sin embargo, **aún no podemos garantizar estabilidad,
 #### Cómo lograr robustez y estabilidad
 Haciendo la política RL más robusta.
 
-1. Entrenar el agente en un entorno donde los parámetros importantes del entorno se ajustan cada vez que se ejecute la simulación. 
+* 1.- Entrenar el agente en un entorno donde los parámetros importantes del entorno se ajustan cada vez que se ejecute la simulación. 
     Por ejemplo, un robot caminante. Al comienzo de cada episodio cambiamos el valor del torque máximo.
-    $$
-    \begin{aligned}
-    & \text {Tabla 3. Configuración de los parámetros del entorno}\\
-    &\begin{array}{cccccc}
-    \hline \hline \text { Episodio } & \text { Torque } & \text { Longitud } & \text { Delay } & \text { Referencia } & \text{ ... }\\
-    \hline
-    1 & 2 \text{ Nm.} & 1 \text{ Cm.} & 10 \text{ Ms.} & \text{Step} & \text{ ... }\\
-    2 & 2.5 \text{ Nm.} & 1.3 \text{ Cm.} & 8 \text{ Ms.} & \text{Ramp} & \text{ ... }\\
-    3 & 2.1 \text{ Nm.} & 1.7 \text{ Cm.} & 14 \text{ Ms.} & \text{Impulse} & \text{ ... }\\
-    \text{ ... } & \text{ ... } & \text{ ... } & \text{ ... } & \text{ ... } & \text{ ... }\\
-    \hline
-    \end{array}
-    \end{aligned}
-    $$
-    La política será más robusta para esos torques, y si hacemos lo mismo para `longitud`, `delay`, y `referencia`; más robusta será.
+$$
+\begin{aligned}
+& \text {Tabla 3. Configuración de los parámetros del entorno}\\
+&\begin{array}{cccccc}
+\hline \hline \text { Episodio } & \text { Torque } & \text { Longitud } & \text { Delay } & \text { Referencia } & \text{ ... }\\
+\hline
+1 & 2 \text{ Nm.} & 1 \text{ Cm.} & 10 \text{ Ms.} & \text{Step} & \text{ ... }\\
+2 & 2.5 \text{ Nm.} & 1.3 \text{ Cm.} & 8 \text{ Ms.} & \text{Ramp} & \text{ ... }\\
+3 & 2.1 \text{ Nm.} & 1.7 \text{ Cm.} & 14 \text{ Ms.} & \text{Impulse} & \text{ ... }\\
+\text{ ... } & \text{ ... } & \text{ ... } & \text{ ... } & \text{ ... } & \text{ ... }\\
+\hline
+\end{array}
+\end{aligned}
+$$
 
-    La política eventualmente convergerá en algo robusto para esos márgenes, produciendo un diseño robusto en general. El resultado manejará un rango más amplio dentro del espacio de estados operativo.
+La política será más robusta para esos torques, y si hacemos lo mismo para `longitud`, `delay`, y `referencia`; más robusta será.
 
-2. Para la seguridad, se puede hacer un software que ponga en *modo seguro* al agente en una situación peligrosa. Esto protegerá al sistema, lo que permite aprender cómo falla y ajustar la recompensa y entrenar para abordar esa falla.
+La política eventualmente convergerá en algo robusto para esos márgenes, produciendo un diseño robusto en general. El resultado manejará un rango más amplio dentro del espacio de estados operativo.
+
+* 2.- Para la seguridad, se puede hacer un software que ponga en *modo seguro* al agente en una situación peligrosa. Esto protegerá al sistema, lo que permite aprender cómo falla y ajustar la recompensa y entrenar para abordar esa falla.
 
 
 ## X. RL + Control
