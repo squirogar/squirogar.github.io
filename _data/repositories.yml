@@ -1,12 +1,7 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - squirogar
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - squirogar/compresorImagenesKMeans
+  - squirogar/Clustering_algorithm
+  - squirogar/appSaludTkinter
