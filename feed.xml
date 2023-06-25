@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-06-19T02:07:42+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-06-25T21:55:40+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 </subtitle><entry><title type="html">Reinforcement Learning y control</title><link href="https://squirogar.github.io/blog/2023/reinforcement-learning/" rel="alternate" type="text/html" title="Reinforcement Learning y control" /><published>2023-06-10T20:30:00+00:00</published><updated>2023-06-10T20:30:00+00:00</updated><id>https://squirogar.github.io/blog/2023/reinforcement-learning</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/reinforcement-learning/"><![CDATA[<p><em>Material obtenido del e-book de matlab de Reinforcement Learning</em></p>
 
 <h1 id="reinforcement-learning-rl">Reinforcement Learning (RL)</h1>
@@ -2371,7 +2371,124 @@ Todo esto resulta en una función muy compleja!</li>
 </div>
 <div class="caption">
     El agente RL calculará las ganancias óptimas del controlador.
-</div>]]></content><author><name></name></author><category term="algoritmos" /><summary type="html"><![CDATA[Definición y workflow del Aprendizaje por refuerzo, y su aplicación para la resolución de problemas de control.]]></summary></entry><entry><title type="html">K-means clustering algorithm</title><link href="https://squirogar.github.io/blog/2023/clustering-kmeans/" rel="alternate" type="text/html" title="K-means clustering algorithm" /><published>2023-06-09T21:41:00+00:00</published><updated>2023-06-09T21:41:00+00:00</updated><id>https://squirogar.github.io/blog/2023/clustering-kmeans</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/clustering-kmeans/"><![CDATA[<p><em>El siguiente contenido fue aprendido del curso de especialización de Machine Learning de Andrew Ng y deeplearning.ai</em></p>
+</div>]]></content><author><name></name></author><category term="algoritmos" /><summary type="html"><![CDATA[Definición y workflow del Aprendizaje por refuerzo, y su aplicación para la resolución de problemas de control.]]></summary></entry><entry><title type="html">Norma L1 y L2</title><link href="https://squirogar.github.io/blog/2023/norma-l1-l2/" rel="alternate" type="text/html" title="Norma L1 y L2" /><published>2023-06-10T20:30:00+00:00</published><updated>2023-06-10T20:30:00+00:00</updated><id>https://squirogar.github.io/blog/2023/norma-l1-l2</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/norma-l1-l2/"><![CDATA[<h1 id="regularización-y-las-normas-l1-y-l2">Regularización y las normas L1 y L2</h1>
+
+<p><em>Información obtenida de este artículo de Chiara Campagnola</em></p>
+
+<h2 id="cómo-minimizar-una-norma-produce-la-regularización">Cómo minimizar una norma produce la regularización</h2>
+
+<p>En linear regression, el modelo es el siguiente:
+\(\hat{y} = w \cdot x + b\)
+y la función de costo a minimizar es MSE:
+\(MSE = \frac{1}{m}\sum^{m}_{i=1}(y-\hat{y})^2\)</p>
+
+<p>El modelo que usaremos para hacer la predicción tiene que ser lo suficientemente complejo para ajustarse a la data, pero no tanto como para que produzca overfitting. Al añadir un término de regularización, prevenimos que los parámetros \(w\) sean muy grandes (en valor absoluto), simplificando el modelo.</p>
+
+<p>El término de regularización puede ser la norma \(L1\) o \(L2\) al cuadrado, y se agrega a la función de costo, por lo que durante el entrenamiento, el algoritmo de aprendizaje (linear regression en este caso), intentará minimizar la función de costo con el término de regularización.</p>
+
+<p>\(\text{norma L1:} ||w||_1 = \sum^{n}_{i}|w_i|\)
+\(\text{normal L2 al cuadrado:} ||w||_2^2 = \sum^{n}_{i}w_i^2\)</p>
+
+<p><strong>Minimizar la norma incentiva a la función a ser menos compleja</strong>.</p>
+
+<p>Matemáticamente, las normas \(L1$ y\)L2\(son medidas de la magnitud de los weights: la suma de los valores absolutos (Norma\)L1\() y la suma de los valores al cuadrado (Norma\)L2$$). Valores más grandes de weights dan una norma más grande. Esto significa que, minimizar la norma incentiva a los weights a ser más pequeños (en valor absoluto), lo que a su vez da funciones más simples.</p>
+
+<ul>
+  <li>Ejemplos de modelos:</li>
+  <li>polinomio grado 8 se ajusta muy bien a la data, obtiene error 0, sin embargo, sus normas son bastantes altas (L2=32 y L1 = 70)
+    <ul>
+      <li>Esto se refleja en el modelo: \(f(x)=0.04+0.04x+0.9x^2\)</li>
+      <li>Este modelo producirá overfitting</li>
+    </ul>
+  </li>
+  <li>polinomio grado 2 se ajusta bien a la data, obtiene un error dde 0.006, pero sus normas son muy pequeñas (L2=0.9 y L1=0.98).
+    <ul>
+      <li>Esto se refleja en el modelo: \(f(x)=-0.01+0.57x+2.67x^2-4.08x^3-12.25x^4+7.41x^5+24.87x^6-3.79x^7-14.38x^8\)</li>
+      <li>Este modelo generalizará mejor.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Con esto se concluye que mientras menor sea la norma, más pequeños los parámetros y más simple el modelo.</p>
+
+<p>Dependiendo de la norma que usemos, habrán distintos efectos, ya sea, eliminar algunos weights completamente (estableciéndolos a 0), o haciendo que todos los weights sean lo más pequeños posibles. El primero lo genera la norma \(L1\), mientras que el segundo lo hará la norma \(L2\) al cuadrado.</p>
+
+<p>To understand how they operate differently, let’s have a look at how they change depending on the value of the weights.</p>
+
+<p>Veamos como cambian las normas dependiendo del valor de los weights.</p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/derivada_l1-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/derivada_l1-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/derivada_l1-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/derivada_l1.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Gráfica que muestra a $$|w|$$ y la derivada de $$|w|=\frac{w \cdot w'}{|w|}$$. Podemos observar que la pendiente es siempre la misma (un valor constante).
+</div>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/derivada_l2-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/derivada_l2-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/derivada_l2-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/derivada_l2.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Gráfica que muestra $$w^2$$ y la derivada de ésta que es $$2w$$. Recordar que es la norma L2 al cuadrado la que se utiliza. Podemos observar que la pendiente es muy grande al principio, pero a medida que $$w$$ disminuye, la pendiente se hace cada vez más pequeña.
+</div>
+
+<p>Las normas \(L1\) y \(L2\) aumentan a medida que aumenta el valor absoluto de \(w\). Sin embargo, mientras que la norma \(L1\) aumenta a un valor constante, la norma \(L2\) aumenta más rápidamente.</p>
+
+<p>Cuando utilizamos el gradient descent actualizaremos nuestros weights basándonos en la derivada la función de costo. Entnces si incluimos una norma en nuestra función de costo, la derivada de la norma determinará cómo serán actualizados los weights.</p>
+<ul>
+  <li>Con la norma \(L2\) a medida que \(w\) se vuelve más pequeño, también lo hace la pendiente de la norma, lo que significa que las actualizaciones también serán cada vez más pequeñas. Cuando los weigths estén cerca de 0, las actualizaciones se habrán vuelto tan pequeñas que serán casi insignificantes, por lo que es poco probable que los pesos lleguen a ser 0.</li>
+  <li>Con la norma \(L1\) la pendiente es constante. Esto significa que a medida que w se reduce, las actualizaciones no cambian. Por consiguiente, es mucho más probable que la norma \(L1\) reduzca algunos weights a 0.</li>
+</ul>
+
+<hr />
+<p><em>Obtenido de artículo escrito por Saptashwa Bhattacharyya https://towardsdatascience.com/ridge-and-lasso-regression-a-complete-guide-with-python-scikit-learn-e20e34bcbf0b</em></p>
+
+<p>Ridge y Lasso regression son técnicas simples para reducir la complejidad del modelo y prevenir el overfitting.</p>
+
+<h2 id="ridge-regression">Ridge regression</h2>
+<p>En Ridge regression, la función de costo es alterada agregando un castigo equivalente al cuadrado de la magnitud de los coeficientes. En otras palabras, si agregamos la norma \(L2\) al cuadrado a la loss y la minimizamos, obtendremos la función de costo de Ridge regression:
+\(min L(w) = min(\frac{1}{m}\sum^{m}_{i=1}(y-\hat{y})^2 + \lambda ||w||_2^2)\)
+\(\lambda\) es el coeficiente de regularización que determina cuánta regularización queremos.</p>
+
+<p>Entonces, Ridge regression pone restricciones en los coeficientes \(w\) en caso de que los coeficientes tomen valores muy grandes. <strong>Ridge regression solamente puede reducir los coeficientes cerca de 0, pero nunca 0</strong>.</p>
+
+<h2 id="lasso-regression">Lasso regression</h2>
+<p>La función de costo para Lasso (<em>least absolute shrinkage and selection operator</em>) regression es:
+\(min L(w) = min(\frac{1}{m}\sum^{m}_{i=1}(y-\hat{y})^2 + \lambda ||w||_1)\)</p>
+
+<p>Lasso regression también simplifica el modelo, la diferencia es que en lugar de tomar el cuadrado de los coeficientes, solo tomamos las magnitudes de los parámetros. Este tipo de regularización puede conducir a coeficientes con valor 0, es decir, tienen nulo aporte en la evaluación de la salida. <strong>Lasso regression no solo ayuda en reducir el overfitting sino que también puede ayudarnos en feature selection</strong>. Feature selection es cuando queremos seleccionar ciertas features, sólo las más importantes.</p>]]></content><author><name></name></author><category term="algoritmos" /><summary type="html"><![CDATA[Explicación de norma L1 y L2, y su uso en Linear Regression]]></summary></entry><entry><title type="html">K-means clustering algorithm</title><link href="https://squirogar.github.io/blog/2023/clustering-kmeans/" rel="alternate" type="text/html" title="K-means clustering algorithm" /><published>2023-06-09T21:41:00+00:00</published><updated>2023-06-09T21:41:00+00:00</updated><id>https://squirogar.github.io/blog/2023/clustering-kmeans</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/clustering-kmeans/"><![CDATA[<p><em>El siguiente contenido fue aprendido del curso de especialización de Machine Learning de Andrew Ng y deeplearning.ai</em></p>
 
 <p>K-means es un algoritmo de clustering. Antes de ver en qué consiste K-means, es bueno saber qué es un algoritmo de clustering.</p>
 
@@ -2751,346 +2868,4 @@ repeat {
 
 <p>Esta nueva representación requiere un leve overhead, ya que guardamos el vector de 16 colores. Cada uno de estos colores en el vector requiere 24 bits. Sin embargo, para la imagen en sí misma sólo se requieren 4 bits por ubicación de pixel (los 4 bits son para representar un número entre 0-15).</p>
 
-<p>El tamaño total de la imagen es: (16x24) + (128x128x4) = 65.920 bits</p>]]></content><author><name></name></author><category term="algoritmos" /><summary type="html"><![CDATA[Definición, análisis, implementación y consejos del algoritmo K-means]]></summary></entry><entry><title type="html">a post with custom blockquotes</title><link href="https://squirogar.github.io/blog/2023/custom-blockquotes/" rel="alternate" type="text/html" title="a post with custom blockquotes" /><published>2023-05-12T19:53:00+00:00</published><updated>2023-05-12T19:53:00+00:00</updated><id>https://squirogar.github.io/blog/2023/custom-blockquotes</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/custom-blockquotes/"><![CDATA[<p>This post shows how to add custom styles for blockquotes. Based on <a href="https://github.com/sighingnow/jekyll-gitbook">jekyll-gitbook</a> implementation.</p>
-
-<p>We decided to support the same custom blockquotes as in <a href="https://sighingnow.github.io/jekyll-gitbook/jekyll/2022-06-30-tips_warnings_dangers.html">jekyll-gitbook</a>, which are also found in a lot of other sites’ styles. The styles definitions can be found on the <a href="https://github.com/alshedivat/al-folio/blob/master/_sass/_base.scss">_base.scss</a> file, more specifically:</p>
-
-<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Tips, warnings, and dangers */</span>
-<span class="nc">.post</span> <span class="nc">.post-content</span> <span class="nt">blockquote</span> <span class="p">{</span>
-    <span class="k">&amp;</span><span class="nc">.block-tip</span> <span class="p">{</span>
-    <span class="nl">border-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-tip-block</span><span class="p">);</span>
-    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-tip-block-bg</span><span class="p">);</span>
-
-    <span class="nt">p</span> <span class="p">{</span>
-      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-tip-block-text</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">h4</span><span class="o">,</span> <span class="nt">h5</span><span class="o">,</span> <span class="nt">h6</span> <span class="p">{</span>
-      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-tip-block-title</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="k">&amp;</span><span class="nc">.block-warning</span> <span class="p">{</span>
-    <span class="nl">border-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-warning-block</span><span class="p">);</span>
-    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-warning-block-bg</span><span class="p">);</span>
-
-    <span class="nt">p</span> <span class="p">{</span>
-      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-warning-block-text</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">h4</span><span class="o">,</span> <span class="nt">h5</span><span class="o">,</span> <span class="nt">h6</span> <span class="p">{</span>
-      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-warning-block-title</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="k">&amp;</span><span class="nc">.block-danger</span> <span class="p">{</span>
-    <span class="nl">border-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-danger-block</span><span class="p">);</span>
-    <span class="nl">background-color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-danger-block-bg</span><span class="p">);</span>
-
-    <span class="nt">p</span> <span class="p">{</span>
-      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-danger-block-text</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">h4</span><span class="o">,</span> <span class="nt">h5</span><span class="o">,</span> <span class="nt">h6</span> <span class="p">{</span>
-      <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">global-danger-block-title</span><span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>A regular blockquote can be used as following:</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; This is a regular blockquote</span>
-<span class="gt">&gt; and it can be used as usual</span>
-</code></pre></div></div>
-
-<blockquote>
-  <p>This is a regular blockquote
-and it can be used as usual</p>
-</blockquote>
-
-<p>These custom styles can be used by adding the specific class to the blockquote, as follows:</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; ##### TIP</span>
-<span class="gt">&gt;</span>
-<span class="gt">&gt; A tip can be used when you want to give advice</span>
-<span class="gt">&gt; related to a certain content.</span>
-{: .block-tip }
-</code></pre></div></div>
-
-<blockquote class="block-tip">
-  <h5 id="tip">TIP</h5>
-
-  <p>A tip can be used when you want to give advice
-related to a certain content.</p>
-</blockquote>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; ##### WARNING</span>
-<span class="gt">&gt;</span>
-<span class="gt">&gt; This is a warning, and thus should</span>
-<span class="gt">&gt; be used when you want to warn the user</span>
-{: .block-warning }
-</code></pre></div></div>
-
-<blockquote class="block-warning">
-  <h5 id="warning">WARNING</h5>
-
-  <p>This is a warning, and thus should
-be used when you want to warn the user</p>
-</blockquote>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; ##### DANGER</span>
-<span class="gt">&gt;</span>
-<span class="gt">&gt; This is a danger zone, and thus should</span>
-<span class="gt">&gt; be used carefully</span>
-{: .block-danger }
-</code></pre></div></div>
-
-<blockquote class="block-danger">
-  <h5 id="danger">DANGER</h5>
-
-  <p>This is a danger zone, and thus should
-be used carefully</p>
-</blockquote>]]></content><author><name></name></author><category term="sample-posts" /><category term="blockquotes" /><summary type="html"><![CDATA[an example of a blog post with custom blockquotes]]></summary></entry><entry><title type="html">a post with table of contents on a sidebar</title><link href="https://squirogar.github.io/blog/2023/sidebar-table-of-contents/" rel="alternate" type="text/html" title="a post with table of contents on a sidebar" /><published>2023-04-25T14:14:00+00:00</published><updated>2023-04-25T14:14:00+00:00</updated><id>https://squirogar.github.io/blog/2023/sidebar-table-of-contents</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/sidebar-table-of-contents/"><![CDATA[<p>This post shows how to add a table of contents as a sidebar.</p>
-
-<h2 id="adding-a-table-of-contents">Adding a Table of Contents</h2>
-
-<p>To add a table of contents to a post as a sidebar, simply add</p>
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">toc</span><span class="pi">:</span>
-  <span class="na">sidebar</span><span class="pi">:</span> <span class="s">left</span>
-</code></pre></div></div>
-<p>to the front matter of the post. The table of contents will be automatically generated from the headings in the post. If you wish to display the sidebar to the right, simply change <code class="language-plaintext highlighter-rouge">left</code> to <code class="language-plaintext highlighter-rouge">right</code>.</p>
-
-<h3 id="example-of-sub-heading-1">Example of Sub-Heading 1</h3>
-
-<p>Jean shorts raw denim Vice normcore, art party High Life PBR skateboard stumptown vinyl kitsch. Four loko meh 8-bit, tousled banh mi tilde forage Schlitz dreamcatcher twee 3 wolf moon. Chambray asymmetrical paleo salvia, sartorial umami four loko master cleanse drinking vinegar brunch. <a href="https://www.pinterest.com">Pinterest</a> DIY authentic Schlitz, hoodie Intelligentsia butcher trust fund brunch shabby chic Kickstarter forage flexitarian. Direct trade <a href="https://en.wikipedia.org/wiki/Cold-pressed_juice">cold-pressed</a> meggings stumptown plaid, pop-up taxidermy. Hoodie XOXO fingerstache scenester Echo Park. Plaid ugh Wes Anderson, freegan pug selvage fanny pack leggings pickled food truck DIY irony Banksy.</p>
-
-<h3 id="example-of-another-sub-heading-1">Example of another Sub-Heading 1</h3>
-
-<p>Jean shorts raw denim Vice normcore, art party High Life PBR skateboard stumptown vinyl kitsch. Four loko meh 8-bit, tousled banh mi tilde forage Schlitz dreamcatcher twee 3 wolf moon. Chambray asymmetrical paleo salvia, sartorial umami four loko master cleanse drinking vinegar brunch. <a href="https://www.pinterest.com">Pinterest</a> DIY authentic Schlitz, hoodie Intelligentsia butcher trust fund brunch shabby chic Kickstarter forage flexitarian. Direct trade <a href="https://en.wikipedia.org/wiki/Cold-pressed_juice">cold-pressed</a> meggings stumptown plaid, pop-up taxidermy. Hoodie XOXO fingerstache scenester Echo Park. Plaid ugh Wes Anderson, freegan pug selvage fanny pack leggings pickled food truck DIY irony Banksy.</p>
-
-<h2 data-toc-text="Customizing" id="customizing-your-table-of-contents">Customizing Your Table of Contents</h2>
-
-<p>If you want to learn more about how to customize the table of contents of your sidebar, you can check the <a href="https://afeld.github.io/bootstrap-toc/">bootstrap-toc</a> documentation. Notice that you can even customize the text of the heading that will be displayed on the sidebar.</p>
-
-<h3 id="example-of-sub-heading-2">Example of Sub-Heading 2</h3>
-
-<p>Jean shorts raw denim Vice normcore, art party High Life PBR skateboard stumptown vinyl kitsch. Four loko meh 8-bit, tousled banh mi tilde forage Schlitz dreamcatcher twee 3 wolf moon. Chambray asymmetrical paleo salvia, sartorial umami four loko master cleanse drinking vinegar brunch. <a href="https://www.pinterest.com">Pinterest</a> DIY authentic Schlitz, hoodie Intelligentsia butcher trust fund brunch shabby chic Kickstarter forage flexitarian. Direct trade <a href="https://en.wikipedia.org/wiki/Cold-pressed_juice">cold-pressed</a> meggings stumptown plaid, pop-up taxidermy. Hoodie XOXO fingerstache scenester Echo Park. Plaid ugh Wes Anderson, freegan pug selvage fanny pack leggings pickled food truck DIY irony Banksy.</p>
-
-<h3 id="example-of-another-sub-heading-2">Example of another Sub-Heading 2</h3>
-
-<p>Jean shorts raw denim Vice normcore, art party High Life PBR skateboard stumptown vinyl kitsch. Four loko meh 8-bit, tousled banh mi tilde forage Schlitz dreamcatcher twee 3 wolf moon. Chambray asymmetrical paleo salvia, sartorial umami four loko master cleanse drinking vinegar brunch. <a href="https://www.pinterest.com">Pinterest</a> DIY authentic Schlitz, hoodie Intelligentsia butcher trust fund brunch shabby chic Kickstarter forage flexitarian. Direct trade <a href="https://en.wikipedia.org/wiki/Cold-pressed_juice">cold-pressed</a> meggings stumptown plaid, pop-up taxidermy. Hoodie XOXO fingerstache scenester Echo Park. Plaid ugh Wes Anderson, freegan pug selvage fanny pack leggings pickled food truck DIY irony Banksy.</p>]]></content><author><name></name></author><category term="sample-posts" /><category term="toc" /><category term="sidebar" /><summary type="html"><![CDATA[an example of a blog post with table of contents on a sidebar]]></summary></entry><entry><title type="html">a post with audios</title><link href="https://squirogar.github.io/blog/2023/audios/" rel="alternate" type="text/html" title="a post with audios" /><published>2023-04-25T10:25:00+00:00</published><updated>2023-04-25T10:25:00+00:00</updated><id>https://squirogar.github.io/blog/2023/audios</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/audios/"><![CDATA[<p>This is an example post with audios. It supports local audio files.</p>
-
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        <figure>
-
-  <audio src="/assets/audio/epicaly-short-113909.mp3" controls="" />
-
-</figure>
-
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        <figure>
-
-  <audio src="https://cdn.pixabay.com/download/audio/2022/06/25/audio_69a61cd6d6.mp3" controls="" />
-
-</figure>
-
-    </div>
-</div>
-<div class="caption">
-    A simple, elegant caption looks good between video rows, after each row, or doesn't have to be there at all.
-</div>]]></content><author><name></name></author><category term="sample-posts" /><category term="including" /><category term="audios" /><summary type="html"><![CDATA[this is what included audios could look like]]></summary></entry><entry><title type="html">a post with videos</title><link href="https://squirogar.github.io/blog/2023/videos/" rel="alternate" type="text/html" title="a post with videos" /><published>2023-04-24T21:01:00+00:00</published><updated>2023-04-24T21:01:00+00:00</updated><id>https://squirogar.github.io/blog/2023/videos</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/videos/"><![CDATA[<p>This is an example post with videos. It supports local video files.</p>
-
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        
-
-<figure>
-
-  
-
-  <video src="/assets/video/pexels-engin-akyurt-6069112-960x540-30fps.mp4" class="img-fluid rounded z-depth-1" width="auto" height="auto" autoplay="" controls="" />
-
-  
-
-</figure>
-
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        
-
-<figure>
-
-  
-
-  <video src="/assets/video/pexels-engin-akyurt-6069112-960x540-30fps.mp4" class="img-fluid rounded z-depth-1" width="auto" height="auto" controls="" />
-
-  
-
-</figure>
-
-    </div>
-</div>
-<div class="caption">
-    A simple, elegant caption looks good between video rows, after each row, or doesn't have to be there at all.
-</div>
-
-<p>It does also support embedding videos from different sources. Here are some examples:</p>
-
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        
-
-<figure>
-
-  
-
-  <iframe src="https://www.youtube.com/embed/jNQXAC9IVRw" class="img-fluid rounded z-depth-1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" width="auto" height="auto" />
-
-  
-
-</figure>
-
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        
-
-<figure>
-
-  
-
-  <iframe src="https://player.vimeo.com/video/524933864?h=1ac4fd9fb4&amp;title=0&amp;byline=0&amp;portrait=0" class="img-fluid rounded z-depth-1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" width="auto" height="auto" />
-
-  
-
-</figure>
-
-    </div>
-</div>]]></content><author><name></name></author><category term="sample-posts" /><category term="including" /><category term="videos" /><summary type="html"><![CDATA[this is what included videos could look like]]></summary></entry><entry><title type="html">displaying beautiful tables with Bootstrap Tables</title><link href="https://squirogar.github.io/blog/2023/tables/" rel="alternate" type="text/html" title="displaying beautiful tables with Bootstrap Tables" /><published>2023-03-20T18:37:00+00:00</published><updated>2023-03-20T18:37:00+00:00</updated><id>https://squirogar.github.io/blog/2023/tables</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/tables/"><![CDATA[<p>Using markdown to display tables is easy. Just use the following syntax:</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Left aligned | Center aligned | Right aligned |
-| :----------- | :------------: | ------------: |
-| Left 1       | center 1       | right 1       |
-| Left 2       | center 2       | right 2       |
-| Left 3       | center 3       | right 3       |
-</code></pre></div></div>
-
-<p>That will generate:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">Left aligned</th>
-      <th style="text-align: center">Center aligned</th>
-      <th style="text-align: right">Right aligned</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">Left 1</td>
-      <td style="text-align: center">center 1</td>
-      <td style="text-align: right">right 1</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Left 2</td>
-      <td style="text-align: center">center 2</td>
-      <td style="text-align: right">right 2</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Left 3</td>
-      <td style="text-align: center">center 3</td>
-      <td style="text-align: right">right 3</td>
-    </tr>
-  </tbody>
-</table>
-
-<p></p>
-
-<p>It is also possible to use HTML to display tables. For example, the following HTML code will display a table with <a href="https://bootstrap-table.com/">Bootstrap Table</a>, loaded from a JSON file:</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;table</span>
-  <span class="na">id=</span><span class="s">"table"</span>
-  <span class="na">data-toggle=</span><span class="s">"table"</span>
-  <span class="na">data-url=</span><span class="s">"{{ '/assets/json/table_data.json' | relative_url }}"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;thead&gt;</span>
-    <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th</span> <span class="na">data-field=</span><span class="s">"id"</span><span class="nt">&gt;</span>ID<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th</span> <span class="na">data-field=</span><span class="s">"name"</span><span class="nt">&gt;</span>Item Name<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th</span> <span class="na">data-field=</span><span class="s">"price"</span><span class="nt">&gt;</span>Item Price<span class="nt">&lt;/th&gt;</span>
-    <span class="nt">&lt;/tr&gt;</span>
-  <span class="nt">&lt;/thead&gt;</span>
-<span class="nt">&lt;/table&gt;</span>
-</code></pre></div></div>
-
-<table data-toggle="table" data-url="/assets/json/table_data.json">
-  <thead>
-    <tr>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
-</table>
-
-<p></p>
-
-<p>By using <a href="https://bootstrap-table.com/">Bootstrap Table</a> it is possible to create pretty complex tables, with pagination, search, and more. For example, the following HTML code will display a table, loaded from a JSON file, with pagination, search, checkboxes, and header/content alignment. For more information, check the <a href="https://examples.bootstrap-table.com/index.html">documentation</a>.</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;table</span>
-  <span class="na">data-click-to-select=</span><span class="s">"true"</span>
-  <span class="na">data-height=</span><span class="s">"460"</span>
-  <span class="na">data-pagination=</span><span class="s">"true"</span>
-  <span class="na">data-search=</span><span class="s">"true"</span>
-  <span class="na">data-toggle=</span><span class="s">"table"</span>
-  <span class="na">data-url=</span><span class="s">"{{ '/assets/json/table_data.json' | relative_url }}"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;thead&gt;</span>
-    <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th</span> <span class="na">data-checkbox=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/th&gt;</span>
-      <span class="nt">&lt;th</span> <span class="na">data-field=</span><span class="s">"id"</span> <span class="na">data-halign=</span><span class="s">"left"</span> <span class="na">data-align=</span><span class="s">"center"</span> <span class="na">data-sortable=</span><span class="s">"true"</span><span class="nt">&gt;</span>ID<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th</span> <span class="na">data-field=</span><span class="s">"name"</span> <span class="na">data-halign=</span><span class="s">"center"</span> <span class="na">data-align=</span><span class="s">"right"</span> <span class="na">data-sortable=</span><span class="s">"true"</span><span class="nt">&gt;</span>Item Name<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th</span> <span class="na">data-field=</span><span class="s">"price"</span> <span class="na">data-halign=</span><span class="s">"right"</span> <span class="na">data-align=</span><span class="s">"left"</span> <span class="na">data-sortable=</span><span class="s">"true"</span><span class="nt">&gt;</span>Item Price<span class="nt">&lt;/th&gt;</span>
-    <span class="nt">&lt;/tr&gt;</span>
-  <span class="nt">&lt;/thead&gt;</span>
-<span class="nt">&lt;/table&gt;</span>
-</code></pre></div></div>
-
-<table data-click-to-select="true" data-height="460" data-pagination="true" data-search="true" data-toggle="table" data-url="/assets/json/table_data.json">
-  <thead>
-    <tr>
-      <th data-checkbox="true"></th>
-      <th data-field="id" data-halign="left" data-align="center" data-sortable="true">ID</th>
-      <th data-field="name" data-halign="center" data-align="right" data-sortable="true">Item Name</th>
-      <th data-field="price" data-halign="right" data-align="left" data-sortable="true">Item Price</th>
-    </tr>
-  </thead>
-</table>]]></content><author><name></name></author><category term="sample-posts" /><summary type="html"><![CDATA[an example of how to use Bootstrap Tables]]></summary></entry><entry><title type="html">a post with table of contents</title><link href="https://squirogar.github.io/blog/2023/table-of-contents/" rel="alternate" type="text/html" title="a post with table of contents" /><published>2023-03-20T15:59:00+00:00</published><updated>2023-03-20T15:59:00+00:00</updated><id>https://squirogar.github.io/blog/2023/table-of-contents</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/table-of-contents/"><![CDATA[<p>This post shows how to add a table of contents in the beginning of the post.</p>
-
-<h2 id="adding-a-table-of-contents">Adding a Table of Contents</h2>
-
-<p>To add a table of contents to a post, simply add</p>
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">toc</span><span class="pi">:</span>
-  <span class="na">beginning</span><span class="pi">:</span> <span class="kc">true</span>
-</code></pre></div></div>
-<p>to the front matter of the post. The table of contents will be automatically generated from the headings in the post.</p>
-
-<h3 id="example-of-sub-heading-1">Example of Sub-Heading 1</h3>
-
-<p>Jean shorts raw denim Vice normcore, art party High Life PBR skateboard stumptown vinyl kitsch. Four loko meh 8-bit, tousled banh mi tilde forage Schlitz dreamcatcher twee 3 wolf moon. Chambray asymmetrical paleo salvia, sartorial umami four loko master cleanse drinking vinegar brunch. <a href="https://www.pinterest.com">Pinterest</a> DIY authentic Schlitz, hoodie Intelligentsia butcher trust fund brunch shabby chic Kickstarter forage flexitarian. Direct trade <a href="https://en.wikipedia.org/wiki/Cold-pressed_juice">cold-pressed</a> meggings stumptown plaid, pop-up taxidermy. Hoodie XOXO fingerstache scenester Echo Park. Plaid ugh Wes Anderson, freegan pug selvage fanny pack leggings pickled food truck DIY irony Banksy.</p>
-
-<h3 id="example-of-another-sub-heading-1">Example of another Sub-Heading 1</h3>
-
-<p>Jean shorts raw denim Vice normcore, art party High Life PBR skateboard stumptown vinyl kitsch. Four loko meh 8-bit, tousled banh mi tilde forage Schlitz dreamcatcher twee 3 wolf moon. Chambray asymmetrical paleo salvia, sartorial umami four loko master cleanse drinking vinegar brunch. <a href="https://www.pinterest.com">Pinterest</a> DIY authentic Schlitz, hoodie Intelligentsia butcher trust fund brunch shabby chic Kickstarter forage flexitarian. Direct trade <a href="https://en.wikipedia.org/wiki/Cold-pressed_juice">cold-pressed</a> meggings stumptown plaid, pop-up taxidermy. Hoodie XOXO fingerstache scenester Echo Park. Plaid ugh Wes Anderson, freegan pug selvage fanny pack leggings pickled food truck DIY irony Banksy.</p>
-
-<h2 id="table-of-contents-options">Table of Contents Options</h2>
-
-<p>If you want to learn more about how to customize the table of contents, you can check the <a href="https://github.com/toshimaru/jekyll-toc">jekyll-toc</a> repository.</p>
-
-<h3 id="example-of-sub-heading-2">Example of Sub-Heading 2</h3>
-
-<p>Jean shorts raw denim Vice normcore, art party High Life PBR skateboard stumptown vinyl kitsch. Four loko meh 8-bit, tousled banh mi tilde forage Schlitz dreamcatcher twee 3 wolf moon. Chambray asymmetrical paleo salvia, sartorial umami four loko master cleanse drinking vinegar brunch. <a href="https://www.pinterest.com">Pinterest</a> DIY authentic Schlitz, hoodie Intelligentsia butcher trust fund brunch shabby chic Kickstarter forage flexitarian. Direct trade <a href="https://en.wikipedia.org/wiki/Cold-pressed_juice">cold-pressed</a> meggings stumptown plaid, pop-up taxidermy. Hoodie XOXO fingerstache scenester Echo Park. Plaid ugh Wes Anderson, freegan pug selvage fanny pack leggings pickled food truck DIY irony Banksy.</p>
-
-<h3 id="example-of-another-sub-heading-2">Example of another Sub-Heading 2</h3>
-
-<p>Jean shorts raw denim Vice normcore, art party High Life PBR skateboard stumptown vinyl kitsch. Four loko meh 8-bit, tousled banh mi tilde forage Schlitz dreamcatcher twee 3 wolf moon. Chambray asymmetrical paleo salvia, sartorial umami four loko master cleanse drinking vinegar brunch. <a href="https://www.pinterest.com">Pinterest</a> DIY authentic Schlitz, hoodie Intelligentsia butcher trust fund brunch shabby chic Kickstarter forage flexitarian. Direct trade <a href="https://en.wikipedia.org/wiki/Cold-pressed_juice">cold-pressed</a> meggings stumptown plaid, pop-up taxidermy. Hoodie XOXO fingerstache scenester Echo Park. Plaid ugh Wes Anderson, freegan pug selvage fanny pack leggings pickled food truck DIY irony Banksy.</p>]]></content><author><name></name></author><category term="sample-posts" /><category term="toc" /><summary type="html"><![CDATA[an example of a blog post with table of contents]]></summary></entry><entry><title type="html">a post with giscus comments</title><link href="https://squirogar.github.io/blog/2022/giscus-comments/" rel="alternate" type="text/html" title="a post with giscus comments" /><published>2022-12-10T15:59:00+00:00</published><updated>2022-12-10T15:59:00+00:00</updated><id>https://squirogar.github.io/blog/2022/giscus-comments</id><content type="html" xml:base="https://squirogar.github.io/blog/2022/giscus-comments/"><![CDATA[<p>This post shows how to add GISCUS comments.</p>]]></content><author><name></name></author><category term="sample-posts" /><category term="external-services" /><summary type="html"><![CDATA[an example of a blog post with giscus comments]]></summary></entry></feed>
+<p>El tamaño total de la imagen es: (16x24) + (128x128x4) = 65.920 bits</p>]]></content><author><name></name></author><category term="algoritmos" /><summary type="html"><![CDATA[Definición, análisis, implementación y consejos del algoritmo K-means]]></summary></entry><entry><title type="html">Displaying External Posts on Your al-folio Blog</title><link href="https://squirogar.github.io/blog/2022/displaying-external-posts-on-your-al-folio-blog/" rel="alternate" type="text/html" title="Displaying External Posts on Your al-folio Blog" /><published>2022-04-23T23:20:09+00:00</published><updated>2022-04-23T23:20:09+00:00</updated><id>https://squirogar.github.io/blog/2022/displaying-external-posts-on-your-al-folio-blog</id><content type="html" xml:base="https://squirogar.github.io/blog/2022/displaying-external-posts-on-your-al-folio-blog/"><![CDATA[]]></content><author><name></name></author></entry><entry><title type="html">a post with redirect</title><link href="https://squirogar.github.io/blog/2022/redirect/" rel="alternate" type="text/html" title="a post with redirect" /><published>2022-02-01T17:39:00+00:00</published><updated>2022-02-01T17:39:00+00:00</updated><id>https://squirogar.github.io/blog/2022/redirect</id><content type="html" xml:base="https://squirogar.github.io/blog/2022/redirect/"><![CDATA[<p>Redirecting to another page.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[you can also redirect to assets like pdf]]></summary></entry></feed>

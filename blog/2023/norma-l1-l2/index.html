@@ -10,10 +10,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>blockquotes | Sebastián  Quiroga</title>
+    <title>Norma L1 y L2 | Sebastián  Quiroga</title>
     <meta name="author" content="Sebastián  Quiroga">
-    <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
-">
+    <meta name="description" content="Explicación de norma L1 y L2, y su uso en Linear Regression">
     <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
 
 
@@ -39,7 +38,7 @@
     <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://squirogar.github.io/blog/category/blockquotes/">
+    <link rel="canonical" href="https://squirogar.github.io/blog/2023/norma-l1-l2/">
 
     <!-- Dark Mode -->
     
@@ -117,28 +116,174 @@
     <!-- Content -->
     <div class="container mt-5">
       
-        <div class="post">
+        <!-- _layouts/post.html -->
+
+<div class="post">
 
   <header class="post-header">
-    <h1 class="post-title"> <i class="fas fa-tag fa-sm"></i> blockquotes </h1>
-    <p class="post-description"> an archive of posts in this category </p>
+    <h1 class="post-title">Norma L1 y L2</h1>
+    <p class="post-meta">June 10, 2023</p>
+    <p class="post-tags">
+      <a href="/blog/2023"> <i class="fas fa-calendar fa-sm"></i> 2023 </a>
+        ·  
+        <a href="/blog/category/algoritmos">
+          <i class="fas fa-tag fa-sm"></i> algoritmos</a>  
+          
+
+    </p>
   </header>
 
-  <article>
-    <div class="table-responsive">
-      <table class="table table-sm table-borderless">
-        
-        <tr>
-          <th scope="row">May 12, 2023</th>
-          <td>
-              <a class="post-link" href="/blog/2023/custom-blockquotes/">a post with custom blockquotes</a>
-          </td>
-        </tr>
-      
-      </table>
-    </div>
-  </article>
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <h1 id="regularización-y-las-normas-l1-y-l2">Regularización y las normas L1 y L2</h1>
 
+<p><em>Información obtenida de este artículo de Chiara Campagnola</em></p>
+
+<h2 id="cómo-minimizar-una-norma-produce-la-regularización">Cómo minimizar una norma produce la regularización</h2>
+
+<p>En linear regression, el modelo es el siguiente:
+\(\hat{y} = w \cdot x + b\)
+y la función de costo a minimizar es MSE:
+\(MSE = \frac{1}{m}\sum^{m}_{i=1}(y-\hat{y})^2\)</p>
+
+<p>El modelo que usaremos para hacer la predicción tiene que ser lo suficientemente complejo para ajustarse a la data, pero no tanto como para que produzca overfitting. Al añadir un término de regularización, prevenimos que los parámetros \(w\) sean muy grandes (en valor absoluto), simplificando el modelo.</p>
+
+<p>El término de regularización puede ser la norma \(L1\) o \(L2\) al cuadrado, y se agrega a la función de costo, por lo que durante el entrenamiento, el algoritmo de aprendizaje (linear regression en este caso), intentará minimizar la función de costo con el término de regularización.</p>
+
+<p>\(\text{norma L1:} ||w||_1 = \sum^{n}_{i}|w_i|\)
+\(\text{normal L2 al cuadrado:} ||w||_2^2 = \sum^{n}_{i}w_i^2\)</p>
+
+<p><strong>Minimizar la norma incentiva a la función a ser menos compleja</strong>.</p>
+
+<p>Matemáticamente, las normas \(L1$ y\)L2\(son medidas de la magnitud de los weights: la suma de los valores absolutos (Norma\)L1\() y la suma de los valores al cuadrado (Norma\)L2$$). Valores más grandes de weights dan una norma más grande. Esto significa que, minimizar la norma incentiva a los weights a ser más pequeños (en valor absoluto), lo que a su vez da funciones más simples.</p>
+
+<ul>
+  <li>Ejemplos de modelos:</li>
+  <li>polinomio grado 8 se ajusta muy bien a la data, obtiene error 0, sin embargo, sus normas son bastantes altas (L2=32 y L1 = 70)
+    <ul>
+      <li>Esto se refleja en el modelo: \(f(x)=0.04+0.04x+0.9x^2\)</li>
+      <li>Este modelo producirá overfitting</li>
+    </ul>
+  </li>
+  <li>polinomio grado 2 se ajusta bien a la data, obtiene un error dde 0.006, pero sus normas son muy pequeñas (L2=0.9 y L1=0.98).
+    <ul>
+      <li>Esto se refleja en el modelo: \(f(x)=-0.01+0.57x+2.67x^2-4.08x^3-12.25x^4+7.41x^5+24.87x^6-3.79x^7-14.38x^8\)</li>
+      <li>Este modelo generalizará mejor.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Con esto se concluye que mientras menor sea la norma, más pequeños los parámetros y más simple el modelo.</p>
+
+<p>Dependiendo de la norma que usemos, habrán distintos efectos, ya sea, eliminar algunos weights completamente (estableciéndolos a 0), o haciendo que todos los weights sean lo más pequeños posibles. El primero lo genera la norma \(L1\), mientras que el segundo lo hará la norma \(L2\) al cuadrado.</p>
+
+<p>To understand how they operate differently, let’s have a look at how they change depending on the value of the weights.</p>
+
+<p>Veamos como cambian las normas dependiendo del valor de los weights.</p>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/derivada_l1-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/derivada_l1-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/derivada_l1-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/derivada_l1.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Gráfica que muestra a $$|w|$$ y la derivada de $$|w|=\frac{w \cdot w'}{|w|}$$. Podemos observar que la pendiente es siempre la misma (un valor constante).
+</div>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/derivada_l2-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/derivada_l2-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/derivada_l2-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/derivada_l2.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Gráfica que muestra $$w^2$$ y la derivada de ésta que es $$2w$$. Recordar que es la norma L2 al cuadrado la que se utiliza. Podemos observar que la pendiente es muy grande al principio, pero a medida que $$w$$ disminuye, la pendiente se hace cada vez más pequeña.
+</div>
+
+<p>Las normas \(L1\) y \(L2\) aumentan a medida que aumenta el valor absoluto de \(w\). Sin embargo, mientras que la norma \(L1\) aumenta a un valor constante, la norma \(L2\) aumenta más rápidamente.</p>
+
+<p>Cuando utilizamos el gradient descent actualizaremos nuestros weights basándonos en la derivada la función de costo. Entnces si incluimos una norma en nuestra función de costo, la derivada de la norma determinará cómo serán actualizados los weights.</p>
+<ul>
+  <li>Con la norma \(L2\) a medida que \(w\) se vuelve más pequeño, también lo hace la pendiente de la norma, lo que significa que las actualizaciones también serán cada vez más pequeñas. Cuando los weigths estén cerca de 0, las actualizaciones se habrán vuelto tan pequeñas que serán casi insignificantes, por lo que es poco probable que los pesos lleguen a ser 0.</li>
+  <li>Con la norma \(L1\) la pendiente es constante. Esto significa que a medida que w se reduce, las actualizaciones no cambian. Por consiguiente, es mucho más probable que la norma \(L1\) reduzca algunos weights a 0.</li>
+</ul>
+
+<hr>
+<p><em>Obtenido de artículo escrito por Saptashwa Bhattacharyya https://towardsdatascience.com/ridge-and-lasso-regression-a-complete-guide-with-python-scikit-learn-e20e34bcbf0b</em></p>
+
+<p>Ridge y Lasso regression son técnicas simples para reducir la complejidad del modelo y prevenir el overfitting.</p>
+
+<h2 id="ridge-regression">Ridge regression</h2>
+<p>En Ridge regression, la función de costo es alterada agregando un castigo equivalente al cuadrado de la magnitud de los coeficientes. En otras palabras, si agregamos la norma \(L2\) al cuadrado a la loss y la minimizamos, obtendremos la función de costo de Ridge regression:
+\(min L(w) = min(\frac{1}{m}\sum^{m}_{i=1}(y-\hat{y})^2 + \lambda ||w||_2^2)\)
+\(\lambda\) es el coeficiente de regularización que determina cuánta regularización queremos.</p>
+
+<p>Entonces, Ridge regression pone restricciones en los coeficientes \(w\) en caso de que los coeficientes tomen valores muy grandes. <strong>Ridge regression solamente puede reducir los coeficientes cerca de 0, pero nunca 0</strong>.</p>
+
+<h2 id="lasso-regression">Lasso regression</h2>
+<p>La función de costo para Lasso (<em>least absolute shrinkage and selection operator</em>) regression es:
+\(min L(w) = min(\frac{1}{m}\sum^{m}_{i=1}(y-\hat{y})^2 + \lambda ||w||_1)\)</p>
+
+<p>Lasso regression también simplifica el modelo, la diferencia es que en lugar de tomar el cuadrado de los coeficientes, solo tomamos las magnitudes de los parámetros. Este tipo de regularización puede conducir a coeficientes con valor 0, es decir, tienen nulo aporte en la evaluación de la salida. <strong>Lasso regression no solo ayuda en reducir el overfitting sino que también puede ayudarnos en feature selection</strong>. Feature selection es cuando queremos seleccionar ciertas features, sólo las más importantes.</p>
+
+    </div>
+  </article><div id="giscus_thread" style="max-width: 800px; margin: 0 auto;">
+  <script>
+    let giscusTheme = localStorage.getItem("theme");
+    let giscusAttributes = {
+        "src": "https://giscus.app/client.js",
+        "data-repo": "squirogar/squirogar.github.io",
+        "data-repo-id": "R_kgDOJtf6_Q",
+        "data-category": "Announcements",
+        "data-category-id": "DIC_kwDOJtf6_c4CXHce",
+        "data-mapping": "pathname",
+        "data-strict": "1",
+        "data-reactions-enabled": "1",
+        "data-emit-metadata": "0",
+        "data-input-position": "top",
+        "data-theme": giscusTheme,
+        "data-lang": "en",
+        "crossorigin": "anonymous",
+        "async": "",
+    };
+
+
+    let giscusScript = document.createElement("script");
+    Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    document.getElementById("giscus_thread").appendChild(giscusScript);
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by giscus.</a>
+</noscript>
+</div>
 </div>
 
       
