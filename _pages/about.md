@@ -19,6 +19,10 @@ social: true  # includes social icons at the bottom of the page
 ---
 Hola!
 
+Mi nombre es Sebastián Quiroga Reyes, Ingeniero Civil Informático titulado de la Universidad Católica de la Santísima Concepción.
+
+Mi
+
 I am Sebastián Quiroga Reyes, Computer Engineer. I studied at UCSC (Catholic University of the Most Holy Conception). 
 
 My main interests are AI and Machine Learning. I have been study for the last year different algorithms and earning knowledge about these very interesting topics.
