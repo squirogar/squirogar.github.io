@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Tipos de datasets
+title: Diferencia entre los distintos tipos de datasets
 date: 2023-06-25 20:04
 description: Tipos de datasets training set, validation set, test set.
 categories: datos
@@ -8,7 +8,7 @@ giscus_comments: true
 related_posts: true
 ---
 
-# Diferencia entre los distintos tipos de datasets
+
 Existen 3 tipos de datasets:
 1. Training set
 2. Test set
@@ -64,7 +64,7 @@ k-fold cross-validation se emplea para sintonizar los hiperparámetros del model
 Según el artículo de donde se extrajo esta información, se recomienda un 10-fold cross-validation en general.
 > *Reference to a “validation dataset” disappears if the practitioner is choosing to tune model hyperparameters using k-fold cross-validation with the training dataset.*
 
-Ver más sobre k-fold cross validation [aquí](2023-06-25-k-fold.md)
+Ver más sobre k-fold cross validation [aquí](./2023-06-25-k-fold.md)
 
 
 [Fuente 1](https://machinelearningmastery.com/difference-test-validation-datasets)
