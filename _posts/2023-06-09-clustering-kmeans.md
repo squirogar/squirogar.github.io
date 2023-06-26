@@ -5,7 +5,7 @@ date: 2023-06-09 21:41
 description: Definición, análisis, implementación y consejos del algoritmo K-means
 categories: algoritmos
 giscus_comments: true
-related_posts: false
+related_posts: true
 ---
 
 *El siguiente contenido fue aprendido del curso de especialización de Machine Learning de Andrew Ng y deeplearning.ai*

@@ -5,7 +5,7 @@ date: 2023-06-10 20:30
 description: Definición y workflow del Aprendizaje por refuerzo, y su aplicación para la resolución de problemas de control.
 categories: algoritmos
 giscus_comments: true
-related_posts: false
+related_posts: true
 ---
 
 *Material obtenido del e-book de matlab de Reinforcement Learning*
