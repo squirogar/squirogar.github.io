@@ -140,9 +140,9 @@
   <article class="post-content">
     
     <div id="markdown-content">
-      <h1 id="explicación-del-r2-negativo">Explicación del \(R^2\) negativo</h1>
+      <h1 id="por-qué-el-r2-score-puede-ser-negativo">¿Por qué el \(R^2\) score puede ser negativo?</h1>
 
-<p>De acuerdo a la <a href="">documentación de Scikit-learn</a> el mejor score posible es 1.0. Si el \(R^2\) es 0.0, el modelo es un modelo constante que siempre predecirá la \(y\) promedio sin importar las inputs features. Si el score es negativo, entonces el modelo es peor que un modelo constante.</p>
+<p>De acuerdo a la <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html" rel="external nofollow noopener" target="_blank">documentación de Scikit-learn</a> el mejor score posible es 1.0. Si el \(R^2\) es 0.0, el modelo es un modelo constante que siempre predecirá la \(y\) promedio sin importar las inputs features. Si el score es negativo, entonces el modelo es peor que un modelo constante.</p>
 
 \[R^2 = 1-\frac{\sum_{y=1}^{n}(y_i-\hat{y_i})^2}{\sum_{y=1}^{n}(y_i-\bar{y_i})^2}\]
 
@@ -154,9 +154,7 @@
 
 <p>Entonces, \(R^2\) es negativo.</p>
 
-<ul>
-  <li>Posible solución: escalar la data (posiblemente los targets y).</li>
-</ul>
+<p>Una posible solución sería escalar la data (posiblemente los targets y).</p>
 
 <p><a href="https://stackoverflow.com/questions/63757258/negative-accuracy-in-linear-regression" rel="external nofollow noopener" target="_blank">Fuente</a></p>
 
@@ -183,19 +181,19 @@
   
 
   <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/Tipos-de-datasets/">Tipos de datasets</a>
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/Tipos-de-datasets/">Diferencia entre los distintos tipos de datasets</a>
   </li>
 
   
 
   <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/k-fold/">K Fold</a>
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/tipos-de-data/">Tipos de data</a>
   </li>
 
   
 
   <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/tipos-de-data/">Tipos de datos</a>
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/k-fold/">K-fold cross-validations</a>
   </li>
 
   

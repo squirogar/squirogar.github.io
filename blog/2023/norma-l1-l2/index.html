@@ -153,9 +153,9 @@
 
 <p>El término de regularización puede ser la norma \(L1\) o \(L2\) al cuadrado, y se agrega a la función de costo, por lo que durante el entrenamiento, el algoritmo de aprendizaje (linear regression en este caso), intentará minimizar la función de costo con el término de regularización.</p>
 
-\[\text{norma L1:} ||w||_1 = \sum^{n}_{i}|w_i|\]
+\[\text{norma L1:}\quad ||w||_1 = \sum^{n}_{i}|w_i|\]
 
-\[\text{normal L2 al cuadrado:} ||w||_2^2 = \sum^{n}_{i}w_i^2\]
+\[\text{normal L2 al cuadrado:}\quad ||w||_2^2 = \sum^{n}_{i}w_i^2\]
 
 <blockquote>
   <p>Minimizar la norma incentiva al modelo a ser menos complejo.</p>
@@ -204,9 +204,20 @@
 
     </div>
 </div>
-<div class="caption">
-    Gráfica que muestra a $$|w|$$ y la derivada de $$|w|=\frac{w \cdot w'}{|w|}$$. Podemos observar que la pendiente es siempre la misma (un valor constante).
-</div>
+
+<table>
+  <tbody>
+    <tr>
+      <td>En la gráfica anterior se muestra a $$</td>
+      <td>w</td>
+      <td>\(y la derivada de\)</td>
+      <td>w</td>
+      <td>=\frac{w \cdot w’}{</td>
+      <td>w</td>
+      <td>}$$. Podemos observar que la pendiente es siempre la misma (un valor constante).</td>
+    </tr>
+  </tbody>
+</table>
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
@@ -228,9 +239,8 @@
 
     </div>
 </div>
-<div class="caption">
-    Gráfica que muestra $$w^2$$ y la derivada de ésta que es $$2w$$. Recordar que es la norma L2 al cuadrado la que se utiliza. Podemos observar que la pendiente es muy grande al principio, pero a medida que $$w$$ disminuye, la pendiente se hace cada vez más pequeña.
-</div>
+
+<p>En la gráfica que muestra \(w^2\) y la derivada de ésta que es \(2w\). Recordar que es la norma \(L2\) al cuadrado la que se utiliza. Podemos observar que la pendiente es muy grande al principio, pero a medida que \(w\) disminuye, la pendiente se hace cada vez más pequeña.</p>
 
 <p>Las normas \(L1\) y \(L2\) aumentan a medida que aumenta el valor absoluto de \(w\). Sin embargo, mientras que la norma \(L1\) aumenta a un valor constante, la norma \(L2\) aumenta más rápidamente.</p>
 
@@ -249,7 +259,7 @@
 <h2 id="ridge-regression">Ridge regression</h2>
 <p>En Ridge regression, la función de costo es alterada agregando un castigo equivalente al cuadrado de la magnitud de los coeficientes. En otras palabras, si agregamos la norma \(L2\) al cuadrado a la loss y la minimizamos, obtendremos la función de costo de Ridge regression:</p>
 
-\[\text{min} L(w) = \text{min}(\frac{1}{m}\sum^{m}_{i=1}(y-\hat{y})^2 + \lambda ||w||_2^2)\]
+\[\text{min}\quad L(w) = \text{min}(\frac{1}{m}\sum^{m}_{i=1}(y-\hat{y})^2 + \lambda ||w||_2^2)\]
 
 <p>\(\lambda\) es el coeficiente de regularización que determina cuánta regularización queremos.</p>
 
@@ -258,9 +268,11 @@
 <h2 id="lasso-regression">Lasso regression</h2>
 <p>La función de costo para Lasso (<em>least absolute shrinkage and selection operator</em>) regression es:</p>
 
-\[\text{min} L(w) = \text{min}(\frac{1}{m}\sum^{m}_{i=1}(y-\hat{y})^2 + \lambda ||w||_1)\]
+\[\text{min}\quad L(w) = \text{min}(\frac{1}{m}\sum^{m}_{i=1}(y-\hat{y})^2 + \lambda ||w||_1)\]
 
-<h2 id="lasso-regression-también-simplifica-el-modelo-la-diferencia-es-que-en-lugar-de-tomar-el-cuadrado-de-los-coeficientes-solo-tomamos-las-magnitudes-de-los-parámetros-este-tipo-de-regularización-puede-conducir-a-coeficientes-con-valor-0-es-decir-tienen-nulo-aporte-en-la-evaluación-de-la-salida-lasso-regression-no-solo-ayuda-en-reducir-el-overfitting-sino-que-también-puede-ayudarnos-en-feature-selection-feature-selection-es-cuando-queremos-seleccionar-ciertas-features-sólo-las-más-importantes">Lasso regression también simplifica el modelo, la diferencia es que en lugar de tomar el cuadrado de los coeficientes, solo tomamos las magnitudes de los parámetros. Este tipo de regularización puede conducir a coeficientes con valor 0, es decir, tienen nulo aporte en la evaluación de la salida. <strong>Lasso regression no solo ayuda en reducir el overfitting sino que también puede ayudarnos en feature selection</strong>. Feature selection es cuando queremos seleccionar ciertas features, sólo las más importantes.</h2>
+<p>Lasso regression también simplifica el modelo, la diferencia es que en lugar de tomar el cuadrado de los coeficientes, solo tomamos las magnitudes de los parámetros. Este tipo de regularización puede conducir a coeficientes con valor 0, es decir, tienen nulo aporte en la evaluación de la salida. <strong>Lasso regression no solo ayuda en reducir el overfitting sino que también puede ayudarnos en feature selection</strong>. Feature selection es cuando queremos seleccionar ciertas features, sólo las más importantes.</p>
+
+<hr>
 
 <p>Resumen:</p>
 <ul>
@@ -297,19 +309,19 @@
   
 
   <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/Tipos-de-datasets/">Tipos de datasets</a>
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/Tipos-de-datasets/">Diferencia entre los distintos tipos de datasets</a>
   </li>
 
   
 
   <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/k-fold/">K Fold</a>
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/tipos-de-data/">Tipos de data</a>
   </li>
 
   
 
   <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/tipos-de-data/">Tipos de datos</a>
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/k-fold/">K-fold cross-validations</a>
   </li>
 
 <div id="giscus_thread" style="max-width: 800px; margin: 0 auto;">
