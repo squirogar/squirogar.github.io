@@ -3,17 +3,16 @@
 
   <!-- Head -->
   <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="refresh" content="3; url=/">    <!-- Metadata, OpenGraph and Schema.org -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Metadata, OpenGraph and Schema.org -->
     
 
     <!-- Standard metadata -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>a post with redirect | Sebastián  Quiroga</title>
+    <title>Tipos de datos | Sebastián  Quiroga</title>
     <meta name="author" content="Sebastián  Quiroga">
-    <meta name="description" content="you can also redirect to assets like pdf">
+    <meta name="description" content="Tipos de data en ML">
     <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
 
 
@@ -39,7 +38,7 @@
     <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://squirogar.github.io/blog/2022/redirect/">
+    <link rel="canonical" href="https://squirogar.github.io/blog/2023/tipos-de-data/">
 
     <!-- Dark Mode -->
     
@@ -122,10 +121,14 @@
 <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">a post with redirect</h1>
-    <p class="post-meta">February 1, 2022</p>
+    <h1 class="post-title">Tipos de datos</h1>
+    <p class="post-meta">June 10, 2023</p>
     <p class="post-tags">
-      <a href="/blog/2022"> <i class="fas fa-calendar fa-sm"></i> 2022 </a>
+      <a href="/blog/2023"> <i class="fas fa-calendar fa-sm"></i> 2023 </a>
+        ·  
+        <a href="/blog/category/datos">
+          <i class="fas fa-tag fa-sm"></i> datos</a>  
+          
 
     </p>
   </header>
@@ -133,7 +136,26 @@
   <article class="post-content">
     
     <div id="markdown-content">
-      <p>Redirecting to another page.</p>
+      <h1 id="tipo-de-data">Tipo de data</h1>
+<h2 id="1-sparse-data">1. Sparse data</h2>
+<p>Sparse data o datos dispersos se refiere a una matriz de datos de alta dimensión que está compuesto en su mayoría por 0’s y el resto de data con un valor distinto de 0.</p>
+
+<blockquote>
+  <p>Atención: que los valores sean 0 no significan que no tienen significado o que no aportan información útil.*</p>
+</blockquote>
+
+<p>Ejemplo: En álgebra lineal una matriz dispersa o rala es una matriz de gran tamaño en la que la mayor parte de sus elementos son 0. Recordar que una matriz de alta dimensión (high-dimension) requiere una gran cantidad de memoria y procesamiento de una computadora.</p>
+
+<h2 id="2-dense-data">2. Dense data</h2>
+<p>Al contrario de la sparse data, dense data se refiere a una matriz que en su mayoría está compuesto de elementos cuyos valores son distintos de 0.</p>
+
+<p><a href="https://stats.stackexchange.com/questions/266996/what-do-the-terms-dense-and-sparse-mean-in-the-context-of-neural-networks" rel="external nofollow noopener" target="_blank">Fuente</a></p>
+
+<h2 id="3-missing-data">3. Missing data</h2>
+<p>No es lo mismo que sparse data. Missing data se refiere a una matriz de datos que contiene valores como <code class="language-plaintext highlighter-rouge">NaN</code> o <code class="language-plaintext highlighter-rouge">Null</code>, o sea, valores que no son útiles en lo absoluto y no se puede concluir nada acerca de ellos, ya que no poseen un valor interpretable. Podemos llenar los valores faltantes manualmente sin afectar al resto, eliminarlos o volver a medir, etc.</p>
+
+<p><a href="https://stats.stackexchange.com/questions/267322/difference-between-missing-data-and-sparse-data-in-machine-learning-algorithms" rel="external nofollow noopener" target="_blank">Fuente</a></p>
+
 
     </div>
   </article>
@@ -176,9 +198,37 @@
   
 
   <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/tipos-de-data/">Tipos de datos</a>
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/norma-l1-l2/">Norma L1 y L2</a>
   </li>
 
+<div id="giscus_thread" style="max-width: 800px; margin: 0 auto;">
+  <script>
+    let giscusTheme = localStorage.getItem("theme");
+    let giscusAttributes = {
+        "src": "https://giscus.app/client.js",
+        "data-repo": "squirogar/squirogar.github.io",
+        "data-repo-id": "R_kgDOJtf6_Q",
+        "data-category": "Announcements",
+        "data-category-id": "DIC_kwDOJtf6_c4CXHce",
+        "data-mapping": "pathname",
+        "data-strict": "1",
+        "data-reactions-enabled": "1",
+        "data-emit-metadata": "0",
+        "data-input-position": "top",
+        "data-theme": giscusTheme,
+        "data-lang": "en",
+        "crossorigin": "anonymous",
+        "async": "",
+    };
+
+
+    let giscusScript = document.createElement("script");
+    Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    document.getElementById("giscus_thread").appendChild(giscusScript);
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by giscus.</a>
+</noscript>
+</div>
 </div>
 
       

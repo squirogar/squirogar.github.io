@@ -3,17 +3,16 @@
 
   <!-- Head -->
   <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="refresh" content="3; url=/">    <!-- Metadata, OpenGraph and Schema.org -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Metadata, OpenGraph and Schema.org -->
     
 
     <!-- Standard metadata -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>a post with redirect | Sebastián  Quiroga</title>
+    <title>Tipos de datasets | Sebastián  Quiroga</title>
     <meta name="author" content="Sebastián  Quiroga">
-    <meta name="description" content="you can also redirect to assets like pdf">
+    <meta name="description" content="Tipos de datasets training set, validation set, test set.">
     <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
 
 
@@ -39,7 +38,7 @@
     <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://squirogar.github.io/blog/2022/redirect/">
+    <link rel="canonical" href="https://squirogar.github.io/blog/2023/Tipos-de-datasets/">
 
     <!-- Dark Mode -->
     
@@ -122,10 +121,14 @@
 <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">a post with redirect</h1>
-    <p class="post-meta">February 1, 2022</p>
+    <h1 class="post-title">Tipos de datasets</h1>
+    <p class="post-meta">June 25, 2023</p>
     <p class="post-tags">
-      <a href="/blog/2022"> <i class="fas fa-calendar fa-sm"></i> 2022 </a>
+      <a href="/blog/2023"> <i class="fas fa-calendar fa-sm"></i> 2023 </a>
+        ·  
+        <a href="/blog/category/datos">
+          <i class="fas fa-tag fa-sm"></i> datos</a>  
+          
 
     </p>
   </header>
@@ -133,7 +136,75 @@
   <article class="post-content">
     
     <div id="markdown-content">
-      <p>Redirecting to another page.</p>
+      <h1 id="diferencia-entre-los-distintos-tipos-de-datasets">Diferencia entre los distintos tipos de datasets</h1>
+<p>Existen 3 tipos de datasets:</p>
+<ol>
+  <li>Training set</li>
+  <li>Test set</li>
+  <li>Validation set</li>
+</ol>
+
+<h2 id="training-set">Training set</h2>
+<p><strong>Se usa para entrenar el modelo.</strong></p>
+
+<p>Un conjunto de ejemplos usados durante el aprendizaje (entrenamiento) para ajustar los parámetros del modelo de tal forma de encontrar los óptimos.</p>
+
+<h2 id="validation-set">Validation set</h2>
+<p><strong>Un conjunto de ejemplos utilizados para sintonizar los hiperparámetros de un modelo (tunning hyperparameters). El validation set nos permite comparar configuraciones de modelos y seleccionar las mejores.</strong></p>
+
+<p>Tenemos diferentes modelos con diferentes configuraciones de hiperparámetros. Utilizamos el validation set para seleccionar el de mejor rendimiento y seguir entrenándolo.</p>
+
+<p>Es un conjunto de datos utilizado para proporcionar una evaluación imparcial del ajuste de un modelo en el training set mientras se sintonizan los hiperparámetros del modelo. A medida que vamos configurando el modelo de acuerdo al validation set, se va volviendo más sesgada la evaluación, ya que vamos incorporando información al modelo.</p>
+
+<p>Ejemplos de uso de validation set:</p>
+<ul>
+  <li>Establecer el número de hidden units en una red neuronal.</li>
+  <li>Elegir entre 2 o más redes neuronales</li>
+  <li>Selección de features.</li>
+</ul>
+
+<h2 id="test-set">Test set</h2>
+<p><strong>Se usa para evaluar el modelo final (capacidad de generalización).</strong></p>
+
+<p>Evaluar la capacidad del modelo final con el training set resultaría en una puntuación sesgada. Es por esto, que la evaluación del modelo final se realiza con un dataset apartado de todo. Este dataset es el test set.</p>
+
+<p>Se le llama <em>peeking</em> a utilizar el test set para escoger una hipótesis (modelo) y para evaluarla. La forma de evitar esto es <em>no</em> acceder al test set hasta que hayamos terminado completamente con el training y emplearlo para obtener una evaluación independiente de la hipótesis final.</p>
+<ul>
+  <li>Si no nos gustan los resultados, obtenemos una nueva hipótesis y la probamos con un nuevo test set (Rusell y Norvig, 2009).</li>
+</ul>
+
+<h2 id="pseudocódigo-de-los-distintos-datasets">Pseudocódigo de los distintos datasets</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>### Pseudocódigo ###
+
+# split data
+train, validation, test = split(data)
+
+# tune model hyperparameters
+parameters = ...
+for params in parameters:
+    model = fit(train, params)
+    skill = evaluate(model, validation)
+
+# evaluate final model for comparison with other final models
+model = fit(train)
+skill = evaluate(model, test)
+</code></pre></div></div>
+
+<h2 id="alternativa-al-validation-dataset-k-fold-cross-validation">Alternativa al validation dataset: k-fold cross-validation</h2>
+<p>k-fold cross-validation se emplea para sintonizar los hiperparámetros del modelo en lugar de un validation set.</p>
+
+<p>Según el artículo de donde se extrajo esta información, se recomienda un 10-fold cross-validation en general.</p>
+<blockquote>
+  <p><em>Reference to a “validation dataset” disappears if the practitioner is choosing to tune model hyperparameters using k-fold cross-validation with the training dataset.</em></p>
+</blockquote>
+
+<p>Ver más sobre k-fold cross validation <a href="2023-06-25-k-fold.md">aquí</a></p>
+
+<p><a href="https://machinelearningmastery.com/difference-test-validation-datasets" rel="external nofollow noopener" target="_blank">Fuente 1</a></p>
+
+<p><a href="https://stats.stackexchange.com/questions/19048/what-is-the-difference-between-test-set-and-validation-set" rel="external nofollow noopener" target="_blank">Fuente 2</a></p>
+
 
     </div>
   </article>
@@ -164,12 +235,6 @@
   
 
   <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/Tipos-de-datasets/">Tipos de datasets</a>
-  </li>
-
-  
-
-  <li class="my-2">
     <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/k-fold/">K Fold</a>
   </li>
 
@@ -179,6 +244,40 @@
     <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/tipos-de-data/">Tipos de datos</a>
   </li>
 
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/norma-l1-l2/">Norma L1 y L2</a>
+  </li>
+
+<div id="giscus_thread" style="max-width: 800px; margin: 0 auto;">
+  <script>
+    let giscusTheme = localStorage.getItem("theme");
+    let giscusAttributes = {
+        "src": "https://giscus.app/client.js",
+        "data-repo": "squirogar/squirogar.github.io",
+        "data-repo-id": "R_kgDOJtf6_Q",
+        "data-category": "Announcements",
+        "data-category-id": "DIC_kwDOJtf6_c4CXHce",
+        "data-mapping": "pathname",
+        "data-strict": "1",
+        "data-reactions-enabled": "1",
+        "data-emit-metadata": "0",
+        "data-input-position": "top",
+        "data-theme": giscusTheme,
+        "data-lang": "en",
+        "crossorigin": "anonymous",
+        "async": "",
+    };
+
+
+    let giscusScript = document.createElement("script");
+    Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    document.getElementById("giscus_thread").appendChild(giscusScript);
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by giscus.</a>
+</noscript>
+</div>
 </div>
 
       

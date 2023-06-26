@@ -1,5 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-06-25T21:55:40+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
-</subtitle><entry><title type="html">Reinforcement Learning y control</title><link href="https://squirogar.github.io/blog/2023/reinforcement-learning/" rel="alternate" type="text/html" title="Reinforcement Learning y control" /><published>2023-06-10T20:30:00+00:00</published><updated>2023-06-10T20:30:00+00:00</updated><id>https://squirogar.github.io/blog/2023/reinforcement-learning</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/reinforcement-learning/"><![CDATA[<p><em>Material obtenido del e-book de matlab de Reinforcement Learning</em></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-06-26T21:28:42+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+</subtitle><entry><title type="html">Explicación R2 negativo</title><link href="https://squirogar.github.io/blog/2023/r2/" rel="alternate" type="text/html" title="Explicación R2 negativo" /><published>2023-06-25T20:19:00+00:00</published><updated>2023-06-25T20:19:00+00:00</updated><id>https://squirogar.github.io/blog/2023/r2</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/r2/"><![CDATA[<h1 id="explicación-del-r2-negativo">Explicación del \(R^2\) negativo</h1>
+
+<p>De acuerdo a la <a href="">documentación de Scikit-learn</a> el mejor score posible es 1.0. Si el \(R^2\) es 0.0, el modelo es un modelo constante que siempre predecirá la \(y\) promedio sin importar las inputs features. Si el score es negativo, entonces el modelo es peor que un modelo constante.</p>
+
+\[R^2 = 1-\frac{\sum_{y=1}^{n}(y_i-\hat{y_i})^2}{\sum_{y=1}^{n}(y_i-\bar{y_i})^2}\]
+
+<p>Los scores de <code class="language-plaintext highlighter-rouge">LinearRegression</code> de Scikit-learn usan el \(R^2\) score. Un \(R^2\) negativo significa que el modelo se ajustó extremadamente mal a nuestra data. Como \(R^2\) compara el ajuste del modelo con el de la hipótesis nula (una línea recta horizontal), entonces \(R^2\) es negativo cuando el modelo se ajusta peor que una línea horizontal. \(\bar{y}\) es la media de todas las observaciones. Por lo tanto, un \(R^2\) negativo significa que si alguien supiera la media de nuestro test set (y_test) y siempre la usara como “predicción”, esta “predicción” sería más precisa que nuestro modelo.</p>
+
+<p>En conclusión, si:</p>
+
+\[\sum_{y=1}^{n}(y_i-\hat{y_i})^2 &gt; \sum_{y=1}^{n}(y_i-\bar{y_i})^2\]
+
+<p>Entonces, \(R^2\) es negativo.</p>
+
+<ul>
+  <li>Posible solución: escalar la data (posiblemente los targets y).</li>
+</ul>
+
+<p><a href="https://stackoverflow.com/questions/63757258/negative-accuracy-in-linear-regression">Fuente</a></p>]]></content><author><name></name></author><category term="linear-regression," /><category term="python," /><category term="sklearn" /><summary type="html"><![CDATA[r2 score negativo al hacer Linear Regression en scikit-learn]]></summary></entry><entry><title type="html">Tipos de datasets</title><link href="https://squirogar.github.io/blog/2023/Tipos-de-datasets/" rel="alternate" type="text/html" title="Tipos de datasets" /><published>2023-06-25T20:04:00+00:00</published><updated>2023-06-25T20:04:00+00:00</updated><id>https://squirogar.github.io/blog/2023/Tipos-de-datasets</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/Tipos-de-datasets/"><![CDATA[<h1 id="diferencia-entre-los-distintos-tipos-de-datasets">Diferencia entre los distintos tipos de datasets</h1>
+<p>Existen 3 tipos de datasets:</p>
+<ol>
+  <li>Training set</li>
+  <li>Test set</li>
+  <li>Validation set</li>
+</ol>
+
+<h2 id="training-set">Training set</h2>
+<p><strong>Se usa para entrenar el modelo.</strong></p>
+
+<p>Un conjunto de ejemplos usados durante el aprendizaje (entrenamiento) para ajustar los parámetros del modelo de tal forma de encontrar los óptimos.</p>
+
+<h2 id="validation-set">Validation set</h2>
+<p><strong>Un conjunto de ejemplos utilizados para sintonizar los hiperparámetros de un modelo (tunning hyperparameters). El validation set nos permite comparar configuraciones de modelos y seleccionar las mejores.</strong></p>
+
+<p>Tenemos diferentes modelos con diferentes configuraciones de hiperparámetros. Utilizamos el validation set para seleccionar el de mejor rendimiento y seguir entrenándolo.</p>
+
+<p>Es un conjunto de datos utilizado para proporcionar una evaluación imparcial del ajuste de un modelo en el training set mientras se sintonizan los hiperparámetros del modelo. A medida que vamos configurando el modelo de acuerdo al validation set, se va volviendo más sesgada la evaluación, ya que vamos incorporando información al modelo.</p>
+
+<p>Ejemplos de uso de validation set:</p>
+<ul>
+  <li>Establecer el número de hidden units en una red neuronal.</li>
+  <li>Elegir entre 2 o más redes neuronales</li>
+  <li>Selección de features.</li>
+</ul>
+
+<h2 id="test-set">Test set</h2>
+<p><strong>Se usa para evaluar el modelo final (capacidad de generalización).</strong></p>
+
+<p>Evaluar la capacidad del modelo final con el training set resultaría en una puntuación sesgada. Es por esto, que la evaluación del modelo final se realiza con un dataset apartado de todo. Este dataset es el test set.</p>
+
+<p>Se le llama <em>peeking</em> a utilizar el test set para escoger una hipótesis (modelo) y para evaluarla. La forma de evitar esto es <em>no</em> acceder al test set hasta que hayamos terminado completamente con el training y emplearlo para obtener una evaluación independiente de la hipótesis final.</p>
+<ul>
+  <li>Si no nos gustan los resultados, obtenemos una nueva hipótesis y la probamos con un nuevo test set (Rusell y Norvig, 2009).</li>
+</ul>
+
+<h2 id="pseudocódigo-de-los-distintos-datasets">Pseudocódigo de los distintos datasets</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>### Pseudocódigo ###
+
+# split data
+train, validation, test = split(data)
+
+# tune model hyperparameters
+parameters = ...
+for params in parameters:
+    model = fit(train, params)
+    skill = evaluate(model, validation)
+
+# evaluate final model for comparison with other final models
+model = fit(train)
+skill = evaluate(model, test)
+</code></pre></div></div>
+
+<h2 id="alternativa-al-validation-dataset-k-fold-cross-validation">Alternativa al validation dataset: k-fold cross-validation</h2>
+<p>k-fold cross-validation se emplea para sintonizar los hiperparámetros del modelo en lugar de un validation set.</p>
+
+<p>Según el artículo de donde se extrajo esta información, se recomienda un 10-fold cross-validation en general.</p>
+<blockquote>
+  <p><em>Reference to a “validation dataset” disappears if the practitioner is choosing to tune model hyperparameters using k-fold cross-validation with the training dataset.</em></p>
+</blockquote>
+
+<p>Ver más sobre k-fold cross validation <a href="2023-06-25-k-fold.md">aquí</a></p>
+
+<p><a href="https://machinelearningmastery.com/difference-test-validation-datasets">Fuente 1</a></p>
+
+<p><a href="https://stats.stackexchange.com/questions/19048/what-is-the-difference-between-test-set-and-validation-set">Fuente 2</a></p>]]></content><author><name></name></author><category term="datos" /><summary type="html"><![CDATA[Tipos de datasets training set, validation set, test set.]]></summary></entry><entry><title type="html">K Fold</title><link href="https://squirogar.github.io/blog/2023/k-fold/" rel="alternate" type="text/html" title="K Fold" /><published>2023-06-25T00:00:00+00:00</published><updated>2023-06-25T00:00:00+00:00</updated><id>https://squirogar.github.io/blog/2023/k-fold</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/k-fold/"><![CDATA[<h1 id="k-fold-cross-validation">K-fold cross-validation</h1>
+<p>Método estadístico usado para comparar y seleccionar un modelo de Machine Learning en una dataset limitado. Las ventajas que tiene es que es fácil de implementar, entender, y que tiene una estimación que generalmente tiene menor sesgo que otros métodos.</p>
+
+<p>El procedimiento tiene un solo parámetro llamado \(k\) que se refiere a la cantidad de grupos en los que se dividirá una dataset.</p>
+
+<blockquote>
+  <p>\(k\) indica la cantidad de divisiones del dataset.</p>
+</blockquote>]]></content><author><name></name></author><summary type="html"><![CDATA[K-fold cross-validation Método estadístico usado para comparar y seleccionar un modelo de Machine Learning en una dataset limitado. Las ventajas que tiene es que es fácil de implementar, entender, y que tiene una estimación que generalmente tiene menor sesgo que otros métodos.]]></summary></entry><entry><title type="html">Reinforcement Learning y control</title><link href="https://squirogar.github.io/blog/2023/reinforcement-learning/" rel="alternate" type="text/html" title="Reinforcement Learning y control" /><published>2023-06-10T20:30:00+00:00</published><updated>2023-06-10T20:30:00+00:00</updated><id>https://squirogar.github.io/blog/2023/reinforcement-learning</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/reinforcement-learning/"><![CDATA[<p><em>Material obtenido del e-book de matlab de Reinforcement Learning</em></p>
 
 <h1 id="reinforcement-learning-rl">Reinforcement Learning (RL)</h1>
 <p>Permite resolver problemas muy difíciles de control. Por ejemplo, un robot caminante. Un robot caminante es muy difícil de lograr con el enfoque de control, ya que necesitaríamos muchos loops de control, sensores, controladores de motor, etc.</p>
@@ -2373,28 +2465,33 @@ Todo esto resulta en una función muy compleja!</li>
     El agente RL calculará las ganancias óptimas del controlador.
 </div>]]></content><author><name></name></author><category term="algoritmos" /><summary type="html"><![CDATA[Definición y workflow del Aprendizaje por refuerzo, y su aplicación para la resolución de problemas de control.]]></summary></entry><entry><title type="html">Norma L1 y L2</title><link href="https://squirogar.github.io/blog/2023/norma-l1-l2/" rel="alternate" type="text/html" title="Norma L1 y L2" /><published>2023-06-10T20:30:00+00:00</published><updated>2023-06-10T20:30:00+00:00</updated><id>https://squirogar.github.io/blog/2023/norma-l1-l2</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/norma-l1-l2/"><![CDATA[<h1 id="regularización-y-las-normas-l1-y-l2">Regularización y las normas L1 y L2</h1>
 
-<p><em>Información obtenida de este artículo de Chiara Campagnola</em></p>
+<p><em>Información obtenida de este artículo de Chiara Campagnola <a href="https://towardsdatascience.com/visualizing-regularization-and-the-l1-and-l2-norms-d962aa769932">aquí</a></em></p>
 
 <h2 id="cómo-minimizar-una-norma-produce-la-regularización">Cómo minimizar una norma produce la regularización</h2>
 
-<p>En linear regression, el modelo es el siguiente:
-\(\hat{y} = w \cdot x + b\)
-y la función de costo a minimizar es MSE:
+<p>En linear regression, el modelo es el siguiente:</p>
+
+\[\hat{y} = w \cdot x + b\]
+
+<p>y la función de costo a minimizar es MSE:
 \(MSE = \frac{1}{m}\sum^{m}_{i=1}(y-\hat{y})^2\)</p>
 
 <p>El modelo que usaremos para hacer la predicción tiene que ser lo suficientemente complejo para ajustarse a la data, pero no tanto como para que produzca overfitting. Al añadir un término de regularización, prevenimos que los parámetros \(w\) sean muy grandes (en valor absoluto), simplificando el modelo.</p>
 
 <p>El término de regularización puede ser la norma \(L1\) o \(L2\) al cuadrado, y se agrega a la función de costo, por lo que durante el entrenamiento, el algoritmo de aprendizaje (linear regression en este caso), intentará minimizar la función de costo con el término de regularización.</p>
 
-<p>\(\text{norma L1:} ||w||_1 = \sum^{n}_{i}|w_i|\)
-\(\text{normal L2 al cuadrado:} ||w||_2^2 = \sum^{n}_{i}w_i^2\)</p>
+\[\text{norma L1:} ||w||_1 = \sum^{n}_{i}|w_i|\]
 
-<p><strong>Minimizar la norma incentiva a la función a ser menos compleja</strong>.</p>
+\[\text{normal L2 al cuadrado:} ||w||_2^2 = \sum^{n}_{i}w_i^2\]
 
-<p>Matemáticamente, las normas \(L1$ y\)L2\(son medidas de la magnitud de los weights: la suma de los valores absolutos (Norma\)L1\() y la suma de los valores al cuadrado (Norma\)L2$$). Valores más grandes de weights dan una norma más grande. Esto significa que, minimizar la norma incentiva a los weights a ser más pequeños (en valor absoluto), lo que a su vez da funciones más simples.</p>
+<blockquote>
+  <p>Minimizar la norma incentiva al modelo a ser menos complejo.</p>
+</blockquote>
 
+<p>Matemáticamente, las normas \(L1\) y \(L2\) son medidas de la magnitud de los weights: la suma de los valores absolutos (Norma \(L1\)) y la suma de los valores al cuadrado (Norma \(L2\)). Valores más grandes de weights dan una norma más grande. Esto significa que, minimizar la norma incentiva a los weights a ser más pequeños (en valor absoluto), lo que a su vez da funciones más simples.</p>
+
+<p>Ejemplos de modelos:</p>
 <ul>
-  <li>Ejemplos de modelos:</li>
   <li>polinomio grado 8 se ajusta muy bien a la data, obtiene error 0, sin embargo, sus normas son bastantes altas (L2=32 y L1 = 70)
     <ul>
       <li>Esto se refleja en el modelo: \(f(x)=0.04+0.04x+0.9x^2\)</li>
@@ -2412,8 +2509,6 @@ y la función de costo a minimizar es MSE:
 <p>Con esto se concluye que mientras menor sea la norma, más pequeños los parámetros y más simple el modelo.</p>
 
 <p>Dependiendo de la norma que usemos, habrán distintos efectos, ya sea, eliminar algunos weights completamente (estableciéndolos a 0), o haciendo que todos los weights sean lo más pequeños posibles. El primero lo genera la norma \(L1\), mientras que el segundo lo hará la norma \(L2\) al cuadrado.</p>
-
-<p>To understand how they operate differently, let’s have a look at how they change depending on the value of the weights.</p>
 
 <p>Veamos como cambian las normas dependiendo del valor de los weights.</p>
 <div class="row mt-3">
@@ -2466,29 +2561,57 @@ y la función de costo a minimizar es MSE:
 
 <p>Las normas \(L1\) y \(L2\) aumentan a medida que aumenta el valor absoluto de \(w\). Sin embargo, mientras que la norma \(L1\) aumenta a un valor constante, la norma \(L2\) aumenta más rápidamente.</p>
 
-<p>Cuando utilizamos el gradient descent actualizaremos nuestros weights basándonos en la derivada la función de costo. Entnces si incluimos una norma en nuestra función de costo, la derivada de la norma determinará cómo serán actualizados los weights.</p>
+<p>Cuando utilizamos el gradient descent actualizaremos nuestros weights basándonos en la derivada la función de costo. Entonces si incluimos una norma en nuestra función de costo, la derivada de la norma determinará cómo serán actualizados los weights.</p>
 <ul>
   <li>Con la norma \(L2\) a medida que \(w\) se vuelve más pequeño, también lo hace la pendiente de la norma, lo que significa que las actualizaciones también serán cada vez más pequeñas. Cuando los weigths estén cerca de 0, las actualizaciones se habrán vuelto tan pequeñas que serán casi insignificantes, por lo que es poco probable que los pesos lleguen a ser 0.</li>
   <li>Con la norma \(L1\) la pendiente es constante. Esto significa que a medida que w se reduce, las actualizaciones no cambian. Por consiguiente, es mucho más probable que la norma \(L1\) reduzca algunos weights a 0.</li>
 </ul>
 
 <hr />
-<p><em>Obtenido de artículo escrito por Saptashwa Bhattacharyya https://towardsdatascience.com/ridge-and-lasso-regression-a-complete-guide-with-python-scikit-learn-e20e34bcbf0b</em></p>
+
+<p><em>Obtenido de artículo escrito por Saptashwa Bhattacharyya <a href="https://towardsdatascience.com/ridge-and-lasso-regression-a-complete-guide-with-python-scikit-learn-e20e34bcbf0b">aquí</a></em></p>
 
 <p>Ridge y Lasso regression son técnicas simples para reducir la complejidad del modelo y prevenir el overfitting.</p>
 
 <h2 id="ridge-regression">Ridge regression</h2>
-<p>En Ridge regression, la función de costo es alterada agregando un castigo equivalente al cuadrado de la magnitud de los coeficientes. En otras palabras, si agregamos la norma \(L2\) al cuadrado a la loss y la minimizamos, obtendremos la función de costo de Ridge regression:
-\(min L(w) = min(\frac{1}{m}\sum^{m}_{i=1}(y-\hat{y})^2 + \lambda ||w||_2^2)\)
-\(\lambda\) es el coeficiente de regularización que determina cuánta regularización queremos.</p>
+<p>En Ridge regression, la función de costo es alterada agregando un castigo equivalente al cuadrado de la magnitud de los coeficientes. En otras palabras, si agregamos la norma \(L2\) al cuadrado a la loss y la minimizamos, obtendremos la función de costo de Ridge regression:</p>
+
+\[\text{min} L(w) = \text{min}(\frac{1}{m}\sum^{m}_{i=1}(y-\hat{y})^2 + \lambda ||w||_2^2)\]
+
+<p>\(\lambda\) es el coeficiente de regularización que determina cuánta regularización queremos.</p>
 
 <p>Entonces, Ridge regression pone restricciones en los coeficientes \(w\) en caso de que los coeficientes tomen valores muy grandes. <strong>Ridge regression solamente puede reducir los coeficientes cerca de 0, pero nunca 0</strong>.</p>
 
 <h2 id="lasso-regression">Lasso regression</h2>
-<p>La función de costo para Lasso (<em>least absolute shrinkage and selection operator</em>) regression es:
-\(min L(w) = min(\frac{1}{m}\sum^{m}_{i=1}(y-\hat{y})^2 + \lambda ||w||_1)\)</p>
+<p>La función de costo para Lasso (<em>least absolute shrinkage and selection operator</em>) regression es:</p>
 
-<p>Lasso regression también simplifica el modelo, la diferencia es que en lugar de tomar el cuadrado de los coeficientes, solo tomamos las magnitudes de los parámetros. Este tipo de regularización puede conducir a coeficientes con valor 0, es decir, tienen nulo aporte en la evaluación de la salida. <strong>Lasso regression no solo ayuda en reducir el overfitting sino que también puede ayudarnos en feature selection</strong>. Feature selection es cuando queremos seleccionar ciertas features, sólo las más importantes.</p>]]></content><author><name></name></author><category term="algoritmos" /><summary type="html"><![CDATA[Explicación de norma L1 y L2, y su uso en Linear Regression]]></summary></entry><entry><title type="html">K-means clustering algorithm</title><link href="https://squirogar.github.io/blog/2023/clustering-kmeans/" rel="alternate" type="text/html" title="K-means clustering algorithm" /><published>2023-06-09T21:41:00+00:00</published><updated>2023-06-09T21:41:00+00:00</updated><id>https://squirogar.github.io/blog/2023/clustering-kmeans</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/clustering-kmeans/"><![CDATA[<p><em>El siguiente contenido fue aprendido del curso de especialización de Machine Learning de Andrew Ng y deeplearning.ai</em></p>
+\[\text{min} L(w) = \text{min}(\frac{1}{m}\sum^{m}_{i=1}(y-\hat{y})^2 + \lambda ||w||_1)\]
+
+<h2 id="lasso-regression-también-simplifica-el-modelo-la-diferencia-es-que-en-lugar-de-tomar-el-cuadrado-de-los-coeficientes-solo-tomamos-las-magnitudes-de-los-parámetros-este-tipo-de-regularización-puede-conducir-a-coeficientes-con-valor-0-es-decir-tienen-nulo-aporte-en-la-evaluación-de-la-salida-lasso-regression-no-solo-ayuda-en-reducir-el-overfitting-sino-que-también-puede-ayudarnos-en-feature-selection-feature-selection-es-cuando-queremos-seleccionar-ciertas-features-sólo-las-más-importantes">Lasso regression también simplifica el modelo, la diferencia es que en lugar de tomar el cuadrado de los coeficientes, solo tomamos las magnitudes de los parámetros. Este tipo de regularización puede conducir a coeficientes con valor 0, es decir, tienen nulo aporte en la evaluación de la salida. <strong>Lasso regression no solo ayuda en reducir el overfitting sino que también puede ayudarnos en feature selection</strong>. Feature selection es cuando queremos seleccionar ciertas features, sólo las más importantes.</h2>
+
+<p>Resumen:</p>
+<ul>
+  <li>norma \(L1\) para feature selection (eliminar features innecesarias).</li>
+  <li>norma \(L2\) si queremos mantener las features porque son importantes, pero mantener los parámetros lo más bajo posible.</li>
+</ul>]]></content><author><name></name></author><category term="algoritmos" /><summary type="html"><![CDATA[Explicación de norma L1 y L2, y su uso en Linear Regression]]></summary></entry><entry><title type="html">Tipos de datos</title><link href="https://squirogar.github.io/blog/2023/tipos-de-data/" rel="alternate" type="text/html" title="Tipos de datos" /><published>2023-06-10T20:30:00+00:00</published><updated>2023-06-10T20:30:00+00:00</updated><id>https://squirogar.github.io/blog/2023/tipos-de-data</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/tipos-de-data/"><![CDATA[<h1 id="tipo-de-data">Tipo de data</h1>
+<h2 id="1-sparse-data">1. Sparse data</h2>
+<p>Sparse data o datos dispersos se refiere a una matriz de datos de alta dimensión que está compuesto en su mayoría por 0’s y el resto de data con un valor distinto de 0.</p>
+
+<blockquote>
+  <p>Atención: que los valores sean 0 no significan que no tienen significado o que no aportan información útil.*</p>
+</blockquote>
+
+<p>Ejemplo: En álgebra lineal una matriz dispersa o rala es una matriz de gran tamaño en la que la mayor parte de sus elementos son 0. Recordar que una matriz de alta dimensión (high-dimension) requiere una gran cantidad de memoria y procesamiento de una computadora.</p>
+
+<h2 id="2-dense-data">2. Dense data</h2>
+<p>Al contrario de la sparse data, dense data se refiere a una matriz que en su mayoría está compuesto de elementos cuyos valores son distintos de 0.</p>
+
+<p><a href="https://stats.stackexchange.com/questions/266996/what-do-the-terms-dense-and-sparse-mean-in-the-context-of-neural-networks">Fuente</a></p>
+
+<h2 id="3-missing-data">3. Missing data</h2>
+<p>No es lo mismo que sparse data. Missing data se refiere a una matriz de datos que contiene valores como <code class="language-plaintext highlighter-rouge">NaN</code> o <code class="language-plaintext highlighter-rouge">Null</code>, o sea, valores que no son útiles en lo absoluto y no se puede concluir nada acerca de ellos, ya que no poseen un valor interpretable. Podemos llenar los valores faltantes manualmente sin afectar al resto, eliminarlos o volver a medir, etc.</p>
+
+<p><a href="https://stats.stackexchange.com/questions/267322/difference-between-missing-data-and-sparse-data-in-machine-learning-algorithms">Fuente</a></p>]]></content><author><name></name></author><category term="datos" /><summary type="html"><![CDATA[Tipos de data en ML]]></summary></entry><entry><title type="html">K-means clustering algorithm</title><link href="https://squirogar.github.io/blog/2023/clustering-kmeans/" rel="alternate" type="text/html" title="K-means clustering algorithm" /><published>2023-06-09T21:41:00+00:00</published><updated>2023-06-09T21:41:00+00:00</updated><id>https://squirogar.github.io/blog/2023/clustering-kmeans</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/clustering-kmeans/"><![CDATA[<p><em>El siguiente contenido fue aprendido del curso de especialización de Machine Learning de Andrew Ng y deeplearning.ai</em></p>
 
 <p>K-means es un algoritmo de clustering. Antes de ver en qué consiste K-means, es bueno saber qué es un algoritmo de clustering.</p>
 
