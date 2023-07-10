@@ -64,7 +64,7 @@ k-fold cross-validation se emplea para sintonizar los hiperparámetros del model
 Según el artículo de donde se extrajo esta información, se recomienda un 10-fold cross-validation en general.
 > *Reference to a “validation dataset” disappears if the practitioner is choosing to tune model hyperparameters using k-fold cross-validation with the training dataset.*
 
-Ver más sobre k-fold cross validation [aquí](./2023-06-25-k-fold.md)
+
 
 
 [Fuente 1](https://machinelearningmastery.com/difference-test-validation-datasets)
