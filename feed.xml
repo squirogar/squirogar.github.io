@@ -1,11 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-06-26T22:42:58+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
-</subtitle><entry><title type="html">K-fold cross-validations</title><link href="https://squirogar.github.io/blog/2023/k-fold/" rel="alternate" type="text/html" title="K-fold cross-validations" /><published>2023-06-26T17:54:00+00:00</published><updated>2023-06-26T17:54:00+00:00</updated><id>https://squirogar.github.io/blog/2023/k-fold</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/k-fold/"><![CDATA[<p>Método estadístico usado para comparar y seleccionar un modelo de Machine Learning en una dataset limitado. Las ventajas que tiene es que es fácil de implementar, entender, y que tiene una estimación que generalmente tiene menor sesgo que otros métodos.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-07-10T00:02:16+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+</subtitle><entry><title type="html">Loss y Accuracy en deep learning</title><link href="https://squirogar.github.io/blog/2023/loss-accuracy/" rel="alternate" type="text/html" title="Loss y Accuracy en deep learning" /><published>2023-07-09T19:56:00+00:00</published><updated>2023-07-09T19:56:00+00:00</updated><id>https://squirogar.github.io/blog/2023/loss-accuracy</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/loss-accuracy/"><![CDATA[<h1 id="precisión-y-loss-en-tensorflow">Precisión y loss en tensorflow</h1>
+<p>Accuracy es una métrica que sólo se puede aplicar a las tareas de clasificación. Describe exactamente qué porcentajes de los datos se clasifican correctamente. Por ejemplo, tenemos un dataset con perros y gatos; si de 100 se clasifican bien 95, tenemos un 95% de precisión.</p>
 
-<p>El procedimiento tiene un solo parámetro llamado \(k\) que se refiere a la cantidad de grupos en los que se dividirá una dataset.</p>
+<p>La pérdida es qué tan seguro está el algoritmo en la clasificación, y es la suma de de la diferencia entre la probabilidad predicha de la clase real de la imagen y 1.</p>
 
-<blockquote>
-  <p>\(k\) indica la cantidad de divisiones del dataset.</p>
-</blockquote>]]></content><author><name></name></author><category term="datos" /><summary type="html"><![CDATA[k fold.]]></summary></entry><entry><title type="html">Explicación R2 negativo</title><link href="https://squirogar.github.io/blog/2023/r2/" rel="alternate" type="text/html" title="Explicación R2 negativo" /><published>2023-06-25T20:19:00+00:00</published><updated>2023-06-25T20:19:00+00:00</updated><id>https://squirogar.github.io/blog/2023/r2</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/r2/"><![CDATA[<h1 id="por-qué-el-r2-score-puede-ser-negativo">¿Por qué el \(R^2\) score puede ser negativo?</h1>
+<p>Tenemos un problema de clasificación de imágenes de un dataset balanceado. Este dataset tiene gatos y
+perros. Además, tenemos dos clasificadores:</p>
+<ul>
+  <li>clasificador 1: predice correctamente 80/100 casos</li>
+  <li>clasificador 2: predice correctamente 95/100 casos</li>
+</ul>
+
+<p>Aquí, el clasificador 2 obviamente tiene una precisión (accuracy) más alta.</p>
+
+<p>Sin embargo, en las 80 imágenes que el clasificador 1 acertó, este clasificador estuvo extremadamente 
+seguro (por ejemplo, cuando piensa que una imagen es un gato, está 100% seguro que es así), y en las 
+20 que se equivocó no estuvo seguro para nada (por ejemplo, cuando dice que es un gato en vez de un 
+perro con un 51% de seguridad). En comparación, el clasificador 2 está extremadamente seguro es sus 
+5 respuestas incorrectas (por ejemplo, 100% seguro que la imagen de un gato es un perro), y no estuvo 
+muy confiado sobre el 95% que acertó. En este caso, el clasificador 2 tendría peor loss.</p>
+
+<p><a href="https://datascience.stackexchange.com/questions/42599/what-is-the-relationship-between-the-accuracy-and-the-loss-in-deep-learning">Fuente</a></p>]]></content><author><name></name></author><category term="datos" /><summary type="html"><![CDATA[k fold.]]></summary></entry><entry><title type="html">Explicación R2 negativo</title><link href="https://squirogar.github.io/blog/2023/r2/" rel="alternate" type="text/html" title="Explicación R2 negativo" /><published>2023-06-25T20:19:00+00:00</published><updated>2023-06-25T20:19:00+00:00</updated><id>https://squirogar.github.io/blog/2023/r2</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/r2/"><![CDATA[<h1 id="por-qué-el-r2-score-puede-ser-negativo">¿Por qué el \(R^2\) score puede ser negativo?</h1>
 
 <p>De acuerdo a la <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html">documentación de Scikit-learn</a> el mejor score posible es 1.0. Si el \(R^2\) es 0.0, el modelo es un modelo constante que siempre predecirá la \(y\) promedio sin importar las inputs features. Si el score es negativo, entonces el modelo es peor que un modelo constante.</p>
 
@@ -82,8 +97,6 @@ skill = evaluate(model, test)
 <blockquote>
   <p><em>Reference to a “validation dataset” disappears if the practitioner is choosing to tune model hyperparameters using k-fold cross-validation with the training dataset.</em></p>
 </blockquote>
-
-<p>Ver más sobre k-fold cross validation <a href="./2023-06-25-k-fold.md">aquí</a></p>
 
 <p><a href="https://machinelearningmastery.com/difference-test-validation-datasets">Fuente 1</a></p>
 

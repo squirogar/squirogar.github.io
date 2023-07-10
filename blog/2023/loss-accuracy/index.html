@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>K-fold cross-validations | Sebastián  Quiroga</title>
+    <title>Loss y Accuracy en deep learning | Sebastián  Quiroga</title>
     <meta name="author" content="Sebastián  Quiroga">
     <meta name="description" content="k fold.">
     <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
@@ -38,7 +38,7 @@
     <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://squirogar.github.io/blog/2023/k-fold/">
+    <link rel="canonical" href="https://squirogar.github.io/blog/2023/loss-accuracy/">
 
     <!-- Dark Mode -->
     
@@ -121,8 +121,8 @@
 <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">K-fold cross-validations</h1>
-    <p class="post-meta">June 26, 2023</p>
+    <h1 class="post-title">Loss y Accuracy en deep learning</h1>
+    <p class="post-meta">July 9, 2023</p>
     <p class="post-tags">
       <a href="/blog/2023"> <i class="fas fa-calendar fa-sm"></i> 2023 </a>
         ·  
@@ -136,14 +136,28 @@
   <article class="post-content">
     
     <div id="markdown-content">
-      <p>Método estadístico usado para comparar y seleccionar un modelo de Machine Learning en una dataset limitado. Las ventajas que tiene es que es fácil de implementar, entender, y que tiene una estimación que generalmente tiene menor sesgo que otros métodos.</p>
+      <h1 id="precisión-y-loss-en-tensorflow">Precisión y loss en tensorflow</h1>
+<p>Accuracy es una métrica que sólo se puede aplicar a las tareas de clasificación. Describe exactamente qué porcentajes de los datos se clasifican correctamente. Por ejemplo, tenemos un dataset con perros y gatos; si de 100 se clasifican bien 95, tenemos un 95% de precisión.</p>
 
-<p>El procedimiento tiene un solo parámetro llamado \(k\) que se refiere a la cantidad de grupos en los que se dividirá una dataset.</p>
+<p>La pérdida es qué tan seguro está el algoritmo en la clasificación, y es la suma de de la diferencia entre la probabilidad predicha de la clase real de la imagen y 1.</p>
 
-<blockquote>
-  <p>\(k\) indica la cantidad de divisiones del dataset.</p>
-</blockquote>
+<p>Tenemos un problema de clasificación de imágenes de un dataset balanceado. Este dataset tiene gatos y
+perros. Además, tenemos dos clasificadores:</p>
+<ul>
+  <li>clasificador 1: predice correctamente 80/100 casos</li>
+  <li>clasificador 2: predice correctamente 95/100 casos</li>
+</ul>
 
+<p>Aquí, el clasificador 2 obviamente tiene una precisión (accuracy) más alta.</p>
+
+<p>Sin embargo, en las 80 imágenes que el clasificador 1 acertó, este clasificador estuvo extremadamente 
+seguro (por ejemplo, cuando piensa que una imagen es un gato, está 100% seguro que es así), y en las 
+20 que se equivocó no estuvo seguro para nada (por ejemplo, cuando dice que es un gato en vez de un 
+perro con un 51% de seguridad). En comparación, el clasificador 2 está extremadamente seguro es sus 
+5 respuestas incorrectas (por ejemplo, 100% seguro que la imagen de un gato es un perro), y no estuvo 
+muy confiado sobre el 95% que acertó. En este caso, el clasificador 2 tendría peor loss.</p>
+
+<p><a href="https://datascience.stackexchange.com/questions/42599/what-is-the-relationship-between-the-accuracy-and-the-loss-in-deep-learning" rel="external nofollow noopener" target="_blank">Fuente</a></p>
 
     </div>
   </article>
