@@ -2,8 +2,8 @@
 layout: post
 title: Loss y Accuracy en deep learning
 date: 2023-07-09 19:56
-description: k fold.
-categories: datos
+description: Qué significa los indicadores de loss y accuracy en deep learning.
+categories: deep-learning
 giscus_comments: true
 related_posts: true
 ---
