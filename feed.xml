@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-07-12T01:29:32+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-07-12T04:47:19+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 </subtitle><entry><title type="html">Loss y Accuracy en deep learning</title><link href="https://squirogar.github.io/blog/2023/loss-accuracy/" rel="alternate" type="text/html" title="Loss y Accuracy en deep learning" /><published>2023-07-09T19:56:00+00:00</published><updated>2023-07-09T19:56:00+00:00</updated><id>https://squirogar.github.io/blog/2023/loss-accuracy</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/loss-accuracy/"><![CDATA[<h1 id="precisión-y-loss-en-tensorflow">Precisión y loss en tensorflow</h1>
 <p>Accuracy es una métrica que sólo se puede aplicar a las tareas de clasificación. Describe exactamente qué porcentajes de los datos se clasifican correctamente. Por ejemplo, tenemos un dataset con perros y gatos; si de 100 se clasifican bien 95, tenemos un 95% de precisión.</p>
 
@@ -21,7 +21,9 @@ perro con un 51% de seguridad). En comparación, el clasificador 2 está extrema
 muy confiado sobre el 95% que acertó. En este caso, el clasificador 2 tendría peor loss.</p>
 
 <p><a href="https://datascience.stackexchange.com/questions/42599/what-is-the-relationship-between-the-accuracy-and-the-loss-in-deep-learning">Fuente</a></p>]]></content><author><name></name></author><category term="deep-learning" /><summary type="html"><![CDATA[Qué significa los indicadores de loss y accuracy en deep learning.]]></summary></entry><entry><title type="html">SQL</title><link href="https://squirogar.github.io/blog/2023/sql/" rel="alternate" type="text/html" title="SQL" /><published>2023-07-09T19:56:00+00:00</published><updated>2023-07-09T19:56:00+00:00</updated><id>https://squirogar.github.io/blog/2023/sql</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/sql/"><![CDATA[<h2 id="qué-es-una-base-de-datos">Qué es una base de datos</h2>
-<p>De [microsoft] (https://support.microsoft.com/es-es/office/conceptos-b%C3%A1sicos-sobre-bases-de-datos-a849ac16-07c7-4a31-9948-3c8c94a7c204#:~:text=Una%20base%20de%20datos%20es,programa%20de%20procesamiento%20de%20texto.): <em>Una base de datos es una herramienta para recopilar y organizar información. Las bases de datos pueden almacenar información sobre personas, productos, pedidos u otras cosas</em></p>
+<blockquote>
+  <p>De <a href="https://support.microsoft.com/es-es/office/conceptos-b%C3%A1sicos-sobre-bases-de-datos-a849ac16-07c7-4a31-9948-3c8c94a7c204#:~:text=Una%20base%20de%20datos%20es,programa%20de%20procesamiento%20de%20texto.">microsoft</a>: <em>Una base de datos es una herramienta para recopilar y organizar información. Las bases de datos pueden almacenar información sobre personas, productos, pedidos u otras cosas</em></p>
+</blockquote>
 
 <p>Lo importante de una base de datos es que:</p>
 <ol>
@@ -54,6 +56,30 @@ muy confiado sobre el 95% que acertó. En este caso, el clasificador 2 tendría 
   <p>Query &lt;=&gt; consulta</p>
 </blockquote>
 
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/bd-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/bd-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/bd-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/bd.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    SGBD y querys.
+</div>
+
 <p>Existen dos tipos de SGBD:</p>
 <ol>
   <li>SGBD que implementan SQL. Estas bases de datos se llaman base de datos relacionales y almacenan la información mediante tablas con filas y columnas.</li>
@@ -70,213 +96,151 @@ muy confiado sobre el 95% que acertó. En este caso, el clasificador 2 tendría 
 <h2 id="base-de-datos-relacionales">Base de datos relacionales</h2>
 <p>Se guardan los datos en una tabla. Una tabla se conforman de registros o filas y columnas o campos. Las columnas describen el dato.</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>USUARIO</th>
-      <th> </th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Column 1</td>
-      <td>Column 2</td>
-      <td>Column 3</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>Row 1</td>
-      <td>Cell 2</td>
-      <td>Cell 3</td>
-    </tr>
-    <tr>
-      <td>Row 2</td>
-      <td>Cell 5</td>
-      <td>Cell 6</td>
-    </tr>
-    <tr>
-      <td>Row 3</td>
-      <td>Cell 8</td>
-      <td>Cell 9</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Tabla USER</strong>
+| id | nombre | edad |
+|:———:|:———-:|:———-:|
+| 1    | Felipe   | 20   |</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>USUARIO
-id nombre edad
-1	felipe	20
-</code></pre></div></div>
+<p>De esta tabla se desprende lo siguiente:</p>
 <ul>
-  <li>El id es una columna que describe un identificador único del registro y que generalmente es automático y autoincrementable</li>
+  <li>El id es una columna que describe un identificador único del registro y que generalmente es automático y autoincrementable.</li>
   <li>“1”, “felipe” y “20” son datos por sí mismos.</li>
-  <li>
-    <p>Si a esta tabla le asignamos el nombre de “user” ahí le damos contexto, ya que sabemos que esos datos hacen referencia a un usuario. Es ahí cuando tenemos información. Es muy importante que los datos se transformen en información, ya que así tienen sentido.</p>
-  </li>
-  <li>
-    <p>Es importante el uso de id en vez de usar el nombre u otro dato de un usuario, ya que estos se pueden repetir o pueden cambiar.</p>
-  </li>
-  <li>
-    <p>Es importante que en la base de datos no hay duplicación de registros.</p>
-  </li>
-  <li>
-    <p>Todas las bases de datos relacionales o SQL crean tablas y las asocian mediante claves.</p>
-  </li>
-  <li>relación 1&lt;-&gt;n: se pone la clave primaria de (1) en la tabla de (n)
-```
-PRODUCTO
-id nombre creado_por
-1 	clavo	1</li>
+  <li>Si a esta tabla le asignamos el nombre de “user” ahí le damos contexto, ya que sabemos que esos datos hacen referencia a un usuario. Este contexto hace que nuestros datos se transformen en información.</li>
+  <li>El uso de “id” en vez de usar “nombre” u otro dato de un usuario, ya que estos se pueden repetir o pueden cambiar.</li>
 </ul>
 
-<p>USUARIO
-id nombre edad
-1	felipe	20</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-- relación n&lt;-&gt;n: se crea una tabla intermedia. En esta tabla van las claves primarias de las 2 tablas que se relacionan.
-</code></pre></div></div>
-<p>ALUMNOS
-id nombre edad
-1 	felipe	25
-2 	carlos 	19</p>
+<p>Algo muy importante es que en la base de datos no haya duplicación de registros.</p>
 
-<p>DEPORTE
-id nombre
-1	futbol
-2 	tenis
-3 	remo</p>
+<blockquote>
+  <p>Todas las bases de datos relacionales o SQL crean tablas y las asocian mediante claves. Existen dos tipos de claves: clave primaria y clave foránea. Todas las tablas deben tener una clave primaria para la identificación de registros, ya que permite que los registros sean únicos. Sin embargo, no todas las tablas cuentan con una clave foránea. La clave foránea permite relacionar un registro con otra tabla dentro de la base de datos.</p>
+</blockquote>
 
-<p>ALUMNOS_DEPORTE
-id alumno_id deporte_id
-1 	1 			1
-2 	1 			2
-3 	2 			3</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-- la "primary key" es la columna que identifica a un registro como único.
-- la "foregin key" es la columna que identifica a un registro de otra tabla que se relaciona con la tabla actual.
+<p>Ejemplo: Tenemos dos tablas: la tabla “ALUMNOS” y la tabla “DEPORTE”. Para poder relacionarlas debemos crear una tabla adicional “ALUMNO_DEPORTE”.</p>
 
+<p><strong>Tabla ALUMNO</strong>
+| id   | nombre | edad |
+|:—-:|:——:|:—-:|
+| 1    | Felipe | 20   |
+| 2    | Carlos | 19   |</p>
 
-# tipos de datos
-- int: integer
-- float: decimal
-- varchar(cantidad de caracteres máximo): string
+<p><strong>Tabla DEPORTE</strong>
+|id |nombre|
+|:-:|:—-:|
+|1	|futbol|
+|2 	|tenis |
+|3 	|remo  |</p>
 
+<p><strong>Tabla ALUMNO_DEPORTE</strong>
+|id |alumno_id| deporte_id|
+|:-:|:——-:|:———:|
+|1 	|1 		  |1          |
+|2 	|1 		  |2          |
+|3 	|2 		  |3          |</p>
 
-# comandos
+<h2 id="tipos-de-datos-básicos">tipos de datos (básicos)</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">int</code>: integer</li>
+  <li><code class="language-plaintext highlighter-rouge">float</code>: decimal</li>
+  <li><code class="language-plaintext highlighter-rouge">varchar</code> (cantidad de caracteres máximo): string</li>
+</ul>
 
-Siempre agregar el ; después de cada instrucción.
+<h2 id="comandos">Comandos</h2>
+<p>Los siguientes son los comandos más usados en SQL.</p>
 
-</code></pre></div></div>
-<h1 id="crea-la-base-de-datos">crea la base de datos</h1>
-<p>create database nombrebd;</p>
+<h3 id="comandos-iniciales">Comandos iniciales</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 1. crea la base de datos
+create database nombrebd;
 
-<h1 id="ver-todas-las-bases-de-datos-que-existen">ver todas las bases de datos que existen</h1>
-<p>show databases;</p>
+# 2. ver todas las bases de datos que existen
+show databases;
 
-<h1 id="indicamos-la-base-de-datos-a-utilizar">indicamos la base de datos a utilizar</h1>
-<p>use nombrebd;</p>
+# 3. indicamos la base de datos a utilizar
+use nombrebd;
 
-<h1 id="creamos-una-tabla">creamos una tabla</h1>
-<p>CREATE TABLE nombretabla (
+# 4. creamos una tabla
+CREATE TABLE nombretabla (
 	id int AUTO_INCREMENT,
 	columna1 varchar(255), 
 	columna2 varchar(255) NOT NULL,
 	columna3 int NOT NULL,
 	PRIMARY KEY (id),
-);</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-1. Insertar datos en una tabla
-Primero, debemos indicar a qué columnas queremos insertarle datos. Luego, le indicamos los valores que irán en cada columna indicada.
+);
 
 </code></pre></div></div>
-<h1 id="1-un-solo-valor">1: un solo valor</h1>
-<p>INSERT INTO nombretabla (columna1, columna2) VALUES (“valor col1”, “valor col2”);</p>
 
-<h1 id="2-varios-valores">2: varios valores</h1>
-<p>INSERT INTO product (name, created_by, marca)
+<h3 id="insertar-datos-en-una-tabla">Insertar datos en una tabla</h3>
+<p>Primero, debemos indicar a qué columnas queremos insertarle datos. Luego, le indicamos los valores que irán en cada columna indicada.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 1: un solo valor #
+INSERT INTO nombretabla (columna1, columna2) VALUES ("valor col1", "valor col2");
+
+# 2: varios valores #
+INSERT INTO product (name, created_by, marca)
 VALUES 
-	(“ipad”, 1, “apple”),
-	(“iphone”, 1, “apple”),
-	(“watch”, 2, “apple”),
-	(“macbook”, 1, “apple”),
-	(“imac”, 3, “apple”),
-	(“ipad mini”, 2, “apple”);</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-
-
-
-* esto es para solucionar si es que nos da un error al no establecer el id como autoincrementable.
+	("ipad", 1, "apple"),
+	("iphone", 1, "apple"),
+	("watch", 2, "apple"),
+	("macbook", 1, "apple"),
+	("imac", 3, "apple"),
+	("ipad mini", 2, "apple");
 </code></pre></div></div>
-<p>ALTER TABLE nombretabla MODIFY COLUMN id int auto_increment;</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 
+<h3 id="listar-registros-de-una-tabla">Listar registros de una tabla</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 1: traer registros de una tabla #
+SELECT columna1, columna2 FROM nombretabla WHERE id = 1;
 
+# 2: traer registros de una tabla dada una condición #
+SELECT * FROM nombretabla WHERE columna1 = "dato" AND columna2 = "dato2";
+SELECT * FROM nombretabla WHERE columna1 &gt; 20 OR columna2 = "dato2";
+SELECT * FROM nombretable WHERE columna2 != "dato2";
 
+# 3: traer una determinada cantidad de registros #
+SELECT * FROM nombretabla WHERE columna1 &gt;= 10 LIMIT 5; 
 
-2. Listar registros de una tabla
-</code></pre></div></div>
-<h1 id="1">1</h1>
-<p>SELECT columna1, columna2 FROM nombretabla WHERE id = 1;</p>
+# 4: traer registros dado un rango de valores #
+SELECT * FROM nombretable WHERE columna1 BETWEEN 5 AND 10;
 
-<h1 id="2">2</h1>
-<p>SELECT * FROM nombretabla WHERE columna1 = “dato” AND columna2 = “dato2”;</p>
+# 5: buscar registros que contengan una palabra, da lo mismo el inicio y el final #
+SELECT * FROM nombretable WHERE columna2 LIKE "%hola%;
 
-<h1 id="3">3</h1>
-<p>SELECT * FROM nombretabla WHERE columna1 &gt;= 10 LIMIT 5;</p>
+# 6: buscar registros que terminen con una palabra #
+SELECT * FROM nombretable WHERE columna2 LIKE "%hola;
 
-<h1 id="4">4</h1>
-<p>SELECT * FROM nombretabla WHERE columna1 &gt; 20 OR columna2 = “dato2”;</p>
+# 6: buscar registros que empiecen con una palabra #
+SELECT * FROM nombretable WHERE columna2 LIKE "hola%;
 
-<h1 id="5">5</h1>
-<p>SELECT * FROM nombretable WHERE columna2 != “dato2”;</p>
+# 7: traer registros ordenados #
+SELECT * FROM nombretable ORDER BY columna2 ASC;
+SELECT * FROM nombretable ORDER BY columna2 DESC;
 
-<h1 id="6">6</h1>
-<p>SELECT * FROM nombretable WHERE columna1 BETWEEN 5 AND 10;</p>
+# 8: el mayor de algo. (AS es el alias) #
+SELECT MAX(columna1) AS mayor FROM nombretable;
 
-<h1 id="7-busca-que-contenga-la-palabra-hola-da-lo-mismo-el-inicio-y-el-final">7: busca que contenga la palabra hola, da lo mismo el inicio y el final</h1>
-<p>SELECT * FROM nombretable WHERE columna2 LIKE “%hola%;</p>
-
-<h1 id="debe-terminar-con-hola">debe terminar con hola</h1>
-<p>SELECT * FROM nombretable WHERE columna2 LIKE “%hola;</p>
-
-<h1 id="debe-empezar-con-hola">debe empezar con hola</h1>
-<p>SELECT * FROM nombretable WHERE columna2 LIKE “hola%;</p>
-
-<h1 id="8">8</h1>
-<p>SELECT * FROM nombretable ORDER BY columna2 ASC;</p>
-
-<p>SELECT * FROM nombretable ORDER BY columna2 DESC;</p>
-
-<h1 id="9-el-mayor-de-algo-as-es-el-alias">9: el mayor de algo. AS es el alias#</h1>
-<p>SELECT MAX(columna1) AS mayor FROM nombretable;</p>
-
-<h1 id="10-el-menor-de-algo">10: el menor de algo</h1>
-<p>SELECT MIN(columna1) AS menor FROM nombretable;</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-
-3. Actualizar datos de una tabla
-Es muy importante proporcionar el "where", ya que si no fuera así, modificaría todos los registros en la tabla en el campo especificado.
+# 9: el menor de algo #
+SELECT MIN(columna1) AS menor FROM nombretable;
 
 </code></pre></div></div>
-<p>UPDATE nombretabla SET columna1 = “xxxx” WHERE id = 3;</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-4. Eliminar los registros de una tabla
-Es muy importante proporcionar el "where", ya que si no fuera así, borraría todos los registros en la tabla en el campo especificado.
 
+<h3 id="actualizar-datos-de-una-tabla">Actualizar datos de una tabla</h3>
+<p>Es muy importante proporcionar el <code class="language-plaintext highlighter-rouge">where</code>, ya que si no fuera así, modificaría todos los registros en la tabla en el campo especificado.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UPDATE nombretabla SET columna1 = "xxxx" WHERE id = 3;
 </code></pre></div></div>
-<p>DELETE FROM nombretabla WHERE columna1 = “dato”;</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 
+<h3 id="eliminar-los-registros-de-una-tabla">Eliminar los registros de una tabla</h3>
+<p>Es muy importante proporcionar el “where”, ya que si no fuera así, borraría todos los registros en la tabla.</p>
 
-# Clave foránea
-Tenemos que indicar:
-- qué columna de la tabla actual es la clave foránea
-- a qué tabla hace referencia la clave foránea junto con el nombre de la columna de esa tabla a la que referenciamos.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DELETE FROM nombretabla WHERE columna1 = "dato";
+</code></pre></div></div>
 
-create table products(
+<h3 id="clave-foránea-en-código">Clave foránea en código</h3>
+<p>Tenemos que indicar:</p>
+<ol>
+  <li>Qué columna de la tabla actual es la clave foránea</li>
+  <li>A qué tabla hace referencia la clave foránea junto con el nombre de la columna de esa tabla a la que referenciamos.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>create table product(
 	id int not null auto_increment,
 	name varchar(50) not null,
 	created_by int not null,
@@ -288,79 +252,111 @@ create table products(
 create table user(
 	id int not null auto_increment,
 	nombre varchar(50) not null,
-	primary key(id),
+	primary key(id)
 );
 
-* Esto es para renombrar una tabla:
 </code></pre></div></div>
-<p>rename table nombre_viejo to nombre_nuevo;</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 
-# JOIN: Unir tabla usuario con product
+<blockquote>
+  <p>Siempre agregar el ; después de cada instrucción.</p>
+</blockquote>
 
-# 1. left join entre user y products: la tabla principal es la tabla user
+<h2 id="join-unir-tablas-mediante-una-columna-en-común">JOIN: Unir tablas mediante una columna en común</h2>
 
-los datos de la tabla de la izquierda (LEFT) se muestran sí o sí. Los de la tabla de la derecha se muestran solamente si se han podido emparejar; en caso contrario, se muestra NULL.
+<blockquote>
+  <p>Hay que especificar de qué tabla salen los campos. La instrucción <code class="language-plaintext highlighter-rouge">on</code> es para unir las tablas mediante una columna en común</p>
+</blockquote>
 
-Cuando hacemos un left join, vamos a indicar que:
-- debe traer todos los registros que encuentre en user (obviamente los que cumplan las condiciones especificadas en la consulta) y en el caso que se encuentren registros dentro de products que hayan sido creados por un usuario que aparecerá en en el resultado de la consulta, en ese caso, esos productos aparecerán en el resultado de la consulta. Si se crearon productos cuyos creadores no estén en el resultado de la consulta, entonces no se mostrarán.
+<h1 id="1-left-join-entre-user-y-product-la-tabla-principal-es-la-tabla-user">1. left join entre user y product: la tabla principal es la tabla user</h1>
+<p>Los datos de la tabla de la izquierda (LEFT) se muestran sí o sí. Los de la tabla de la derecha se muestran solamente si se han podido emparejar; en caso contrario, se muestra NULL.</p>
 
-******** imagen left join
-
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT u.id, u.nombre, p.name FROM user u LEFT JOIN product p on u.id = p.created_by;
 </code></pre></div></div>
-<h1 id="hay-que-especificar-de-qué-tabla-salen-los-campos">hay que especificar de qué tabla salen los campos</h1>
-<h1 id="on-es-para-unir-las-tablas-mediante-una-columna-en-común">on es para unir las tablas mediante una columna en común</h1>
+<p>Esta consulta trae todos los registros que encuentre en user y en el caso que se encuentren registros dentro de product que hayan sido creados por un usuario que aparecerá en en el resultado de la consulta, en ese caso, esos productos aparecerán en el resultado de la consulta. Si se crearon productos cuyos creadores no estén en el resultado de la consulta, entonces no se mostrarán.</p>
 
-<p>SELECT u.id, u.nombre, p.name FROM user u LEFT JOIN product p on u.id = p.created_by;</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-# 2. right join entre user y products: la tabla principal es la tabla products
+<h1 id="2-right-join-entre-user-y-products-la-tabla-principal-es-la-tabla-products">2. right join entre user y products: la tabla principal es la tabla products</h1>
+<p>Los datos de la tabla de la derecha (RIGHT) se muestran sí o sí. Los de la tabla de la izquierda se muestran solamente si se han podido emparejar; en caso contrario, se muestra NULL.</p>
 
-los datos de la tabla de la derecha (RIGHT) se muestran sí o sí. Los de la tabla de la izquierda se muestran solamente si se han podido emparejar; en caso contrario, se muestra NULL.
-
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT u.id, u.nombre, p.name FROM user u RIGHT JOIN product p on u.id = p.created_by;
 </code></pre></div></div>
-<h1 id="hay-que-especificar-de-qué-tabla-salen-los-campos-1">hay que especificar de qué tabla salen los campos</h1>
-<h1 id="on-es-para-unir-las-tablas-mediante-una-columna-en-común-1">on es para unir las tablas mediante una columna en común</h1>
+<p>Esta consulta trae todos los registros de product y en el caso que se encuentren usuarios que hayan creado dichos productos, éstos aparecerán en la consulta. Si hay usuarios que no crearon algún producto, no se mostrarán en la consulta.</p>
 
-<p>SELECT u.id, u.nombre, p.name FROM user u RIGHT JOIN product p on u.id = p.created_by;</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- trae todos los registros de productos (que cumplen con la condición en la consulta) y en el caso que se encuentren usuarios que hayan creado dichos productos aparecerán en la consulta. Si hay usuarios que no crearon algún producto, no se mostrará en la consulta.
+<p><strong>**</strong> imagen right join</p>
 
-****** imagen right join
+<h1 id="3-inner-join-entre-users-y-products">3. Inner Join entre users y products</h1>
+<p>Se retornan todos los datos que se pueden emparejar entre las 2 tablas.</p>
 
-# 3. Inner Join entre users y products
-Nos trae registros de usuarios y productos siempre y cuando estos dos puedan ser asociados. Básicamente es la intersección de las dos tablas.
-
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT u.id, u.nombre, p.name FROM user u INNER JOIN product p on u.id = p.created_by;
 </code></pre></div></div>
-<h1 id="hay-que-especificar-de-qué-tabla-salen-los-campos-2">hay que especificar de qué tabla salen los campos</h1>
-<h1 id="on-es-para-unir-las-tablas-mediante-una-columna-en-común-2">on es para unir las tablas mediante una columna en común</h1>
+<p>Nos trae registros de usuarios y productos siempre y cuando estos dos puedan ser asociados. Básicamente es la intersección de las dos tablas.</p>
 
-<p>SELECT u.id, u.nombre, p.name FROM user u INNER JOIN product p on u.id = p.created_by;</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-# group by
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
 
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/join-sql-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/join-sql-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/join-sql-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/join-sql.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Join SQL.
+</div>
+
+<h2 id="group-by">Group by</h2>
+<p>Permite agrupar registros para poder aplicarle alguna función como <code class="language-plaintext highlighter-rouge">count</code> o <code class="language-plaintext highlighter-rouge">sum</code> a cada grupo.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 1 #
+# retorna la cantidad de productos de cada marca
+select count(id), marca from product group by marca;
+
+# 2 #
+# retorna la cantidad de productos creados por cada usuario
+select count(p.id), u.nombre from product p left join user u on u.id = p.created_by group by p.created_by; 
 </code></pre></div></div>
-<h1 id="1-1">1</h1>
-<h1 id="retorna-la-cantidad-de-productos-de-cada-marca">retorna la cantidad de productos de cada marca</h1>
-<p>select count(id), marca from product group by marca;</p>
 
-<h1 id="2-1">2</h1>
-<h1 id="retorna-la-cantidad-de-productos-creados-por-cada-usuario">retorna la cantidad de productos creados por cada usuario</h1>
-<p>select count(p.id), u.nombre fromm product p left join user u on u.id = p.created_by group by p.created_by;</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-# having
-Hacer que las consultas de group by retorne los registros que cumplan una determinada condición. Por ejemplo, retornar la cantidad de productos creados por cada usuario siempre y cuando sea mayor a 2
+<h2 id="having">Having</h2>
+<p>Hacer que las consultas de <code class="language-plaintext highlighter-rouge">group by</code> retornen los registros que cumplan una determinada condición. Por ejemplo, retornar la cantidad de productos creados por cada usuario siempre y cuando sea mayor a 2.</p>
 
-</code></pre></div></div>
-<p>select count(p.id), u.nombre from product p left join user u
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>select count(p.id), u.nombre from product p left join user u
 on u.id = p.created_by group by p.created_by
-having count(p.id) &gt; 2;</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-# eliminar tabla
+having count(p.id) &gt; 2; 
 </code></pre></div></div>
-<p>drop table product;
-```</p>
 
-<h1 id="cardinalidad">cardinalidad</h1>
-<p>son las relaciones entre tabla, por ejemplo, 1 a 1, 1 a n, n a n, etc.</p>]]></content><author><name></name></author><category term="databases" /><summary type="html"><![CDATA[Recordatorio de los comandos más usados en sql]]></summary></entry><entry><title type="html">Explicación R2 negativo</title><link href="https://squirogar.github.io/blog/2023/r2/" rel="alternate" type="text/html" title="Explicación R2 negativo" /><published>2023-06-25T20:19:00+00:00</published><updated>2023-06-25T20:19:00+00:00</updated><id>https://squirogar.github.io/blog/2023/r2</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/r2/"><![CDATA[<h1 id="por-qué-el-r2-score-puede-ser-negativo">¿Por qué el \(R^2\) score puede ser negativo?</h1>
+<h2 id="eliminar-tabla">Eliminar tabla</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>drop table product;
+</code></pre></div></div>
+
+<h2 id="comandos-adicionales">Comandos adicionales</h2>
+<p>Estos comandos al menos funcionan en mysql.</p>
+
+<p>Esto es para solucionar si es que nos da un error al no establecer el id como autoincrementable:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ALTER TABLE nombretabla MODIFY COLUMN id int auto_increment;
+</code></pre></div></div>
+
+<p>Esto es para renombrar una tabla:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rename table nombre_viejo to nombre_nuevo;
+</code></pre></div></div>
+
+<h2 id="cardinalidad">Cardinalidad</h2>
+<p>Son las relaciones entre tablas, por ejemplo, <code class="language-plaintext highlighter-rouge">1 a 1</code>, <code class="language-plaintext highlighter-rouge">1 a n</code>, <code class="language-plaintext highlighter-rouge">n a n</code>, etc.</p>
+
+<ol>
+  <li>Relación 1&lt;-&gt;n: se pone la clave primaria de (1) en la tabla de (n)</li>
+  <li>Relación 1&lt;-&gt;1: se pone la clave foránea en cualquiera de las 2.</li>
+  <li>Relación n&lt;-&gt;n: se crea una tabla intermedia. En esta tabla van las claves primarias de las 2 tablas que se relacionan.</li>
+</ol>]]></content><author><name></name></author><category term="databases" /><summary type="html"><![CDATA[Recordatorio de los comandos más usados en sql]]></summary></entry><entry><title type="html">Explicación R2 negativo</title><link href="https://squirogar.github.io/blog/2023/r2/" rel="alternate" type="text/html" title="Explicación R2 negativo" /><published>2023-06-25T20:19:00+00:00</published><updated>2023-06-25T20:19:00+00:00</updated><id>https://squirogar.github.io/blog/2023/r2</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/r2/"><![CDATA[<h1 id="por-qué-el-r2-score-puede-ser-negativo">¿Por qué el \(R^2\) score puede ser negativo?</h1>
 
 <p>De acuerdo a la <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html">documentación de Scikit-learn</a> el mejor score posible es 1.0. Si el \(R^2\) es 0.0, el modelo es un modelo constante que siempre predecirá la \(y\) promedio sin importar las inputs features. Si el score es negativo, entonces el modelo es peor que un modelo constante.</p>
 
