@@ -212,24 +212,15 @@
 <h2 id="base-de-datos-relacionales">Base de datos relacionales</h2>
 <p>Se guardan los datos en una tabla. Una tabla se conforman de registros o filas y columnas o campos. Las columnas describen el dato.</p>
 
-<p><strong>Tabla USER</strong></p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">id</th>
-      <th style="text-align: center">nombre</th>
-      <th style="text-align: center">edad</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">Felipe</td>
-      <td style="text-align: center">20</td>
-    </tr>
-  </tbody>
-</table>
+\[\begin{aligned}
+&amp; \text {Tabla User}\\
+&amp;\begin{array}{|c|c|c|}
+\hline \hline \text { id } &amp; \text { Nombre } &amp; \text { edad } \\
+\hline
+1 &amp; Felipe &amp; 20 \\
+\hline
+\end{array}
+\end{aligned}\]
 
 <p>De esta tabla se desprende lo siguiente:</p>
 <ul>
@@ -247,25 +238,40 @@
 
 <p>Ejemplo: Tenemos dos tablas: la tabla “ALUMNOS” y la tabla “DEPORTE”. Para poder relacionarlas debemos crear una tabla adicional “ALUMNO_DEPORTE”.</p>
 
-<p><strong>Tabla ALUMNO</strong>
-| id | nombre | edad |
-|:–:|:——:|:—-:|
-| 1  | Felipe | 20   |
-| 2  | Carlos | 19   |</p>
+\[\begin{aligned}
+&amp; \text {Tabla alumno}\\
+&amp;\begin{array}{|c|c|c|}
+\hline \hline \text { id } &amp; \text { Nombre } &amp; \text { edad } \\
+\hline
+1 &amp; Felipe &amp; 20 \\
+2 &amp; Carlos &amp; 19 \\
+\hline
+\end{array}
+\end{aligned}\]
 
-<p><strong>Tabla DEPORTE</strong>
-|id |nombre|
-|:-:|:—-:|
-|1  |futbol|
-|2  |tenis |
-|3  |remo  |</p>
+\[\begin{aligned}
+&amp; \text {Tabla deporte}\\
+&amp;\begin{array}{|c|c|c|}
+\hline \hline \text { id } &amp; \text { Nombre } \\
+\hline
+1 &amp; Fútbol \\
+2 &amp; Tenis \\
+3 &amp; Remo \\
+\hline
+\end{array}
+\end{aligned}\]
 
-<p><strong>Tabla ALUMNO_DEPORTE</strong>
-|id |alumno_id| deporte_id|
-|:-:|:——-:|:———:|
-|1  |1        |1          |
-|2  |1        |2          |
-|3  |2        |3          |</p>
+\[\begin{aligned}
+&amp; \text {Tabla alumno_deporte}\\
+&amp;\begin{array}{|c|c|c|}
+\hline \hline \text { id } &amp; \text { alumno_id } &amp; \text {deporte_id} \\
+\hline
+1 &amp; 1 &amp; 1 \\
+2 &amp; 1 &amp; 2 \\
+3 &amp; 2 &amp; 3 \\
+\hline
+\end{array}
+\end{aligned}\]
 
 <h2 id="tipos-de-datos-básicos">tipos de datos (básicos)</h2>
 <ul>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-07-12T05:04:17+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-07-12T18:37:28+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 </subtitle><entry><title type="html">Loss y Accuracy en deep learning</title><link href="https://squirogar.github.io/blog/2023/loss-accuracy/" rel="alternate" type="text/html" title="Loss y Accuracy en deep learning" /><published>2023-07-09T19:56:00+00:00</published><updated>2023-07-09T19:56:00+00:00</updated><id>https://squirogar.github.io/blog/2023/loss-accuracy</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/loss-accuracy/"><![CDATA[<h1 id="precisión-y-loss-en-tensorflow">Precisión y loss en tensorflow</h1>
 <p>Accuracy es una métrica que sólo se puede aplicar a las tareas de clasificación. Describe exactamente qué porcentajes de los datos se clasifican correctamente. Por ejemplo, tenemos un dataset con perros y gatos; si de 100 se clasifican bien 95, tenemos un 95% de precisión.</p>
 
@@ -96,24 +96,15 @@ muy confiado sobre el 95% que acertó. En este caso, el clasificador 2 tendría 
 <h2 id="base-de-datos-relacionales">Base de datos relacionales</h2>
 <p>Se guardan los datos en una tabla. Una tabla se conforman de registros o filas y columnas o campos. Las columnas describen el dato.</p>
 
-<p><strong>Tabla USER</strong></p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">id</th>
-      <th style="text-align: center">nombre</th>
-      <th style="text-align: center">edad</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">Felipe</td>
-      <td style="text-align: center">20</td>
-    </tr>
-  </tbody>
-</table>
+\[\begin{aligned}
+&amp; \text {Tabla User}\\
+&amp;\begin{array}{|c|c|c|}
+\hline \hline \text { id } &amp; \text { Nombre } &amp; \text { edad } \\
+\hline
+1 &amp; Felipe &amp; 20 \\
+\hline
+\end{array}
+\end{aligned}\]
 
 <p>De esta tabla se desprende lo siguiente:</p>
 <ul>
@@ -131,25 +122,40 @@ muy confiado sobre el 95% que acertó. En este caso, el clasificador 2 tendría 
 
 <p>Ejemplo: Tenemos dos tablas: la tabla “ALUMNOS” y la tabla “DEPORTE”. Para poder relacionarlas debemos crear una tabla adicional “ALUMNO_DEPORTE”.</p>
 
-<p><strong>Tabla ALUMNO</strong>
-| id | nombre | edad |
-|:–:|:——:|:—-:|
-| 1  | Felipe | 20   |
-| 2  | Carlos | 19   |</p>
+\[\begin{aligned}
+&amp; \text {Tabla alumno}\\
+&amp;\begin{array}{|c|c|c|}
+\hline \hline \text { id } &amp; \text { Nombre } &amp; \text { edad } \\
+\hline
+1 &amp; Felipe &amp; 20 \\
+2 &amp; Carlos &amp; 19 \\
+\hline
+\end{array}
+\end{aligned}\]
 
-<p><strong>Tabla DEPORTE</strong>
-|id |nombre|
-|:-:|:—-:|
-|1  |futbol|
-|2  |tenis |
-|3  |remo  |</p>
+\[\begin{aligned}
+&amp; \text {Tabla deporte}\\
+&amp;\begin{array}{|c|c|c|}
+\hline \hline \text { id } &amp; \text { Nombre } \\
+\hline
+1 &amp; Fútbol \\
+2 &amp; Tenis \\
+3 &amp; Remo \\
+\hline
+\end{array}
+\end{aligned}\]
 
-<p><strong>Tabla ALUMNO_DEPORTE</strong>
-|id |alumno_id| deporte_id|
-|:-:|:——-:|:———:|
-|1  |1        |1          |
-|2  |1        |2          |
-|3  |2        |3          |</p>
+\[\begin{aligned}
+&amp; \text {Tabla alumno_deporte}\\
+&amp;\begin{array}{|c|c|c|}
+\hline \hline \text { id } &amp; \text { alumno_id } &amp; \text {deporte_id} \\
+\hline
+1 &amp; 1 &amp; 1 \\
+2 &amp; 1 &amp; 2 \\
+3 &amp; 2 &amp; 3 \\
+\hline
+\end{array}
+\end{aligned}\]
 
 <h2 id="tipos-de-datos-básicos">tipos de datos (básicos)</h2>
 <ul>
