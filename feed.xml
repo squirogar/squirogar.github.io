@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-07-12T04:57:11+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://squirogar.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://squirogar.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-07-12T05:04:17+00:00</updated><id>https://squirogar.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 </subtitle><entry><title type="html">Loss y Accuracy en deep learning</title><link href="https://squirogar.github.io/blog/2023/loss-accuracy/" rel="alternate" type="text/html" title="Loss y Accuracy en deep learning" /><published>2023-07-09T19:56:00+00:00</published><updated>2023-07-09T19:56:00+00:00</updated><id>https://squirogar.github.io/blog/2023/loss-accuracy</id><content type="html" xml:base="https://squirogar.github.io/blog/2023/loss-accuracy/"><![CDATA[<h1 id="precisión-y-loss-en-tensorflow">Precisión y loss en tensorflow</h1>
 <p>Accuracy es una métrica que sólo se puede aplicar a las tareas de clasificación. Describe exactamente qué porcentajes de los datos se clasifican correctamente. Por ejemplo, tenemos un dataset con perros y gatos; si de 100 se clasifican bien 95, tenemos un 95% de precisión.</p>
 
@@ -96,10 +96,24 @@ muy confiado sobre el 95% que acertó. En este caso, el clasificador 2 tendría 
 <h2 id="base-de-datos-relacionales">Base de datos relacionales</h2>
 <p>Se guardan los datos en una tabla. Una tabla se conforman de registros o filas y columnas o campos. Las columnas describen el dato.</p>
 
-<p><strong>Tabla USER</strong>
-| id | nombre | edad |
-|:———:|:———-:|:———-:|
-| 1 | Felipe | 20 |</p>
+<p><strong>Tabla USER</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">id</th>
+      <th style="text-align: center">nombre</th>
+      <th style="text-align: center">edad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">Felipe</td>
+      <td style="text-align: center">20</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>De esta tabla se desprende lo siguiente:</p>
 <ul>
@@ -119,23 +133,23 @@ muy confiado sobre el 95% que acertó. En este caso, el clasificador 2 tendría 
 
 <p><strong>Tabla ALUMNO</strong>
 | id | nombre | edad |
-|:—-:|:——:|:—-:|
-| 1 | Felipe | 20 |
-| 2 | Carlos | 19 |</p>
+|:–:|:——:|:—-:|
+| 1  | Felipe | 20   |
+| 2  | Carlos | 19   |</p>
 
 <p><strong>Tabla DEPORTE</strong>
 |id |nombre|
 |:-:|:—-:|
-|1 |futbol|
-|2 |tenis |
-|3 |remo |</p>
+|1  |futbol|
+|2  |tenis |
+|3  |remo  |</p>
 
 <p><strong>Tabla ALUMNO_DEPORTE</strong>
 |id |alumno_id| deporte_id|
 |:-:|:——-:|:———:|
-|1 |1 |1 |
-|2 |1 |2 |
-|3 |2 |3 |</p>
+|1  |1        |1          |
+|2  |1        |2          |
+|3  |2        |3          |</p>
 
 <h2 id="tipos-de-datos-básicos">tipos de datos (básicos)</h2>
 <ul>
