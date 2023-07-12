@@ -215,7 +215,7 @@
 <p><strong>Tabla USER</strong>
 | id | nombre | edad |
 |:———:|:———-:|:———-:|
-| 1    | Felipe   | 20   |</p>
+| 1 | Felipe | 20 |</p>
 
 <p>De esta tabla se desprende lo siguiente:</p>
 <ul>
@@ -234,24 +234,24 @@
 <p>Ejemplo: Tenemos dos tablas: la tabla “ALUMNOS” y la tabla “DEPORTE”. Para poder relacionarlas debemos crear una tabla adicional “ALUMNO_DEPORTE”.</p>
 
 <p><strong>Tabla ALUMNO</strong>
-| id   | nombre | edad |
+| id | nombre | edad |
 |:—-:|:——:|:—-:|
-| 1    | Felipe | 20   |
-| 2    | Carlos | 19   |</p>
+| 1 | Felipe | 20 |
+| 2 | Carlos | 19 |</p>
 
 <p><strong>Tabla DEPORTE</strong>
 |id |nombre|
 |:-:|:—-:|
-|1	|futbol|
-|2 	|tenis |
-|3 	|remo  |</p>
+|1 |futbol|
+|2 |tenis |
+|3 |remo |</p>
 
 <p><strong>Tabla ALUMNO_DEPORTE</strong>
 |id |alumno_id| deporte_id|
 |:-:|:——-:|:———:|
-|1 	|1 		  |1          |
-|2 	|1 		  |2          |
-|3 	|2 		  |3          |</p>
+|1 |1 |1 |
+|2 |1 |2 |
+|3 |2 |3 |</p>
 
 <h2 id="tipos-de-datos-básicos">tipos de datos (básicos)</h2>
 <ul>
@@ -386,23 +386,21 @@ create table user(
   <p>Hay que especificar de qué tabla salen los campos. La instrucción <code class="language-plaintext highlighter-rouge">on</code> es para unir las tablas mediante una columna en común</p>
 </blockquote>
 
-<h1 id="1-left-join-entre-user-y-product-la-tabla-principal-es-la-tabla-user">1. left join entre user y product: la tabla principal es la tabla user</h1>
+<h3 id="1-left-join-entre-user-y-product-la-tabla-principal-es-la-tabla-user">1. left join entre user y product: la tabla principal es la tabla user</h3>
 <p>Los datos de la tabla de la izquierda (LEFT) se muestran sí o sí. Los de la tabla de la derecha se muestran solamente si se han podido emparejar; en caso contrario, se muestra NULL.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT u.id, u.nombre, p.name FROM user u LEFT JOIN product p on u.id = p.created_by;
 </code></pre></div></div>
 <p>Esta consulta trae todos los registros que encuentre en user y en el caso que se encuentren registros dentro de product que hayan sido creados por un usuario que aparecerá en en el resultado de la consulta, en ese caso, esos productos aparecerán en el resultado de la consulta. Si se crearon productos cuyos creadores no estén en el resultado de la consulta, entonces no se mostrarán.</p>
 
-<h1 id="2-right-join-entre-user-y-products-la-tabla-principal-es-la-tabla-products">2. right join entre user y products: la tabla principal es la tabla products</h1>
+<h3 id="2-right-join-entre-user-y-products-la-tabla-principal-es-la-tabla-products">2. right join entre user y products: la tabla principal es la tabla products</h3>
 <p>Los datos de la tabla de la derecha (RIGHT) se muestran sí o sí. Los de la tabla de la izquierda se muestran solamente si se han podido emparejar; en caso contrario, se muestra NULL.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT u.id, u.nombre, p.name FROM user u RIGHT JOIN product p on u.id = p.created_by;
 </code></pre></div></div>
 <p>Esta consulta trae todos los registros de product y en el caso que se encuentren usuarios que hayan creado dichos productos, éstos aparecerán en la consulta. Si hay usuarios que no crearon algún producto, no se mostrarán en la consulta.</p>
 
-<p><strong>**</strong> imagen right join</p>
-
-<h1 id="3-inner-join-entre-users-y-products">3. Inner Join entre users y products</h1>
+<h3 id="3-inner-join-entre-users-y-products">3. Inner Join entre users y products</h3>
 <p>Se retornan todos los datos que se pueden emparejar entre las 2 tablas.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT u.id, u.nombre, p.name FROM user u INNER JOIN product p on u.id = p.created_by;
@@ -442,7 +440,8 @@ select count(id), marca from product group by marca;
 
 # 2 #
 # retorna la cantidad de productos creados por cada usuario
-select count(p.id), u.nombre from product p left join user u on u.id = p.created_by group by p.created_by; 
+select count(p.id), u.nombre from product p left join user u 
+on u.id = p.created_by group by p.created_by; 
 </code></pre></div></div>
 
 <h2 id="having">Having</h2>
