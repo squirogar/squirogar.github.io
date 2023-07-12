@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Metadata, OpenGraph and Schema.org -->
+    
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SQL | Sebastián  Quiroga</title>
+    <meta name="author" content="Sebastián  Quiroga">
+    <meta name="description" content="Recordatorio de los comandos más usados en sql">
+    <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+    <!-- Bootstrap & MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+    <!-- Bootstrap Table -->
+    <link defer rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.css">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+    <!-- Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
+
+    
+
+    <!-- Styles -->
+    
+    <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="canonical" href="https://squirogar.github.io/blog/2023/sql/">
+
+    <!-- Dark Mode -->
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/dark_mode.js"></script>
+    
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav ">
+
+    <!-- Header -->
+    <header>
+
+      <!-- Nav Bar -->
+      <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+        <div class="container">
+          <a class="navbar-brand title font-weight-lighter" href="/"><span class="font-weight-bold">Sebastián </span>Quiroga</a>
+          <!-- Navbar Toggle -->
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse text-right" id="navbarNav">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+
+              <!-- About -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/">about</a>
+              </li>
+              
+              <!-- Blog -->
+              <li class="nav-item active">
+                <a class="nav-link" href="/blog/">blog<span class="sr-only">(current)</span></a>
+              </li>
+
+              <!-- Other pages -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/publications/">publications</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/repositories/">repositories</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/cv/">cv</a>
+              </li>
+
+              <!-- Toogle theme mode -->
+              <li class="toggle-container">
+                <button id="light-toggle" title="Change theme">
+                  <i class="fas fa-moon"></i>
+                  <i class="fas fa-sun"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Scrolling Progress Bar -->
+      <progress id="progress" value="0">
+        <div class="progress-container">
+          <span class="progress-bar"></span>
+        </div>
+      </progress>
+    </header>
+
+
+    <!-- Content -->
+    <div class="container mt-5">
+      
+        <!-- _layouts/post.html -->
+
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">SQL</h1>
+    <p class="post-meta">July 9, 2023</p>
+    <p class="post-tags">
+      <a href="/blog/2023"> <i class="fas fa-calendar fa-sm"></i> 2023 </a>
+        ·  
+        <a href="/blog/category/databases">
+          <i class="fas fa-tag fa-sm"></i> databases</a>  
+          
+
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <h2 id="qué-es-una-base-de-datos">Qué es una base de datos</h2>
+<p>De [microsoft] (https://support.microsoft.com/es-es/office/conceptos-b%C3%A1sicos-sobre-bases-de-datos-a849ac16-07c7-4a31-9948-3c8c94a7c204#:~:text=Una%20base%20de%20datos%20es,programa%20de%20procesamiento%20de%20texto.): <em>Una base de datos es una herramienta para recopilar y organizar información. Las bases de datos pueden almacenar información sobre personas, productos, pedidos u otras cosas</em></p>
+
+<p>Lo importante de una base de datos es que:</p>
+<ol>
+  <li>tenga datos: queremos guardar datos para luego procesarla y organizarla. Estos datos son información cuando los datos guardados tienen sentido</li>
+  <li>los datos deben poder relacionarse. No tiene sentido guardar datos que no tienen ninguna relación.</li>
+</ol>
+
+<h2 id="cómo-guardar-organizar-y-procesar-datos-en-una-base-de-datos">Cómo guardar, organizar y procesar datos en una base de datos</h2>
+<p>Hacemos uso de un software llamado <strong>SGBD</strong> (en inglés Relational Database Management System (RDMS)). Un SGBD es un sistema de gestión de base de datos. Ejemplos de estos softwares son: MySQL, PostgreSQL, MariaDB, Oracle, etc.</p>
+
+<p>Algunas funciones que cumplen los SGBD:</p>
+<ul>
+  <li>seguridad e integridad de los datos</li>
+  <li>respaldos</li>
+  <li>importación y exportación de los datos</li>
+  <li>concurrencia. Este apartado de concurrencia es super importante porque el SGBD se tiene que preocupar de solucionar posbiles conflictos como dos usuarios intentan eliminar y leer un registro al mismo tiempo.</li>
+</ul>
+
+<p>Las operaciones más comunes dentro de los softwares de gestión de base de datos son el CRUD:</p>
+<ol>
+  <li>CREATE</li>
+  <li>READ</li>
+  <li>UPDATE</li>
+  <li>DELETE</li>
+</ol>
+
+<p>Para poder acceder a los registros y realizar estas 4 operaciones necesitamos escribir una <strong>query</strong> o consulta.</p>
+
+<blockquote>
+  <p>Query &lt;=&gt; consulta</p>
+</blockquote>
+
+<p>Existen dos tipos de SGBD:</p>
+<ol>
+  <li>SGBD que implementan SQL. Estas bases de datos se llaman base de datos relacionales y almacenan la información mediante tablas con filas y columnas.</li>
+  <li>SGBD que no implementan SQL. Estas bases de datos se llaman NO-SQL o base de datos no relacionales. Existen múltiples forman de guardar los datos:
+    <ul>
+      <li>formato JSON</li>
+      <li>formato BSON</li>
+      <li>formato BLOB</li>
+      <li>etc</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="base-de-datos-relacionales">Base de datos relacionales</h2>
+<p>Se guardan los datos en una tabla. Una tabla se conforman de registros o filas y columnas o campos. Las columnas describen el dato.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>USUARIO</th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Column 1</td>
+      <td>Column 2</td>
+      <td>Column 3</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>Row 1</td>
+      <td>Cell 2</td>
+      <td>Cell 3</td>
+    </tr>
+    <tr>
+      <td>Row 2</td>
+      <td>Cell 5</td>
+      <td>Cell 6</td>
+    </tr>
+    <tr>
+      <td>Row 3</td>
+      <td>Cell 8</td>
+      <td>Cell 9</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>USUARIO
+id nombre edad
+1	felipe	20
+</code></pre></div></div>
+<ul>
+  <li>El id es una columna que describe un identificador único del registro y que generalmente es automático y autoincrementable</li>
+  <li>“1”, “felipe” y “20” son datos por sí mismos.</li>
+  <li>
+    <p>Si a esta tabla le asignamos el nombre de “user” ahí le damos contexto, ya que sabemos que esos datos hacen referencia a un usuario. Es ahí cuando tenemos información. Es muy importante que los datos se transformen en información, ya que así tienen sentido.</p>
+  </li>
+  <li>
+    <p>Es importante el uso de id en vez de usar el nombre u otro dato de un usuario, ya que estos se pueden repetir o pueden cambiar.</p>
+  </li>
+  <li>
+    <p>Es importante que en la base de datos no hay duplicación de registros.</p>
+  </li>
+  <li>
+    <p>Todas las bases de datos relacionales o SQL crean tablas y las asocian mediante claves.</p>
+  </li>
+  <li>relación 1&lt;-&gt;n: se pone la clave primaria de (1) en la tabla de (n)
+```
+PRODUCTO
+id nombre creado_por
+1 	clavo	1</li>
+</ul>
+
+<p>USUARIO
+id nombre edad
+1	felipe	20</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+- relación n&lt;-&gt;n: se crea una tabla intermedia. En esta tabla van las claves primarias de las 2 tablas que se relacionan.
+</code></pre></div></div>
+<p>ALUMNOS
+id nombre edad
+1 	felipe	25
+2 	carlos 	19</p>
+
+<p>DEPORTE
+id nombre
+1	futbol
+2 	tenis
+3 	remo</p>
+
+<p>ALUMNOS_DEPORTE
+id alumno_id deporte_id
+1 	1 			1
+2 	1 			2
+3 	2 			3</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+- la "primary key" es la columna que identifica a un registro como único.
+- la "foregin key" es la columna que identifica a un registro de otra tabla que se relaciona con la tabla actual.
+
+
+# tipos de datos
+- int: integer
+- float: decimal
+- varchar(cantidad de caracteres máximo): string
+
+
+# comandos
+
+Siempre agregar el ; después de cada instrucción.
+
+</code></pre></div></div>
+<h1 id="crea-la-base-de-datos">crea la base de datos</h1>
+<p>create database nombrebd;</p>
+
+<h1 id="ver-todas-las-bases-de-datos-que-existen">ver todas las bases de datos que existen</h1>
+<p>show databases;</p>
+
+<h1 id="indicamos-la-base-de-datos-a-utilizar">indicamos la base de datos a utilizar</h1>
+<p>use nombrebd;</p>
+
+<h1 id="creamos-una-tabla">creamos una tabla</h1>
+<p>CREATE TABLE nombretabla (
+	id int AUTO_INCREMENT,
+	columna1 varchar(255), 
+	columna2 varchar(255) NOT NULL,
+	columna3 int NOT NULL,
+	PRIMARY KEY (id),
+);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+1. Insertar datos en una tabla
+Primero, debemos indicar a qué columnas queremos insertarle datos. Luego, le indicamos los valores que irán en cada columna indicada.
+
+</code></pre></div></div>
+<h1 id="1-un-solo-valor">1: un solo valor</h1>
+<p>INSERT INTO nombretabla (columna1, columna2) VALUES (“valor col1”, “valor col2”);</p>
+
+<h1 id="2-varios-valores">2: varios valores</h1>
+<p>INSERT INTO product (name, created_by, marca)
+VALUES 
+	(“ipad”, 1, “apple”),
+	(“iphone”, 1, “apple”),
+	(“watch”, 2, “apple”),
+	(“macbook”, 1, “apple”),
+	(“imac”, 3, “apple”),
+	(“ipad mini”, 2, “apple”);</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+* esto es para solucionar si es que nos da un error al no establecer el id como autoincrementable.
+</code></pre></div></div>
+<p>ALTER TABLE nombretabla MODIFY COLUMN id int auto_increment;</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+
+
+2. Listar registros de una tabla
+</code></pre></div></div>
+<h1 id="1">1</h1>
+<p>SELECT columna1, columna2 FROM nombretabla WHERE id = 1;</p>
+
+<h1 id="2">2</h1>
+<p>SELECT * FROM nombretabla WHERE columna1 = “dato” AND columna2 = “dato2”;</p>
+
+<h1 id="3">3</h1>
+<p>SELECT * FROM nombretabla WHERE columna1 &gt;= 10 LIMIT 5;</p>
+
+<h1 id="4">4</h1>
+<p>SELECT * FROM nombretabla WHERE columna1 &gt; 20 OR columna2 = “dato2”;</p>
+
+<h1 id="5">5</h1>
+<p>SELECT * FROM nombretable WHERE columna2 != “dato2”;</p>
+
+<h1 id="6">6</h1>
+<p>SELECT * FROM nombretable WHERE columna1 BETWEEN 5 AND 10;</p>
+
+<h1 id="7-busca-que-contenga-la-palabra-hola-da-lo-mismo-el-inicio-y-el-final">7: busca que contenga la palabra hola, da lo mismo el inicio y el final</h1>
+<p>SELECT * FROM nombretable WHERE columna2 LIKE “%hola%;</p>
+
+<h1 id="debe-terminar-con-hola">debe terminar con hola</h1>
+<p>SELECT * FROM nombretable WHERE columna2 LIKE “%hola;</p>
+
+<h1 id="debe-empezar-con-hola">debe empezar con hola</h1>
+<p>SELECT * FROM nombretable WHERE columna2 LIKE “hola%;</p>
+
+<h1 id="8">8</h1>
+<p>SELECT * FROM nombretable ORDER BY columna2 ASC;</p>
+
+<p>SELECT * FROM nombretable ORDER BY columna2 DESC;</p>
+
+<h1 id="9-el-mayor-de-algo-as-es-el-alias">9: el mayor de algo. AS es el alias#</h1>
+<p>SELECT MAX(columna1) AS mayor FROM nombretable;</p>
+
+<h1 id="10-el-menor-de-algo">10: el menor de algo</h1>
+<p>SELECT MIN(columna1) AS menor FROM nombretable;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+3. Actualizar datos de una tabla
+Es muy importante proporcionar el "where", ya que si no fuera así, modificaría todos los registros en la tabla en el campo especificado.
+
+</code></pre></div></div>
+<p>UPDATE nombretabla SET columna1 = “xxxx” WHERE id = 3;</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+4. Eliminar los registros de una tabla
+Es muy importante proporcionar el "where", ya que si no fuera así, borraría todos los registros en la tabla en el campo especificado.
+
+</code></pre></div></div>
+<p>DELETE FROM nombretabla WHERE columna1 = “dato”;</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+
+# Clave foránea
+Tenemos que indicar:
+- qué columna de la tabla actual es la clave foránea
+- a qué tabla hace referencia la clave foránea junto con el nombre de la columna de esa tabla a la que referenciamos.
+
+create table products(
+	id int not null auto_increment,
+	name varchar(50) not null,
+	created_by int not null,
+	marca varchar(50) not null,
+	primary key(id),
+	foreign key(created_by) references user(id)
+);
+
+create table user(
+	id int not null auto_increment,
+	nombre varchar(50) not null,
+	primary key(id),
+);
+
+* Esto es para renombrar una tabla:
+</code></pre></div></div>
+<p>rename table nombre_viejo to nombre_nuevo;</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+# JOIN: Unir tabla usuario con product
+
+# 1. left join entre user y products: la tabla principal es la tabla user
+
+los datos de la tabla de la izquierda (LEFT) se muestran sí o sí. Los de la tabla de la derecha se muestran solamente si se han podido emparejar; en caso contrario, se muestra NULL.
+
+Cuando hacemos un left join, vamos a indicar que:
+- debe traer todos los registros que encuentre en user (obviamente los que cumplan las condiciones especificadas en la consulta) y en el caso que se encuentren registros dentro de products que hayan sido creados por un usuario que aparecerá en en el resultado de la consulta, en ese caso, esos productos aparecerán en el resultado de la consulta. Si se crearon productos cuyos creadores no estén en el resultado de la consulta, entonces no se mostrarán.
+
+******** imagen left join
+
+</code></pre></div></div>
+<h1 id="hay-que-especificar-de-qué-tabla-salen-los-campos">hay que especificar de qué tabla salen los campos</h1>
+<h1 id="on-es-para-unir-las-tablas-mediante-una-columna-en-común">on es para unir las tablas mediante una columna en común</h1>
+
+<p>SELECT u.id, u.nombre, p.name FROM user u LEFT JOIN product p on u.id = p.created_by;</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+# 2. right join entre user y products: la tabla principal es la tabla products
+
+los datos de la tabla de la derecha (RIGHT) se muestran sí o sí. Los de la tabla de la izquierda se muestran solamente si se han podido emparejar; en caso contrario, se muestra NULL.
+
+</code></pre></div></div>
+<h1 id="hay-que-especificar-de-qué-tabla-salen-los-campos-1">hay que especificar de qué tabla salen los campos</h1>
+<h1 id="on-es-para-unir-las-tablas-mediante-una-columna-en-común-1">on es para unir las tablas mediante una columna en común</h1>
+
+<p>SELECT u.id, u.nombre, p.name FROM user u RIGHT JOIN product p on u.id = p.created_by;</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- trae todos los registros de productos (que cumplen con la condición en la consulta) y en el caso que se encuentren usuarios que hayan creado dichos productos aparecerán en la consulta. Si hay usuarios que no crearon algún producto, no se mostrará en la consulta.
+
+****** imagen right join
+
+# 3. Inner Join entre users y products
+Nos trae registros de usuarios y productos siempre y cuando estos dos puedan ser asociados. Básicamente es la intersección de las dos tablas.
+
+</code></pre></div></div>
+<h1 id="hay-que-especificar-de-qué-tabla-salen-los-campos-2">hay que especificar de qué tabla salen los campos</h1>
+<h1 id="on-es-para-unir-las-tablas-mediante-una-columna-en-común-2">on es para unir las tablas mediante una columna en común</h1>
+
+<p>SELECT u.id, u.nombre, p.name FROM user u INNER JOIN product p on u.id = p.created_by;</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+# group by
+
+</code></pre></div></div>
+<h1 id="1-1">1</h1>
+<h1 id="retorna-la-cantidad-de-productos-de-cada-marca">retorna la cantidad de productos de cada marca</h1>
+<p>select count(id), marca from product group by marca;</p>
+
+<h1 id="2-1">2</h1>
+<h1 id="retorna-la-cantidad-de-productos-creados-por-cada-usuario">retorna la cantidad de productos creados por cada usuario</h1>
+<p>select count(p.id), u.nombre fromm product p left join user u on u.id = p.created_by group by p.created_by;</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+# having
+Hacer que las consultas de group by retorne los registros que cumplan una determinada condición. Por ejemplo, retornar la cantidad de productos creados por cada usuario siempre y cuando sea mayor a 2
+
+</code></pre></div></div>
+<p>select count(p.id), u.nombre from product p left join user u
+on u.id = p.created_by group by p.created_by
+having count(p.id) &gt; 2;</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+# eliminar tabla
+</code></pre></div></div>
+<p>drop table product;
+```</p>
+
+<h1 id="cardinalidad">cardinalidad</h1>
+<p>son las relaciones entre tabla, por ejemplo, 1 a 1, 1 a n, n a n, etc.</p>
+
+
+    </div>
+  </article>
+
+
+  
+    
+    <br>
+    <hr>
+    <br>
+    <ul class="list-disc pl-8"></ul>
+
+    <!-- Adds related posts to the end of an article -->
+    <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+    <p class="mb-2">Here are some more articles you might like to read next:</p>
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2022/displaying-external-posts-on-your-al-folio-blog/">Displaying External Posts on Your al-folio Blog</a>
+  </li>
+
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/loss-accuracy/">Loss y Accuracy en deep learning</a>
+  </li>
+
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/r2/">Explicación R2 negativo</a>
+  </li>
+
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/Tipos-de-datasets/">Diferencia entre los distintos tipos de datasets</a>
+  </li>
+
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/tipos-de-data/">Tipos de data</a>
+  </li>
+
+<div id="giscus_thread" style="max-width: 800px; margin: 0 auto;">
+  <script>
+    let giscusTheme = localStorage.getItem("theme");
+    let giscusAttributes = {
+        "src": "https://giscus.app/client.js",
+        "data-repo": "squirogar/squirogar.github.io",
+        "data-repo-id": "R_kgDOJtf6_Q",
+        "data-category": "Announcements",
+        "data-category-id": "DIC_kwDOJtf6_c4CXHce",
+        "data-mapping": "pathname",
+        "data-strict": "1",
+        "data-reactions-enabled": "1",
+        "data-emit-metadata": "0",
+        "data-input-position": "top",
+        "data-theme": giscusTheme,
+        "data-lang": "en",
+        "crossorigin": "anonymous",
+        "async": "",
+    };
+
+
+    let giscusScript = document.createElement("script");
+    Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    document.getElementById("giscus_thread").appendChild(giscusScript);
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by giscus.</a>
+</noscript>
+</div>
+</div>
+
+      
+    </div>
+
+    <!-- Footer -->    
+    <footer class="fixed-bottom">
+      <div class="container mt-0">
+        © Copyright 2023 Sebastián  Quiroga. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+
+      </div>
+    </footer>
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Bootsrap & MDB scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+    <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  <script defer src="/assets/js/masonry.js" type="text/javascript"></script>
+    
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js"></script>
+
+  <!-- Bootstrap Table -->
+  <script defer src="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.js"></script>
+
+  <!-- Load Common JS -->
+  <script src="/assets/js/no_defer.js"></script>
+  <script defer src="/assets/js/common.js"></script>
+  <script defer src="/assets/js/copy_code.js" type="text/javascript"></script>
+
+    
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+    <!-- MathJax -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        tags: 'ams'
+      }
+    };
+  </script>
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    
+    
+
+<!-- Scrolling Progress Bar -->
+<script type="text/javascript">
+  /*
+   * This JavaScript code has been adapted from the article 
+   * https://css-tricks.com/reading-position-indicator/ authored by Pankaj Parashar, 
+   * published on the website https://css-tricks.com on the 7th of May, 2014.
+   * Couple of changes were made to the original code to make it compatible 
+   * with the `al-foio` theme.
+   */
+  const progressBar = $("#progress");
+  /*
+   * We set up the bar after all elements are done loading.
+   * In some cases, if the images in the page are larger than the intended
+   * size they'll have on the page, they'll be resized via CSS to accomodate
+   * the desired size. This mistake, however, breaks the computations as the
+   * scroll size is computed as soon as the elements finish loading.
+   * To account for this, a minimal delay was introduced before computing the
+   * values.
+   */
+  window.onload = function () {
+    setTimeout(progressBarSetup, 50);
+  };
+  /*
+   * We set up the bar according to the browser.
+   * If the browser supports the progress element we use that.
+   * Otherwise, we resize the bar thru CSS styling
+   */
+  function progressBarSetup() {
+    if ("max" in document.createElement("progress")) {
+      initializeProgressElement();
+      $(document).on("scroll", function() {
+        progressBar.attr({ value: getCurrentScrollPosition() });
+      });
+      $(window).on("resize", initializeProgressElement);
+    } else {
+      resizeProgressBar();
+      $(document).on("scroll", resizeProgressBar);
+      $(window).on("resize", resizeProgressBar);
+    }
+  }
+  /*
+   * The vertical scroll position is the same as the number of pixels that
+   * are hidden from view above the scrollable area. Thus, a value > 0 is
+   * how much the user has scrolled from the top
+   */
+  function getCurrentScrollPosition() {
+    return $(window).scrollTop();
+  }
+
+  function initializeProgressElement() {
+    let navbarHeight = $("#navbar").outerHeight(true);
+    $("body").css({ "padding-top": navbarHeight });
+    $("progress-container").css({ "padding-top": navbarHeight });
+    progressBar.css({ top: navbarHeight });
+    progressBar.attr({
+      max: getDistanceToScroll(),
+      value: getCurrentScrollPosition(),
+    });
+  }
+  /*
+   * The offset between the html document height and the browser viewport
+   * height will be greater than zero if vertical scroll is possible.
+   * This is the distance the user can scroll
+   */
+  function getDistanceToScroll() {
+    return $(document).height() - $(window).height();
+  }
+
+  function resizeProgressBar() {
+    progressBar.css({ width: getWidthPercentage() + "%" });
+  }
+  // The scroll ratio equals the percentage to resize the bar
+  function getWidthPercentage() {
+    return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
+  }
+</script>
+
+  </body>
+</html>
