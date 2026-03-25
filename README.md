@@ -1,2 +1,3 @@
-# squirogar.github.io
-Página personal
+# Mis apuntes
+
+Repositorio de mis notas personales de estudio.
